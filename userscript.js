@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         ISMonkey_Loader
-// @version      0.1.1
+// @version      0.1.2
 // @description  ISMonkey Extension Loader 
 // @author       Holychikenz
 // @namespace    ISMonkey 
 // @updateURL    https://raw.githubusercontent.com/Holychikenz/ISMonkey/userscript.js
 // @downloadURL  https://raw.githubusercontent.com/Holychikenz/ISMonkey/userscript.js
-// @match        http*://*idlescape.com/game
+// @match        https://www.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
 // @run-at       document-start
