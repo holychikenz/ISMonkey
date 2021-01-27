@@ -7,5 +7,13 @@
 // @updateURL    https://raw.githubusercontent.com/Holychikenz/ISMonkey/userscript.js
 // @downloadURL  https://raw.githubusercontent.com/Holychikenz/ISMonkey/userscript.js
 // @match        http*://*idlescape.com/game
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
 // @run-at       document-end
 // ==/UserScript==
+
+(function(){
+  var ismonkey = new ISMonkey();
+
+  ismonkey.addSocketExtension("spam", spam);
+}

@@ -31,7 +31,7 @@ class ISMonkey {
     if( msg != null ) {
       let msg_parsed = JSON.parse(msg);
       let [r, data] = msg_parsed;
-      self.eventList.forEach(e=>e(self, msg_parsed))
+      self.eventList.forEach(e=>e.run(self, msg_parsed))
     }
   }
 

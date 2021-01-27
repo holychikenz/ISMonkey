@@ -1,15 +1,10 @@
-// Test of the above
-(function(){
-  var ismonkey = new ISMonkey()
-
-  var webpage = "<html><body></body></html>";
-  var opened = window.open("");
-  let webdom = opened.document.getElementsByTagName("BODY")[0];
-
-  function spam(obj, msg) {
-    webdom.innerHTML += `${JSON.stringify(msg)}<br/>`;
+class spam {
+  constructor(){
+    this.webpage = "<html><body></body></html>";
+    this.opened = window.open("");
+    this.webdom = opened.document.getElementsByTagName("BODY")[0];
   }
-
-  ismonkey.addSocketExtension("span", spam);
-})();
-
+  run(obj, msg) {
+    this.webdom.innerHTML += `${JSON.stringify(msg)}<br/>`;
+  }
+}
