@@ -1,4 +1,4 @@
-class spam {
+class SpamExtension {
   constructor(){
     this.webpage = "<html><body></body></html>";
     this.opened = window.open("");
@@ -8,3 +8,6 @@ class spam {
     this.webdom.innerHTML += `${JSON.stringify(msg)}<br/>`;
   }
 }
+
+thisSpam = new SpamExtension();
+spam = function(obj, msg){thisSpam.run(obj, msg)}
