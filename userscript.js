@@ -17,4 +17,4 @@
   var ismonkey = new ISMonkey();
 
   ismonkey.addSocketExtension("spam", spam);
-}
+})();
