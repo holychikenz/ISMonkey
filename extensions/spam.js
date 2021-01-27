@@ -1,5 +1,6 @@
 class SpamExtension {
-  constructor(){
+  constructor(options){
+    this.options = options;
     this.webpage = "<html><body></body></html>";
     this.owin = window.open("");
     this.webdom = this.owin.document.getElementsByTagName("BODY")[0];

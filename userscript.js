@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         ISMonkey_Loader
-// @version      0.1.5
+// @name         ISMonkeyLoader
+// @version      0.1.6
 // @description  ISMonkey Extension Loader 
 // @author       Holychikenz
 // @namespace    ISMonkey 
@@ -14,7 +14,11 @@
 // ==/UserScript==
 
 (function(){
+  // ISMonkeyLoader Extensions
   var ismonkey = new ISMonkey();
-
-  ismonkey.addSocketExtension("spam", new SpamExtension());
+  var options  = {};
+  // Socket Listeners
+  ismonkey.addSocketExtension(new SpamExtension(options));
+  // Mutation Observers
+  // Callback Queue
 })();

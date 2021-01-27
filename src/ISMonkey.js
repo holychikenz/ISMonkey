@@ -2,7 +2,7 @@ class ISMonkey {
   // ISMonkey is an extension manager that sets up the required
   // MutationObservers and serv socket to be used throughout.
   constructor() {
-    this.eventList = [];
+    this.socketEventList = [];
     this.setupSocket();
   }
   // Wait for socket to initialize and attach to this class
@@ -31,11 +31,12 @@ class ISMonkey {
     if( msg != null ) {
       let msg_parsed = JSON.parse(msg);
       let [r, data] = msg_parsed;
-      self.eventList.forEach(e=>e.run(self, msg_parsed))
+      self.socketEventList.forEach(e=>e.run(self, msg_parsed))
     }
   }
-
-  addSocketExtension(name, call){
-    this.eventList.push(call)
+  addSocketExtension(call){
+    this.socketEventList.push(call)
   }
+
+  // Mutation Agent
 }
