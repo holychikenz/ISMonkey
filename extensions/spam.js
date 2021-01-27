@@ -8,6 +8,3 @@ class SpamExtension {
     this.webdom.innerHTML += `${JSON.stringify(msg)}<br/>`;
   }
 }
-
-thisSpam = new SpamExtension();
-spam = function(obj, msg){thisSpam.run(obj, msg)}
