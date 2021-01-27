@@ -35,7 +35,7 @@ class ISMonkey {
     }
   }
   addSocketExtension(call){
-    this.socketEventList.push(call)
+    this.socketEventList.push(call);
   }
 
   // Mutation Agent

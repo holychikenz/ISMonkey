@@ -1,5 +1,7 @@
 class SpamExtension {
-  constructor(options){
+  constructor(monkey, options){
+    // Reference the mother class enables the use of shared data
+    this.monkey = monkey;
     this.options = options;
     this.webpage = "<html><body></body></html>";
     this.owin = window.open("");
