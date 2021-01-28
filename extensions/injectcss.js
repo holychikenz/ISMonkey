@@ -6,7 +6,7 @@ class InjectCSS {
     this.injectCSS();
   }
   injectCSS(promise){
-    self = this;
+    let self = this;
     promise = promise || new Promise( ()=>{} );
     if(document.readyState !== 'complete'){
       setTimeout(function(){self.injectCSS(promise)}, 1000);

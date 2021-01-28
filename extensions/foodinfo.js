@@ -947,7 +947,6 @@ class FoodInfo {
 
     promise = promise || new Promise(() => {});
     let self = this;
-    let success = false;
     // Hmm, looks like tooltips are outside the game container, otherwise I would use:
     // const targetNodeHolder = document.getElementsByClassName("game-container");
     // We want to wait for the game-container to come alive though so:
