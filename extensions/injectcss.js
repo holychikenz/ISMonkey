@@ -5,7 +5,17 @@ class InjectCSS {
     this.options = options;
     this.injectCSS();
   }
-  injectCSS(){
+  injectCSS(promise){
+    self = this;
+    promise = promise || new Promise( ()=>{} );
+    if(document.readyState !== 'complete'){
+      setTimeout(function(){self.injectCSS(promise)}, 1000);
+      return false;
+    }
+    else {
+      promise.then();
+    }
+
     var enchant_color = "#42aaff";
 
     var mystyle = document.createElement("style")
