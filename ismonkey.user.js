@@ -4,8 +4,8 @@
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
-// @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/userscript.js
-// @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/userscript.js
+// @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
+// @downloadURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @match        https://www.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
