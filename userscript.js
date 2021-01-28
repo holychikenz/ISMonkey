@@ -19,6 +19,7 @@
   var options = {};
   // Socket Listeners
   ismonkey.addSocketExtension(new SpamExtension(ismonkey, options));
-  // Mutation Observers
+  // Mutation Observers / Async Extensions
+  ismonkey.addAsyncExtension( new FoodInfo(ismonkey, options) );
   // Callback Queue
 })();

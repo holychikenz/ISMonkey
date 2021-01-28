@@ -3,6 +3,7 @@ class ISMonkey {
   // MutationObservers and serv socket to be used throughout.
   constructor() {
     this.socketEventList = [];
+    this.asyncExtensionList = [];
     this.setupSocket();
   }
   // Wait for socket to initialize and attach to this class
@@ -37,6 +38,8 @@ class ISMonkey {
   addSocketExtension(call){
     this.socketEventList.push(call);
   }
-
   // Mutation Agent
+  addAsyncExtension(ext){
+    this.asyncExtensionList.push(ext);
+  }
 }
