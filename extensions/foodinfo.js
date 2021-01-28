@@ -1,14 +1,3 @@
-// ==UserScript==
-// @name     Idlescape_Foodinfo
-// @version    0.1.4
-// @description  Food Descriptions
-// @author     Holychikenz
-// @namespace  Holychikenz
-// @match    idlescape.com/*
-// @match    https://www.idlescape.com/*
-// @run-at     document-end
-// ==/UserScript==
-
 class FoodInfo {
   constructor(monkey, options){
     this.options = options
