@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.1.10
+// @version      0.1.11
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -11,6 +11,7 @@
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/injectcss.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/jiggyslide.js
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
@@ -24,5 +25,6 @@
   // Mutation Observers / Async Extensions
   ismonkey.addAsyncExtension( new FoodInfo(ismonkey, options) );
   ismonkey.addAsyncExtension( new InjectCSS(ismonkey, options) );
+  ismonkey.addAsyncExtension( new JiggySlide(ismonkey, options) );
   // Callback Queue
 })();
