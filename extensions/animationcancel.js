@@ -25,6 +25,7 @@ class AnimationCancel {
       document.querySelectorAll(".combat-fight-attack-speed").forEach(e=>e.parentNode.removeChild(e));
       document.querySelectorAll(".MuiLinearProgress-root").forEach(e=>e.parentNode.removeChild(e));
       document.querySelectorAll(".scrolling-text").forEach(e=>e.parentNode.removeChild(e));
+      document.querySelectorAll(".cookingProgressBar").forEach(e=>e.parentNode.removeChild(e));
     };
 
     // Create an observer instance linked to the callback function
