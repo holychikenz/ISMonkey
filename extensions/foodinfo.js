@@ -1,106 +1,3 @@
-class FoodInfo {
-  constructor(monkey, options){
-    this.options = options
-    this.monkey = monkey
-    this.setupObserver();
-  }
-
-  setupObserver(promise) {
-
-    promise = promise || new Promise(() => {});
-    let self = this;
-    let success = false;
-    // Hmm, looks like tooltips are outside the game container, otherwise I would use:
-    // const targetNodeHolder = document.getElementsByClassName("game-container");
-    // We want to wait for the game-container to come alive though so:
-    const gameContainer = document.getElementsByClassName("game-container");
-    //const targetNodeHolder = document.getElementsByTagName("body")[0];
-    if(gameContainer.length > 0) {
-      promise.then();
-    }
-    else {
-      setTimeout(function(){self.setupObserver(promise);
-                 }, 1000 );
-      return false;
-    }
-    const targetNode = document.body;
-    const config = {attributes: true, childList: true, subtree: true };
-    // Callback function to execute when mutations are observed
-    const callback = function(mutationsList, observer) {
-      for(let mutation of mutationsList) {
-        if(mutation.type === 'attributes'){
-          document.querySelectorAll(".item-tooltip").forEach(
-            e=>{
-              let name = e.getElementsByTagName("span")[1].innerHTML.toLowerCase();
-              let statblock = e.getElementsByClassName("item-stat-block")[0];
-              if( statblock.innerHTML.includes("Ingredient") && !(statblock.innerHTML.includes("Size")) ){
-                let foodEntry = foods[name];
-                statblock.innerHTML += "<br/>Size: " + foodEntry.size +"<br/>Tags:";
-                for(let key in foodEntry){
-                  if( key != "size" && foodEntry[key]==1 ){
-                    statblock.innerHTML += " " + key.charAt(0).toUpperCase() +key.slice(1) + ","
-                  }
-                }
-                // Drop the last comma
-                statblock.innerHTML = statblock.innerHTML.slice(0, -1);
-                if( foodEntry.buff != "" ){
-                  let buffwords = foodEntry.buff.split(" ");
-                  for( let bi=0; bi<buffwords.length; bi++ )
-                  {
-                    buffwords[bi] = buffwords[bi].charAt(0).toUpperCase() + buffwords[bi].slice(1);
-                  }
-                  statblock.innerHTML += "<br/>Buff: <b class='enchanted-text'>" + buffwords.join(" ") + "</b>"
-                }
-              }
-            });
-          break;
-        }
-      }
-    };
-
-    // Create an observer instance linked to the callback function
-    const observer = new MutationObserver(callback);
-
-    // Start observing the target node for configured mutations
-    observer.observe(targetNode, config);
-
-  }
-  cook(ingredients) {
-    var nIngredients = ingredients.length
-    var scale = {}
-    allTags.forEach(e=>(scale[e]=0));
-    var weight = 0
-    var buffs = []
-    for( var ingred of ingredients ){
-      for( var k of allTags ){
-        scale[k] += foods[ingred][k] * foods[ingred].size
-      }
-      if( foods[ingred].buff != "" ){
-        buffs.push(foods[ingred].buff)
-        if( unique(buffs).length > 1 ){
-          scale[k] -= foods[ingred][k] * foods[ingred].size
-        }
-      }
-      weight += foods[ingred].size
-    }
-    var uniqueBuffs = unique(buffs);
-    var totalWeight = 0;
-    for( k in scale ){ totalWeight += scale[k] }
-    var recipe = 'Questionable Food'
-    var tags = {}
-    for( k in scale ){ if( scale[k] > 0 ){ tags[k] = scale[k]; } }
-    var hp = 1
-    // Search through the menu for valid recipes
-    for( var uid in recipes ) {
-      var rec = recipes[uid]
-      if( uniqueBuffs.length > 1 ) break;
-      // Check enough ingredients exist
-      for( var ing of rec.ingredients ) {
-      }
-    }
-
-  }
-}
 // helper functions
 function unique(obj) {
   return obj.filter((v,i,a)=>a.indexOf(v) === i)
@@ -1036,5 +933,109 @@ const recipes = {
     ],
     "HP": 4,
     "Name": "Monster Gelato"
+  }
+}
+
+class FoodInfo {
+  constructor(monkey, options){
+    this.options = options
+    this.monkey = monkey
+    this.setupObserver();
+  }
+
+  setupObserver(promise) {
+
+    promise = promise || new Promise(() => {});
+    let self = this;
+    let success = false;
+    // Hmm, looks like tooltips are outside the game container, otherwise I would use:
+    // const targetNodeHolder = document.getElementsByClassName("game-container");
+    // We want to wait for the game-container to come alive though so:
+    const gameContainer = document.getElementsByClassName("game-container");
+    //const targetNodeHolder = document.getElementsByTagName("body")[0];
+    if(gameContainer.length > 0) {
+      promise.then();
+    }
+    else {
+      setTimeout(function(){self.setupObserver(promise);
+                 }, 1000 );
+      return false;
+    }
+    const targetNode = document.body;
+    const config = {attributes: true, childList: true, subtree: true };
+    // Callback function to execute when mutations are observed
+    const callback = function(mutationsList, observer) {
+      for(let mutation of mutationsList) {
+        if(mutation.type === 'attributes'){
+          document.querySelectorAll(".item-tooltip").forEach(
+            e=>{
+              let name = e.getElementsByTagName("span")[1].innerHTML.toLowerCase();
+              let statblock = e.getElementsByClassName("item-stat-block")[0];
+              if( statblock.innerHTML.includes("Ingredient") && !(statblock.innerHTML.includes("Size")) ){
+                let foodEntry = foods[name];
+                statblock.innerHTML += "<br/>Size: " + foodEntry.size +"<br/>Tags:";
+                for(let key in foodEntry){
+                  if( key != "size" && foodEntry[key]==1 ){
+                    statblock.innerHTML += " " + key.charAt(0).toUpperCase() +key.slice(1) + ","
+                  }
+                }
+                // Drop the last comma
+                statblock.innerHTML = statblock.innerHTML.slice(0, -1);
+                if( foodEntry.buff != "" ){
+                  let buffwords = foodEntry.buff.split(" ");
+                  for( let bi=0; bi<buffwords.length; bi++ )
+                  {
+                    buffwords[bi] = buffwords[bi].charAt(0).toUpperCase() + buffwords[bi].slice(1);
+                  }
+                  statblock.innerHTML += "<br/>Buff: <b class='enchanted-text'>" + buffwords.join(" ") + "</b>"
+                }
+              }
+            });
+          break;
+        }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+
+  }
+  cook(ingredients) {
+    var nIngredients = ingredients.length
+    var scale = {}
+    allTags.forEach(e=>(scale[e]=0));
+    var weight = 0
+    var buffs = []
+    for( var ingred of ingredients ){
+      for( var k of allTags ){
+        scale[k] += foods[ingred][k] * foods[ingred].size
+      }
+      if( foods[ingred].buff != "" ){
+        buffs.push(foods[ingred].buff)
+        if( unique(buffs).length > 1 ){
+          scale[k] -= foods[ingred][k] * foods[ingred].size
+        }
+      }
+      weight += foods[ingred].size
+    }
+    var uniqueBuffs = unique(buffs);
+    var totalWeight = 0;
+    for( k in scale ){ totalWeight += scale[k] }
+    var recipe = 'Questionable Food'
+    var tags = {}
+    for( k in scale ){ if( scale[k] > 0 ){ tags[k] = scale[k]; } }
+    var hp = 1
+    // Search through the menu for valid recipes
+    for( var uid in recipes ) {
+      var rec = recipes[uid]
+      if( uniqueBuffs.length > 1 ) break;
+      // Check enough ingredients exist
+      for( var ing of rec.ingredients ) {
+      }
+    }
+
   }
 }
