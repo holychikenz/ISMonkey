@@ -1038,7 +1038,7 @@ class FoodInfo {
       // Check enough ingredients exist
       var validRecipe = true;
       var validWeight = 0;
-      for( var ingred of rec.ingredients ) {
+      for( var ingred of rec.Ingredients ) {
         validWeight += scale[ingred];
         if( scale[ingred] < 1 ) validRecipe = false;
       }
@@ -1046,7 +1046,7 @@ class FoodInfo {
       if( 2*validWeight >= totalWeight ){
         recipe = rec["Name"];
         tags = [];
-        for( var k of rec.ingredients ){ tags.push( scale[k] ); }
+        for( var k of rec.Ingredients ){ tags.push( scale[k] ); }
         hp = rec.HP;
         break;
       }
