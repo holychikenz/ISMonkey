@@ -1026,7 +1026,7 @@ class FoodInfo {
       var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
       if( action === "Cooking" ){
         // Add an element to write to if it does not exist
-        var recipeDom = targetNode.getElementByID(self.cookingDomName);
+        var recipeDom = document.getElementById(self.cookingDomName);
         if( recipeDom == null ){
           recipeDom = document.createElement("div");
           recipeDom.id = self.cookingDomName;
