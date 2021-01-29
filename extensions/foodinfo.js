@@ -1043,6 +1043,7 @@ class FoodInfo {
         self.level = effectiveLevel("cooking");
         self.cook(recipeDom, use_ingredients);
       }
+      console.log("hello??")
     };
 
     // Create an observer instance linked to the callback function
@@ -1083,8 +1084,8 @@ class FoodInfo {
     var totalWeight = 0;
     for( let k in scale ){ totalWeight += scale[k] }
     var recipe = 'Questionable Food'
-    var tags = []
-    for( let k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
+    var tags = [foods[ingredients[0]].size]
+    //for( let k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
     var hp = 1
     // Search through the menu for valid recipes
     for( let uid in recipes ) {
