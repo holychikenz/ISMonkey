@@ -940,6 +940,7 @@ class FoodInfo {
   constructor(monkey, options){
     this.options = options
     this.monkey = monkey
+    this.cookingDomName = "FoodInfoDom"
     this.setupHintObserver();
     this.setupPlayer();
     this.setupCookObserver();
@@ -1024,7 +1025,16 @@ class FoodInfo {
       // Are we cooking?
       var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
       if( action === "Cooking" ){
-        self.cook(["ichor", "ichor"]);
+        // Add an element to write to if it does not exist
+        var recipeDom = targetNode.getElementByID(self.cookingDomName);
+        if( recipeDom == null ){
+          recipeDom = document.createElement("div");
+          recipeDom.id = self.cookingDomName;
+          recipeDom.className = "cooking-info";
+          targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
+        }
+        // Write recipe to dom
+        self.cook(recipeDom, ["ichor", "pumpkin", "pumpkin", "raw tuna", "raw tuna"])
       }
     };
 
@@ -1038,7 +1048,7 @@ class FoodInfo {
   setupPlayer(){
     this.level = 90;
   }
-  cook(ingredients) {
+  cook(targetdom, ingredients) {
     var nIngredients = ingredients.length
     var scale = {}
     allTags.forEach(e=>(scale[e]=0));
@@ -1096,5 +1106,11 @@ class FoodInfo {
     console.log(`>> HP: ${hp}`)
     console.log(`>> Stacks: ${stacks}`)
     console.log(`>> Buff: ${buff}`)
+    targetdom.innerHTML =
+      `${recipe}<br />
+       Bonus: ${bonus}<br />
+       HP: ${hp}<br />
+       Stacks: ${stacks}<br />
+       Buff: ${buff}`
   }
 }
