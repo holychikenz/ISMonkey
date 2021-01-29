@@ -1019,7 +1019,7 @@ class FoodInfo {
       return false;
     }
     const targetNode = targetNodeHolder[0];
-    const config = {attributes: true, childList: true, subtree: true };
+    const config = {attributes: true, childList: false, subtree: false};
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
       // Are we cooking?
