@@ -1040,7 +1040,8 @@ class FoodInfo {
           use_ingredients.push(src)
         }
         // Write recipe to dom
-        self.cook(recipeDom, use_ingredients)
+        self.level = effectiveLevel("cooking");
+        self.cook(recipeDom, use_ingredients);
       }
     };
 
@@ -1109,13 +1110,14 @@ class FoodInfo {
     var stacks = (bonus*2 + 1);
     var buff = buffs.length > 0 ? buffs[0] : "";
     var cooktime = 4^(0.95 + 0.05*weight)
-    console.log(`${recipe}`)
-    console.log(`>> Bonus: ${lvlBonus} + ${tagBonus} = ${bonus}`)
-    console.log(`>> HP: ${hp}`)
-    console.log(`>> Stacks: ${stacks}`)
-    console.log(`>> Buff: ${buff}`)
+    // console.log(`${recipe}`)
+    // console.log(`>> Bonus: ${lvlBonus} + ${tagBonus} = ${bonus}`)
+    // console.log(`>> HP: ${hp}`)
+    // console.log(`>> Stacks: ${stacks}`)
+    // console.log(`>> Buff: ${buff}`)
     targetdom.innerHTML =
       `${recipe}<br />
+       [Effective Level: ${this.level}]<br />
        Bonus: ${bonus}<br />
        HP: ${hp}<br />
        Stacks: ${stacks}<br />

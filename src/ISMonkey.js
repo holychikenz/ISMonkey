@@ -133,6 +133,12 @@ function getSkills(){
   return skdict;
 }
 
+function effectiveLevel(skill){
+  let header = skill + "Header"
+  let level = getReact(document.getElementById(header)).pendingProps.children[2].props.children[1]
+  return level
+}
+
 function sortObjectByKeys(o){
   return Object.keys(o).sort().reduce((r,k)=>(r[k] = o[k], r), {});
 }
