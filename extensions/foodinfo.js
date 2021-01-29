@@ -1116,11 +1116,12 @@ class FoodInfo {
     // console.log(`>> Stacks: ${stacks}`)
     // console.log(`>> Buff: ${buff}`)
     targetdom.innerHTML =
-      `${recipe}<br />
+      `${recipe} <b class="augmented-text">${bonus}</b><br />
        [Effective Level: ${this.level}]<br />
-       Bonus: ${bonus}<br />
-       HP: ${hp}<br />
-       Stacks: ${stacks}<br />
-       Buff: ${buff}`
+       Heals: ${hp} hp
+       `
+    if( buff !== "" ){
+      targetdom.innerHTML += `<br/>Grants ${stacks} stacks of <b class="enchanted-text">${buff}</b>`
+    }
   }
 }
