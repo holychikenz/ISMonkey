@@ -1024,6 +1024,7 @@ class FoodInfo {
     const callback = function(mutationsList, observer) {
       // Are we cooking?
       var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
+      console.log(action);
       if( action === "Cooking" ){
         // Add an element to write to if it does not exist
         var recipeDom = document.getElementById(self.cookingDomName);
@@ -1042,8 +1043,8 @@ class FoodInfo {
         // Write recipe to dom
         self.level = effectiveLevel("cooking");
         self.cook(recipeDom, use_ingredients);
+        console.log("hello??")
       }
-      console.log("hello??")
     };
 
     // Create an observer instance linked to the callback function
