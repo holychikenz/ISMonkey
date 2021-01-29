@@ -1067,17 +1067,19 @@ class FoodInfo {
       if( foods[ingred].buff != "" ){
         buffs.push(foods[ingred].buff)
         if( unique(buffs).length > 1 ){
-          scale[k] -= foods[ingred][k] * foods[ingred].size
+          for(let k of allTags){
+            scale[k] -= foods[ingred][k] * foods[ingred].size
+          }
         }
       }
       weight += foods[ingred].size
     }
     var uniqueBuffs = unique(buffs);
     var totalWeight = 0;
-    for( k in scale ){ totalWeight += scale[k] }
+    for( let k in scale ){ totalWeight += scale[k] }
     var recipe = 'Questionable Food'
     var tags = []
-    for( k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
+    for( let k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
     var hp = 1
     // Search through the menu for valid recipes
     for( let uid in recipes ) {
