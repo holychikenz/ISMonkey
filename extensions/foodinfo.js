@@ -940,11 +940,12 @@ class FoodInfo {
   constructor(monkey, options){
     this.options = options
     this.monkey = monkey
-    this.setupObserver();
+    this.setupHintObserver();
     this.setupPlayer();
+    this.setupCookObserver();
   }
 
-  setupObserver(promise) {
+  setupHintObserver(promise) {
 
     promise = promise || new Promise(() => {});
     let self = this;
@@ -957,7 +958,7 @@ class FoodInfo {
       promise.then();
     }
     else {
-      setTimeout(function(){self.setupObserver(promise);
+      setTimeout(function(){self.setupHintObserver(promise);
                  }, 1000 );
       return false;
     }
@@ -993,6 +994,37 @@ class FoodInfo {
             });
           break;
         }
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
+
+  }
+  setupCookObserver(promise) {
+
+    promise = promise || new Promise(() => {});
+    let self = this;
+    const targetNodeHolder = document.getElementsByClassName("play-area-container");
+    if(targetNodeHolder.length > 0) {
+      promise.then();
+    }
+    else {
+      setTimeout(function(){self.setupCookObserver(promise);
+                 }, 1000 );
+      return false;
+    }
+    const targetNode = targetNodeHolder[0];
+    const config = {attributes: true, childList: true, subtree: true };
+    // Callback function to execute when mutations are observed
+    const callback = function(mutationsList, observer) {
+      // Are we cooking?
+      var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
+      if( action === "Cooking" ){
+        self.cook(["ichor", "ichor"]);
       }
     };
 
