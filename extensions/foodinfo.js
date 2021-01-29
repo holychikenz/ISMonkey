@@ -941,6 +941,7 @@ class FoodInfo {
     this.options = options
     this.monkey = monkey
     this.setupObserver();
+    this.setupPlayer();
   }
 
   setupObserver(promise) {
@@ -1002,6 +1003,9 @@ class FoodInfo {
     observer.observe(targetNode, config);
 
   }
+  setupPlayer(){
+    this.level = 90;
+  }
   cook(ingredients) {
     var nIngredients = ingredients.length
     var scale = {}
@@ -1024,17 +1028,41 @@ class FoodInfo {
     var totalWeight = 0;
     for( k in scale ){ totalWeight += scale[k] }
     var recipe = 'Questionable Food'
-    var tags = {}
-    for( k in scale ){ if( scale[k] > 0 ){ tags[k] = scale[k]; } }
+    var tags = []
+    for( k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
     var hp = 1
     // Search through the menu for valid recipes
     for( var uid in recipes ) {
       var rec = recipes[uid]
       if( uniqueBuffs.length > 1 ) break;
       // Check enough ingredients exist
-      for( var ing of rec.ingredients ) {
+      var validRecipe = true;
+      var validWeight = 0;
+      for( var ingred of rec.ingredients ) {
+        validWeight += scale[ingred];
+        if( scale[ingred] < 1 ) validRecipe = false;
+      }
+      if( !validRecipe ) continue;
+      if( 2*validWeight >= totalWeight ){
+        recipe = rec["Name"];
+        tags = [];
+        for( var k of rec.ingredients ){ tags.push( scale[k] ); }
+        hp = rec.HP;
+        break;
       }
     }
 
+    var lvlBonus = Math.floor(this.level/30 - 1);
+    var tagBonus = Math.min(...tags);
+    var bonus = lvlBonus + tagBonus;
+    hp = (bonus+1)*hp;
+    var stacks = (bonus*2 + 1);
+    var buff = buffs.length > 0 ? buffs[0] : "";
+    var cooktime = 4^(0.95 + 0.05*weight)
+    console.log(`${recipe}`)
+    console.log(`>> Bonus: ${lvlBonus} + ${tagBonus} = ${bonus}`)
+    console.log(`>> HP: ${hp}`)
+    console.log(`>> Stacks: ${stacks}`)
+    console.log(`>> Buff: ${buff}`)
   }
 }
