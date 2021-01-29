@@ -1057,6 +1057,10 @@ class FoodInfo {
   }
   cook(targetdom, ingredients) {
     var nIngredients = ingredients.length
+    if( nIngredients == 0 ){
+      targetdom.innerHTML = "";
+      return;
+    }
     var scale = {}
     allTags.forEach(e=>(scale[e]=0));
     var weight = 0
@@ -1110,18 +1114,13 @@ class FoodInfo {
     var stacks = (bonus*2 + 1);
     var buff = buffs.length > 0 ? buffs[0] : "";
     var cooktime = 4^(0.95 + 0.05*weight)
-    // console.log(`${recipe}`)
-    // console.log(`>> Bonus: ${lvlBonus} + ${tagBonus} = ${bonus}`)
-    // console.log(`>> HP: ${hp}`)
-    // console.log(`>> Stacks: ${stacks}`)
-    // console.log(`>> Buff: ${buff}`)
     targetdom.innerHTML =
       `${recipe} <b class="augmented-text">${bonus}</b><br />
        [Effective Level: ${this.level}]<br />
        Heals: ${hp} hp
        `
     if( buff !== "" ){
-      targetdom.innerHTML += `<br/>Grants ${stacks} stacks of <b class="enchanted-text">${buff}</b>`
+      targetdom.innerHTML += `<br/>Grants ${stacks} stacks of <b class="enchanted-text">${buff} 2</b>`
     }
   }
 }
