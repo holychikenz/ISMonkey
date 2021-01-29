@@ -1019,7 +1019,7 @@ class FoodInfo {
       return false;
     }
     const targetNode = targetNodeHolder[0];
-    const config = {attributes: true, childList: false, subtree: false};
+    const config = {attributes: true, childList: false, subtree: true};
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
       // Are we cooking?
@@ -1033,8 +1033,14 @@ class FoodInfo {
           recipeDom.className = "cooking-info";
           targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
         }
+        let use_ingredients = [];
+        // Gather the ingredients
+        for( let imgdom of targetNode.getElementsByClassName("cooking-item-image") ){
+          let src = (imgdom.src).split("/").pop().split(".")[0].split("_").join(" ");
+          use_ingredients.push(src)
+        }
         // Write recipe to dom
-        self.cook(recipeDom, ["ichor", "pumpkin", "pumpkin", "raw tuna", "raw tuna"])
+        self.cook(recipeDom, use_ingredients)
       }
     };
 
@@ -1054,8 +1060,8 @@ class FoodInfo {
     allTags.forEach(e=>(scale[e]=0));
     var weight = 0
     var buffs = []
-    for( var ingred of ingredients ){
-      for( var k of allTags ){
+    for( let ingred of ingredients ){
+      for( let k of allTags ){
         scale[k] += foods[ingred][k] * foods[ingred].size
       }
       if( foods[ingred].buff != "" ){
@@ -1074,7 +1080,7 @@ class FoodInfo {
     for( k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
     var hp = 1
     // Search through the menu for valid recipes
-    for( var uid in recipes ) {
+    for( let uid in recipes ) {
       var rec = recipes[uid]
       if( uniqueBuffs.length > 1 ) break;
       // Check enough ingredients exist
@@ -1088,7 +1094,7 @@ class FoodInfo {
       if( 2*validWeight >= totalWeight ){
         recipe = rec["Name"];
         tags = [];
-        for( var k of rec.Ingredients ){ tags.push( scale[k] ); }
+        for( let k of rec.Ingredients ){ tags.push( scale[k] ); }
         hp = rec.HP;
         break;
       }
