@@ -1131,8 +1131,9 @@ class FoodInfo {
     idomtxt += `</div><div style="flex:50%">`
     if( recipe !== 'Questionable Food' ){
       var chosen_recipe = recipes[rUID];
+      idomtxt += `<b>Recipe Tags</b><br/>`
       for(let ig of chosen_recipe.Ingredients){
-        idomtxt += `<br/>${ig}: ${scale[ig]}`
+        idomtxt += `${ig}: ${scale[ig]}<br/>`
       }
     }
     idomtxt += `</div></div>`
