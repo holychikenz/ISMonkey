@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: JiggySlide
-// @version      0.1.1
+// @version      0.2.0
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
 // @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/jiggyslide.user.js
 // @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/jiggyslide.user.js
 // @match        http*://*idlescape.com/*
+// @match        https://idlescape.com/*
+// @match        https://www.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/jiggyslide.js
 // @run-at       document-start

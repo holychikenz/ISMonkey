@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.1.16
+// @version      0.2.0
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
 // @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @match        http*://*idlescape.com/*
+// @match        https://idlescape.com/*
+// @match        https://www.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/foodinfo.js
