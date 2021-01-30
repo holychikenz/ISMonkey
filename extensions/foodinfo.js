@@ -1086,6 +1086,7 @@ class FoodInfo {
     var tags = [foods[ingredients[0]].size]
     //for( let k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
     var hp = 1
+    var rUID = 0
     // Search through the menu for valid recipes
     for( let uid in recipes ) {
       var rec = recipes[uid]
@@ -1093,13 +1094,14 @@ class FoodInfo {
       // Check enough ingredients exist
       var validRecipe = true;
       var validWeight = 0;
-      for( var ingred of rec.Ingredients ) {
+      for( let ingred of rec.Ingredients ) {
         validWeight += scale[ingred];
         if( scale[ingred] < 1 ) validRecipe = false;
       }
       if( !validRecipe ) continue;
       if( 2*validWeight >= totalWeight ){
         recipe = rec["Name"];
+        rUID = uid;
         tags = [];
         for( let k of rec.Ingredients ){ tags.push( scale[k] ); }
         hp = rec.HP;
@@ -1114,13 +1116,25 @@ class FoodInfo {
     var stacks = (bonus*2 + 1);
     var buff = buffs.length > 0 ? buffs[0] : "";
     var cooktime = 4^(0.95 + 0.05*weight)
+    // Left column
     targetdom.innerHTML =
-      `${recipe} <b class="augmented-text">${bonus}</b><br />
+      `<b>${recipe}</b> <b class="augmented-text">+${bonus}</b><br />
        [Effective Level: ${this.level}]<br />
        Heals: ${hp} hp
        `
     if( buff !== "" ){
       targetdom.innerHTML += `<br/>Grants ${stacks} stacks of <b class="enchanted-text">${buff} 2</b>`
     }
+    if( recipe !== 'Questionable Food' ){
+      var chosen_recipe = recipes[rUID];
+      for(let ig of chosen_recipe.Ingredients){
+        targetdom.innerHTML += `<br/>${ig}: ${scale[ig]}`
+      }
+    }
+    // Todo: Add right column that contains
+    // Effective level (moved here)
+    // Used tags (and weights)
+    // Unused tags (and weights)
+    // Excess weight suggestion
   }
 }
