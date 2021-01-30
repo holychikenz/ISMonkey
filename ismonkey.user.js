@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.1.15
+// @version      0.1.16
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
