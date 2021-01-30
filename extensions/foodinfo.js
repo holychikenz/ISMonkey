@@ -1031,6 +1031,7 @@ class FoodInfo {
           recipeDom = document.createElement("div");
           recipeDom.id = self.cookingDomName;
           recipeDom.className = "cooking-info";
+          recipeDom.style.border = "2px solid rgba(255, 255, 255, 0.2)"
           targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
         }
         let use_ingredients = [];
@@ -1117,24 +1118,24 @@ class FoodInfo {
     var buff = buffs.length > 0 ? buffs[0] : "";
     var cooktime = 4^(0.95 + 0.05*weight)
     // Left column
-    targetdom.innerHTML =
-      `<b>${recipe}</b> <b class="augmented-text">+${bonus}</b><br />
+    var idomtxt
+    idomtxt =
+      `<div style="display:flex;"><div style="flex:50%">
+       <b>${recipe}</b> <b class="augmented-text">+${bonus}</b><br />
        [Effective Level: ${this.level}]<br />
        Heals: ${hp} hp
        `
     if( buff !== "" ){
-      targetdom.innerHTML += `<br/>Grants ${stacks} stacks of <b class="enchanted-text">${buff} 2</b>`
+      idomtxt += `<br/>Grants ${stacks} stacks of <b class="enchanted-text">${buff} 2</b>`
     }
+    idomtxt += `</div><div style="flex:50%">`
     if( recipe !== 'Questionable Food' ){
       var chosen_recipe = recipes[rUID];
       for(let ig of chosen_recipe.Ingredients){
-        targetdom.innerHTML += `<br/>${ig}: ${scale[ig]}`
+        idomtxt += `<br/>${ig}: ${scale[ig]}`
       }
     }
-    // Todo: Add right column that contains
-    // Effective level (moved here)
-    // Used tags (and weights)
-    // Unused tags (and weights)
-    // Excess weight suggestion
+    idomtxt += `</div></div>`
+    targetdom.innerHTML = idomtxt;
   }
 }
