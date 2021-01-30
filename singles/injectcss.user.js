@@ -1,14 +1,12 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: InjectCSS 
-// @version      0.2.0
+// @version      0.2.1
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
 // @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/injectcss.user.js
 // @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/injectcss.user.js
-// @match        http*://*idlescape.com/*
-// @match        https://idlescape.com/*
-// @match        https://www.idlescape.com/*
+// @match        *://*.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/injectcss.js
 // @run-at       document-start
