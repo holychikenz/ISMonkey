@@ -6,7 +6,7 @@ observers of extensions. Included are a few examples in the extensions folder.
 
 ## Installation
 These extensions can be either loaded all together here:
-[ismonkey.user.js](https://github.com/holychikenz/ISMonkey/raw/main/singles/foodinfo.user.js),
+[ismonkey.user.js](https://github.com/holychikenz/ISMonkey/raw/main/ismonkey.user.js),
 or alternatively through these individual links. For those not afraid to uncomment
 a few lines of code, I would recommend taking a selection of the extensions from
 the main userscript and commenting out or deleting the lines that load the others.
