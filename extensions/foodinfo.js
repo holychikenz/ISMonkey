@@ -1135,7 +1135,7 @@ class FoodInfo {
       var chosen_recipe = recipes[rUID];
       idomtxt += `<b>Recipe Tags</b><br/>`
       for(let ig of chosen_recipe.Ingredients){
-        idomtxt += `${ig}: ${scale[ig]}<br/>`
+        idomtxt += `${ig.charAt(0).toUpperCase()+ig.slice(1)}: ${scale[ig]}<br/>`
       }
     }
     idomtxt += `</div></div>`
