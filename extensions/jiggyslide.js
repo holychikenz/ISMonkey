@@ -10,7 +10,7 @@ class JiggySlide {
     self = this;
     promise = promise || new Promise(() => {});
     if(document.readyState !== 'complete'){
-      setTimeout(function(){self.creatSlider(promise)}, 1000);
+      setTimeout(function(){self.createSlider(promise)}, 1000);
       return false;
     }
     else {
