@@ -10,12 +10,38 @@ class JiggySlide {
     self = this;
     promise = promise || new Promise(() => {});
 
+    // Change the css of a few elements and append to the document
+    // so that react doesn't try changing it back later on redraw.
+
     let success = false;
     let block = document.querySelector(".play-area-chat")
     let rightside = document.querySelector(".game-right-panel")
     let chatbuttons = document.querySelector(".chat-buttons");
     let playbox = document.querySelector(".play-area-container");
     let chatbox = document.querySelector(".play-area-chat-container");
+
+    var sliderstyle = document.createElement("style")
+    sliderstyle.id = "sliderStyles"
+    sliderstyle.innerHTML =
+      `
+        .play-area-chat {
+          flex: none;
+          min-width: 15%;
+          max-width: 78%;
+          width: 50%;
+        }
+        .game-right-panel {
+          flex: auto;
+        }
+        .play-area-container {
+          flex: none;
+          min-height: 5%;
+          max-height: 100%;
+          height: 60%;
+        }
+      `
+    document.body.appendChild(sliderstyle);
+
     if( block && rightside && chatbuttons && playbox ) {
 
       // Glass pane; DM me for a better way to do this.
@@ -33,16 +59,11 @@ class JiggySlide {
       glass.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
       document.body.appendChild(glass)
 
-      block.style.flex = "none"
-      block.style.minWidth = "15%"
-      block.style.maxWidth = "78%"
-      block.style.width = "50%"
       let slider = document.createElement("div")
       slider.id = "handler"
       slider.style.minWidth = "5px"
       slider.style.cursor = "ew-resize"
       block.after(slider)
-      rightside.style.flex = "auto"
 
       slider.onmousedown = function dragMouseDown(e) {
         let dragX = e.clientX;
@@ -56,10 +77,6 @@ class JiggySlide {
       }
       // Lets do the same for chat and remove those up/down buttons
       chatbuttons.style.display = "none"
-      playbox.style.flex = "none"
-      playbox.style.minHeight = "5%"
-      playbox.style.maxHeight = "100%"
-      playbox.style.height = "60%"
 
       let chatslider = document.createElement("div");
       chatslider.id = "chat-handler"
