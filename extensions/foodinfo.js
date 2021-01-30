@@ -1032,6 +1032,8 @@ class FoodInfo {
           recipeDom.id = self.cookingDomName;
           recipeDom.className = "cooking-info";
           recipeDom.style.border = "2px solid rgba(255, 255, 255, 0.2)"
+          recipeDom.style.position = "relative";
+          recipeDom.style.zIndex = 2;
           targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
         }
         let use_ingredients = [];
