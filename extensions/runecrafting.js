@@ -11,6 +11,7 @@ class Runecrafting {
       `
       .runecrafting-essence-counter {
         padding-top: 2px;
+        font-size: 14px;
       }
       `
     document.body.appendChild(rcstyle)
@@ -49,7 +50,7 @@ class Runecrafting {
         // Loop through each essence and augments remaining, xp, time
         document.querySelectorAll(".runecrafting-essence-counter").forEach( e=>{
           let essence = parseFloat(e.innerHTML.replaceAll(",",""))
-          let operations = essence/(400*(1-rcbuff*0.05));
+          let operations = Math.floor(essence/(400*(1-rcbuff*0.05)));
           let totaltime = operations*tick;
           e.innerHTML = `${essence}<br/>Actions: ${operations}<br/>Time: ${timeFormat(totaltime)}`
         })
