@@ -28,7 +28,7 @@ class Runecrafting {
         // Lets write over the runecrafting-info, its crap anyways
         self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("runecrafting");
         let nRunes = Math.floor(this.level/20)+1;
-        let box = document.getElementByClass("runecrafting-info")[0];
+        let box = document.getElementsByClass("runecrafting-info")[0];
         let haste = self.monkey.extensions.PlayerData.getBuffStrength("haste");
         let rcbuff = self.monkey.extensions.PlayerData.getBuffStrength("runecrafting");
         let information = `Runes per craft: ${nRunes}<br/>`
