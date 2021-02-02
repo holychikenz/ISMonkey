@@ -52,7 +52,7 @@ class Runecrafting {
           let rune = k.getElementsByClassName("resource-as-row-image")[0].alt;
           let mDom = k.getElementsByClassName("resource-as-row-required-resources")[0];
           // Get essence from playerdata
-          let essence = self.monkey.extensions.PlayerData.getItemStackSize(rune.replace("Rune", "Essence");
+          let essence = self.monkey.extensions.PlayerData.getItemStackSize(rune.replace("Rune", "Essence"));
           let operations = Math.floor(essence/(400*(1-rcbuff*0.05)));
           let totaltime = operations*tick;
           let experience = operations*25*nRunes
