@@ -3,7 +3,18 @@ class Runecrafting {
     this.options = options
     this.monkey = monkey
     this.classname = "Runecrafting"
+    this.addCSS();
     this.setupObserver();
+  }
+  addCSS(){
+    var rcstyle = document.createElement("style");
+    rcstyle.innerHTML=
+      `
+      .runecrafting-essence-counter {
+        padding-top: 2px;
+      }
+      `
+    document.body.appendChild(rcstyle)
   }
   setupObserver(promise) {
 
@@ -36,6 +47,13 @@ class Runecrafting {
         information += `Haste: ${haste}<br/>`
         box.innerHTML = information;
         let tick = 5*(1 - haste*0.04)
+        // Loop through each essence and augments remaining, xp, time
+        document.querySelectorAll(".runecrafting-essence-counter").forEach( e=>{
+          let essence = parseFloat(e.innerHTML.replaceAll(",",""))
+          let operations = essence/(400*(1-rcbuff*0.05));
+          let totaltime = operations*tick;
+          e.innerHTML = e.innerHTML + `<br/>Actions: ${operations}<br/>Time: ${totaltime}`
+        })
       }
     };
 
