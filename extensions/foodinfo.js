@@ -940,6 +940,7 @@ class FoodInfo {
   constructor(monkey, options){
     this.options = options
     this.monkey = monkey
+    this.classname = "FoodInfo"
     this.cookingDomName = "FoodInfoDom"
     this.setupHintObserver();
     this.setupPlayer();
@@ -1043,7 +1044,8 @@ class FoodInfo {
           use_ingredients.push(src)
         }
         // Write recipe to dom
-        self.level = effectiveLevel("cooking");
+        //self.level = effectiveLevel("cooking");
+        self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("cooking");
         self.cook(recipeDom, use_ingredients);
       }
     };

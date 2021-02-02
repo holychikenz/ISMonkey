@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.2.1
+// @version      0.2.2
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -8,6 +8,7 @@
 // @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @match        *://*.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/playerdata.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/injectcss.js
@@ -21,6 +22,8 @@
   // ISMonkeyLoader Extensions
   var ismonkey = new ISMonkey();
   var options = {};
+  // Preload
+  ismonkey.addSocketExtension(new PlayerData(ismonkey, options));
   // Socket Listeners
   // ismonkey.addSocketExtension(new SpamExtension(ismonkey, options));
   // Mutation Observers / Async Extensions

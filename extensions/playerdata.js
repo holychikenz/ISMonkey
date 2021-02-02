@@ -55,6 +55,7 @@ class PlayerData {
   constructor(monkey, options){
     this.monkey = monkey;
     this.options = options;
+    this.classname = "PlayerData"
     this.enchantments = {};
     this.buffs = {};
     this.combatBuffs = {};

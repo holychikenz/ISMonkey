@@ -4,6 +4,7 @@ class ISMonkey {
   constructor() {
     this.socketEventList = [];
     this.asyncExtensionList = [];
+    this.extensions = {};
     this.setupSocket();
   }
   // Wait for socket to initialize and attach to this class
@@ -35,12 +36,14 @@ class ISMonkey {
       self.socketEventList.forEach(e=>e.run(self, msg_parsed))
     }
   }
-  addSocketExtension(call){
-    this.socketEventList.push(call);
+  addSocketExtension(ext){
+    this.socketEventList.push(ext);
+    this.extensions[ext.classname] = ext;
   }
   // Mutation Agent
   addAsyncExtension(ext){
     this.asyncExtensionList.push(ext);
+    this.extensions[ext.classname] = ext;
   }
 
   // Debug Features

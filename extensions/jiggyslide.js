@@ -4,6 +4,7 @@ class JiggySlide {
     // Reference the mother class enables the use of shared data
     this.monkey = monkey;
     this.options = options;
+    this.classname = "JiggySlide"
     this.createSlider();
   }
   createSlider(promise){
