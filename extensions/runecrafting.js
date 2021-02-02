@@ -3,7 +3,6 @@ class Runecrafting {
     this.options = options
     this.monkey = monkey
     this.classname = "Runecrafting"
-    this.addCSS();
     this.setupObserver();
   }
   addCSS(){
@@ -38,7 +37,7 @@ class Runecrafting {
       if( action === "Runecrafting" ){
         // Lets write over the runecrafting-info, its crap anyways
         self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("runecrafting");
-        let nRunes = Math.floor(this.level/20)+1;
+        let nRunes = Math.floor(self.level/20)+1;
         let box = document.getElementsByClassName("runecrafting-info")[0];
         let haste = self.monkey.extensions.PlayerData.getBuffStrength("haste");
         let rcbuff = self.monkey.extensions.PlayerData.getBuffStrength("runecrafting");
@@ -63,5 +62,6 @@ class Runecrafting {
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
 
+    self.addCSS();
   }
 }
