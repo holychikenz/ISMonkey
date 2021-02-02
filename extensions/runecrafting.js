@@ -33,7 +33,6 @@ class Runecrafting {
     const config = {attributes: true, childList: false, subtree: true, characterData: true};
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
-      // Are we cooking?
       var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
       if( action === "Runecrafting" ){
         // Lets write over the runecrafting-info, its crap anyways
@@ -48,19 +47,16 @@ class Runecrafting {
         box.innerHTML = information;
         let tick = 5*(1 - haste*0.04)
         // Loop through each essence and augments remaining, xp, time
-        document.querySelectorAll(".runecrafting-essence-counter").forEach( e=>{
-          let rcDom = e.getElementsByClassName("rcdom");
-          if( rcDom.length == 0 ){
-            rcDom = document.createElement("div");
-            rcDom.className = "rcdom";
-            e.append(rcDom);
-          }
-          rcDom = rcDom[0];
-          let essence = parseFloat(e.innerHTML.replaceAll(",",""))
+        for(let k of targetNode.getElementsByClassName("resource-as-row-container"))
+        {
+          let rune = k.getElementsByClassName("resource-as-row-image")[0].alt;
+          let mDom = k.getElementsByClassName("resource-as-row-required-resources")[0];
+          // Get essence from playerdata
+          let essence = 100000
           let operations = Math.floor(essence/(400*(1-rcbuff*0.05)));
           let totaltime = operations*tick;
-          rcDom.innerHTML = `Actions: ${operations}<br/>Time: ${timeFormat(totaltime)}`
-        })
+          mDom.innerHTML = `Actions: ${operations}<br/>Time: ${timeFormat(totaltime)}`
+        }
       }
     };
 
