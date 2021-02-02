@@ -94,6 +94,9 @@ class PlayerData {
     var totalLevel = get(this.skills, skill, 1) + get(this.tools, skill, 0) + get(this.mastery, skill, 0);
     return totalLevel;
   }
+  getItemStackSize(itm){
+    return get(this.stockpile, itm, 0);
+  }
 }
 
 const enchants = {
