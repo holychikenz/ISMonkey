@@ -49,10 +49,17 @@ class Runecrafting {
         let tick = 5*(1 - haste*0.04)
         // Loop through each essence and augments remaining, xp, time
         document.querySelectorAll(".runecrafting-essence-counter").forEach( e=>{
+          let rcDom = e.getElementsByClassName("rcdom");
+          if( rcDom.length == 0 ){
+            rcDom = document.createElement("div");
+            rcDom.className = "rcdom";
+            e.append(rcDom);
+          }
+          rcDom = rcDom[0];
           let essence = parseFloat(e.innerHTML.replaceAll(",",""))
           let operations = Math.floor(essence/(400*(1-rcbuff*0.05)));
           let totaltime = operations*tick;
-          e.innerHTML = `${essence}<br/>Actions: ${operations}<br/>Time: ${timeFormat(totaltime)}`
+          rcDom.innerHTML = `Actions: ${operations}<br/>Time: ${timeFormat(totaltime)}`
         })
       }
     };
