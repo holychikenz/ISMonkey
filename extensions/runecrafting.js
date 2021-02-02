@@ -51,7 +51,7 @@ class Runecrafting {
           let essence = parseFloat(e.innerHTML.replaceAll(",",""))
           let operations = essence/(400*(1-rcbuff*0.05));
           let totaltime = operations*tick;
-          e.innerHTML = e.innerHTML + `<br/>Actions: ${operations}<br/>Time: ${timeFormat(totaltime)}`
+          e.innerHTML = `${essence}<br/>Actions: ${operations}<br/>Time: ${timeFormat(totaltime)}`
         })
       }
     };
