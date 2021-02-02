@@ -82,7 +82,7 @@ class PlayerData {
       }
     }
     if( msg[0] === "update inventory" ){
-      let itemdelta = msg[1]
+      let itemdelta = msg[1].item
       this.stockpile[ itemids[itemdelta.itemID] ] = itemdelta.stackSize;
     }
   }
