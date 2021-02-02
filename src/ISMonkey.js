@@ -60,6 +60,9 @@ class ISMonkey {
 }
 
 // Tools
+function unique(obj) {
+  return obj.filter((v,i,a)=>a.indexOf(v) === i)
+};
 function getReact(dom) {
   for(let key in dom) {
     if( key.startsWith("__reactInternalInstance$") ){

@@ -22,6 +22,12 @@ class InjectCSS {
     var mystyle = document.createElement("style")
     mystyle.innerHTML=
     `
+    .item-animating-gain {
+      animation: none;
+    }
+    .item-animating-lose {
+      animation: none;
+    }
     .christmas-tier3 {
       background: #dddddd2e
       box-shadow: none;
