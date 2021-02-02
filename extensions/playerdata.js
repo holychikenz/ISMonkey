@@ -11,6 +11,7 @@ class PlayerData {
     this.skills = {};
     this.mastery = {};
     this.tools = {};
+    this.stockpile = {};
     this.initPlayer();
   }
   initPlayer(){
@@ -29,6 +30,10 @@ class PlayerData {
         for(let ec in value.skills){this.skills[ec] = value.skills[ec].level;}
         for(let ec in value.skills){this.mastery[ec] = value.skills[ec].masteryLevel;}
         this.tools = value.toolBoosts;
+        // Set Items
+        for(let ec of value.stockpile){
+          this.stockpile[itemids[ec.itemID]] = ec.stackSize;
+        }
       } else {
         // Update State -- Enchants/buffs
         if( portion.includes("activeEnchantments") ){
@@ -75,6 +80,10 @@ class PlayerData {
       for(let ec in globalBuffs){
         this.globals[enchants[globalBuffs[ec].enchantmentID]] = globalBuffs[ec].enchantmentStrength;
       }
+    }
+    if( msg[0] === "update inventory" ){
+      let itemdelta = msg[1]
+      this.stockpile[ itemids[itemdelta.itemID] ] = itemdelta.stackSize;
     }
   }
   getBuffStrength(buff){
