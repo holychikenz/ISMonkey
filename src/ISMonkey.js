@@ -42,6 +42,18 @@ class ISMonkey {
   addAsyncExtension(ext){
     this.asyncExtensionList.push(ext);
   }
+
+  // Debug Features
+  getListOfExtensions(){
+    var xlist = [];
+    for(let ext of this.socketEventList){
+      xlist.push( ext.constructor.name );
+    }
+    for(let ext of this.asyncExtensionList){
+      xlist.push( ext.constructor.name );
+    }
+    return xlist;
+  }
 }
 
 // Tools
