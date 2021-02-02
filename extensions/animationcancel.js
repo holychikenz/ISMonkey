@@ -27,6 +27,8 @@ class AnimationCancel {
       document.querySelectorAll(".MuiLinearProgress-root").forEach(e=>e.parentNode.removeChild(e));
       document.querySelectorAll(".scrolling-text").forEach(e=>e.parentNode.removeChild(e));
       document.querySelectorAll(".cookingProgressBar").forEach(e=>e.parentNode.removeChild(e));
+      document.querySelectorAll(".item-animating-lose").forEach(e=>e.parentNode.removeChild(e));
+      document.querySelectorAll(".item-animating-gain").forEach(e=>e.parentNode.removeChild(e));
     };
 
     // Create an observer instance linked to the callback function
@@ -34,5 +36,8 @@ class AnimationCancel {
 
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
+    // Additional run on inventory
+    const inventoryNode = document.getElementsByClassName("game-right-panel")[0];
+    observer.observe(inventoryNode, config);
   }
 }
