@@ -9,8 +9,10 @@ class Runecrafting {
     var rcstyle = document.createElement("style");
     rcstyle.innerHTML=
       `
-      .runecrafting-essence-counter {
-        padding-top: 2px;
+      .resource-as-row-required-resources {
+        padding-top: 5xp;
+      }
+      .resource-as-row-title {
         font-size: 14px;
       }
       `
