@@ -10,10 +10,11 @@ class Runecrafting {
     rcstyle.innerHTML=
       `
       .resource-as-row-required-resources {
-        padding-top: 5xp;
+        padding-top: 5px;
       }
       .resource-as-row-title {
         font-size: 14px;
+        display: none;
       }
       `
     document.body.appendChild(rcstyle)

@@ -24,7 +24,7 @@ class ISMonkey {
         console.log("Attached to socket");
       }
       console.log("waiting for socket ...");
-    }, 1000);
+    }, 100);
   }
 
   // Message handler for sockets
