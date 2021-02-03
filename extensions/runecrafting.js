@@ -41,11 +41,16 @@ class Runecrafting {
         let box = document.getElementsByClassName("runecrafting-info")[0];
         let haste = self.monkey.extensions.PlayerData.getBuffStrength("Haste");
         let rcbuff = self.monkey.extensions.PlayerData.getBuffStrength("Runecrafting");
+        let scholar = self.monkey.extensions.PlayerData.getBuffStrength("Scholar");
+        let tick = 5*(1 - haste*0.04)
+        let xp_per_hour = Math.floor(nRunes*25*(1+0.20*scholar) / tick * 3600);
+        // Todo: Add intuition
         let information = `Runes per craft: ${nRunes}<br/>`
         information += `Runecrafting: ${rcbuff}<br/>`
         information += `Haste: ${haste}<br/>`
+        information += `Scholar: ${scholar}<br/>`
+        information += `XP/Hour: ${xp_per_hour}<br/>`
         box.innerHTML = information;
-        let tick = 5*(1 - haste*0.04)
         // Loop through each essence and augments remaining, xp, time
         for(let k of targetNode.getElementsByClassName("resource-as-row-container"))
         {
@@ -55,7 +60,7 @@ class Runecrafting {
           let essence = self.monkey.extensions.PlayerData.getItemStackSize(rune.replace("Rune", "Essence"));
           let operations = Math.floor(essence/(400*(1-rcbuff*0.05)));
           let totaltime = operations*tick;
-          let experience = operations*25*nRunes
+          let experience = operations*25*nRunes*(1+0.20*scholar);
           mDom.innerHTML = `A: ${operations}<br/>T: ${timeFormat(totaltime)}<br/>X: ${experience}`
         }
       }
