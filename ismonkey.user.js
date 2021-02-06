@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.2.3
+// @version      0.2.4
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -14,6 +14,8 @@
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/injectcss.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/jiggyslide.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/animationcancel.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/runecrafting.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/smithing.js
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
@@ -31,5 +33,7 @@
   ismonkey.addAsyncExtension( new InjectCSS(ismonkey, options) );
   ismonkey.addAsyncExtension( new JiggySlide(ismonkey, options) );
   ismonkey.addAsyncExtension( new AnimationCancel(ismonkey, options) );
+  ismonkey.addAsyncExtension( new Runecrafting(ismonkey, options) );
+  ismonkey.addAsyncExtension( new Smithing(ismonkey, options) );
   // Callback Queue
 })();
