@@ -1138,5 +1138,4 @@ const recipes = {
     "HP": 4,
     "Name": "Monster Gelato"
   }
-}
-
+};
