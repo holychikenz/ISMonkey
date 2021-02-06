@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: InjectCSS 
-// @version      0.2.3
+// @version      0.3.0
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
