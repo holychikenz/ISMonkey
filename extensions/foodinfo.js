@@ -177,7 +177,7 @@ class FoodInfo {
     }
 
     var lvlBonus = Math.floor(this.level/30 - 1);
-    var tagBonus = Math.min(...tags);
+    var tagBonus = (recipe == 'Questionable Food') ? 1 : Math.min(...tags);
     var bonus = lvlBonus + tagBonus;
     hp = (bonus+1)*hp;
     var stacks = (bonus*2 + 1);
