@@ -161,6 +161,11 @@ function sortObjectByKeys(o){
   return Object.keys(o).sort().reduce((r,k)=>(r[k] = o[k], r), {});
 }
 
+// https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function timeFormat(time){
   time = Math.floor(time);
   let hours = Math.floor(time/3600);

@@ -150,10 +150,11 @@ class Smithing {
           let tick = timePerBar[bar]*100/(self.level+99)*(1-0.04*haste)*(1-0.05*inferno);
           let totaltime = tick*operations;
           let totalheat = heatPerBar[bar]*(1-0.1*pyro)*operations;
-          let experience = expPerBar[bar]*(1+0.2*scholar);
+          let experience = expPerBar[bar]*(1+0.2*scholar)*operations;
           let mdom = k.getElementsByClassName("resource-required-resources")[0];
-          mdom.innerHTML = `A: ${operations}<br>T: ${timeFormat(totaltime)}<br>H: ${totalheat}<br>X: ${experience}`
-        }
+          mdom.innerHTML = `A: ${numberWithCommas(operations)}<br>T:
+          ${timeFormat(totaltime)}<br>H: ${numberWithCommas(totalheat)}<br>X:
+          ${numberWithCommas(experience)}` }
       }
     }
     const observer = new MutationObserver(callback);

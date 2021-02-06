@@ -64,8 +64,8 @@ class Runecrafting {
           let operations = Math.floor(essence/(400*(1-rcbuff*0.05)));
           let totaltime = operations*tick;
           let experience = operations*25*nRunes*(1+0.20*scholar);
-          mDom.innerHTML = `A: ${operations}<br/>T: ${timeFormat(totaltime)}<br/>X: ${experience}`
-        }
+          mDom.innerHTML = `A: ${numberWithCommas(operations)}<br/>T:
+          ${timeFormat(totaltime)}<br/>X: ${numberWithCommas(experience)}` }
       }
     };
 
