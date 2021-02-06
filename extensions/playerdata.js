@@ -560,4 +560,4 @@ const itemids = {
   7030:"Candy Cane Daggers",
   7031:"Festive Shroud",
   7050:"Snowglobe"
-}
+};
