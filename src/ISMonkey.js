@@ -4,6 +4,7 @@ class ISMonkey {
   constructor() {
     this.socketEventList = [];
     this.asyncExtensionList = [];
+    this.extensions = {};
     this.setupSocket();
   }
   // Wait for socket to initialize and attach to this class
@@ -23,7 +24,7 @@ class ISMonkey {
         console.log("Attached to socket");
       }
       console.log("waiting for socket ...");
-    }, 1000);
+    }, 100);
   }
 
   // Message handler for sockets
@@ -35,12 +36,14 @@ class ISMonkey {
       self.socketEventList.forEach(e=>e.run(self, msg_parsed))
     }
   }
-  addSocketExtension(call){
-    this.socketEventList.push(call);
+  addSocketExtension(ext){
+    this.socketEventList.push(ext);
+    this.extensions[ext.classname] = ext;
   }
   // Mutation Agent
   addAsyncExtension(ext){
     this.asyncExtensionList.push(ext);
+    this.extensions[ext.classname] = ext;
   }
 
   // Debug Features
@@ -57,6 +60,9 @@ class ISMonkey {
 }
 
 // Tools
+function unique(obj) {
+  return obj.filter((v,i,a)=>a.indexOf(v) === i)
+};
 function getReact(dom) {
   for(let key in dom) {
     if( key.startsWith("__reactInternalInstance$") ){
@@ -153,4 +159,20 @@ function effectiveLevel(skill){
 
 function sortObjectByKeys(o){
   return Object.keys(o).sort().reduce((r,k)=>(r[k] = o[k], r), {});
+}
+
+// https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function timeFormat(time){
+  time = Math.floor(time);
+  let hours = Math.floor(time/3600);
+  let minutes = Math.floor((time-(hours*3600))/60);
+  let seconds = time - (hours*3600) - (minutes*60);
+  if( hours < 10 ){hours = `0${hours}`;}
+  if( minutes < 10 ){minutes = `0${minutes}`;}
+  if( seconds < 10 ){seconds = `0${seconds}`;}
+  return `${hours}:${minutes}:${seconds}`;
 }

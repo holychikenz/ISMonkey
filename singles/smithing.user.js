@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         ISMonkeyLoader: FoodInfo
+// @name         ISMonkeyLoader: Smithing 
 // @version      0.3.0
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
-// @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/foodinfo.user.js
-// @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/foodinfo.user.js
+// @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/smithing.user.js
+// @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/singles/smithing.user.js
 // @match        *://*.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
-// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/foodinfo.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/smithing.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/playerdata.js
 // @run-at       document-start
 // @grant        none
@@ -22,5 +22,5 @@
   ismonkey.addSocketExtension(new PlayerData(ismonkey, options));
   // Socket Listeners
   // Mutation Observers / Async Extensions
-  ismonkey.addAsyncExtension( new FoodInfo(ismonkey, options) );
+  ismonkey.addAsyncExtension( new Smithin(ismonkey, options) );
 })();

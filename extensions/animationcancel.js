@@ -4,6 +4,7 @@ class AnimationCancel {
     // Reference the mother class enables the use of shared data
     this.monkey = monkey;
     this.options = options;
+    this.classname = "AnimationCancel";
     this.killAnimations();
   }
   killAnimations(promise){

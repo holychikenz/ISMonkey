@@ -3,6 +3,7 @@ class SpamExtension {
     // Reference the mother class enables the use of shared data
     this.monkey = monkey;
     this.options = options;
+    this.classname = "SpamExtension"
     this.setup();
   }
   setup(){

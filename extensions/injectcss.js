@@ -3,6 +3,7 @@ class InjectCSS {
     // Reference the mother class enables the use of shared data
     this.monkey = monkey;
     this.options = options;
+    this.classname = "InjectCSS";
     this.injectCSS();
   }
   injectCSS(promise){
@@ -21,6 +22,12 @@ class InjectCSS {
     var mystyle = document.createElement("style")
     mystyle.innerHTML=
     `
+    .item-animating-gain {
+      animation: none;
+    }
+    .item-animating-lose {
+      animation: none;
+    }
     .christmas-tier3 {
       background: #dddddd2e
       box-shadow: none;
