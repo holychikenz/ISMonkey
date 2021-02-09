@@ -23,6 +23,8 @@ class Smithing {
         height: 100px;
         width: 100%;
         display: 100%;
+        background-size: auto 100%;
+        background-position: 0;
       }
       .resource-wrapper {
         height: 100px;
