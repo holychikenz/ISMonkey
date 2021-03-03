@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         ISMonkeyLoader
+// @name         Dev_ISMonkeyLoader
 // @version      0.3.0
-// @description  ISMonkey Extension Loader
+// @description  ISMonkey Extension Loader Dev Branch
 // @author       Holychikenz
 // @namespace    ISMonkey
 // @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/devismonkey.user.js
