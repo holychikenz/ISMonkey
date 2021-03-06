@@ -12,6 +12,7 @@ class PlayerData {
     this.mastery = {};
     this.tools = {};
     this.stockpile = {};
+    this.combatInventory = {};
     this.initPlayer();
   }
   initPlayer(){
@@ -33,6 +34,9 @@ class PlayerData {
         // Set Items
         for(let ec of value.stockpile){
           this.stockpile[itemids[ec.itemID]] = ec.stackSize;
+        }
+        for(let ec of value.combatInventory){
+          this.combatInventory[ec.id] = ec;
         }
       } else {
         // Update State -- Enchants/buffs
@@ -83,7 +87,17 @@ class PlayerData {
     }
     if( msg[0] === "update inventory" ){
       let itemdelta = msg[1].item
-      this.stockpile[ itemids[itemdelta.itemID] ] = itemdelta.stackSize;
+      if( msg[1].inventory === "stockpile" ){
+        this.stockpile[ itemids[itemdelta.itemID] ] = itemdelta.stackSize;
+      }
+      if( msg[1].inventory === "combatInventory" ){
+        if( msg[1].action === "delete" ){
+          delete this.combatInventory[ itemdelta.id ];
+        }
+        else {
+          this.combatInventory[itemdelta.id] = itemdelta;
+        }
+      }
     }
   }
   getBuffStrength(buff){
@@ -96,6 +110,9 @@ class PlayerData {
   }
   getItemStackSize(itm){
     return get(this.stockpile, itm, 0);
+  }
+  getCombatInventoryCount(){
+    return Object.keys(this.combatInventory).length;
   }
 }
 

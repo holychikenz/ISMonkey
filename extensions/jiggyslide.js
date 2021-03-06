@@ -44,7 +44,7 @@ class JiggySlide {
         .play-area-container {
           flex: none;
           min-height: 5%;
-          max-height: 100%;
+          max-height: 95%;
           height: 60%;
         }
       `

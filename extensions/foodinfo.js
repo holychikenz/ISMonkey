@@ -103,6 +103,7 @@ class FoodInfo {
         // Gather the ingredients
         for( let imgdom of targetNode.getElementsByClassName("cooking-item-image") ){
           let src = (imgdom.src).split("/").pop().split(".")[0].split("_").join(" ");
+          if( src == 'sage berry' ) src = 'sageberry'; // damnit
           use_ingredients.push(src)
         }
         // Write recipe to dom

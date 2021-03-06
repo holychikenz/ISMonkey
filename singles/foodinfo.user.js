@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: FoodInfo
-// @version      0.3.0
+// @version      0.3.1
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
