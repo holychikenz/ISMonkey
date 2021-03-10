@@ -165,9 +165,12 @@ class Smithing {
           let totalheat = Math.ceil(heatPerBar[bar]*(1-0.1*pyro))*operations;
           let experience = Math.ceil(expPerBar[bar]*(1+0.2*scholar))*operations;
           let mdom = k.getElementsByClassName("resource-required-resources")[0];
-          mdom.innerHTML = `A: ${numberWithCommas(operations)}<br>T:
-          ${timeFormat(totaltime)}<br>H: ${numberWithCommas(totalheat)}<br>X:
-          ${numberWithCommas(experience)}` }
+          let ss = `<span style="display: inline-block; width: 80px;">`
+          mdom.innerHTML = `${ss}Actions:</span>${numberWithCommas(operations)}<br>
+          ${ss}Time:</span>${timeFormat(totaltime)}<br>
+          ${ss}Heat:</span>${numberWithCommas(totalheat)}<br>
+          ${ss}Experience:</span>${numberWithCommas(experience)}`
+        }
       }
       else {
         self.removeCSS();
