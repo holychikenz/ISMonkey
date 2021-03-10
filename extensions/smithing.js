@@ -4,11 +4,11 @@ class Smithing {
     this.monkey = monkey
     this.classname = "Smithing"
     this.smithingDomName = "SmithingInfoDom"
+    this.smithstyle = document.createElement("style");
     this.setupObserver();
   }
-  addCSS(){
-    var smithstyle = document.createElement("style");
-    smithstyle.innerHTML =
+  setupCSS(){
+    this.smithstyle.innerHTML =
       `
       .resource-list {
         display: inline;
@@ -47,7 +47,17 @@ class Smithing {
         padding-top: 5px;
       }
       `
-    document.body.appendChild(smithstyle);
+    this.cssEnabled = false;
+  }
+  removeCSS(){
+    this.smithstyle.remove();
+    this.cssEnabled = false;
+  }
+  addCSS(){
+    if( !this.cssEnabled ){
+      document.body.appendChild(this.smithstyle);
+    }
+    this.cssEnabled = true;
   }
   setupObserver(promise){
     promise = promise || new Promise(()=>{});
@@ -110,6 +120,7 @@ class Smithing {
     const callback = function(mutationsList, observer) {
       var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText;
       if( action == "Smithing" ){
+        self.addCSS();
         self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("smithing");
         let haste = self.monkey.extensions.PlayerData.getBuffStrength("Haste");
         let scholar = self.monkey.extensions.PlayerData.getBuffStrength("Scholar");
@@ -158,9 +169,12 @@ class Smithing {
           ${timeFormat(totaltime)}<br>H: ${numberWithCommas(totalheat)}<br>X:
           ${numberWithCommas(experience)}` }
       }
+      else {
+        self.removeCSS();
+      }
     }
     const observer = new MutationObserver(callback);
     observer.observe(targetNode, config);
-    self.addCSS();
+    self.setupCSS();
   }
 }

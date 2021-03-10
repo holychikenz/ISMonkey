@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: Smithing 
-// @version      0.3.1
+// @version      0.3.2
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
