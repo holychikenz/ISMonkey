@@ -9,6 +9,7 @@ class ISMonkey {
   }
   // Wait for socket to initialize and attach to this class
   setupSocket() {
+    /* // Turning off sockets for now.
     var self = this;
     self.sockets = [];
     const nativeWebSocket = window.WebSocket;
@@ -25,6 +26,7 @@ class ISMonkey {
       }
       console.log("waiting for socket ...");
     }, 100);
+    */
   }
 
   // Message handler for sockets
