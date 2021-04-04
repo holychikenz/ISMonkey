@@ -6,6 +6,33 @@ class Smithing {
     this.smithingDomName = "SmithingInfoDom"
     this.smithstyle = document.createElement("style");
     this.setupObserver();
+    this.addTooltip();
+  }
+  addTooltip(){
+    let ttstyle = document.createElement("style");
+    ttstyle.innerHTML = 
+      `
+      .tooltipSM {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+      }
+      .tooltipSM .tooltipSMtext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+      }
+      .tooltipSM:hover .tooltipSMtext {
+        visibility: visible;
+      }
+      `
+    document.body.appendChild(ttstyle)
   }
   setupCSS(){
     this.smithstyle.innerHTML =
@@ -166,7 +193,8 @@ class Smithing {
           let experience = Math.ceil(expPerBar[bar]*(1+0.2*scholar))*operations;
           let mdom = k.getElementsByClassName("resource-required-resources")[0];
           let ss = `<span style="display: inline-block; width: 80px;">`
-          mdom.innerHTML = `${ss}Actions:</span>${numberWithCommas(operations)}<br>
+          mdom.innerHTML = `
+          ${ss}Actions:</span>${numberWithCommas(operations)}<br>
           ${ss}Time:</span>${timeFormat(totaltime)}<br>
           ${ss}Heat:</span>${numberWithCommas(totalheat)}<br>
           ${ss}Experience:</span>${numberWithCommas(experience)}`
