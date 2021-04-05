@@ -10,17 +10,16 @@ class ISMonkey {
   // Wait for socket to initialize and attach to this class
   setupSocket() {
     var self = this;
-    self.sockets = [];
-    const nativeWebSocket = window.WebSocket;
-    window.WebSocket = function(...args){
-      const socket = new nativeWebSocket(...args);
-      self.sockets.push(socket);
-      return socket;
-    };
+    // new method from Kugan
+    WebSocket.prototype._send = WebSocket.prototype.send;
+    WebSocket.prototype.send = function(data){
+      this._send(data);
+      if( typeof self.socket == "undefined" ){self.socket = this};
+    }
     let setupThisSocket = setInterval( ()=> {
-      if( self.sockets.length != 0 ){
+      if( typeof self.socket !== "undefined" ){
         clearInterval(setupThisSocket);
-        self.sockets[0].addEventListener('message', (e) => self.messageHandler(self, e));
+        self.socket.addEventListener('message', (e)=>self.messageHandler(self, e));
         console.log("Attached to socket");
       }
       console.log("waiting for socket ...");
