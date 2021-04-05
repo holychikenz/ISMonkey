@@ -1,3 +1,12 @@
+WebSocket.prototype._send = WebSocket.prototype.send;
+WebSocket.prototype.send = function(data){
+    this._send(data);
+    if( typeof window.IdlescapeSocket == "undefined" ){
+        window.IdlescapeSocket = this;
+        this.send = this._send;
+    }
+}
+
 class ISMonkey {
   // ISMonkey is an extension manager that sets up the required
   // MutationObservers and serv socket to be used throughout.
@@ -11,18 +20,17 @@ class ISMonkey {
   setupSocket() {
     var self = this;
     // new method from Kugan
-    WebSocket.prototype._send = WebSocket.prototype.send;
-    WebSocket.prototype.send = function(data){
-      this._send(data);
-      if( typeof self.socket == "undefined" ){self.socket = this};
-    }
+    // WebSocket.prototype._send = WebSocket.prototype.send;
+    // WebSocket.prototype.send = function(data){
+    //   this._send(data);
+    //   if( typeof self.socket == "undefined" ){self.socket = this};
+    // }
     let setupThisSocket = setInterval( ()=> {
-      if( typeof self.socket !== "undefined" ){
+      if( typeof window.IdlescapeSocket !== "undefined" ){
         clearInterval(setupThisSocket);
-        self.socket.addEventListener('message', (e)=>self.messageHandler(self, e));
-        console.log("Attached to socket");
+        window.IdlescapeSocket.addEventListener('message', (e)=>self.messageHandler(self, e));
+        console.log("ISMonkey attached to socket!");
       }
-      console.log("waiting for socket ...");
     }, 100);
   }
 
