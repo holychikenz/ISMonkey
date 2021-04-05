@@ -1,4 +1,6 @@
-WebSocket.prototype._send = WebSocket.prototype.send;
+if( typeof WebSocket.prototype._send == "undefined" ){
+  WebSocket.prototype._send = WebSocket.prototype.send;
+}
 WebSocket.prototype.send = function(data){
     this._send(data);
     if( typeof window.IdlescapeSocket == "undefined" ){
