@@ -21,12 +21,6 @@ class ISMonkey {
   // Wait for socket to initialize and attach to this class
   setupSocket() {
     var self = this;
-    // new method from Kugan
-    // WebSocket.prototype._send = WebSocket.prototype.send;
-    // WebSocket.prototype.send = function(data){
-    //   this._send(data);
-    //   if( typeof self.socket == "undefined" ){self.socket = this};
-    // }
     let setupThisSocket = setInterval( ()=> {
       if( typeof window.IdlescapeSocket !== "undefined" ){
         clearInterval(setupThisSocket);
