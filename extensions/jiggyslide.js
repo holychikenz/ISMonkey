@@ -14,7 +14,7 @@ class JiggySlide {
     self = this;
     // Change the css of a few elements and append to the document
     // so that react doesn't try changing it back later on redraw.
-    if( document.readState !== 'complete' ) return false;
+    if( document.readyState !== 'complete' ) return false;
     let success = false;
     let block = document.querySelector(".play-area-chat")
     let rightside = document.querySelector(".game-right-panel")
