@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.3.2
+// @version      0.3.3
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -27,7 +27,6 @@
   // Preload
   ismonkey.addSocketExtension(new PlayerData(ismonkey, options));
   // Socket Listeners
-  // ismonkey.addSocketExtension(new SpamExtension(ismonkey, options));
   // Mutation Observers / Async Extensions
   ismonkey.addAsyncExtension( new FoodInfo(ismonkey, options) );
   ismonkey.addAsyncExtension( new InjectCSS(ismonkey, options) );

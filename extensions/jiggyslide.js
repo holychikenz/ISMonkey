@@ -2,25 +2,19 @@
 class JiggySlide {
   constructor(monkey, options){
     // Reference the mother class enables the use of shared data
-    this.monkey = monkey;
-    this.options = options;
-    this.classname = "JiggySlide"
-    this.createSlider();
+    let self = this;
+    self.monkey = monkey;
+    self.options = options;
+    self.classname = "JiggySlide"
+    let creationInterval = setInterval( ()=>{
+      if( self.createSlider() )clearInterval(creationInterval);
+    }, 1000);
   }
-  createSlider(promise){
+  createSlider(){
     self = this;
-    promise = promise || new Promise(() => {});
-    if(document.readyState !== 'complete'){
-      setTimeout(function(){self.createSlider(promise)}, 1000);
-      return false;
-    }
-    else {
-      promise.then();
-    }
-
     // Change the css of a few elements and append to the document
     // so that react doesn't try changing it back later on redraw.
-
+    if( document.readState !== 'complete' ) return false;
     let success = false;
     let block = document.querySelector(".play-area-chat")
     let rightside = document.querySelector(".game-right-panel")
@@ -104,12 +98,6 @@ class JiggySlide {
       }
       success = true;
     }
-    if(success) {
-      promise.then();
-    }
-    else {
-      setTimeout(function(){self.createSlider(promise);
-                 }, 1000 );
-    }
+    return success;
   }
 }
