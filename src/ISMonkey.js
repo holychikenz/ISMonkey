@@ -1,3 +1,14 @@
+if( typeof WebSocket.prototype._send == "undefined" ){
+  WebSocket.prototype._send = WebSocket.prototype.send;
+}
+WebSocket.prototype.send = function(data){
+    this._send(data);
+    if( typeof window.IdlescapeSocket == "undefined" ){
+        window.IdlescapeSocket = this;
+        this.send = this._send;
+    }
+}
+
 class ISMonkey {
   // ISMonkey is an extension manager that sets up the required
   // MutationObservers and serv socket to be used throughout.
@@ -10,20 +21,12 @@ class ISMonkey {
   // Wait for socket to initialize and attach to this class
   setupSocket() {
     var self = this;
-    self.sockets = [];
-    const nativeWebSocket = window.WebSocket;
-    window.WebSocket = function(...args){
-      const socket = new nativeWebSocket(...args);
-      self.sockets.push(socket);
-      return socket;
-    };
     let setupThisSocket = setInterval( ()=> {
-      if( self.sockets.length != 0 ){
+      if( typeof window.IdlescapeSocket !== "undefined" ){
         clearInterval(setupThisSocket);
-        self.sockets[0].addEventListener('message', (e) => self.messageHandler(self, e));
-        console.log("Attached to socket");
+        window.IdlescapeSocket.addEventListener('message', (e)=>self.messageHandler(self, e));
+        console.log("ISMonkey attached to socket!");
       }
-      console.log("waiting for socket ...");
     }, 100);
   }
 

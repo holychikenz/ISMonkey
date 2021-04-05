@@ -4,11 +4,37 @@ class Smithing {
     this.monkey = monkey
     this.classname = "Smithing"
     this.smithingDomName = "SmithingInfoDom"
+    this.smithstyle = document.createElement("style");
     this.setupObserver();
   }
-  addCSS(){
-    var smithstyle = document.createElement("style");
-    smithstyle.innerHTML =
+  addTooltip(){
+    let ttstyle = document.createElement("style");
+    ttstyle.innerHTML = 
+      `
+      .tooltipSM {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+      }
+      .tooltipSM .tooltipSMtext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+      }
+      .tooltipSM:hover .tooltipSMtext {
+        visibility: visible;
+      }
+      `
+    document.body.appendChild(ttstyle)
+  }
+  setupCSS(){
+    this.smithstyle.innerHTML =
       `
       .resource-list {
         display: inline;
@@ -47,7 +73,17 @@ class Smithing {
         padding-top: 5px;
       }
       `
-    document.body.appendChild(smithstyle);
+    this.cssEnabled = false;
+  }
+  removeCSS(){
+    this.smithstyle.remove();
+    this.cssEnabled = false;
+  }
+  addCSS(){
+    if( !this.cssEnabled ){
+      document.body.appendChild(this.smithstyle);
+    }
+    this.cssEnabled = true;
   }
   setupObserver(promise){
     promise = promise || new Promise(()=>{});
@@ -60,6 +96,7 @@ class Smithing {
       setTimeout(function(){self.setupObserver(promise);}, 1000);
       return false;
     }
+    self.addTooltip();
     const targetNode = targetNodeHolder[0];
     const config = {attributes:true, childList: false, subtree: true, characterData: true};
     var orePerBar = {
@@ -110,6 +147,7 @@ class Smithing {
     const callback = function(mutationsList, observer) {
       var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText;
       if( action == "Smithing" ){
+        self.addCSS();
         self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("smithing");
         let haste = self.monkey.extensions.PlayerData.getBuffStrength("Haste");
         let scholar = self.monkey.extensions.PlayerData.getBuffStrength("Scholar");
@@ -154,13 +192,20 @@ class Smithing {
           let totalheat = Math.ceil(heatPerBar[bar]*(1-0.1*pyro))*operations;
           let experience = Math.ceil(expPerBar[bar]*(1+0.2*scholar))*operations;
           let mdom = k.getElementsByClassName("resource-required-resources")[0];
-          mdom.innerHTML = `A: ${numberWithCommas(operations)}<br>T:
-          ${timeFormat(totaltime)}<br>H: ${numberWithCommas(totalheat)}<br>X:
-          ${numberWithCommas(experience)}` }
+          let ss = `<span style="display: inline-block; width: 80px;">`
+          mdom.innerHTML = `
+          ${ss}Actions:</span>${numberWithCommas(operations)}<br>
+          ${ss}Time:</span>${timeFormat(totaltime)}<br>
+          ${ss}Heat:</span>${numberWithCommas(totalheat)}<br>
+          ${ss}Experience:</span>${numberWithCommas(experience)}`
+        }
+      }
+      else {
+        self.removeCSS();
       }
     }
     const observer = new MutationObserver(callback);
     observer.observe(targetNode, config);
-    self.addCSS();
+    self.setupCSS();
   }
 }
