@@ -27,7 +27,6 @@
   // Preload
   ismonkey.addSocketExtension(new PlayerData(ismonkey, options));
   // Socket Listeners
-  // ismonkey.addSocketExtension(new SpamExtension(ismonkey, options));
   // Mutation Observers / Async Extensions
   ismonkey.addAsyncExtension( new FoodInfo(ismonkey, options) );
   ismonkey.addAsyncExtension( new InjectCSS(ismonkey, options) );
