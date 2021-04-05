@@ -6,7 +6,6 @@ class Smithing {
     this.smithingDomName = "SmithingInfoDom"
     this.smithstyle = document.createElement("style");
     this.setupObserver();
-    this.addTooltip();
   }
   addTooltip(){
     let ttstyle = document.createElement("style");
@@ -97,6 +96,7 @@ class Smithing {
       setTimeout(function(){self.setupObserver(promise);}, 1000);
       return false;
     }
+    self.addTooltip();
     const targetNode = targetNodeHolder[0];
     const config = {attributes:true, childList: false, subtree: true, characterData: true};
     var orePerBar = {
