@@ -1,0 +1,320 @@
+{
+  "2100": {
+    "Ingredients": [
+    ],
+    "HP": 1,
+    "Name": "Questionable Food"
+  },
+  "2101": {
+    "Ingredients": [
+      "monster"
+    ],
+    "HP": 1,
+    "Name": "Monster Surprise"
+  },
+  "2102": {
+    "Ingredients": [
+      "beast"
+    ],
+    "HP": 1,
+    "Name": "Seared Steak"
+  },
+  "2103": {
+    "Ingredients": [
+      "fish"
+    ],
+    "HP": 1,
+    "Name": "Seared fish"
+  },
+  "2104": {
+    "Ingredients": [
+      "poultry"
+    ],
+    "HP": 1,
+    "Name": "Seared poultry"
+  },
+  "2123": {
+    "Ingredients": [
+      "fruit"
+    ],
+    "HP": 1,
+    "Name": "Fried fruit"
+  },
+  "2124": {
+    "Ingredients": [
+      "vegetable"
+    ],
+    "HP": 1,
+    "Name": "Grilled Veggies"
+  },
+  "2116": {
+    "Ingredients": [
+      "egg"
+    ],
+    "HP": 2,
+    "Name": "Omelette"
+  },
+  "2126": {
+    "Ingredients": [
+      "fruit",
+      "sweetener"
+    ],
+    "HP": 2,
+    "Name": "Candied fruit"
+  },
+  "2105": {
+    "Ingredients": [
+      "poultry",
+      "grain"
+    ],
+    "HP": 3,
+    "Name": "Birdie Pasta"
+  },
+  "2106": {
+    "Ingredients": [
+      "beast",
+      "grain"
+    ],
+    "HP": 3,
+    "Name": "Spaghetti & Meat"
+  },
+  "2107": {
+    "Ingredients": [
+      "fish",
+      "grain"
+    ],
+    "HP": 3,
+    "Name": "Sushi"
+  },
+  "2112": {
+    "Ingredients": [
+      "monster",
+      "grain",
+      "sweetener"
+    ],
+    "HP": 3,
+    "Name": "Demon Cake"
+  },
+  "2115": {
+    "Ingredients": [
+      "grain",
+      "sweetener"
+    ],
+    "HP": 3,
+    "Name": "Grain Cake"
+  },
+  "2117": {
+    "Ingredients": [
+      "egg",
+      "monster"
+    ],
+    "HP": 3,
+    "Name": "Monster Omelette"
+  },
+  "2118": {
+    "Ingredients": [
+      "egg",
+      "beast"
+    ],
+    "HP": 3,
+    "Name": "Meaty Omelette"
+  },
+  "2119": {
+    "Ingredients": [
+      "egg",
+      "vegetable"
+    ],
+    "HP": 3,
+    "Name": "Veggie Crepe"
+  },
+  "2120": {
+    "Ingredients": [
+      "egg",
+      "fruit"
+    ],
+    "HP": 3,
+    "Name": "Fruity Crepe"
+  },
+  "2121": {
+    "Ingredients": [
+      "egg",
+      "dairy"
+    ],
+    "HP": 3,
+    "Name": "Eggnog"
+  },
+  "2125": {
+    "Ingredients": [
+      "meat",
+      "vegetable"
+    ],
+    "HP": 3,
+    "Name": "Kebabs"
+  },
+  "2128": {
+    "Ingredients": [
+      "dairy",
+      "vegetable"
+    ],
+    "HP": 3,
+    "Name": "Vegetable Stew"
+  },
+  "2129": {
+    "Ingredients": [
+      "dairy",
+      "meat"
+    ],
+    "HP": 3,
+    "Name": "Meaty Stew"
+  },
+  "2130": {
+    "Ingredients": [
+      "dairy",
+      "monster"
+    ],
+    "HP": 3,
+    "Name": "Monster Stew"
+  },
+  "2131": {
+    "Ingredients": [
+      "meat",
+      "preservative"
+    ],
+    "HP": 3,
+    "Name": "Jerky"
+  },
+  "2133": {
+    "Ingredients": [
+      "dairy",
+      "sweetener"
+    ],
+    "HP": 3,
+    "Name": "Ice Cream"
+  },
+  "2108": {
+    "Ingredients": [
+      "poultry",
+      "grain",
+      "dairy"
+    ],
+    "HP": 4,
+    "Name": "Birdie Pie"
+  },
+  "2109": {
+    "Ingredients": [
+      "beast",
+      "grain",
+      "dairy"
+    ],
+    "HP": 4,
+    "Name": "Cottage Pie"
+  },
+  "2110": {
+    "Ingredients": [
+      "fish",
+      "grain",
+      "dairy"
+    ],
+    "HP": 4,
+    "Name": "Fisherman's Pie"
+  },
+  "2111": {
+    "Ingredients": [
+      "fruit",
+      "grain",
+      "dairy"
+    ],
+    "HP": 4,
+    "Name": "Fruit Pie"
+  },
+  "2113": {
+    "Ingredients": [
+      "dairy",
+      "grain",
+      "sweetener"
+    ],
+    "HP": 4,
+    "Name": "Cake"
+  },
+  "2114": {
+    "Ingredients": [
+      "fruit",
+      "grain",
+      "sweetener"
+    ],
+    "HP": 4,
+    "Name": "Fruit Cake"
+  },
+  "2122": {
+    "Ingredients": [
+      "beast",
+      "fish",
+      "poultry"
+    ],
+    "HP": 4,
+    "Name": "Meat Roast"
+  },
+  "2127": {
+    "Ingredients": [
+      "fruit",
+      "sweetener",
+      "dairy"
+    ],
+    "HP": 4,
+    "Name": "Milkshake"
+  },
+  "2132": {
+    "Ingredients": [
+      "egg",
+      "dairy",
+      "sweetener"
+    ],
+    "HP": 4,
+    "Name": "Pudding"
+  },
+  "2134": {
+    "Ingredients": [
+      "monster",
+      "grain",
+      "spice"
+    ],
+    "HP": 4,
+    "Name": "Monster Curry"
+  },
+  "2135": {
+    "Ingredients": [
+      "poultry",
+      "grain",
+      "spice"
+    ],
+    "HP": 4,
+    "Name": "Birdie Curry"
+  },
+  "2136": {
+    "Ingredients": [
+      "beast",
+      "grain",
+      "spice"
+    ],
+    "HP": 4,
+    "Name": "Beast Curry"
+  },
+  "2137": {
+    "Ingredients": [
+      "fish",
+      "grain",
+      "spice"
+    ],
+    "HP": 4,
+    "Name": "Seafood Curry"
+  },
+  "2138": {
+    "Ingredients": [
+      "monster",
+      "dairy",
+      "egg"
+    ],
+    "HP": 4,
+    "Name": "Monster Gelato"
+  }
+}
