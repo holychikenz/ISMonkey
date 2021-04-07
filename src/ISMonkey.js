@@ -179,3 +179,16 @@ function timeFormat(time){
   if( seconds < 10 ){seconds = `0${seconds}`;}
   return `${hours}:${minutes}:${seconds}`;
 }
+
+// Retrieve json objects: https://stackoverflow.com/questions/2499567/how-to-make-a-json-call-to-an-url/2499647#2499647
+const getJSON = async url => {
+  try {
+    const response = await fetch(url);
+    if(!response.ok)
+      throw new Error(response.statusText);
+    const data = await response.json();
+    return data;
+  } catch(error) {
+    return error;
+  }
+}
