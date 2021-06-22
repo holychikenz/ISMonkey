@@ -4,9 +4,9 @@ import logging
 import regex
 import requests
 
-logging.basicConfig(level=logging.INFO, format="[%(levelname)8s][%(filename)s:%(lineno)s - %(funcName)s()] %(message)s")
-idlescape_site = "https://www.idlescape.com"
-default_main_chunk = f"{idlescape_site}/static/js/main.27754d83.chunk.js"
+logging.basicConfig(level=logging.INFO, format='[%(levelname)8s][%(filename)s:%(lineno)s - %(funcName)s()] %(message)s')
+idlescape_site = 'https://www.idlescape.com'
+default_main_chunk = f'{idlescape_site}/static/js/main.27754d83.chunk.js'
 fullDictlike = r'(\{)[\s\S]*(\})'
 elementDictlike = r'(?<rec>\{(?:[^{}]++|(?&rec))*\})'
 
@@ -25,11 +25,11 @@ def fetch_data(args):
         idlescape_site_text = requests.get(idlescape_site).text
         main_script_search = regex.search(main_script_re, idlescape_site_text)
         if main_script_search is not None:
-            main_script = f"{idlescape_site}/static/js/{main_script_search.group(0)}"
-            logging.info(f"Detected {main_script}")
+            main_script = f'{idlescape_site}/static/js/{main_script_search.group(0)}'
+            logging.info(f'Detected {main_script}')
         else:
             main_script = default_main_chunk
-            logging.info("Main script not detected, using default fallback")
+            logging.info('Main script not detected, using default fallback')
 
     return requests.get(main_script).text
 
@@ -40,10 +40,10 @@ def extract_items(data):
     try:
         fullItemDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
     except AttributeError:
-        logging.error("Did not find the proper set of items")
+        logging.error('Did not find the proper set of items')
         return False
 
-    logging.info("Extracting items")
+    logging.info('Extracting items')
     itemDict = {}
     for x in regex.finditer(elementDictlike, fullItemDictlike):
         xText = (x.group())[1:-1].split(',')
@@ -65,10 +65,10 @@ def extract_enchantments(data):
     try:
         fullEnchantDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
     except AttributeError:
-        logging.error("Did not find the proper set of enchantments")
+        logging.error('Did not find the proper set of enchantments')
         return False
 
-    logging.info("Extracting enchantments")
+    logging.info('Extracting enchantments')
     enchantDict = {}
     for x in regex.finditer(elementDictlike, fullEnchantDictlike):
         xText = (x.group())[1:-1].split(',')
@@ -87,13 +87,13 @@ def main():
     if enchantments:
         with open('enchantments.json', 'w') as j:
             json.dump(enchantments, j, indent=2)
-        logging.info("Wrote enchantments.json")
+        logging.info('Wrote enchantments.json')
 
     items = extract_items(dataFile)
     if items:
         with open('items.json', 'w') as j:
             json.dump(items, j, indent=2)
-        logging.info("Wrote items.json")
+        logging.info('Wrote items.json')
 
 
 if __name__ == '__main__':
