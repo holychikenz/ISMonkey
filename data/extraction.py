@@ -1,18 +1,39 @@
 import argparse
-import requests
 import json
+import logging
 import regex
+import requests
+
+idlescape_site = "https://www.idlescape.com"
+default_main_chunk = f"{idlescape_site}/static/js/main.27754d83.chunk.js"
 
 
 def pirates():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--url', default="https://www.idlescape.com/static/js/main.f5490297.chunk.js")
+    parser.add_argument('--url')
     return parser.parse_args()
+
+
+def fetch_data(args):
+    main_script = args.url
+    if not main_script:
+        logging.info('Automatically detecting main.<hex>.chunk.js')
+        main_script_re = r"main\.[a-zA-Z0-9]+\.chunk\.js"
+        idlescape_site_text = requests.get(idlescape_site).text
+        main_script_search = regex.search(main_script_re, idlescape_site_text)
+        if main_script_search is not None:
+            main_script = f"{idlescape_site}/static/js/{main_script_search.group(0)}"
+            logging.info(f"Detected {main_script}")
+        else:
+            main_script = default_main_chunk
+            logging.info("Main script not detected, using default fallback")
+
+    return requests.get(main_script).text
 
 
 def main():
     args = pirates()
-    dataFile = requests.get(args.url).text
+    dataFile = fetch_data(args)
     enchantExpression = r'(enchantments)[\s\S]*?(e.exports)'
     itemExpression = r'(kt\=)[\s\S]*?(yt\=)'
 
