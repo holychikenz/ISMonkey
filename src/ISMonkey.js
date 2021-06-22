@@ -1,14 +1,3 @@
-if( typeof WebSocket.prototype._send == "undefined" ){
-  WebSocket.prototype._send = WebSocket.prototype.send;
-}
-WebSocket.prototype.send = function(data){
-    this._send(data);
-    if( typeof window.IdlescapeSocket == "undefined" ){
-        window.IdlescapeSocket = this;
-        this.send = this._send;
-    }
-}
-
 class ISMonkey {
   // ISMonkey is an extension manager that sets up the required
   // MutationObservers and serv socket to be used throughout.
@@ -16,8 +5,46 @@ class ISMonkey {
     this.socketEventList = [];
     this.asyncExtensionList = [];
     this.extensions = {};
+    this.interceptXHR();
+    this.interceptSocket();
     this.setupSocket();
   }
+
+  interceptXHR() {
+    let self = this;
+    window.XMLHttpRequest.prototype._open = window.XMLHttpRequest.prototype.open;
+    window.XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
+      // Only care about socket.io fallback XHR messages
+      if (url.match("socket.io")) {
+        this.addEventListener("load", function () {
+          let messages = this.responseText.split("");
+          messages.forEach((m) => {
+            // conform to ISMonkey.messageHandler() object evaluation expectations
+            let e = {
+              data: m,
+            };
+            self.messageHandler(self, e);
+          });
+        });
+      }
+      return window.XMLHttpRequest.prototype._open.apply(this, arguments);
+    };
+    console.info("ISMonkey listening for socket.io XHR fallback messages");
+  }
+
+  interceptSocket() {
+    if( typeof WebSocket.prototype._send == "undefined" ){
+      WebSocket.prototype._send = WebSocket.prototype.send;
+    }
+    WebSocket.prototype.send = function(data){
+      this._send(data);
+      if( typeof window.IdlescapeSocket == "undefined" ){
+        window.IdlescapeSocket = this;
+        this.send = this._send;
+      }
+    }
+  }
+
   // Wait for socket to initialize and attach to this class
   setupSocket() {
     var self = this;
