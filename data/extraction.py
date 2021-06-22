@@ -4,8 +4,11 @@ import logging
 import regex
 import requests
 
+logging.basicConfig(level=logging.INFO, format="[%(levelname)8s][%(filename)s:%(lineno)s - %(funcName)s()] %(message)s")
 idlescape_site = "https://www.idlescape.com"
 default_main_chunk = f"{idlescape_site}/static/js/main.27754d83.chunk.js"
+fullDictlike = r'(\{)[\s\S]*(\})'
+elementDictlike = r'(?<rec>\{(?:[^{}]++|(?&rec))*\})'
 
 
 def pirates():
@@ -31,31 +34,16 @@ def fetch_data(args):
     return requests.get(main_script).text
 
 
-def main():
-    args = pirates()
-    dataFile = fetch_data(args)
-    enchantExpression = r'(enchantments)[\s\S]*?(e.exports)'
+def extract_items(data):
     itemExpression = r'(kt\=)[\s\S]*?(yt\=)'
+    x = regex.search(itemExpression, data).group(0)
+    try:
+        fullItemDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
+    except AttributeError:
+        logging.error("Did not find the proper set of items")
+        return False
 
-    fullDictlike = r'(\{)[\s\S]*(\})'
-    elementDictlike = r'(?<rec>\{(?:[^{}]++|(?&rec))*\})'
-    # Get Enchants
-    x = regex.search(enchantExpression, dataFile).group(0)
-    # First break out the entire dictionary
-    fullEnchantDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
-    enchantDict = {}
-    for x in regex.finditer(elementDictlike, fullEnchantDictlike):
-        xText = (x.group())[1:-1].split(',')
-        enchantID = xText[0].split(':')[1]
-        enchantName = xText[1].split(':')[1].replace('"', '')
-        enchantDict[int(eval(enchantID))] = enchantName
-    # Save to file
-    with open('enchantments.json', 'w') as j:
-        json.dump(enchantDict, j, indent=2)
-
-    # Get items
-    x = regex.search(itemExpression, dataFile).group(0)
-    fullItemDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
+    logging.info("Extracting items")
     itemDict = {}
     for x in regex.finditer(elementDictlike, fullItemDictlike):
         xText = (x.group())[1:-1].split(',')
@@ -65,9 +53,47 @@ def main():
             itemDict[int(eval(itemID))] = itemName
         except:
             pass  # Not an item
-    # Save to file
-    with open('items.json', 'w') as j:
-        json.dump(itemDict, j, indent=2)
+
+    return itemDict
+
+
+def extract_enchantments(data):
+    enchantExpression = r'(enchantments)[\s\S]*?(e.exports)'
+    x = regex.search(enchantExpression, data).group(0)
+
+    # First break out the entire dictionary
+    try:
+        fullEnchantDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
+    except AttributeError:
+        logging.error("Did not find the proper set of enchantments")
+        return False
+
+    logging.info("Extracting enchantments")
+    enchantDict = {}
+    for x in regex.finditer(elementDictlike, fullEnchantDictlike):
+        xText = (x.group())[1:-1].split(',')
+        enchantID = xText[0].split(':')[1]
+        enchantName = xText[1].split(':')[1].replace('"', '')
+        enchantDict[int(eval(enchantID))] = enchantName
+
+    return enchantDict
+
+
+def main():
+    args = pirates()
+    dataFile = fetch_data(args)
+
+    enchantments = extract_enchantments(dataFile)
+    if enchantments:
+        with open('enchantments.json', 'w') as j:
+            json.dump(enchantments, j, indent=2)
+        logging.info("Wrote enchantments.json")
+
+    items = extract_items(dataFile)
+    if items:
+        with open('items.json', 'w') as j:
+            json.dump(items, j, indent=2)
+        logging.info("Wrote items.json")
 
 
 if __name__ == '__main__':
