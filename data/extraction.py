@@ -35,7 +35,14 @@ def fetch_data(args):
 
 
 def extract_items(data):
-    itemExpression = r'(kt\=)[\s\S]*?(yt\=)'
+    item_look_between_re = r'([a-zA-Z0-9_$]+)(?=\=\{1:\{id:1,name:"Gold").+?([a-zA-Z0-9_$]+)(?=\=function\([a-zA-Z0-9_$]+\))'
+    item_look_between = regex.search(item_look_between_re, data)
+
+    if len(item_look_between.groups()) != 2:
+        logging.error('Did not find suitable look between search terms, skipping item extraction')
+        return False
+
+    itemExpression = fr'({item_look_between.group(1)}\=)[\s\S]*?({item_look_between.group(2)}\=)'
     x = regex.search(itemExpression, data).group(0)
     try:
         fullItemDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
