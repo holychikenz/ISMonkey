@@ -85,6 +85,31 @@ def extract_enchantments(data):
 
     return enchantDict
 
+def extract_places(data):
+    place_look_between_re = r'(?=\{10:\{name:"Clay Pit",).+?(?<=function\([a-zA-Z0-9_$]+\))'
+    place_look_between = regex.search(place_look_between_re, data)
+
+    x = place_look_between.group(0)
+    try:
+        fullItemDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
+    except AttributeError:
+        logging.error('Did not find the proper set of places')
+        return False
+
+    logging.info('Extracting places')
+    placeDict = {}
+    for x in regex.finditer(elementDictlike, fullItemDictlike):
+        xText = (x.group())[1:-1].split(',')
+        try:
+            placeID = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'id'][0]
+            placeName = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'name'][0].replace('"', '')
+            placeDict[int(eval(placeID))] = placeName
+        except:
+            pass  # Not an place
+
+    return placeDict
+
+
 
 def main():
     args = pirates()
@@ -101,6 +126,12 @@ def main():
         with open('items.json', 'w') as j:
             json.dump(items, j, indent=2)
         logging.info('Wrote items.json')
+
+    places = extract_places(dataFile)
+    if places:
+        with open('places.json', 'w') as j:
+            json.dump(places, j, indent=2)
+        logging.info('Wrote places.json')
 
 
 if __name__ == '__main__':
