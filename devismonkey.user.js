@@ -29,11 +29,11 @@
   // Socket Listeners
   // ismonkey.addSocketExtension(new SpamExtension(ismonkey, options));
   // Mutation Observers / Async Extensions
-  ismonkey.addAsyncExtension( new FoodInfo(ismonkey, options) );
-  ismonkey.addAsyncExtension( new InjectCSS(ismonkey, options) );
-  ismonkey.addAsyncExtension( new JiggySlide(ismonkey, options) );
-  ismonkey.addAsyncExtension( new AnimationCancel(ismonkey, options) );
-  ismonkey.addAsyncExtension( new Runecrafting(ismonkey, options) );
-  ismonkey.addAsyncExtension( new Smithing(ismonkey, options) );
+  ismonkey.addAsyncExtension( FoodInfo, options );
+  ismonkey.addAsyncExtension( InjectCSS, options );
+  ismonkey.addAsyncExtension( JiggySlide, options );
+  ismonkey.addAsyncExtension( AnimationCancel, options );
+  ismonkey.addAsyncExtension( Runecrafting, options );
+  ismonkey.addAsyncExtension( Smithing, options );
   // Callback Queue
 })();
