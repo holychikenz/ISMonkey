@@ -2,6 +2,13 @@ class ISMonkey {
   // ISMonkey is an extension manager that sets up the required
   // MutationObservers and serv socket to be used throughout.
   constructor() {
+    // Load the local settings
+    if(localStorage.getItem("monkeySettings") === null){
+      this.settings = {};
+    } else {
+      this.settings = JSON.parse(localStorage.monkeySettings);
+    }
+    this.settings = JSON.parse(localStorage.monkeySettings);
     this.socketEventList = [];
     this.asyncExtensionList = [];
     this.extensions = {};
@@ -87,6 +94,8 @@ class ISMonkey {
     }
     return xlist;
   }
+
+  // Draw Settings Menu
 }
 
 // Tools
