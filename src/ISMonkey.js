@@ -128,7 +128,7 @@ class ISMonkey {
     outerDiv.addEventListener('click', () => self.drawSettingsMenu(self) );
   }
 
-  fillSettingsDom(dom){
+  fillSettingsDom(self, dom){
     dom.innerHTML=""
     let headertext = document.createElement("i")
     headertext.className="monkey"
@@ -195,7 +195,7 @@ class ISMonkey {
     playClone.innerHTML=""
     container.append(playClone)
     playArea.style.display="none";
-    self.fillSettingsDom( playClone );
+    self.fillSettingsDom(self, playClone);
 
     function resetMenu(e) {
       if( !e.target.classList.contains("monkey") ){
