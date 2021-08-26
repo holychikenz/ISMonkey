@@ -79,9 +79,11 @@ class ISMonkey {
   }
   // Mutation Agent
   addAsyncExtension(ext, options){
-    let newobject = new ext(this, options);
-    this.asyncExtensionList.push(newobject);
-    this.extensions[newobject.classname] = newobject;
+    this.asyncExtensionList.push( ext.name );
+    if( this.settings[ext.name] === 1 ){
+        let newobject = new ext(this, options);
+        this.extensions[newobject.classname] = newobject;
+    }
   }
 
   // Debug Features
@@ -91,7 +93,7 @@ class ISMonkey {
       xlist.push( ext.constructor.name );
     }
     for(let ext of this.asyncExtensionList){
-      xlist.push( ext.constructor.name );
+      xlist.push( ext );
     }
     return xlist;
   }
@@ -142,7 +144,7 @@ class ISMonkey {
     for(let i=0; i<self.asyncExtensionList.length; i++){
       let LI = document.createElement("li")
       LI.className="monkey"
-      let name = self.asyncExtensionList[i].constructor.name
+      let name = self.asyncExtensionList[i]
       let input = document.createElement("input")
       input.type="checkbox"
       input.style.position="relative"
