@@ -129,7 +129,47 @@ class ISMonkey {
   }
 
   fillSettingsDom(dom){
-      dom.innerText=this.settings
+    dom.innerHTML=""
+    let headertext = document.createElement("i")
+    headertext.className="monkey"
+    headertext.innerText="Refresh page for changes to take effect"
+    dom.append(headertext)
+    let cbox = document.createElement("div")
+    cbox.className="monkey"
+    let UL = document.createElement("ul")
+    UL.className="monkey"
+
+    for(let i=0; i<self.asyncExtensionList.length; i++){
+      let LI = document.createElement("li")
+      LI.className="monkey"
+      let name = self.asyncExtensionList[i].constructor.name
+      let input = document.createElement("input")
+      input.type="checkbox"
+      input.style.position="relative"
+      input.style.opacity=1
+      input.style.margin="0.2em"
+      let localInputID = `${name}_monkeySettings`
+      LI.append(input)
+      input.id=localInputID
+      if( self.settings[name] === 1 ){
+          input.defaultChecked = true
+      }
+      LI.addEventListener('click',function(e){
+          let idom = document.getElementById(localInputID)
+          if( idom.checked ){
+              idom.checked = false;
+              self.settings[name] = 0;
+          } else {
+              idom.checked = true;
+              self.settings[name] = 1
+          }
+          localStorage.monkeySettings = JSON.stringify(self.settings)
+      });
+      LI.innerHTML+=name
+      UL.append(LI)
+    }
+    cbox.append(UL)
+    dom.append(cbox)
   }
 
   drawSettingsMenu(self){
