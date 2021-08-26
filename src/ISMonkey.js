@@ -78,9 +78,10 @@ class ISMonkey {
     this.extensions[ext.classname] = ext;
   }
   // Mutation Agent
-  addAsyncExtension(ext){
-    this.asyncExtensionList.push(ext);
-    this.extensions[ext.classname] = ext;
+  addAsyncExtension(ext, options){
+    let newobject = new ext(this, options);
+    this.asyncExtensionList.push(newobject);
+    this.extensions[newobject.classname] = newobject;
   }
 
   // Debug Features
