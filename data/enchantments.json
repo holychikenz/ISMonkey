@@ -43,6 +43,9 @@
   "41": "Fertilizing",
   "42": "Cultivation",
   "43": "Corruption",
+  "44": "Fortitude",
+  "45": "Aspect of Flame",
+  "46": "Aspect of Lightning",
   "1000": "Impenetrable Defense",
   "2000": "Nimble",
   "2001": "Demon Skin",
@@ -54,5 +57,8 @@
   "8001": "Corrosion",
   "8002": "Sick",
   "8003": "Blind",
-  "8004": "Stunned"
+  "8004": "Stunned",
+  "9000": "Regeneration",
+  "9001": "Poisoned",
+  "10000": "Giant's Strength"
 }
