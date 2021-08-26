@@ -8,7 +8,6 @@ class ISMonkey {
     } else {
       this.settings = JSON.parse(localStorage.monkeySettings);
     }
-    this.settings = JSON.parse(localStorage.monkeySettings);
     this.socketEventList = [];
     this.asyncExtensionList = [];
     this.extensions = {};
@@ -96,6 +95,77 @@ class ISMonkey {
   }
 
   // Draw Settings Menu
+  insertSettingsMenu(promise){
+    let self=this;
+    promise = promise || new Promise( ()=>{} );
+    if( document.getElementsByClassName("nav-drawer-container").length == 0 ){
+      setTimeout(function(){self.insertSettingsMenu(promise)}, 1000);
+      return false;
+    } else {
+      promise.then();
+    }
+
+    let outerDiv = document.createElement("DIV");
+    outerDiv.className="drawer-item active noselect monkey";
+    let icon = document.createElement("IMG");
+    icon.className="drawer-item-icon monkey";
+    icon.src="/images/combat/monsters/chicken.png";
+    let innerDiv = document.createElement("DIV");
+    innerDiv.append(icon);
+    innerDiv.className="monkey";
+    innerDiv.innerHTML+="Monkey Settings";
+    outerDiv.append(innerDiv);
+
+    let container = document.getElementsByClassName("nav-drawer-container")[0];
+    for( let i=0; i < container.children.length; i++ ){
+      if( container.children[i].innerText.indexOf("Settings")>-1 ){
+        container.insertBefore(outerDiv, container.children[i+1]);
+        break;
+      }
+    }
+    outerDiv.addEventListener('click', () => self.drawSettingsMenu(self) );
+  }
+
+  fillSettingsDom(dom){
+      dom.innerText=this.settings
+  }
+
+  drawSettingsMenu(self){
+    let container = document.getElementsByClassName("play-area-container")[0];
+    //container.innerHTML=""
+    let icon = document.createElement("IMG");
+    icon.className="drawer-item-icon";
+    icon.src="/images/combat/monsters/chicken.png";
+    let innerDiv = document.createElement("DIV");
+    innerDiv.append(icon);
+    innerDiv.innerHTML+="Monkey Settings";
+    let tabName = container.getElementsByClassName("nav-tab-left")[0];
+    let tabClone = tabName.cloneNode(true);
+    document.getElementsByClassName("nav-tab-container")[0].prepend(tabClone);
+    tabClone.innerHTML="";
+    tabClone.append(innerDiv);
+    tabClone.id="monkeySettings";
+    tabName.style.display="none";
+    // Setup Menu
+    let playArea = container.getElementsByClassName("play-area")[0];
+    let playClone = playArea.cloneNode(true);
+    playClone.className="play-area monkey theme-default";
+    playClone.innerHTML=""
+    container.append(playClone)
+    playArea.style.display="none";
+    self.fillSettingsDom( playClone );
+
+    function resetMenu(e) {
+      if( !e.target.classList.contains("monkey") ){
+        tabName.style.display="block";
+        playArea.style.display="block";
+        tabClone.remove();
+        playClone.remove();
+        document.removeEventListener("click", resetMenu);
+      }
+    }
+    let listener = document.addEventListener("click", resetMenu);
+  }
 }
 
 // Tools
