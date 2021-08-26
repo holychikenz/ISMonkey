@@ -14,6 +14,7 @@ class ISMonkey {
     this.interceptXHR();
     this.interceptSocket();
     this.setupSocket();
+    this.insertSettingsMenu();
   }
 
   interceptXHR() {
