@@ -25,7 +25,7 @@
   var ismonkey = new ISMonkey();
   var options = {};
   // Preload
-  ismonkey.addSocketExtension(new PlayerData(ismonkey, options));
+  ismonkey.addSocketExtension( PlayerData options );
   // Socket Listeners
   // ismonkey.addSocketExtension(new SpamExtension(ismonkey, options));
   // Mutation Observers / Async Extensions

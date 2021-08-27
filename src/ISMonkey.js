@@ -80,7 +80,7 @@ class ISMonkey {
     }
   }
   addSocketExtension(ext, options){
-    this.socketExtensionList.push( ext.name );
+    this.socketEventList.push( ext.name );
     if( this.settings[ext.name] === 1 || this.protectedExtensions.includes(ext.name)){
       let newobject = new ext(this, options);
       this.extensions[ext.name] = newobject;
@@ -138,7 +138,7 @@ class ISMonkey {
     let UL = document.createElement("ul")
     UL.className="monkey"
 
-    let extlist = Object.assign({}, self.asyncExtensionList, self.socketExtensionList);
+    let extlist = Object.assign({}, self.asyncExtensionList, self.socketEventList);
     for(let i=0; i<extlist.length; i++){
       let name = extlist[i]
       if( self.protectedExtensions.includes(name) ){
