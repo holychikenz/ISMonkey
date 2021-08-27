@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: Animation Cancel
-// @version      0.3.3
+// @version      0.4.0
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -19,6 +19,6 @@
   var options = {};
   // Socket Listeners
   // Mutation Observers / Async Extensions
-  ismonkey.addAsyncExtension( new AnimationCancel(ismonkey, options) );
+  ismonkey.addAsyncExtension( AnimationCancel, options );
   // Callback Queue
 })();
