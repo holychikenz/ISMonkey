@@ -118,7 +118,7 @@ class ISMonkey {
     outerDiv.className="drawer-item active noselect monkey";
     let icon = document.createElement("IMG");
     icon.className="drawer-item-icon monkey";
-    icon.src="/images/combat/monsters/chicken.png";
+    icon.src="/images/cooking/banana.png";
     let innerDiv = document.createElement("DIV");
     innerDiv.append(icon);
     innerDiv.className="monkey";
@@ -183,11 +183,11 @@ class ISMonkey {
     let container = document.getElementsByClassName("play-area-container")[0];
     //container.innerHTML=""
     let icon = document.createElement("IMG");
-    icon.className="drawer-item-icon";
-    icon.src="/images/combat/monsters/chicken.png";
+    icon.className="nav-tab-icon icon-border monkey";
+    icon.src="/images/cooking/banana.png";
     let innerDiv = document.createElement("DIV");
     innerDiv.append(icon);
-    innerDiv.innerHTML+="Monkey Settings";
+    innerDiv.innerHTML+="ISMonkey";
     let tabName = container.getElementsByClassName("nav-tab-left")[0];
     let tabClone = tabName.cloneNode(true);
     document.getElementsByClassName("nav-tab-container")[0].prepend(tabClone);
