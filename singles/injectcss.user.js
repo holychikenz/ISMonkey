@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: InjectCSS 
-// @version      0.3.3
+// @version      0.4.0
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -19,5 +19,5 @@
   var options = {};
   // Socket Listeners
   // Mutation Observers / Async Extensions
-  ismonkey.addAsyncExtension( new InjectCSS(ismonkey, options) );
+  ismonkey.addAsyncExtension( InjectCSS, options );
 })();

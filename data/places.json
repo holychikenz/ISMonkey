@@ -18,6 +18,10 @@
   "26": "Living Forest",
   "27": "Valley of Giants",
   "28": "Corrupted Lands",
+  "29": "Chaos Wastes",
+  "30": "Elven Encampment",
+  "31": "Unearthed Catacombs",
+  "32": "Forgotten Temple",
   "50": "Shallow Pond",
   "51": "Lazy River",
   "52": "Still Lake",
@@ -33,5 +37,11 @@
   "608": "Goblin Kitchen",
   "609": "Ot_to's Farm",
   "610": "The Pit",
-  "611": "Sacred Grove"
+  "611": "Sacred Grove",
+  "612": "The Gauntlet",
+  "700": "Giant's Keep",
+  "701": "Goblin Village",
+  "702": "Black Knight's Fortress",
+  "703": "Ancient Barrows",
+  "9001": "The Duel Arena"
 }

@@ -1,23 +1,62 @@
-if( typeof WebSocket.prototype._send == "undefined" ){
-  WebSocket.prototype._send = WebSocket.prototype.send;
-}
-WebSocket.prototype.send = function(data){
-    this._send(data);
-    if( typeof window.IdlescapeSocket == "undefined" ){
-        window.IdlescapeSocket = this;
-        this.send = this._send;
-    }
-}
-
 class ISMonkey {
   // ISMonkey is an extension manager that sets up the required
   // MutationObservers and serv socket to be used throughout.
   constructor() {
+    // Load the local settings, a few defaults to start
+    if(localStorage.getItem("monkeySettings") === null){
+      this.settings = {
+        "InjectCSS": 1,
+        "JiggySlide": 1,
+        "AnimationCancel": 1,
+        "FoodInfo": 1
+      };
+    } else {
+      this.settings = JSON.parse(localStorage.monkeySettings);
+    }
     this.socketEventList = [];
     this.asyncExtensionList = [];
     this.extensions = {};
+    this.interceptXHR();
+    this.interceptSocket();
     this.setupSocket();
+    this.insertSettingsMenu();
   }
+
+  interceptXHR() {
+    let self = this;
+    window.XMLHttpRequest.prototype._open = window.XMLHttpRequest.prototype.open;
+    window.XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
+      // Only care about socket.io fallback XHR messages
+      if (url.match("socket.io")) {
+        this.addEventListener("load", function () {
+          let messages = this.responseText.split("");
+          messages.forEach((m) => {
+            // conform to ISMonkey.messageHandler() object evaluation expectations
+            let e = {
+              data: m,
+            };
+            self.messageHandler(self, e);
+          });
+        });
+      }
+      return window.XMLHttpRequest.prototype._open.apply(this, arguments);
+    };
+    console.info("ISMonkey listening for socket.io XHR fallback messages");
+  }
+
+  interceptSocket() {
+    if( typeof WebSocket.prototype._send == "undefined" ){
+      WebSocket.prototype._send = WebSocket.prototype.send;
+    }
+    WebSocket.prototype.send = function(data){
+      this._send(data);
+      if( typeof window.IdlescapeSocket == "undefined" ){
+        window.IdlescapeSocket = this;
+        this.send = this._send;
+      }
+    }
+  }
+
   // Wait for socket to initialize and attach to this class
   setupSocket() {
     var self = this;
@@ -44,9 +83,12 @@ class ISMonkey {
     this.extensions[ext.classname] = ext;
   }
   // Mutation Agent
-  addAsyncExtension(ext){
-    this.asyncExtensionList.push(ext);
-    this.extensions[ext.classname] = ext;
+  addAsyncExtension(ext, options){
+    this.asyncExtensionList.push( ext.name );
+    if( this.settings[ext.name] === 1 ){
+        let newobject = new ext(this, options);
+        this.extensions[newobject.classname] = newobject;
+    }
   }
 
   // Debug Features
@@ -56,9 +98,122 @@ class ISMonkey {
       xlist.push( ext.constructor.name );
     }
     for(let ext of this.asyncExtensionList){
-      xlist.push( ext.constructor.name );
+      xlist.push( ext );
     }
     return xlist;
+  }
+
+  // Draw Settings Menu
+  insertSettingsMenu(promise){
+    let self=this;
+    promise = promise || new Promise( ()=>{} );
+    if( document.getElementsByClassName("nav-drawer-container").length == 0 ){
+      setTimeout(function(){self.insertSettingsMenu(promise)}, 1000);
+      return false;
+    } else {
+      promise.then();
+    }
+
+    let outerDiv = document.createElement("DIV");
+    outerDiv.className="drawer-item active noselect monkey";
+    let icon = document.createElement("IMG");
+    icon.className="drawer-item-icon monkey";
+    icon.src="/images/cooking/banana.png";
+    let innerDiv = document.createElement("DIV");
+    innerDiv.append(icon);
+    innerDiv.className="monkey";
+    innerDiv.innerHTML+="ISMonkey";
+    outerDiv.append(innerDiv);
+
+    let container = document.getElementsByClassName("nav-drawer-container")[0];
+    for( let i=0; i < container.children.length; i++ ){
+      if( container.children[i].innerText.indexOf("Settings")>-1 ){
+        container.insertBefore(outerDiv, container.children[i+1]);
+        break;
+      }
+    }
+    outerDiv.addEventListener('click', () => self.drawSettingsMenu(self) );
+  }
+
+  fillSettingsDom(self, dom){
+    dom.innerHTML=""
+    let headertext = document.createElement("i")
+    headertext.className="monkey"
+    headertext.innerText="Refresh page for changes to take effect"
+    dom.append(headertext)
+    let cbox = document.createElement("div")
+    cbox.className="monkey"
+    let UL = document.createElement("ul")
+    UL.className="monkey"
+
+    for(let i=0; i<self.asyncExtensionList.length; i++){
+      let LI = document.createElement("li")
+      LI.className="monkey"
+      let name = self.asyncExtensionList[i]
+      let input = document.createElement("input")
+      input.type="checkbox"
+      input.style.position="relative"
+      input.style.opacity=1
+      input.style.margin="0.2em"
+      let localInputID = `${name}_monkeySettings`
+      LI.append(input)
+      input.id=localInputID
+      if( self.settings[name] === 1 ){
+          input.defaultChecked = true
+      }
+      LI.addEventListener('click',function(e){
+          let idom = document.getElementById(localInputID)
+          if( idom.checked ){
+              idom.checked = false;
+              self.settings[name] = 0;
+          } else {
+              idom.checked = true;
+              self.settings[name] = 1
+          }
+          localStorage.monkeySettings = JSON.stringify(self.settings)
+      });
+      LI.innerHTML+=name
+      UL.append(LI)
+    }
+    cbox.append(UL)
+    dom.append(cbox)
+  }
+
+  drawSettingsMenu(self){
+    let container = document.getElementsByClassName("play-area-container")[0];
+    //container.innerHTML=""
+    let icon = document.createElement("IMG");
+    icon.className="nav-tab-icon icon-border monkey";
+    icon.src="/images/cooking/banana.png";
+    let innerDiv = document.createElement("DIV");
+    innerDiv.append(icon);
+    innerDiv.innerHTML+="ISMonkey";
+    let tabName = container.getElementsByClassName("nav-tab-left")[0];
+    let tabClone = tabName.cloneNode(true);
+    document.getElementsByClassName("nav-tab-container")[0].prepend(tabClone);
+    tabClone.innerHTML="";
+    tabClone.append(innerDiv);
+    tabClone.id="monkeySettings";
+    tabName.style.display="none";
+    // Setup Menu
+    let playArea = container.getElementsByClassName("play-area")[0];
+    let playClone = playArea.cloneNode(true);
+    playClone.className="play-area monkey theme-default";
+    playClone.innerHTML=""
+    container.append(playClone)
+    playArea.style.display="none";
+    self.fillSettingsDom(self, playClone);
+
+    function resetMenu(e) {
+      if( !e.target.classList.contains("monkey") ){
+        tabName.style.display="block";
+        playArea.style.display="block";
+        tabClone.remove();
+        playClone.remove();
+        document.removeEventListener("click", resetMenu);
+      }
+    }
+    let listener = document.addEventListener("click", resetMenu);
   }
 }
 
