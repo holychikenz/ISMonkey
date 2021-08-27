@@ -122,7 +122,7 @@ class ISMonkey {
     let innerDiv = document.createElement("DIV");
     innerDiv.append(icon);
     innerDiv.className="monkey";
-    innerDiv.innerHTML+="Monkey Settings";
+    innerDiv.innerHTML+="ISMonkey";
     outerDiv.append(innerDiv);
 
     let container = document.getElementsByClassName("nav-drawer-container")[0];
