@@ -13,6 +13,7 @@ class ISMonkey {
     } else {
       this.settings = JSON.parse(localStorage.monkeySettings);
     }
+    this.protectedExtensions = ["PlayerData"];
     this.socketEventList = [];
     this.asyncExtensionList = [];
     this.extensions = {};
@@ -78,29 +79,20 @@ class ISMonkey {
       self.socketEventList.forEach(e=>e.run(self, msg_parsed))
     }
   }
-  addSocketExtension(ext){
-    this.socketEventList.push(ext);
-    this.extensions[ext.classname] = ext;
+  addSocketExtension(ext, options){
+    this.socketExtensionList.push( ext.name );
+    if( this.settings[ext.name] === 1 || this.protectedExtensions.includes(ext.name)){
+      let newobject = new ext(this, options);
+      this.extensions[ext.name] = newobject;
+    }
   }
   // Mutation Agent
   addAsyncExtension(ext, options){
     this.asyncExtensionList.push( ext.name );
-    if( this.settings[ext.name] === 1 ){
-        let newobject = new ext(this, options);
-        this.extensions[newobject.classname] = newobject;
+    if( this.settings[ext.name] === 1 || this.protectedExtensions.includes(ext.name)){
+      let newobject = new ext(this, options);
+      this.extensions[ext.name] = newobject;
     }
-  }
-
-  // Debug Features
-  getListOfExtensions(){
-    var xlist = [];
-    for(let ext of this.socketEventList){
-      xlist.push( ext.constructor.name );
-    }
-    for(let ext of this.asyncExtensionList){
-      xlist.push( ext );
-    }
-    return xlist;
   }
 
   // Draw Settings Menu
@@ -146,10 +138,14 @@ class ISMonkey {
     let UL = document.createElement("ul")
     UL.className="monkey"
 
-    for(let i=0; i<self.asyncExtensionList.length; i++){
+    let extlist = Object.assign({}, self.asyncExtensionList, self.socketExtensionList);
+    for(let i=0; i<extlist.length; i++){
+      let name = extlist[i]
+      if( self.protectedExtensions.includes(name) ){
+        continue;
+      }
       let LI = document.createElement("li")
       LI.className="monkey"
-      let name = self.asyncExtensionList[i]
       let input = document.createElement("input")
       input.type="checkbox"
       input.style.position="relative"
