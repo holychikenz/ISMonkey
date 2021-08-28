@@ -15,7 +15,7 @@ class ISMonkey {
     }
     this.protectedExtensions = ["PlayerData"];
     this.socketEventList = [];
-    this.asyncExtensionList = [];
+    this.extensionList= [];
     this.extensions = {};
     this.interceptXHR();
     this.interceptSocket();
@@ -80,15 +80,16 @@ class ISMonkey {
     }
   }
   addSocketExtension(ext, options){
-    this.socketEventList.push( ext.name );
+    this.extensionList.push( ext.name );
     if( this.settings[ext.name] === 1 || this.protectedExtensions.includes(ext.name)){
       let newobject = new ext(this, options);
+      this.socketEventList.push(newobject);
       this.extensions[ext.name] = newobject;
     }
   }
   // Mutation Agent
   addAsyncExtension(ext, options){
-    this.asyncExtensionList.push( ext.name );
+    this.extensionList.push( ext.name );
     if( this.settings[ext.name] === 1 || this.protectedExtensions.includes(ext.name)){
       let newobject = new ext(this, options);
       this.extensions[ext.name] = newobject;
@@ -138,7 +139,7 @@ class ISMonkey {
     let UL = document.createElement("ul")
     UL.className="monkey"
 
-    let extlist = Object.assign({}, self.asyncExtensionList, self.socketEventList);
+    let extlist = self.extensionList
     for(let i=0; i<extlist.length; i++){
       let name = extlist[i]
       if( self.protectedExtensions.includes(name) ){
