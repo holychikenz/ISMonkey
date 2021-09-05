@@ -105,6 +105,24 @@ class FoodInfo {
           recipeDom.style.zIndex = 2;
           targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
         }
+        // Kill useless info
+        for( let cookingInfoDom of document.getElementsByClassName("cooking-info") ){
+          if( cookingInfoDom.id != self.cookingDomName ){
+            for( let paragraph of cookingInfoDom.getElementsByTagName("p") ){
+              if( paragraph.className != "cooking-stats" ){
+                paragraph.remove()
+              }
+            }
+            for( let header5 of cookingInfoDom.getElementsByTagName("h5") ){
+              header5.remove()
+            }
+            for( let border of cookingInfoDom.getElementsByClassName("cooking-title-border") ){
+              border.remove()
+            }
+            targetNode.getElementsByClassName("cooking-controls")[0].prepend(cookingInfoDom)
+          }
+        }
+        targetNode.getElementsByClassName("cooking-main")[0].style.gridTemplateColumns="4fr 4fr"
         let use_ingredients = [];
         // Gather the ingredients
         for( let imgdom of targetNode.getElementsByClassName("cooking-item-image") ){
