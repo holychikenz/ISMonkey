@@ -9,7 +9,7 @@
 // @match        *://*.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/playerdata.js
-// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/dungeoneering.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/injectcss.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/jiggyslide.js
@@ -29,6 +29,7 @@
   // Socket Listeners
   // Mutation Observers / Async Extensions
   ismonkey.addAsyncExtension( FoodInfo, options );
+  ismonkey.addAsyncExtension( Dungeoneering, options );
   ismonkey.addAsyncExtension( InjectCSS, options );
   ismonkey.addAsyncExtension( JiggySlide, options );
   ismonkey.addAsyncExtension( AnimationCancel, options );
