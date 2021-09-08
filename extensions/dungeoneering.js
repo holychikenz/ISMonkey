@@ -1,3 +1,5 @@
+// This extension creates a combat statistics summary in the chat window area designed to give you information
+// about yourself and your party.
 class Dungeoneering {
   constructor(monkey, options){
     this.options = options
@@ -43,6 +45,12 @@ class Dungeoneering {
         background-color: rgba(255, 255, 255, 0.8);
         object-position: 50% 50%;
         border-radius: 5px;
+      }
+      .dungeoneering-row {
+        animation: blinker 1s linear;
+      }
+      @keyframes blinker {
+        0% { opacity: 0.25; }
       }
       `
     document.body.appendChild(rcstyle)
@@ -112,10 +120,58 @@ class Dungeoneering {
     }
     if( msg[0] == "lootlog kill" ){
       let target = msg[1]
+      if( !(target in this.data) ){
+        this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0}
+      }
       if( target in this.data ){
         this.data[target].count += 1
         this.updateStatsWindow(target)
       }
+    }
+  }
+  updateStatsWindow(target){
+    // Each monster/player is stored in a lookup TableRowMap (Dictionary)
+    // The individual cells are updated from the ElementMap (Map)
+    let tablerowmap = this.playerTableRowMap
+    let elementmap = this.playerElementMap
+    let table = this.playerTable
+    if( this.bestiary.has(target) ){
+      // If the bestiary has been updated after a monster was drawn in the player
+      // area, go ahead and remove that row.
+      if( target in tablerowmap ){
+        tablerowmap[target].remove()
+        delete tablerowmap[target]
+      }
+      tablerowmap = this.monsterTableRowMap
+      elementmap = this.monsterElementMap
+      table = this.monsterTable
+    }
+    // Check if tablerow already exists for target else create it
+    if( !(target in tablerowmap) ){
+      tablerowmap[target] = {} // new row
+      let newrow = document.createElement("tr")
+      newrow.className="dungeoneering-row"
+      // Name and icon if available
+      let namecell = document.createElement("td")
+      namecell.innerText = `  ${target}`
+      if( target in this.bestiaryAlbum ){
+        let cellimg = document.createElement("img")
+        cellimg.className="dungeoneering-icon"
+        cellimg.src=this.bestiaryAlbum[target]
+        namecell.prepend(cellimg)
+      }
+      newrow.append(namecell)
+      for( let [key, value] of elementmap ){
+        let newcell = document.createElement("td")
+        //newcell.innerText = value(this, target)
+        tablerowmap[target][key] = newcell
+        newrow.append(newcell)
+      }
+      table.append(newrow)
+    }
+    // Update the cell values
+    for( let [key, value] of elementmap ){
+      tablerowmap[target][key].innerText = value(this, target)
     }
   }
   prepareTables(){
@@ -165,6 +221,7 @@ class Dungeoneering {
     }
     this.monsterTable.append(monsterHeader)
   }
+  // Each of the functions designed to fill a specific table cell
   getDPH(self, target){
     let totalDamage = self.data[target].dps
     let dpm = totalDamage/(Date.now() - self.startTime)*3600*1e3
@@ -185,6 +242,8 @@ class Dungeoneering {
   getMaxHit(self, target){
     return `${dnum(self.data[target].maxhit,0)}`
   }
+  // Build the initial chat window area from the stored tables and draw them
+  // to the page.
   setupStatsWindow(promise) {
     promise = promise || new Promise(() => {});
     let self = this;
