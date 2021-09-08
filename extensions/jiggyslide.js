@@ -123,6 +123,9 @@ class JiggySlide {
     const callback = function(mutationsList, observer) {
         // Change if we go into group combat, and back if not
         let chat = document.getElementsByClassName("play-area-chat")[0]
+        if( typeof chat == 'undefined' ){
+          return
+        }
         if( document.getElementsByClassName("game-right-panel").length > 0 ){
             if( inGroupCombat ){
                 chat.style.width="50%"
