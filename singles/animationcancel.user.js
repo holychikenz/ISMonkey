@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: Animation Cancel
-// @version      0.4.0
+// @version      0.4.1
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey

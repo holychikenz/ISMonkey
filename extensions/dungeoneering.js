@@ -1,5 +1,12 @@
-// This extension creates a combat statistics summary in the chat window area designed to give you information
-// about yourself and your party.
+// This extension creates a combat statistics summary in the chat window area
+// designed to give you information about yourself and your party.
+// A few known "bugs" and todo items
+// - [ ] Tracking food usage is difficult b/c of corruption ring and double heal bug
+// - [ ] Selecting the Fite chat box does not truly inactivate the previous window
+//       It appears inactive, but does not show new messages
+// - [ ] The "group chat" window is buggy (it must have a different class)
+// - [ ] More columns to come
+// - [ ] Mouseover for greater detail
 class Dungeoneering {
   constructor(monkey, options){
     this.options = options
