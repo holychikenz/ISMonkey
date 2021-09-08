@@ -12,7 +12,7 @@ class JiggySlide {
     self.setupSliderObserver();
   }
   createSlider(){
-    self = this;
+    let self = this;
     // Change the css of a few elements and append to the document
     // so that react doesn't try changing it back later on redraw.
     if( document.readyState !== 'complete' ) return false;
@@ -129,9 +129,11 @@ class JiggySlide {
                 inGroupCombat=false;
             }
             chat.style.maxWidth="78%"
+            chat.style.flex="none";
         } else {
             chat.style.maxWidth="100%"
-            chat.style.width="100%"
+            //chat.style.width="100%"
+            chat.style.flex="auto";
             inGroupCombat = true;
         }
     };
