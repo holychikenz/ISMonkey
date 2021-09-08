@@ -9,9 +9,10 @@ class JiggySlide {
     let creationInterval = setInterval( ()=>{
       if( self.createSlider() )clearInterval(creationInterval);
     }, 1000);
+    self.setupSliderObserver();
   }
   createSlider(){
-    self = this;
+    let self = this;
     // Change the css of a few elements and append to the document
     // so that react doesn't try changing it back later on redraw.
     if( document.readyState !== 'complete' ) return false;
@@ -21,28 +22,6 @@ class JiggySlide {
     let chatbuttons = document.querySelector(".chat-buttons");
     let playbox = document.querySelector(".play-area-container");
     let chatbox = document.querySelector(".play-area-chat-container");
-
-    var sliderstyle = document.createElement("style")
-    sliderstyle.id = "sliderStyles"
-    sliderstyle.innerHTML =
-      `
-        .play-area-chat {
-          flex: none;
-          min-width: 15%;
-          max-width: 78%;
-          width: 50%;
-        }
-        .game-right-panel {
-          flex: auto;
-        }
-        .play-area-container {
-          flex: none;
-          min-height: 5%;
-          max-height: 95%;
-          height: 60%;
-        }
-      `
-    document.body.appendChild(sliderstyle);
 
     if( block && rightside && chatbuttons && playbox ) {
 
@@ -97,7 +76,74 @@ class JiggySlide {
         document.onmouseup = () => {document.onmousemove = document.onmouseup = null; glass.style.display = "none";}
       }
       success = true;
+      var sliderstyle = document.createElement("style")
+      sliderstyle.id = "sliderStyles"
+      sliderstyle.innerHTML =
+        `
+          .play-area-chat {
+            flex: none;
+            min-width: 15%;
+            max-width: 78%;
+            width: 50%;
+          }
+          .game-right-panel {
+            flex: auto;
+          }
+          .play-area-container {
+            flex: none;
+            min-height: 5%;
+            max-height: 95%;
+            height: 60%;
+          }
+          .nav-tab, .nav-tab-flex, .nav-tab-right {
+            overflow-wrap: anywhere;
+          }
+        `
+      document.body.appendChild(sliderstyle);
     }
     return success;
+  }
+  setupSliderObserver(promise) {
+
+    promise = promise || new Promise(() => {});
+    let self = this;
+    const targetNodeHolder = document.getElementsByClassName("combine-main-area");
+    if(targetNodeHolder.length > 0) {
+      promise.then();
+    }
+    else {
+      setTimeout(function(){self.setupSliderObserver(promise);
+                 }, 1000 );
+      return false;
+    }
+    const targetNode = targetNodeHolder[0];
+    const config = {attributes: true, childList: false, subtree: true, characterData: true};
+    let inGroupCombat = false;
+    // Callback function to execute when mutations are observed
+    const callback = function(mutationsList, observer) {
+        // Change if we go into group combat, and back if not
+        let chat = document.getElementsByClassName("play-area-chat")[0]
+        if( typeof chat == 'undefined' ){
+          return
+        }
+        if( document.getElementsByClassName("game-right-panel").length > 0 ){
+            if( inGroupCombat ){
+                chat.style.width="50%"
+                inGroupCombat=false;
+            }
+            chat.style.maxWidth="78%"
+            chat.style.flex="none";
+        } else {
+            chat.style.maxWidth="100%"
+            //chat.style.width="100%"
+            chat.style.flex="auto";
+            inGroupCombat = true;
+        }
+    };
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
   }
 }

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.4.0
+// @version      0.4.1
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -9,7 +9,7 @@
 // @match        *://*.idlescape.com/*
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/playerdata.js
-// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/spam.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/dungeoneering.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/injectcss.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/jiggyslide.js
@@ -25,10 +25,11 @@
   var ismonkey = new ISMonkey();
   var options = {};
   // Preload
-  ismonkey.addSocketExtension(new PlayerData(ismonkey, options));
+  ismonkey.addSocketExtension( PlayerData, options );
   // Socket Listeners
   // Mutation Observers / Async Extensions
   ismonkey.addAsyncExtension( FoodInfo, options );
+  ismonkey.addAsyncExtension( Dungeoneering, options );
   ismonkey.addAsyncExtension( InjectCSS, options );
   ismonkey.addAsyncExtension( JiggySlide, options );
   ismonkey.addAsyncExtension( AnimationCancel, options );

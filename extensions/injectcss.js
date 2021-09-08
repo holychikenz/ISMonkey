@@ -57,7 +57,15 @@ class InjectCSS {
     .Moss.base-monster-style, .Fire.base-monster-style, .Ice.base-monster-style {
       height: 450px;
     }
-  
+    /*
+    .combat-fight-image-container {
+      max-height: 80%;
+      max-width: 80%;
+    }
+    */
+    .combat-stats p {
+      font-size: 12px;
+    }
     .combat-monster-area .Fire, .combat-monster-area .Ice, .combat-monster-area .Moss {
       margin-top: 0px;
     }
