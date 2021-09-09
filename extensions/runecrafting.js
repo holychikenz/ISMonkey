@@ -3,7 +3,9 @@ class Runecrafting {
     this.options = options
     this.monkey = monkey
     this.classname = "Runecrafting"
-    this.setupObserver();
+  }
+  connect(){
+    this.setupObserver()
   }
   addCSS(){
     var rcstyle = document.createElement("style");

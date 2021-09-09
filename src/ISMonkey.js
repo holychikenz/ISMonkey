@@ -65,6 +65,8 @@ class ISMonkey {
       if( typeof window.IdlescapeListener !== "undefined" ){
         clearInterval(setupThisSocket);
         window.IdlescapeListener.messages.addEventListener('message', (e)=>self.messageHandlerSL(self, e));
+        window.IdlescapeListener.messages.addEventListener('connected', (e)=>self.connect(self, e));
+        window.IdlescapeListener.messages.addEventListener('disconnected', (e)=>self.disconnect(self, e));
         console.log("ISMonkey attached to IdlescapeSocketListener");
       }
     }, 100);
@@ -84,6 +86,21 @@ class ISMonkey {
   // Message handler for socketLisener
   messageHandlerSL(self, e) {
     self.socketEventList.forEach(x=>x.run(self, [e.event, e.data]));
+  }
+  connect(self, e) {
+    for( const [key, value] of Object.entries(self.extensions) ){
+      try{
+        value.connect()
+      } catch {}
+    }
+  }
+  disconnect(self, e) {
+    // Cleanup
+    for( const [key, value] of Object.entries(self.extensions) ){
+      try{
+        value.disconnect()
+      } catch {}
+    }
   }
 
   // Message handler for sockets -- deprecated

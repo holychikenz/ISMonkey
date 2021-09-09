@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader: JiggySlide
-// @version      0.4.3
+// @version      0.4.4
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey

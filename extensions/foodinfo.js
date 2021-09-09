@@ -10,11 +10,12 @@ class FoodInfo {
       data => {this.foods = data});
     getJSON("https://raw.githubusercontent.com/holychikenz/ISMonkey/main/data/recipes.json").then(
       data => {this.recipes = data});
+  }
+  connect(){
     this.setupHintObserver();
     this.setupPlayer();
     this.setupCookObserver();
   }
-
   setupHintObserver(promise) {
 
     promise = promise || new Promise(() => {});
