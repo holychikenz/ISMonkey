@@ -2,20 +2,15 @@
 class JiggySlide {
   constructor(monkey, options){
     // Reference the mother class enables the use of shared data
-    this.monkey = monkey;
-    this.options = options;
-    this.classname = "JiggySlide"
-  }
-  connect(){
-    let self = this
+    let self = this;
+    self.monkey = monkey;
+    self.options = options;
+    self.classname = "JiggySlide"
     let creationInterval = setInterval( ()=>{
-      if( self.createSlider() ) {
-        clearInterval(creationInterval);
-      }
+      if( self.createSlider() )clearInterval(creationInterval);
     }, 1000);
     self.setupSliderObserver();
   }
-
   createSlider(){
     let self = this;
     // Change the css of a few elements and append to the document
@@ -147,6 +142,7 @@ class JiggySlide {
     };
     // Create an observer instance linked to the callback function
     const observer = new MutationObserver(callback);
+    window.addEventListener("resize", callback);
 
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
