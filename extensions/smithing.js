@@ -5,7 +5,9 @@ class Smithing {
     this.classname = "Smithing"
     this.smithingDomName = "SmithingInfoDom"
     this.smithstyle = document.createElement("style");
-    this.setupObserver();
+  }
+  connect(){
+    this.setupObserver()
   }
   addTooltip(){
     let ttstyle = document.createElement("style");

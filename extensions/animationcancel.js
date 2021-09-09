@@ -5,6 +5,8 @@ class AnimationCancel {
     this.monkey = monkey;
     this.options = options;
     this.classname = "AnimationCancel";
+  }
+  connect(){
     this.killAnimations();
   }
   killAnimations(promise){

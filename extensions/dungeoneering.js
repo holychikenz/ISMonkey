@@ -11,6 +11,8 @@ class Dungeoneering {
   constructor(monkey, options){
     this.options = options
     this.monkey = monkey
+  }
+  connect(){
     this.config();
     this.resetRun();
     this.prepareTables();
