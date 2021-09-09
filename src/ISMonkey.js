@@ -17,9 +17,10 @@ class ISMonkey {
     this.socketEventList = [];
     this.extensionList= [];
     this.extensions = {};
-    this.interceptXHR();
-    this.interceptSocket();
-    this.setupSocket();
+    this.setupSocketListener();
+    //this.interceptXHR();
+    //this.interceptSocket();
+    //this.setupSocket();
     this.insertSettingsMenu();
   }
 
@@ -57,6 +58,17 @@ class ISMonkey {
       }
     }
   }
+  setupSocketListener() {
+    // Attach to: HighOnMikey/idlescape-socketio-listener
+    var self = this;
+    let setupThisSocket = setInterval( ()=> {
+      if( typeof window.IdlescapeListener !== "undefined" ){
+        clearInterval(setupThisSocket);
+        window.IdlescapeListener.messages.addEventListener('message', (e)=>self.messageHandlerSL(self, e));
+        console.log("ISMonkey attached to IdlescapeSocketListener");
+      }
+    }, 100);
+  }
 
   // Wait for socket to initialize and attach to this class
   setupSocket() {
@@ -69,8 +81,12 @@ class ISMonkey {
       }
     }, 100);
   }
+  // Message handler for socketLisener
+  messageHandlerSL(self, e) {
+    self.socketEventList.forEach(x=>x.run(self, [e.event, e.data]));
+  }
 
-  // Message handler for sockets
+  // Message handler for sockets -- deprecated
   messageHandler(self, e) {
     let msg = ( (e.data).match(/^[0-9]+(\[.+)$/) || [] )[1];
     if( msg != null ) {

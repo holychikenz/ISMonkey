@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      0.4.2
+// @version      0.4.3
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
 // @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @match        *://*.idlescape.com/*
+// @require      https://raw.githubusercontent.com/HighOnMikey/idlescape-socketio-listener/main/src/idlescape-listener.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/playerdata.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/dungeoneering.js
@@ -21,6 +22,7 @@
 // ==/UserScript==
 
 (function(){
+  IdlescapeSocketListener.attach();
   // ISMonkeyLoader Extensions
   var ismonkey = new ISMonkey();
   var options = {};

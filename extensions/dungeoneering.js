@@ -14,6 +14,7 @@ class Dungeoneering {
     this.config();
     this.resetRun();
     this.prepareTables();
+    this.prepareSummaryBlock();
     this.setupStatsWindow();
   }
   addCSS(){
@@ -228,6 +229,53 @@ class Dungeoneering {
     }
     this.monsterTable.append(monsterHeader)
   }
+  prepareSummaryBlock(){
+    // Need to decide what's worth recording
+    this.summaryMap = new Map()
+    this.summaryDict = {}
+    this.summaryDiv = document.createElement("div")
+    this.summaryDiv.className="dungeoneering-summary"
+    let header = document.createElement("h5")
+    header.innerText = "Dungeoneering Log"
+    this.summaryDiv.append(header)
+    // Elapsed time
+    let name = "Elapsed Time"
+    this.summaryMap.set(name, this.getElapsedTime)
+    let etime = document.createElement("p")
+    this.summaryDict[name] = etime
+    this.summaryDiv.append(etime)
+    // Project time
+    name = "Project Max AFK"
+    this.summaryMap.set(name, this.getProjectedAFK)
+    etime = document.createElement("p")
+    this.summaryDict[name] = etime
+    this.summaryDiv.append(etime)
+  }
+  updateSummaryBlock(self){
+    for( let [key, value] of self.summaryMap ){
+      self.summaryDict[key].innerText = `${key}: ${value(self)}`
+    }
+  }
+  getElapsedTime(self){
+    return timeFormat((Date.now() - self.startTime)/1000)
+  }
+  getProjectedAFK(self){
+    let target = "none"
+    for( const [key, value] of Object.entries(self.data) ){
+      if( !(self.bestiary.has(key)) ){
+        target = key
+      }
+    }
+    if( target == "none" ){
+      return "NaN"
+    }
+    let time = (Date.now() - self.startTime)/1000
+    let foodUsed = 28 - self.data[target].food
+    if( foodUsed < 1 ){
+      return `> ${timeFormat( 28/(1 / time) )}`
+    }
+    return timeFormat( 28/( foodUsed / time ) )
+  }
   // Each of the functions designed to fill a specific table cell
   getDPH(self, target){
     let totalDamage = self.data[target].dps
@@ -289,6 +337,8 @@ class Dungeoneering {
     let dbHolder = document.createElement("div")
     dbHolder.className="css-y1c0xs"
     dbList.append(dbHolder)
+    // Add the summary header
+    dbHolder.append(this.summaryDiv)
     // Now insert the main flexbox
     let testMessage = document.createElement("div")
     testMessage.className="chat-message"
@@ -321,6 +371,7 @@ class Dungeoneering {
         tab.addEventListener("click", closeChatBox);
       }
     }
+    self.summaryInterval = setInterval(()=>self.updateSummaryBlock(self), 1000)
   }
 }
 function dnum(num, p) {
@@ -339,4 +390,15 @@ function dnum(num, p) {
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function timeFormat(time){
+  time = Math.floor(time);
+  let hours = Math.floor(time/3600);
+  let minutes = Math.floor((time-(hours*3600))/60);
+  let seconds = time - (hours*3600) - (minutes*60);
+  if( hours < 10 ){hours = `0${hours}`;}
+  if( minutes < 10 ){minutes = `0${minutes}`;}
+  if( seconds < 10 ){seconds = `0${seconds}`;}
+  return `${hours}:${minutes}:${seconds}`;
 }
