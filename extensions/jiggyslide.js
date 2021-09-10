@@ -2,15 +2,18 @@
 class JiggySlide {
   constructor(monkey, options){
     // Reference the mother class enables the use of shared data
-    let self = this;
     self.monkey = monkey;
     self.options = options;
     self.classname = "JiggySlide"
+  }
+  connect(){
+    let self = this
     let creationInterval = setInterval( ()=>{
       if( self.createSlider() )clearInterval(creationInterval);
     }, 1000);
     self.setupSliderObserver();
   }
+
   createSlider(){
     let self = this;
     // Change the css of a few elements and append to the document

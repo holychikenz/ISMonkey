@@ -361,6 +361,11 @@ class Dungeoneering {
           tab.addEventListener("click", closeChatBox);
         }
       }
+      for( let tab of chatTabs.getElementsByClassName("chat-tab-group") ){
+        if( tab.id !== dungeonChannel.id ){
+          tab.addEventListener("click", closeChatBox);
+        }
+      }
     }
     dungeonChannel.addEventListener("click", openChatBox);
     // We can make it so that any other tab hides it again
@@ -369,6 +374,11 @@ class Dungeoneering {
       dungeonChannel.className="chat-tab-channel";
     }
     for( let tab of chatTabs.getElementsByClassName("chat-tab-channel") ){
+      if( tab.id !== dungeonChannel.id ){
+        tab.addEventListener("click", closeChatBox);
+      }
+    }
+    for( let tab of chatTabs.getElementsByClassName("chat-tab-group") ){
       if( tab.id !== dungeonChannel.id ){
         tab.addEventListener("click", closeChatBox);
       }
