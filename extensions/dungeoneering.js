@@ -88,6 +88,8 @@ class Dungeoneering {
     while( rows.length > 0 ){
       rows[0].parentNode.removeChild(rows[0]);
     }
+    this.lastKillCount = 0
+    this.lastTimeCounter = 1
   }
   run(obj, msg) {
     if( msg[0] == "combat hit" ){
@@ -247,8 +249,14 @@ class Dungeoneering {
     this.summaryDict[name] = etime
     this.summaryDiv.append(etime)
     // Project time
-    name = "Project Max AFK"
+    name = "Estimated Max AFK"
     this.summaryMap.set(name, this.getProjectedAFK)
+    etime = document.createElement("p")
+    this.summaryDict[name] = etime
+    this.summaryDiv.append(etime)
+    // Kills (rate)
+    name = "Kills (per hour)"
+    this.summaryMap.set(name, this.getTotalKPH)
     etime = document.createElement("p")
     this.summaryDict[name] = etime
     this.summaryDiv.append(etime)
@@ -260,6 +268,23 @@ class Dungeoneering {
   }
   getElapsedTime(self){
     return timeFormat((Date.now() - self.startTime)/1000)
+  }
+  getTotalKPH(self){
+    if( (typeof self.lastKillCount == 'undefined') || (typeof self.lastTimeCounter == 'undefined') ){
+      self.lastKillCount = 0
+      self.lastTimeCounter = 1
+    }
+    let killcount = 0
+    for( const [key, value] of Object.entries(self.data) ){
+      if( self.bestiary.has(key) ){
+        killcount += value.count
+      }
+    }
+    if( killcount > self.lastKillCount ){
+      self.lastKillCount = killcount
+      self.lastTimeCounter = (Date.now() - self.startTime)/1000/3600
+    }
+    return `${self.lastKillCount} (${dnum(self.lastKillCount/self.lastTimeCounter,1)})`
   }
   getProjectedAFK(self){
     let target = "none"
@@ -372,6 +397,7 @@ class Dungeoneering {
     function closeChatBox(e){
       dungeonBox.style.visibility="hidden"
       dungeonChannel.className="chat-tab-channel";
+      e.target.className="chat-tab-channel selected-channel";
     }
     for( let tab of chatTabs.getElementsByClassName("chat-tab-channel") ){
       if( tab.id !== dungeonChannel.id ){
