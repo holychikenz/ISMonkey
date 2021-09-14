@@ -22,6 +22,18 @@ class InjectCSS {
     var mystyle = document.createElement("style")
     mystyle.innerHTML=
     `
+    .farming-info {
+      display: none;
+    }
+    .farming-container {
+      grid-template-columns: minmax(400px, auto) 1fr;
+    }
+    .farming-seed-settings {
+      position: relative;
+    }
+    .farming-seeds {
+      max-width: 100%;
+    }
     .item-animating-gain {
       animation: none;
     }

@@ -44,6 +44,8 @@ class PlayerData {
         for(let ec of value.combatInventory){
           this.combatInventory[ec.id] = ec;
         }
+        // Who Am I
+        this.username = value.username;
       } else {
         // Update State -- Enchants/buffs
         if( portion.includes("activeEnchantments") ){
