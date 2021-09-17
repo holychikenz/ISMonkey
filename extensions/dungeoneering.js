@@ -14,6 +14,9 @@ class Dungeoneering {
   }
   connect(){
     this.config();
+    if( typeof this.summaryInterval !== 'undefined' ){
+      clearInterval(this.summaryInterval)
+    }
     this.resetRun();
     this.prepareTables();
     this.prepareSummaryBlock();
@@ -372,7 +375,7 @@ class Dungeoneering {
     testMessage.id="dungeoneering-statsmessage"
     testMessage.append(this.mainFlexBox)
     dbHolder.append(testMessage)
-    chatBoxes.prepend(dungeonBox)
+    chatBoxes.append(dungeonBox)
     // Lets make the tab do a thing
     function openChatBox(e){
       let chatTabs = chatSection.getElementsByClassName("chat-tabs")[0]
