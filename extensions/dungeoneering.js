@@ -107,13 +107,13 @@ class Dungeoneering {
       }
       if( info.damageType == "miss" ){
         this.data[target].misses += 1
-      } else {
-        this.data[target].hits += 1
-      }
-      if( info.damageType == "heal" ){
+      } else if( info.damageType == "heal" ) {
+        // Placeholder since we cannot tell the source of healing
         if( info.hit > this.foodThreshold ){
           this.data[target].food -= 1
         }
+      } else {
+        this.data[target].hits += 1
       }
       this.updateStatsWindow(target);
     }
