@@ -10,15 +10,6 @@ Map.prototype.selectMap = function(a){
   return this.select(a, new Map());
 }
 
-// Todo
-// 1. Update eliteChallenges after a player completes a new scroll
-// 2. Get the scroll level (for drops) when doing a scroll
-// 3. ...
-
-// Other things that could be added
-// 1. Chests and Myst Seeds
-// 2. Some player feedback / incentive
-
 class LootTracking{
   constructor(monkey, options){
     this.options = options
@@ -59,18 +50,38 @@ class LootTracking{
       if( value.portion == "all" ){
         this.eliteChallenges = value.value.eliteChallenges
       }
+      if( value.portion.includes("eliteChallenges") ){
+        this.eliteChallenges = value.value
+      }
       if( value.portion == "actionQue" ){
-        if( value.value.action == "combat" ){
-          // Something weird with zone "0" -- exit dungeon i guess
-          // Need to be careful though, if players dodge certain monsters
-          // we would spam the server, so maybe we need a cooldown.
-          if( value.value.location == 0 ){
-            this.deliverPayload(this)
-          } else {
-            this.currentZone = value.value.location
+        if( value.value.length > 0 ){
+          let inner = value.value[0]
+          if( typeof inner.action !== 'undefined' ){
+            if( inner.action == "combat" ){
+              // Something weird with zone "0" -- exit dungeon i guess
+              // Need to be careful though, if players dodge certain monsters
+              // we would spam the server, so maybe we need a cooldown.
+              if( inner.location == 0 ){
+                this.deliverPayload(this)
+              } else {
+                this.currentZone = inner.location
+              }
+              // Check for scroll stuff -- use increasedTreasureHunter
+              if( typeof inner.actionData !== 'undefined' ){
+                let actiondata = inner.actionData
+                if( typeof actiondata.server !== 'undefined' ){
+                  let increasedTreasureHunter = actiondata.server.increasedTreasureHunter
+                  if( typeof increasedTreasureHunter !== 'undefined' ){
+                    this.scrollModifier = increasedTreasureHunter
+                  }
+                }
+              } else {
+                this.scrollModifier = 0
+              }
+            } else {
+              this.deliverPayload(this)
+            }
           }
-        } else {
-          this.deliverPayload(this)
         }
       }
       // Groups
@@ -110,9 +121,23 @@ class LootTracking{
     killMap.set("kills", killMap.select("kills", 0)+1);
   }
   addLoot(name, loot){
+    // This will bias our selection a little, but should ensure we don't spam too much data
+    // If an item rolls more than 10 on any given roll, then we will assume it is uniform with
+    // some predetermined min-max; otherwise it is using the loot multiplier. Loot will be organized
+    // as "name":{ "multiplicity": {}, "total": int, "minimum": int, "maximum": int }
     let killMap = this.data.selectMap(this.currentZone).selectMap(this.getTotalTH()).selectMap(this.scrollModifier).selectMap(this.groupSize).selectMap(this.isGroupLeader).selectMap(name);
-    let lootMap = killMap.selectMap("loot")
-    lootMap.set( loot[0], lootMap.select(loot[0],0) + loot[1] )
+    let lootMap = killMap.selectMap("loot").selectMap(loot[0]);
+    let unique = lootMap.selectMap("multiplicity");
+    if( loot[1] < 10 ){ //arbitrary
+      unique.set( loot[1], unique.select( loot[1], 0 ) + 1 );
+    }
+    lootMap.set( "total", lootMap.select("total",0) + loot[1] );
+    lootMap.set( "minimum", Math.min( lootMap.select("minimum", 1e9), loot[1] ) );
+    lootMap.set( "maximum", Math.max( lootMap.select("maximum", 0), loot[1] ) );
+    //lootMap.set( loot[0], lootMap.select(loot[0],0) + loot[1] )
+    if( lootMap.get("maximum") >= 10 ){
+      unique.clear()
+    }
     //console.log(JSON.stringify(toJSobject(this.data)))
   }
   deliverPayload(self){
@@ -123,12 +148,12 @@ class LootTracking{
       let payload = JSON.stringify(toJSobject(self.data));
       // let suburl = `http://127.0.0.1:5000/?data=${payload}`
       let suburl = `https://ismonkey.xyz/?data=${payload}`
-      // console.log(suburl)
       //console.log(suburl)
-      //fetch(suburl, {mode:'no-cors',credentials:'omit',method:'GET'})
-      let xml = new XMLHttpRequest()
-      xml.open("GET", suburl)
-      xml.send()
+      // console.log(suburl)
+      fetch(suburl, {mode:'no-cors',credentials:'omit',method:'GET'})
+      //let xml = new XMLHttpRequest()
+      //xml.open("GET", suburl)
+      //xml.send()
       delete self.data;
       self.data = new Map();
       self.lastSubmission = Date.now()
