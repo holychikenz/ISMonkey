@@ -65,7 +65,7 @@ class Runecrafting {
           let essence = self.monkey.extensions.PlayerData.getItemStackSize(rune.replace("Rune", "Essence"));
           let operations = Math.floor(essence/(400*(1-rcbuff*0.05)));
           let totaltime = operations*tick;
-          let experience = operations*25*nRunes*(1+0.20*scholar);
+          let experience = Math.floor(operations*25*nRunes*(1+0.20*scholar)+0.001);
           mDom.innerHTML = `A: ${numberWithCommas(operations)}<br/>T:
           ${timeFormat(totaltime)}<br/>X: ${numberWithCommas(experience)}` }
       }

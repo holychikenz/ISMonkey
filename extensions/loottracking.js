@@ -17,11 +17,21 @@ class LootTracking{
   }
   connect(){
     let self = this
-    self.config();
-    if( self.interval !== 'undefined' ){
-      clearInterval(self.interval)
-    }
-    self.interval = setInterval(()=>self.deliverPayload(self), 30*60*1000);
+    Promise.all([
+      getJSON("api/market/manifest"),
+    ]).then( data => {
+      self.config();
+      let manifest = data[0].manifest
+      // Attempt to flip to match lootlog
+      self.market = {}
+      for(let item of manifest){
+        self.market[item.name] = item.minPrice
+      }
+      if( self.interval !== 'undefined' ){
+        clearInterval(self.interval)
+      }
+      self.interval = setInterval(()=>self.deliverPayload(self), 30*60*1000);
+    })
   }
   config(){
     this.data = new Map();
@@ -35,6 +45,8 @@ class LootTracking{
     this.scrollModifier = 0
     this.cooldown = 5*60*1000 // 5 minutes
     this.lastSubmission = 0 // First submission is free
+    this.lootValue = 0 // Should i reset?
+    console.log("Loottracking Enabled")
   }
   resetRun(){
   }
@@ -81,12 +93,17 @@ class LootTracking{
             } else {
               this.deliverPayload(this)
             }
+          } else {
           }
+        } else {
+          this.deliverPayload(this)
         }
       }
       // Groups
       if( value.portion == "group" ){
-        this.groupSize = value.value.length
+        if( typeof value.value !== 'undefined'){
+          this.groupSize = value.value.length
+        }
       }
       if( value.portion == "groupLeader" ){
         if( value.value == this.monkey.extensions.PlayerData.username ){
@@ -139,6 +156,12 @@ class LootTracking{
       unique.clear()
     }
     //console.log(JSON.stringify(toJSobject(this.data)))
+    // Value of loot
+    if( loot[0] in this.market ){
+      this.lootValue += this.market[loot[0]]*loot[1]
+    } else {
+      this.lootValue += loot[1]
+    }
   }
   deliverPayload(self){
     if( Date.now() - self.lastSubmission < self.cooldown ){
@@ -148,8 +171,7 @@ class LootTracking{
       let payload = JSON.stringify(toJSobject(self.data));
       // let suburl = `http://127.0.0.1:5000/?data=${payload}`
       let suburl = `https://ismonkey.xyz/?data=${payload}`
-      //console.log(suburl)
-      // console.log(suburl)
+      console.info("Submitting Loot Data", self.data)
       fetch(suburl, {mode:'no-cors',credentials:'omit',method:'GET'})
       //let xml = new XMLHttpRequest()
       //xml.open("GET", suburl)
