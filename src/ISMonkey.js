@@ -2,17 +2,32 @@ class ISMonkey {
   // ISMonkey is an extension manager that sets up the required
   // MutationObservers and serv socket to be used throughout.
   constructor() {
+    // Internal versioning, incremented only when a local storage reset is required.
+    this.version = 2;
+    this.reset = false;
+    let defaultSettings = {
+      "InjectCSS": 1,
+      "JiggySlide": 1,
+      "AnimationCancel": 1,
+      "Dungeoneering": 1,
+      "FoodInfo": 1,
+      "LootTracking": 1
+    }
     // Load the local settings, a few defaults to start
     if(localStorage.getItem("monkeySettings") === null){
-      this.settings = {
-        "InjectCSS": 1,
-        "JiggySlide": 1,
-        "AnimationCancel": 1,
-        "FoodInfo": 1
-      };
+      this.settings = defaultSettings
     } else {
       this.settings = JSON.parse(localStorage.monkeySettings);
     }
+    // Now lets check version
+    if( localStorage.ismonkeyversion != this.version ){
+      this.settings = defaultSettings
+      this.reset = true;
+    }
+    // Now set the version
+    localStorage.ismonkeyversion = this.version
+
+    // Check local storage version
     this.protectedExtensions = ["PlayerData"];
     this.socketEventList = [];
     this.extensionList= [];
@@ -159,6 +174,14 @@ class ISMonkey {
       }
     }
     outerDiv.addEventListener('click', () => self.drawSettingsMenu(self) );
+    // Popup for reset
+    if( self.reset ){
+      let title = "Welcome to ISMonkey"
+      let body = `
+         The settings have been reset either due to a large update, or a fresh install.
+         Please find the ISMonkey settings in the side panel to select extensions.`
+      displayMessage(title, body)
+    }
   }
 
   fillSettingsDom(self, dom){
@@ -363,6 +386,41 @@ function timeFormat(time){
   if( minutes < 10 ){minutes = `0${minutes}`;}
   if( seconds < 10 ){seconds = `0${seconds}`;}
   return `${hours}:${minutes}:${seconds}`;
+}
+
+function displayMessage(title, body){
+  let present = document.createElement("div")
+  present.role = "presentation"
+  present.className="MuiDialog-root sell-item-dialog"
+  present.style.cssText="position: fixed; z-index: 1300; inset: 0px;"
+  let backdrop = document.createElement("div")
+  backdrop.className="MuiBackdrop-root"
+  backdrop.style.cssText="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; background-color: rgba(0, 0, 0, 0.5); display: flex; position: fixed; top: 0; left: 0; right: 0; bottom: 0; align-items: center; justify-content: center;"
+  let paper = document.createElement("div")
+  paper.className="MuiDialog-container MuiDialog-scrollPaper"
+  paper.style.cssText="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+  // Message Here
+  let dialogBox = document.createElement("div")
+  dialogBox.className="MuiPaper-root MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthSm MuiPaper-elevation24 MuiPaper-rounded"
+  let dialogTitle = document.createElement("div")
+  dialogTitle.className="MuiDialogTitle-root"
+  dialogTitle.innerHTML=`<h4>${title}</h4>`
+  let dialogContent = document.createElement("div")
+  dialogContent.className="MuiDialogContent-root"
+  dialogContent.innerHTML=`<p>${body}</p>`
+  // Assemble
+  dialogBox.append(dialogTitle)
+  dialogBox.append(dialogContent)
+  paper.append(dialogBox)
+  present.append(backdrop)
+  present.append(paper)
+  // Attach to page
+  document.body.append(present)
+  // Cleanup
+  function clean(){
+    present.remove()
+  }
+  backdrop.addEventListener('click', clean);
 }
 
 // Retrieve json objects: https://stackoverflow.com/questions/2499567/how-to-make-a-json-call-to-an-url/2499647#2499647

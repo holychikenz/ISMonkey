@@ -263,6 +263,12 @@ class Dungeoneering {
     etime = document.createElement("p")
     this.summaryDict[name] = etime
     this.summaryDiv.append(etime)
+    // Gold
+    name = "Gold (per hour)"
+    this.summaryMap.set(name, this.getTotalGPH)
+    etime = document.createElement("p")
+    this.summaryDict[name] = etime
+    this.summaryDiv.append(etime)
   }
   updateSummaryBlock(self){
     for( let [key, value] of self.summaryMap ){
@@ -288,6 +294,29 @@ class Dungeoneering {
       self.lastTimeCounter = (Date.now() - self.startTime)/1000/3600
     }
     return `${self.lastKillCount} (${dnum(self.lastKillCount/self.lastTimeCounter,1)})`
+  }
+  getTotalGPH(self){
+    if( (typeof self.lastKillCount == 'undefined') || (typeof self.lastTimeCounter == 'undefined') ){
+      self.lastKillCount = 0
+      self.lastTimeCounter = 1
+    }
+    //let killcount = 0
+    //for( const [key, value] of Object.entries(self.data) ){
+    //  if( self.bestiary.has(key) ){
+    //    killcount += value.count
+    //  }
+    //}
+    //if( killcount > self.lastKillCount ){
+    //  self.lastKillCount = killcount
+    //  self.lastTimeCounter = (Date.now() - self.startTime)/1000/3600
+    //}
+    // See if loottracker is enabled
+    let tracker = self.monkey.extensions.LootTracking
+    if( typeof(tracker) === 'undefined' ){
+      return `Enable LootTracking in settings for GPH`
+    }
+    let gp = tracker.lootValue
+    return `${dnum(gp,0)} (${dnum(gp/self.lastTimeCounter,1)})`
   }
   getProjectedAFK(self){
     let target = "none"

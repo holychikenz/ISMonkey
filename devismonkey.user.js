@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dev_ISMonkeyLoader
-// @version      0.4.6
+// @version      0.4.7
 // @description  ISMonkey Extension Loader Dev Branch
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -12,6 +12,7 @@
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/playerdata.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/dungeoneering.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/loottracking.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/injectcss.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/jiggyslide.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/animationcancel.js
@@ -27,9 +28,10 @@
   var ismonkey = new ISMonkey();
   var options = {};
   // Preload
-  ismonkey.addSocketExtension( PlayerData options );
+  ismonkey.addSocketExtension( PlayerData, options );
   // Socket Listeners
   ismonkey.addSocketExtension( Dungeoneering, options );
+  ismonkey.addSocketExtension( LootTracking, options );
   // Mutation Observers / Async Extensions
   ismonkey.addAsyncExtension( FoodInfo, options );
   ismonkey.addAsyncExtension( InjectCSS, options );
