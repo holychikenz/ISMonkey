@@ -93,6 +93,10 @@ class Dungeoneering {
     }
     this.lastKillCount = 0
     this.lastTimeCounter = 1
+    let tracker = self.monkey.extensions.LootTracking
+    if( typeof(tracker) !== 'undefined' ){
+      tracker.lootValue = 0
+    }
   }
   run(obj, msg) {
     if( msg[0] == "combat hit" ){
