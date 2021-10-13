@@ -3,7 +3,7 @@ class ISMonkey {
   // MutationObservers and serv socket to be used throughout.
   constructor() {
     // Internal versioning, incremented only when a local storage reset is required.
-    this.version = 2;
+    this.version = 3;
     this.reset = false;
     let defaultSettings = {
       "InjectCSS": 1,
