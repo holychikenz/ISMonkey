@@ -93,7 +93,7 @@ class Dungeoneering {
     }
     this.lastKillCount = 0
     this.lastTimeCounter = 1
-    let tracker = self.monkey.extensions.LootTracking
+    let tracker = this.monkey.extensions.LootTracking
     if( typeof(tracker) !== 'undefined' ){
       tracker.lootValue = 0
     }
