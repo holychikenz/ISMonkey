@@ -72,7 +72,7 @@ class Dungeoneering {
     this.nameLength = 200
     this.cellLength = 150
     // Healing above this counts as food; otherwise it's natural or overheal
-    this.foodThreshold = 10
+    this.foodThreshold = 15
     // This may be different for player / monster, so lets make that Map (we want this ordered)
     this.playerElementMap = new Map([ ["Food",this.getFood], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Max Hit", this.getMaxHit] ])
     this.monsterElementMap = new Map([ ["Kills (kph)",this.getCount], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Max Hit", this.getMaxHit] ])
