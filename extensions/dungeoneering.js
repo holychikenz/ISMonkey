@@ -1,11 +1,11 @@
 // This extension creates a combat statistics summary in the chat window area
 // designed to give you information about yourself and your party.
 // A few known "bugs" and todo items
-// - [ ] Tracking food usage is difficult b/c of corruption ring and double heal bug
+// - [ ] Overlay in combat window
+//   - [ ] Auto-eat thresholds --> group not visible
+//   - [ ] Food Remaining --> group not visible
 // - [ ] Selecting the Fite chat box does not truly inactivate the previous window
 //       It appears inactive, but does not show new messages
-// - [ ] The "group chat" window is buggy (it must have a different class)
-// - [ ] More columns to come
 // - [ ] Mouseover for greater detail
 class Dungeoneering {
   constructor(monkey, options){
@@ -21,6 +21,11 @@ class Dungeoneering {
     this.prepareTables();
     this.prepareSummaryBlock();
     this.setupStatsWindow();
+  }
+  disconnect(){
+    clearInterval(this.summaryInterval)
+    //this.config();
+    //this.resetRun();
   }
   addCSS(){
     var rcstyle = document.createElement("style");
@@ -73,15 +78,18 @@ class Dungeoneering {
     this.cellLength = 150
     // Healing above this counts as food; otherwise it's natural or overheal
     this.foodThreshold = 15
+    this.currentAutoeat = 0
     // This may be different for player / monster, so lets make that Map (we want this ordered)
-    this.playerElementMap = new Map([ ["Food",this.getFood], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Max Hit", this.getMaxHit] ])
-    this.monsterElementMap = new Map([ ["Kills (kph)",this.getCount], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Max Hit", this.getMaxHit] ])
+    this.playerElementMap = new Map([ ["Food",this.getFood], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
+    this.monsterElementMap = new Map([ ["Kills (kph)",this.getCount], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
     this.playerTable = document.createElement("table")
     this.monsterTable = document.createElement("table")
   }
   resetRun(){
     this.startTime = Date.now()
     this.data = {}
+    this.groupInfo = {}
+    this.hitArray = []
     this.playerTableRowMap = {}
     this.monsterTableRowMap = {}
     delete this.bestiary
@@ -99,28 +107,37 @@ class Dungeoneering {
     }
   }
   run(obj, msg) {
+    // Store and use all of the hit information
     if( msg[0] == "combat hit" ){
       let info = msg[1];
-      let target = info.source
-      if( !(target in this.data) ){
-        this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0}
+      this.hitArray.push(info);
+      let source = info.source
+      let target = info.target
+      if( !(source in this.data) ){
+        this.data[source] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0}
       }
-      this.data[target].dps += info.hit
-      if( this.data[target].maxhit < info.hit && info.damageType != "heal"){
-        this.data[target].maxhit = info.hit
+      if( !(target in this.data) ){
+        this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0}
+      }
+      this.data[source].dps += info.hit
+      if( this.data[source].maxhit < info.hit && info.damageType != "heal"){
+        this.data[source].maxhit = info.hit
       }
       if( info.damageType == "miss" ){
-        this.data[target].misses += 1
+        this.data[source].misses += 1
+        this.data[target].dodged += 1
       } else if( info.damageType == "heal" ) {
         // Placeholder since we cannot tell the source of healing
         if( info.hit > this.foodThreshold ){
-          this.data[target].food -= 1
+          this.data[source].food -= 1
         }
       } else {
-        this.data[target].hits += 1
+        this.data[source].hits += 1
+        this.data[target].notdodged += 1
       }
-      this.updateStatsWindow(target);
+      this.updateStatsWindow(source);
     }
+    // Store player state
     if( msg[0] == "update player" ){
       let portion = msg[1].portion
       let value = msg[1].value
@@ -132,11 +149,28 @@ class Dungeoneering {
           }
         }
       }
+      // Initial loading for combat stats and inventory
+      // Still cannot access group food though
+      // if( portion.includes("all") ){
+      //   let remainingFood = value.combatInventory.length;
+      //   console.log("remaining food", remainingFood);
+      // }
+      if( portion.includes("group") ){
+        this.groupInfo = value;
+      }
+      if( portion.includes("all") ){
+        this.currentAutoeat = value.settings.combat.autoEatThreshold;
+      }
+      if( portion.includes("settings") ){
+        this.currentAutoeat = value.combat.autoEatThreshold;
+      }
     }
+    // Increment monster
     if( msg[0] == "new monster" ){
       this.bestiary.add(msg[1].name)
       this.bestiaryAlbum[msg[1].name]=msg[1].image
     }
+    // Get kills
     if( msg[0] == "lootlog kill" ){
       let target = msg[1]
       if( !(target in this.data) ){
@@ -153,6 +187,13 @@ class Dungeoneering {
     // The individual cells are updated from the ElementMap (Map)
     let tablerowmap = this.playerTableRowMap
     let elementmap = this.playerElementMap
+    // Check to make sure we aren't in a bugged state
+    if( !(elementmap instanceof Map) ){
+      console.log("Attempting to reset Dungeoneering log -- out of sync");
+      this.disconnect();
+      this.connect();
+      return;
+    }
     let table = this.playerTable
     if( this.bestiary.has(target) ){
       // If the bestiary has been updated after a monster was drawn in the player
@@ -241,6 +282,27 @@ class Dungeoneering {
     this.monsterTable.append(monsterHeader)
   }
   prepareSummaryBlock(){
+    // We need a download button for data
+    let downloadButton = document.createElement("img")
+    downloadButton.src = "https://www.svgrepo.com/show/17115/down-arrow-download-button.svg"
+    downloadButton.id = "dungeonDownloadButton"
+    downloadButton.className = "dungeonDownloadButton"
+    let buttonCSS = `
+    .dungeonDownloadButton {
+      transition: all .2s ease-in-out;
+      height: 15px;
+      filter: invert(0.80);
+      padding-left: 5px;
+    }
+    .dungeonDownloadButton:hover {
+      transform: scale(1.2);
+      filter: invert(1.0);
+    }
+    .dungeonDownloadButton:active {
+      transform: scale(0.9);
+      transition: all 0.02s ease-in-out;
+    }`
+    appendCSS(buttonCSS)
     // Need to decide what's worth recording
     this.summaryMap = new Map()
     this.summaryDict = {}
@@ -248,6 +310,7 @@ class Dungeoneering {
     this.summaryDiv.className="dungeoneering-summary"
     let header = document.createElement("h5")
     header.innerText = "Dungeoneering Log"
+    header.append(downloadButton)
     this.summaryDiv.append(header)
     // Elapsed time
     let name = "Elapsed Time"
@@ -304,16 +367,6 @@ class Dungeoneering {
       self.lastKillCount = 0
       self.lastTimeCounter = 1
     }
-    //let killcount = 0
-    //for( const [key, value] of Object.entries(self.data) ){
-    //  if( self.bestiary.has(key) ){
-    //    killcount += value.count
-    //  }
-    //}
-    //if( killcount > self.lastKillCount ){
-    //  self.lastKillCount = killcount
-    //  self.lastTimeCounter = (Date.now() - self.startTime)/1000/3600
-    //}
     // See if loottracker is enabled
     let tracker = self.monkey.extensions.LootTracking
     if( typeof(tracker) === 'undefined' ){
@@ -349,6 +402,10 @@ class Dungeoneering {
     let acc = (self.data[target].hits)/(self.data[target].hits+self.data[target].misses)*100
     return `${dnum(acc,2)}%`;
   }
+  getDodge(self, target){
+    let dodge = (self.data[target].dodged)/(self.data[target].dodged+self.data[target].notdodged)*100
+    return `${dnum(dodge,2)}%`;
+  }
   getFood(self, target){
     return dnum( self.data[target].food, 0 )
   }
@@ -359,6 +416,22 @@ class Dungeoneering {
   }
   getMaxHit(self, target){
     return `${dnum(self.data[target].maxhit,0)}`
+  }
+  download(self){
+    if( typeof(self.groupInfo) === 'undefined') {
+      console.log("Download not ready, waiting for group info ...")
+      return;
+    }
+    let combatData = {
+      "groups": self.groupInfo,
+      "attacks": self.hitArray
+    };
+    let filename = `combat_${Date.now()}.json`
+    let a = document.createElement("a")
+    let file = new Blob([JSON.stringify(combatData)], {type:'text/plain'})
+    a.href = URL.createObjectURL(file)
+    a.download = filename
+    a.click()
   }
   // Build the initial chat window area from the stored tables and draw them
   // to the page.
@@ -446,7 +519,55 @@ class Dungeoneering {
       }
     }
     self.summaryInterval = setInterval(()=>self.updateSummaryBlock(self), 1000)
+    // Download button
+    let btn = document.getElementById("dungeonDownloadButton")
+    btn.addEventListener('click', ()=>self.download(self))
+
+    /// Observer for fight area
+    const targetNode = targetNodeHolder[0];
+    const config = {attributes: true, childList: false, subtree: true, characterData: true};
+    // Callback function to execute when mutations are observed
+    const callback = function(mutationsList, observer) {
+      // Are we fighting
+      let action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
+      if( action === "Combat" ){
+        // Add an element to write to if it does not exist
+        let autoEatDom = document.getElementById("DungeonAutoEat");
+        if( autoEatDom == null ){
+          let container = document.createElement("div")
+          container.style.opacity = "0.75";
+          container.style.borderRadius = "3px";
+          container.style.position = "absolute";
+          container.style.top = "0";
+          container.style.zIndex = "1000";
+          container.style.backgroundColor = "#000";
+          autoEatDom = document.createElement("span");
+          autoEatDom.id = "DungeonAutoEat";
+          container.append(autoEatDom)
+          // See if combat fight container exists
+          let fightContainer = targetNode.getElementsByClassName("combat-fight-container");
+          if( fightContainer.length > 0 ){
+            fightContainer[0].append(container);
+          }
+        }
+        autoEatDom.innerText = `Auto-eat: ${self.currentAutoeat}%`;
+      }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
+    // Start observing the target node for configured mutations
+    observer.observe(targetNode, config);
   }
+}
+function appendCSS(css){
+  let style = document.createElement('style');
+  if(style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  document.head.append(style);
 }
 function dnum(num, p) {
     let snum = ""
