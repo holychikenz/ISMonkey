@@ -83,6 +83,11 @@ class ISMonkey {
         window.IdlescapeListener.messages.addEventListener('connected', (e)=>self.connect(self, e));
         window.IdlescapeListener.messages.addEventListener('disconnected', (e)=>self.disconnect(self, e));
         console.log("ISMonkey attached to IdlescapeSocketListener");
+        setTimeout( function (){
+          if( !window.IdlescapeListener.attached ){
+            self.connect(self, "XHR only mode");
+          }
+        }, 3000 );
       }
     }, 100);
   }
