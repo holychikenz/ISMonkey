@@ -54,6 +54,7 @@ class JiggySlide {
         glass.style.display = "block"
         document.onmousemove = function onMouseMove(e) {
           block.style.width = block.offsetWidth + e.clientX - dragX + "px";
+          localStorage.jiggyslideDRAGX = block.style.width;
           dragX = e.clientX;
         }
         // remove mouse-move listener on mouse-up
@@ -74,6 +75,7 @@ class JiggySlide {
         glass.style.display = "block"
         document.onmousemove = function onMouseMove(e) {
           playbox.style.height = playbox.offsetHeight + e.clientY - dragY + "px";
+          localStorage.jiggyslideDRAGY = playbox.style.height;
           dragY = e.clientY;
         }
         document.onmouseup = () => {document.onmousemove = document.onmouseup = null; glass.style.display = "none";}
@@ -87,7 +89,7 @@ class JiggySlide {
             flex: none;
             min-width: 15%;
             max-width: 78%;
-            width: 50%;
+            width: ${localStorage.jiggyslideDRAGX};
           }
           .game-right-panel {
             flex: auto;
@@ -96,7 +98,7 @@ class JiggySlide {
             flex: none;
             min-height: 5%;
             max-height: 95%;
-            height: 60%;
+            height: ${localStorage.jiggyslideDRAGY};
           }
           .nav-tab, .nav-tab-flex, .nav-tab-right {
             overflow-wrap: anywhere;
