@@ -87,7 +87,7 @@ class ISMonkey {
           if( !window.IdlescapeListener.attached ){
             self.connect(self, "XHR only mode");
           }
-        }, 3000 );
+        }, 10000 );
       }
     }, 100);
   }
