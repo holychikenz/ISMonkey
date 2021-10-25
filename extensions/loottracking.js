@@ -24,8 +24,10 @@ class LootTracking{
       let manifest = data[0].manifest
       // Attempt to flip to match lootlog
       self.market = {}
+      self.marketByID = {}
       for(let item of manifest){
         self.market[item.name] = item.minPrice
+        self.marketByID[item.itemID] = item.minPrice
       }
       if( self.interval !== 'undefined' ){
         clearInterval(self.interval)
@@ -124,6 +126,24 @@ class LootTracking{
       this.addLoot(person, loot)
     }
     // We can send the payload off early when a zone is left (or dungeon is complete)
+    // Chests and such
+    if( index == "chest open notification" ){
+      let chestID = value.message.chestID
+      let contents = value.message.contents
+      console.log( contents )
+      let gold = 0
+      for( let item of contents ){
+        if( item.id in this.marketByID ){
+          gold += this.marketByID[item.id] * item.amount;
+        } else {
+          gold += item.amount;
+        }
+      }
+      let chestCount = value.message.amount
+      console.log("Total value:", gold);
+      console.log("Value per chest:", gold/chestCount);
+      this.deliverChestPayload(this, value.message);
+    }
   }
   getTotalTH(){
     let enchant = this.monkey.extensions.PlayerData.getBuffStrength("Treasure Hunter")
@@ -180,6 +200,14 @@ class LootTracking{
       self.data = new Map();
       self.lastSubmission = Date.now()
     }
+  }
+  deliverChestPayload(self, chestContents){
+    // No cooldown
+    //let payload = JSON.stringify(toJSobject(chestContents));
+    let payload = JSON.stringify(chestContents);
+    let suburl = `https://ismonkey.xyz/?chest=${payload}`
+    console.info("Sumbitting chest drops", chestContents)
+    fetch(suburl, {mode:'no-cors',credentials:'omit',method:'GET'})
   }
 }
 const toJSobject = (map = new Map) =>

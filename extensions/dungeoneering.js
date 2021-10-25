@@ -90,6 +90,8 @@ class Dungeoneering {
     this.data = {}
     this.groupInfo = {}
     this.hitArray = []
+    // DEBUG
+    // setInterval( ()=>console.log("Length Hit Array", JSON.stringify(this.hitArray).replace(/[\[\]\,\"]/g,'').length, this.hitArray.length), 5000 )
     this.playerTableRowMap = {}
     this.monsterTableRowMap = {}
     delete this.bestiary
@@ -111,6 +113,10 @@ class Dungeoneering {
     if( msg[0] == "combat hit" ){
       let info = msg[1];
       this.hitArray.push(info);
+      // Hit array size safety, tests show ~70 KB / element, so this will float up to 35MB or so
+      if( this.hitArray.length > 550000 ){
+        this.hitArray = this.hitArray.slice(50000)
+      }
       let source = info.source
       let target = info.target
       if( !(source in this.data) ){
@@ -450,6 +456,10 @@ class Dungeoneering {
     let chatSection = document.getElementsByClassName("chat-interface-container")[0]
     let chatTabs = chatSection.getElementsByClassName("chat-tabs")[0]
     let chatBoxes = chatSection.getElementsByClassName("chat-message-container-box")[0]
+    // Delete old lingering tab
+    try {
+      document.getElementById("ismonkey-dungeontab").remove();
+    } catch {}
     // Create a new tab and prepend
     let dungeonChannel = document.createElement("div")
     let dimg = document.createElement("img")

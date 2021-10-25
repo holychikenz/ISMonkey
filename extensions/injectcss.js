@@ -34,6 +34,22 @@ class InjectCSS {
     .farming-seeds {
       max-width: 100%;
     }
+    .combat-player-area>div {
+      width: 300px;
+      padding-bottom: 85px;
+    }
+    .combat-info-bar {
+      position: absolute;
+      bottom: 0px;
+    }
+    /*
+    .combat-fight-image-container {
+      bottom: 85px;
+    }
+    */
+    .base-monster-style {
+      padding-bottom: 85px;
+    }
     .item-animating-gain {
       animation: none;
     }
