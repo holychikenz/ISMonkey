@@ -25,6 +25,7 @@ class JiggySlide {
     let chatbuttons = document.querySelector(".chat-buttons");
     let playbox = document.querySelector(".play-area-container");
     let chatbox = document.querySelector(".play-area-chat-container");
+    let main = document.querySelector(".combine-main-area")
 
     if( block && rightside && chatbuttons && playbox ) {
 
@@ -53,7 +54,9 @@ class JiggySlide {
         let dragX = e.clientX;
         glass.style.display = "block"
         document.onmousemove = function onMouseMove(e) {
-          block.style.width = block.offsetWidth + e.clientX - dragX + "px";
+          //block.style.width = block.offsetWidth + e.clientX - dragX + "px";
+          // In percent
+          block.style.width = 100*(block.offsetWidth + e.clientX - dragX)/main.clientWidth + "%";
           localStorage.jiggyslideDRAGX = block.style.width;
           dragX = e.clientX;
         }
@@ -74,7 +77,8 @@ class JiggySlide {
         let dragY = e.clientY;
         glass.style.display = "block"
         document.onmousemove = function onMouseMove(e) {
-          playbox.style.height = playbox.offsetHeight + e.clientY - dragY + "px";
+          //playbox.style.height = playbox.offsetHeight + e.clientY - dragY + "px";
+          playbox.style.height = 100*(playbox.offsetHeight + e.clientY - dragY)/main.clientHeight + "%";
           localStorage.jiggyslideDRAGY = playbox.style.height;
           dragY = e.clientY;
         }
