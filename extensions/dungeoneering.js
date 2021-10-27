@@ -125,7 +125,6 @@ class Dungeoneering {
       if( !(target in this.data) ){
         this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0}
       }
-      this.data[source].dps += info.hit
       if( this.data[source].maxhit < info.hit && info.damageType != "heal"){
         this.data[source].maxhit = info.hit
       }
@@ -138,6 +137,7 @@ class Dungeoneering {
           this.data[source].food -= 1
         }
       } else {
+        this.data[source].dps += info.hit
         this.data[source].hits += 1
         this.data[target].notdodged += 1
       }
