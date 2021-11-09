@@ -1,12 +1,22 @@
 import json
+import numpy as np
 
 # We will have to make a number of special exceptions
-def main():
+def main(craft):
+    cut = 1 - craft*0.02
     with open("crafting.json") as j:
         data = json.load(j)
     with open("items.json") as j:
         items = json.load(j)
     reverseItems = {v:k for k,v in items.items()}
+
+    ## Apply Cut first, easier this way
+    for recipeID, info in data.items():
+        recipeList = info["requiredResources"]
+        for ndx,recipe in enumerate(recipeList):
+            for resource, count in recipe.items():
+                count = np.ceil(eval(count)*cut)
+                data[recipeID]["requiredResources"][ndx][resource] = count
 
     # Data is broken down by recipe not resource, we
     # Aim to flip that and then find the best recipes
@@ -21,9 +31,9 @@ def main():
                 for k,v in recipe.items():
                     if k not in cleanIngredient:
                         cleanIngredient[k] = 0
-                    cleanIngredient[k] = max(cleanIngredient[k], xp/eval(v))
+                    cleanIngredient[k] = max(cleanIngredient[k], xp/v)
             for resource, count in recipe.items():
-                ratio = xp/eval(count)
+                ratio = xp/count
                 if resource not in resourceToRecipeList:
                     resourceToRecipeList[resource] = []
                 rekipe = { 'xp': xp, 'recipe': recipe, 'id': recipeID }
@@ -62,7 +72,7 @@ def main():
             extraCount = 0
             for resource, count in recipe.items():
                 if resource in cleanIngredient:
-                    xp -= cleanIngredient[resource]*eval(count)
+                    xp -= cleanIngredient[resource]*count
                 else:
                     extraCount += 1
             if extraCount == 1:
@@ -70,7 +80,7 @@ def main():
                     if k not in cleanIngredient:
                         if k not in newCleanIngredient:
                             newCleanIngredient[k] = 0
-                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/eval(v))
+                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/v)
 
     ## Combine and do a third pass
     for k,v in newCleanIngredient.items():
@@ -84,7 +94,7 @@ def main():
             extraCount = 0
             for resource, count in recipe.items():
                 if resource in cleanIngredient:
-                    xp -= cleanIngredient[resource]*eval(count)
+                    xp -= cleanIngredient[resource]*count
                 else:
                     extraCount += 1
             if extraCount == 1:
@@ -92,7 +102,7 @@ def main():
                     if k not in cleanIngredient:
                         if k not in newCleanIngredient:
                             newCleanIngredient[k] = 0
-                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/eval(v))
+                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/v)
 
     for k,v in newCleanIngredient.items():
         cleanIngredient[k] = v
@@ -105,7 +115,7 @@ def main():
             extraCount = 0
             for resource, count in recipe.items():
                 if resource in cleanIngredient:
-                    xp -= cleanIngredient[resource]*eval(count)
+                    xp -= cleanIngredient[resource]*count
                 else:
                     extraCount += 1
             if extraCount == 1:
@@ -113,7 +123,7 @@ def main():
                     if k not in cleanIngredient:
                         if k not in newCleanIngredient:
                             newCleanIngredient[k] = 0
-                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/eval(v))
+                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/v)
 
     for k,v in newCleanIngredient.items():
         cleanIngredient[k] = v
@@ -126,7 +136,7 @@ def main():
             extraCount = 0
             for resource, count in recipe.items():
                 if resource in cleanIngredient:
-                    xp -= cleanIngredient[resource]*eval(count)
+                    xp -= cleanIngredient[resource]*count
                 else:
                     extraCount += 1
             if extraCount == 1:
@@ -134,7 +144,7 @@ def main():
                     if k not in cleanIngredient:
                         if k not in newCleanIngredient:
                             newCleanIngredient[k] = 0
-                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/eval(v))
+                        newCleanIngredient[k] = max(newCleanIngredient[k], xp/v)
 
     for k,v in newCleanIngredient.items():
         cleanIngredient[k] = v
@@ -150,10 +160,10 @@ def main():
             extraThings = 0
             for resource, count in recipe.items():
                 if resource in cleanIngredient:
-                    xp -= cleanIngredient[resource]*eval(count)
+                    xp -= cleanIngredient[resource]*count
                 else:
                     extraCount += 1
-                    extraThings += eval(count)
+                    extraThings += count
             if extraCount > 1:
                 for k,v in recipe.items():
                     if k not in cleanIngredient:
@@ -164,13 +174,19 @@ def main():
     for k,v in newCleanIngredient.items():
         cleanIngredient[k] = v
 
-    for k,v in cleanIngredient.items():
-        try:
-            print(items[k], v)
-        except:
-            pass
-    with open("craftingItemValue.json","w") as j:
-        json.dump(cleanIngredient, j, indent=2)
+    return cleanIngredient
 
 if __name__ == '__main__':
-    main()
+    cleanIngredient = main(6)
+    data = {}
+    xset = np.arange(0, 30, 1)
+    for x in xset:
+        res = main(x)
+        for k,v in res.items():
+            if k not in data:
+                data[k] = {'craft':[], 'xp':[]}
+            data[k]['craft'].append(int(x))
+            data[k]['xp'].append(v)
+
+    with open("craftingItemValue.json","w") as j:
+        json.dump(data, j)
