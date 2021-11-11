@@ -109,30 +109,69 @@ def extract_places(data):
 
     return placeDict
 
+def extract_crafting(data):
+    # Crafting is actually in the item dictionary and uses the keys
+    # craftingExperience, craftingLevel, requiredResources
+    item_look_between_re = r'([a-zA-Z0-9_$]+)(?=\=\{1:\{id:1,name:"Gold").+?([a-zA-Z0-9_$]+)(?=\=function\([a-zA-Z0-9_$]+\))'
+    item_look_between = regex.search(item_look_between_re, data)
 
+    if len(item_look_between.groups()) != 2:
+        logging.error('Did not find suitable look between search terms, skipping item extraction')
+        return False
+
+    itemExpression = fr'({item_look_between.group(1)}\=)[\s\S]*?({item_look_between.group(2)}\=)'
+    x = regex.search(itemExpression, data).group(0)
+    try:
+        fullItemDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
+    except AttributeError:
+        logging.error('Did not find the proper set of items')
+        return False
+
+    logging.info('Extracting items')
+    itemDict = {}
+    pattern = regex.compile(r''',((?![^{]*})(?![^\[]*\]))''')
+    for x in regex.finditer(elementDictlike, fullItemDictlike):
+        #xText = (x.group())[1:-1].split(',')
+        xText = pattern.split(x.group()[1:-1])
+        try:
+            itemID = [xt.split(':',1)[1] for xt in xText if xt.split(':')[0] == 'id'][0]
+            itemName = [xt.split(':',1)[1] for xt in xText if xt.split(':')[0] == 'name'][0].replace('"', '')
+            craftingExperience = [xt.split(':',1)[1] for xt in xText if xt.split(':')[0] == 'craftingExperience'][0]
+            ## requiredResources is itself a dictionary, so needs special splitting
+            rsString = [xt for xt in xText if xt.split(':')[0] == 'requiredResources'][0]
+            rsString = rsString.split(':',1)[1]
+            # The resources can either be a dictionary, or a list of dictionaries
+            dpattern = regex.compile(r''',(?![^{]*})''')
+            rsString = (rsString.replace('[','')).replace(']','')
+            rss = dpattern.split(rsString)
+            rss = [ (a.replace("{","").replace("}","")).split(",") for a in rss ]
+            rss = [ { b.split(":")[0]:b.split(":")[1] for b in a } for a in rss ]
+            #rss = { a.split(":")[0] : a.split(":")[1] for a in rss }
+            #requiredResources = [xt.split(':',1) for xt in xText if xt.split(':')[0] == 'requiredResources']
+            itemDict[int(eval(itemID))] = {
+                    'craftingExperience': eval(craftingExperience),
+                    'requiredResources': rss
+                    }
+        except:
+            pass  # Not an item
+
+    return itemDict
 
 def main():
     args = pirates()
     dataFile = fetch_data(args)
 
-    enchantments = extract_enchantments(dataFile)
-    if enchantments:
-        with open('enchantments.json', 'w') as j:
-            json.dump(enchantments, j, indent=2)
-        logging.info('Wrote enchantments.json')
+    work = {'enchantments':extract_enchantments,
+            'items':extract_items,
+            'places':extract_places,
+            'crafting':extract_crafting}
 
-    items = extract_items(dataFile)
-    if items:
-        with open('items.json', 'w') as j:
-            json.dump(items, j, indent=2)
-        logging.info('Wrote items.json')
-
-    places = extract_places(dataFile)
-    if places:
-        with open('places.json', 'w') as j:
-            json.dump(places, j, indent=2)
-        logging.info('Wrote places.json')
-
+    for k,v in work.items():
+        validData = v(dataFile)
+        if validData:
+            with open(f'{k}.json', 'w') as j:
+                json.dump(validData, j, indent=2)
+            logging.info(f'Wrote {k}.json')
 
 if __name__ == '__main__':
     main()

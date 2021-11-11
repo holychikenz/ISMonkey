@@ -272,6 +272,12 @@ class ISMonkey {
       }
     }
     let listener = document.addEventListener("click", resetMenu);
+    // Hide hamburger
+    try{
+      if( document.querySelectorAll(".nav-drawer-spacer.no-levels").length == 0 ){
+        document.querySelector(".nav-drawer").className="nav-drawer drawer-closed";
+      }
+    } catch {}
   }
 }
 

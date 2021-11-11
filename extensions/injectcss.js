@@ -42,9 +42,13 @@ class InjectCSS {
       position: absolute;
       bottom: 0px;
     }
+    .game-content {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
     /*
-    .combat-fight-image-container {
-      bottom: 85px;
+    .combine-main-area {
+      height: calc(100% - 115px);
     }
     */
     .base-monster-style {
