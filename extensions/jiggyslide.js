@@ -28,9 +28,10 @@ class JiggySlide {
     let main = document.querySelector(".combine-main-area")
 
     if( block && rightside && chatbuttons && playbox ) {
-      if( document.getElementById("glass") ){
-         return success;
-       }
+      cleanElement("glass")
+      cleanElement("handler")
+      cleanElement("chat-handler")
+      cleanElement("sliderStyles")
 
       // Glass pane; DM me for a better way to do this.
       let glass = document.createElement("div")
@@ -158,5 +159,12 @@ class JiggySlide {
 
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
+  }
+}
+
+function cleanElement(id){
+  let dom = document.getElementById(id)
+  if( dom ){
+    dom.remove()
   }
 }
