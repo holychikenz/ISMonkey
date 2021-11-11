@@ -28,6 +28,9 @@ class JiggySlide {
     let main = document.querySelector(".combine-main-area")
 
     if( block && rightside && chatbuttons && playbox ) {
+      if( document.getElementById("glass") ){
+         return success;
+       }
 
       // Glass pane; DM me for a better way to do this.
       let glass = document.createElement("div")

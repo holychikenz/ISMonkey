@@ -155,6 +155,7 @@ class Dungeoneering {
           }
         }
       }
+      this.updateEQInfoBoxCallback(this)
       // Initial loading for combat stats and inventory
       // Still cannot access group food though
       // if( portion.includes("all") ){
@@ -317,6 +318,20 @@ class Dungeoneering {
     let header = document.createElement("h5")
     header.innerText = "Dungeoneering Log"
     header.append(downloadButton)
+    header.style.userSelect = "off"
+    header.style.cursor = "pointer"
+    header.addEventListener('click', function(){
+      let sdiv = document.getElementsByClassName("dungeoneering-summary");
+      if( sdiv.length > 0 ){
+        for( let i of sdiv[0].getElementsByTagName("p") ){
+          if( i.style.display == "none" ){
+            i.style.display = "block";
+          } else {
+            i.style.display = "none";
+          }
+        }
+      }
+    })
     this.summaryDiv.append(header)
     // Elapsed time
     let name = "Elapsed Time"
@@ -568,6 +583,99 @@ class Dungeoneering {
     const observer = new MutationObserver(callback);
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
+
+    /// Very simple observer for equipment area
+    self.createEQInfoBox(self);
+    const eqcallback = function(mutationsList, observer) {
+      self.updateEQInfoBoxCallback(self)
+    }
+    const eqtab = document.querySelector(".nav-tab-container.right")
+    const eqobserver = new MutationObserver(eqcallback);
+    eqobserver.observe(eqtab, config);
+    eqobserver.observe(targetNode, config);
+  }
+  updateEQInfoBoxCallback(self){
+    let combat = document.querySelector(".combat-gear-container")
+    let combatStats = document.querySelector(".combat-stats")
+    if( combat !== null ){
+      // Collect each stat
+      // let statnums = (combat.innerText).match(/\d+/g).map(Number)
+      // ... or we could just use player data?
+      let pd = self.monkey.extensions.PlayerData
+      let atkBonus = pd.combatStats.attackBonus
+      let atkSpeed = pd.combatStats.attackSpeed
+      let strBonus = pd.combatStats.strengthBonus.melee
+      let strLevel = pd.skills.strength
+      // Enchants too
+      let patience = pd.getBuffStrength("Patience")
+      let recklessness = pd.getBuffStrength("Recklessness")
+      let accuracy = pd.getBuffStrength("Accuracy")
+      let critical = pd.getBuffStrength("Critical Strike")
+      // Next max hit
+      let currentMax = Math.floor(1.3 + strLevel/10 + strBonus/80 + strLevel*strBonus/640)
+      let reqBonus = ((1+currentMax) - (1.3 + strLevel/10))/(1/80+strLevel/640)
+      // What do we want to know?
+      self.EQinfo_minhit = Math.floor(1.0 + recklessness + patience*0.3*(atkSpeed-1)**2)
+      self.EQinfo_maxhit = Math.floor(1.3 + strLevel/10 + strBonus/80 + strLevel*strBonus/640) + self.EQinfo_minhit
+      self.EQinfo_averagehit = ( self.EQinfo_maxhit * (1 + 0.05*critical*0.3) + self.EQinfo_minhit )/2.0
+      self.EQinfo_critmax = critical > 0 ? Math.floor( (self.EQinfo_maxhit - self.EQinfo_minhit + 1) * 1.3 + self.EQinfo_minhit - 1 ) : 0
+      self.EQinfo_dps = self.EQinfo_averagehit / atkSpeed
+      self.EQinfo_nextStrLevel = ( 1/(strBonus/640+0.1) ).toFixed(2) // Not even close, just the derivative
+      self.EQinfo_nextStrBonus = reqBonus - strBonus
+      if( combat.getElementsByClassName("EQInfoBox").length == 0 ){
+        combat.insertBefore(self.EQInfoBox, combatStats)
+        //combat.append(self.EQInfoBox)
+      }
+      self.updateEQInfoBox(self);
+    }
+  }
+  createEQInfoBox(self){
+    self.EQInfoBox = document.createElement("div")
+    self.EQInfoBox.className = "EQInfoBox dungeoneering-table"
+    self.EQInfoBox.style.backgroundColor = "rgba(0,0,0,0.7)";
+    self.EQInfoBox.style.border = "2px solid hsla(0,0%,75.3%,.2)";
+    // Table of stats
+    let table = document.createElement("table")
+    // HIT RANGE
+    let damageRow = document.createElement("tr")
+    let damageTitle = document.createElement("td")
+    damageTitle.innerText = "Damage"
+    let damageText = document.createElement("td")
+    //damageText.innerText = `${self.EQinfo_minhit} &mdash; ${self.EQinfo_maxhit} (Crit here)`
+    damageText.id = "EQInfo_damageText"
+    damageRow.append(damageTitle)
+    damageRow.append(damageText)
+    table.append(damageRow)
+    // DPS
+    let dpsRow = document.createElement("tr")
+    let dpsTitle = document.createElement("td")
+    dpsTitle.innerText = "Max DPS"
+    let dpsText = document.createElement("td")
+    //dpsText.innerText = `${self.EQinfo_dps.toFixed(2)}`
+    dpsText.id = "EQInfo_dpsText"
+    dpsRow.append(dpsTitle)
+    dpsRow.append(dpsText)
+    table.append(dpsRow)
+    // Strength Breakpoint
+    let bpRow = document.createElement("tr")
+    let bpTitle = document.createElement("td")
+    bpTitle.innerText = "Next Strength"
+    let bpText = document.createElement("td")
+    //bpText.innerText = `${self.EQinfo_nextStrBonus.toFixed(2)}`
+    bpText.id = "EQInfo_bpText"
+    bpRow.append(bpTitle)
+    bpRow.append(bpText)
+    table.append(bpRow)
+    // Finish up
+    self.EQInfoBox.append(table)
+  }
+  updateEQInfoBox(self){
+    let damageText = document.getElementById("EQInfo_damageText")
+    let dpsText = document.getElementById("EQInfo_dpsText")
+    let bpText = document.getElementById("EQInfo_bpText")
+    damageText.innerText = `${self.EQinfo_minhit} – ${self.EQinfo_maxhit} (${self.EQinfo_critmax})`
+    dpsText.innerText = `${self.EQinfo_dps.toFixed(2)}`
+    bpText.innerText = `${self.EQinfo_nextStrBonus.toFixed(2)}`
   }
 }
 function appendCSS(css){
