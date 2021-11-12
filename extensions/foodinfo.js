@@ -128,7 +128,12 @@ class FoodInfo {
         // Gather the ingredients
         for( let imgdom of targetNode.getElementsByClassName("cooking-item-image") ){
           let src = (imgdom.src).split("/").pop().split(".")[0].split("_").join(" ");
+          // Hacky hack hack; Should read socket and not UI, UI is a lie
           if( src == 'sage berry' ) src = 'sageberry'; // damnit
+          if( src == 'raw minnow' ) src = 'raw magnetic minnow';
+          if( src == 'raw eel' ) src = 'raw slippery eel';
+          if( src == 'raw greatwhite' ) src = 'raw great white shark';
+          if( src == 'raw hammerhead' ) src = 'raw hammerhead shark';
           use_ingredients.push(src)
         }
         // Write recipe to dom
