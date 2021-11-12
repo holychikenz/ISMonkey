@@ -47,6 +47,13 @@
   "45": "Aspect of Flame",
   "46": "Aspect of Lightning",
   "47": "Aspect of Chaos",
+  "48": "Fishing Magnetism",
+  "49": "Pungent Bait",
+  "50": "Reinforced Line",
+  "51": "Bait Preservation",
+  "52": "Oil Spill",
+  "53": "Deadliest Catch",
+  "54": "Master Chef",
   "1000": "Impenetrable Defense",
   "2000": "Nimble",
   "2001": "Demon Skin",
@@ -61,5 +68,6 @@
   "8004": "Stunned",
   "9000": "Regeneration",
   "9001": "Poisoned",
-  "10000": "Giant's Strength"
+  "10000": "Giant's Strength",
+  "10001": "Master Fisherman"
 }
