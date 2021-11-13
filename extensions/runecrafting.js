@@ -38,7 +38,7 @@ class Runecrafting {
     const config = {attributes: true, childList: false, subtree: true, characterData: true};
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
-      var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
+      var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText
       if( action === "Runecrafting" ){
         // Lets write over the runecrafting-info, its crap anyways
         self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("runecrafting");

@@ -147,7 +147,7 @@ class Smithing {
       "Stygian bar": 12000
     }
     const callback = function(mutationsList, observer) {
-      var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText;
+      var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText;
       if( action == "Smithing" ){
         self.addCSS();
         self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("smithing");
