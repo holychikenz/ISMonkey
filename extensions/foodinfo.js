@@ -93,7 +93,7 @@ class FoodInfo {
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
       // Are we cooking?
-      var action = targetNode.getElementsByClassName("nav-tab-container")[0].innerText
+      var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText
       if( action === "Cooking" ){
         // Add an element to write to if it does not exist
         var recipeDom = document.getElementById(self.cookingDomName);
@@ -134,6 +134,7 @@ class FoodInfo {
           if( src == 'raw eel' ) src = 'raw slippery eel';
           if( src == 'raw greatwhite' ) src = 'raw great white shark';
           if( src == 'raw hammerhead' ) src = 'raw hammerhead shark';
+          if( src == 'raw tentacle chunk' ) src = 'raw tentacle meat';
           use_ingredients.push(src)
         }
         // Write recipe to dom

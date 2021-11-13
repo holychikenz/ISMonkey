@@ -28,10 +28,10 @@ class JiggySlide {
     let main = document.querySelector(".combine-main-area")
 
     if( block && rightside && chatbuttons && playbox ) {
-      cleanElement("glass")
-      cleanElement("handler")
-      cleanElement("chat-handler")
-      cleanElement("sliderStyles")
+      //cleanElement("glass")
+      //cleanElement("handler")
+      //cleanElement("chat-handler")
+      //cleanElement("sliderStyles")
 
       // Glass pane; DM me for a better way to do this.
       let glass = document.createElement("div")
