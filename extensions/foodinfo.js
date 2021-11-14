@@ -45,9 +45,9 @@ class FoodInfo {
               let statblock = e.getElementsByClassName("item-stat-block")[0];
               if( statblock.innerHTML.includes("Ingredient") && !(statblock.innerHTML.includes("Size")) ){
                 let foodEntry = self.foods[name];
-                statblock.innerHTML += "<br/>Size: " + foodEntry.size +"<br/>Tags:";
+                statblock.innerHTML += "<br/>Size: " + foodEntry.size + "<br/>Difficulty: " + foodEntry.difficulty + "<br/>Tags:";
                 for(let key in foodEntry){
-                  if( key != "size" && foodEntry[key]==1 ){
+                  if( key != "size" && foodEntry[key]==1 && key != "difficulty" ){
                     statblock.innerHTML += " " + key.charAt(0).toUpperCase() +key.slice(1) + ","
                   }
                 }
