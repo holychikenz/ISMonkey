@@ -14,6 +14,8 @@ class LootTracking{
   constructor(monkey, options){
     this.options = options
     this.monkey = monkey
+    // We can reject data based on version server-side
+    this.version = 1
   }
   connect(){
     let self = this
@@ -37,6 +39,7 @@ class LootTracking{
   }
   config(){
     this.data = new Map();
+    this.action = "";
     // Need to store certain data which is important to the logs that does not
     // come with the lootlog message.
     this.eliteChallenges = {}
@@ -59,6 +62,7 @@ class LootTracking{
     if( index == "update player" ){
       if( value.portion == "combatArea" ){
         this.currentZone = value.value
+        this.action = "combat"
       }
       // Todo, complete a new elite challenge and get update message
       if( value.portion == "all" ){
@@ -71,6 +75,7 @@ class LootTracking{
         if( value.value.length > 0 ){
           let inner = value.value[0]
           if( typeof inner.action !== 'undefined' ){
+            this.action = inner.action
             if( inner.action == "combat" ){
               // Something weird with zone "0" -- exit dungeon i guess
               // Need to be careful though, if players dodge certain monsters
@@ -117,13 +122,18 @@ class LootTracking{
     }
     // Record lootlog information
     if( index == "lootlog kill" ){
-      let person = value
-      this.increaseKill(person)
+      // Only record combat
+      if( this.action == "combat" ){
+        let person = value
+        this.increaseKill(person)
+      }
     }
     if( index == "lootlog loot" ){
-      let person = value.name
-      let loot = value.loot
-      this.addLoot(person, loot)
+      if( this.action == "combat" ){
+        let person = value.name
+        let loot = value.loot
+        this.addLoot(person, loot)
+      }
     }
     // We can send the payload off early when a zone is left (or dungeon is complete)
     // Chests and such
@@ -190,7 +200,7 @@ class LootTracking{
     if( self.data.size > 0 ){
       let payload = JSON.stringify(toJSobject(self.data));
       // let suburl = `http://127.0.0.1:5000/?data=${payload}`
-      let suburl = `https://ismonkey.xyz/?data=${payload}`
+      let suburl = `https://ismonkey.xyz/?version=${this.version}&data=${payload}`
       console.info("Submitting Loot Data", self.data)
       fetch(suburl, {mode:'no-cors',credentials:'omit',method:'GET'})
       //let xml = new XMLHttpRequest()
@@ -205,7 +215,7 @@ class LootTracking{
     // No cooldown
     //let payload = JSON.stringify(toJSobject(chestContents));
     let payload = JSON.stringify(chestContents);
-    let suburl = `https://ismonkey.xyz/?chest=${payload}`
+    let suburl = `https://ismonkey.xyz/?version=${this.version}&chest=${payload}`
     console.info("Sumbitting chest drops", chestContents)
     fetch(suburl, {mode:'no-cors',credentials:'omit',method:'GET'})
   }
