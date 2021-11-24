@@ -42,7 +42,7 @@ class Statistics {
     let container = document.getElementsByClassName('nav-drawer-container')[0];
     container.append(tab);
 
-    outerDiv.addEventListener('click', () => self.drawStatisticsPanel(self) );
+    tab.addEventListener('click', () => self.drawStatisticsPanel(self) );
   }
 
   drawStatisticsPanel (self) {
