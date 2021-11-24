@@ -42,6 +42,7 @@ class Statistics {
 
     let container = document.getElementsByClassName("nav-drawer-container")[0];
     for( let i=0; i < container.children.length; i++ ){
+      console.log(container.children[i]);
       if( container.children[i].innerText.indexOf("Settings")>-1 ){
         container.insertBefore(outerDiv, container.children[i+1]);
         break;
