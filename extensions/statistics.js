@@ -39,62 +39,61 @@ class Statistics {
     innerDiv.className="monkey";
     innerDiv.innerHTML+="Statistics";
     outerDiv.append(innerDiv);
+
+    let container = document.getElementsByClassName("nav-drawer-container")[0];
+    for( let i=0; i < container.children.length; i++ ){
+      if( container.children[i].innerText.indexOf("Settings")>-1 ){
+        container.insertBefore(outerDiv, container.children[i+1]);
+        break;
+      }
+    }
+    outerDiv.addEventListener('click', () => self.drawStatisticsMenu(self) );
   }
 
-  //   let container = document.getElementsByClassName("nav-drawer-container")[0];
-  //   for( let i=0; i < container.children.length; i++ ){
-  //     if( container.children[i].innerText.indexOf("Settings")>-1 ){
-  //       container.insertBefore(outerDiv, container.children[i+1]);
-  //       break;
-  //     }
-  //   }
-  //   outerDiv.addEventListener('click', () => self.drawStatisticsMenu(self) );
-  // }
+  drawStatisticsMenu (self) {
+    let container = document.getElementsByClassName("play-area-container")[0];
+    //container.innerHTML=""
+    let icon = document.createElement("IMG");
+    icon.className="nav-tab-icon icon-border monkey";
+    icon.src="/images/ui/hiscore_icon.png";
+    let innerDiv = document.createElement("DIV");
+    innerDiv.append(icon);
+    innerDiv.innerHTML+="Statistics";
+    let tabName = container.getElementsByClassName("nav-tab-left")[0];
+    let tabClone = tabName.cloneNode(true);
+    document.getElementsByClassName("nav-tab-container")[0].prepend(tabClone);
+    tabClone.innerHTML="";
+    tabClone.append(innerDiv);
+    tabClone.id="monkeyStatistics";
+    tabName.style.display="none";
+    // Setup Menu
+    let playArea = container.getElementsByClassName("play-area")[0];
+    let playClone = playArea.cloneNode(true);
+    playClone.className="play-area monkey theme-default";
+    playClone.innerHTML=""
+    container.append(playClone)
+    playArea.style.display="none";
+    self.fillSettingsDom(self, playClone);
 
-  // drawStatisticsMenu (self) {
-  //   let container = document.getElementsByClassName("play-area-container")[0];
-  //   //container.innerHTML=""
-  //   let icon = document.createElement("IMG");
-  //   icon.className="nav-tab-icon icon-border monkey";
-  //   icon.src="/images/ui/hiscore_icon.png";
-  //   let innerDiv = document.createElement("DIV");
-  //   innerDiv.append(icon);
-  //   innerDiv.innerHTML+="Statistics";
-  //   let tabName = container.getElementsByClassName("nav-tab-left")[0];
-  //   let tabClone = tabName.cloneNode(true);
-  //   document.getElementsByClassName("nav-tab-container")[0].prepend(tabClone);
-  //   tabClone.innerHTML="";
-  //   tabClone.append(innerDiv);
-  //   tabClone.id="monkeySettings";
-  //   tabName.style.display="none";
-  //   // Setup Menu
-  //   let playArea = container.getElementsByClassName("play-area")[0];
-  //   let playClone = playArea.cloneNode(true);
-  //   playClone.className="play-area monkey theme-default";
-  //   playClone.innerHTML=""
-  //   container.append(playClone)
-  //   playArea.style.display="none";
-  //   self.fillSettingsDom(self, playClone);
+    // function resetMenu(e) {
+    //   if( !e.target.classList.contains("monkey") ){
+    //     tabName.style.display="block";
+    //     playArea.style.display="block";
+    //     tabClone.remove();
+    //     playClone.remove();
+    //     document.removeEventListener("click", resetMenu);
+    //   }
+    // }
+    // let listener = document.addEventListener("click", resetMenu);
+    // // Hide hamburger
+    // try{
+    //   if( document.querySelectorAll(".nav-drawer-spacer.no-levels").length == 0 ){
+    //     document.querySelector(".nav-drawer").className="nav-drawer drawer-closed";
+    //   }
+    // } catch {}
+  }
 
-  //   function resetMenu(e) {
-  //     if( !e.target.classList.contains("monkey") ){
-  //       tabName.style.display="block";
-  //       playArea.style.display="block";
-  //       tabClone.remove();
-  //       playClone.remove();
-  //       document.removeEventListener("click", resetMenu);
-  //     }
-  //   }
-  //   let listener = document.addEventListener("click", resetMenu);
-  //   // Hide hamburger
-  //   try{
-  //     if( document.querySelectorAll(".nav-drawer-spacer.no-levels").length == 0 ){
-  //       document.querySelector(".nav-drawer").className="nav-drawer drawer-closed";
-  //     }
-  //   } catch {}
-  // }
-
-  // fillSettingsDom(self, dom){
-  //   dom.innerHTML=self.data.toString();
-  // }
+  fillSettingsDom(self, dom){
+    dom.innerHTML="test";
+  }
 }
