@@ -4,6 +4,8 @@ class Statistics {
     this.monkey = monkey;
     this.options = options;
     this.data = {};
+
+    this.insertStatisticsMenu();
   }
 
   run (obj, msg) {
@@ -17,26 +19,27 @@ class Statistics {
     }
   }
 
-  // insertStatisticsMenu (promise) {
-  //   let self = this;
-  //   promise = promise || new Promise( ()=>{} );
-  //   if( document.getElementsByClassName("nav-drawer-container").length == 0 ){
-  //     setTimeout(function(){self.insertStatisticsMenu(promise)}, 1000);
-  //     return false;
-  //   } else {
-  //     promise.then();
-  //   }
+  insertStatisticsMenu (promise) {
+    let self = this;
+    promise = promise || new Promise( ()=>{} );
+    if (document.getElementsByClassName("nav-drawer-container").length == 0) {
+      setTimeout(function() { self.insertStatisticsMenu(promise) }, 1000);
+      return false;
+    } else {
+      promise.then();
+    }
 
-  //   let outerDiv = document.createElement("DIV");
-  //   outerDiv.className="drawer-item active noselect monkey";
-  //   let icon = document.createElement("IMG");
-  //   icon.className="drawer-item-icon monkey";
-  //   icon.src="/images/ui/hiscore_icon.png";
-  //   let innerDiv = document.createElement("DIV");
-  //   innerDiv.append(icon);
-  //   innerDiv.className="monkey";
-  //   innerDiv.innerHTML+="ISMonkey";
-  //   outerDiv.append(innerDiv);
+    let outerDiv = document.createElement("DIV");
+    outerDiv.className="drawer-item active noselect monkey";
+    let icon = document.createElement("IMG");
+    icon.className="drawer-item-icon monkey";
+    icon.src="/images/ui/hiscore_icon.png";
+    let innerDiv = document.createElement("DIV");
+    innerDiv.append(icon);
+    innerDiv.className="monkey";
+    innerDiv.innerHTML+="Statistics";
+    outerDiv.append(innerDiv);
+  }
 
   //   let container = document.getElementsByClassName("nav-drawer-container")[0];
   //   for( let i=0; i < container.children.length; i++ ){
