@@ -5,7 +5,7 @@ class Statistics {
     this.options = options;
     this.data = {};
 
-    this.insertStatisticsMenu();
+    this.insertStatisticsTab();
   }
 
   run (obj, msg) {
@@ -19,79 +19,49 @@ class Statistics {
     }
   }
 
-  insertStatisticsMenu (promise) {
+  insertStatisticsTab (promise) {
     let self = this;
     promise = promise || new Promise( ()=>{} );
-    if (document.getElementsByClassName("nav-drawer-container").length == 0) {
-      setTimeout(function() { self.insertStatisticsMenu(promise) }, 1000);
+    if (document.getElementsByClassName('nav-tab-container').length == 0) {
+      setTimeout(function() { self.insertStatisticsTab(promise) }, 1000);
       return false;
     } else {
       promise.then();
     }
 
-    let outerDiv = document.createElement("DIV");
-    outerDiv.className="drawer-item active noselect monkey";
-    let icon = document.createElement("IMG");
-    icon.className="drawer-item-icon monkey";
-    icon.src="/images/ui/hiscore_icon.png";
-    let innerDiv = document.createElement("DIV");
-    innerDiv.append(icon);
-    innerDiv.className="monkey";
-    innerDiv.innerHTML+="Statistics";
-    outerDiv.append(innerDiv);
+    let tab = document.createElement('div');
+    tab.className = 'nav-tab noselect'
 
-    let container = document.getElementsByClassName("nav-drawer-container")[0];
-    for( let i=0; i < container.children.length; i++ ){
-      console.log(container.children[i]);
-      if( container.children[i].innerText.indexOf("Settings")>-1 ){
-        container.insertBefore(outerDiv, container.children[i+1]);
-        break;
-      }
-    }
-    outerDiv.addEventListener('click', () => self.drawStatisticsMenu(self) );
+    let icon = document.createElement('img');
+    icon.className = 'nav-tab-icon icon-border';
+    icon.src = '/images/ui/hiscore_icon.png';
+
+    tab.append(icon);
+    tab.innerHTML += 'Statistics';
+
+    let container = document.getElementsByClassName('nav-drawer-container')[0];
+    container.append(tab);
+
+    outerDiv.addEventListener('click', () => self.drawStatisticsPanel(self) );
   }
 
-  drawStatisticsMenu (self) {
-    let container = document.getElementsByClassName("play-area-container")[0];
-    //container.innerHTML=""
-    let icon = document.createElement("IMG");
-    icon.className="nav-tab-icon icon-border monkey";
-    icon.src="/images/ui/hiscore_icon.png";
-    let innerDiv = document.createElement("DIV");
-    innerDiv.append(icon);
-    innerDiv.innerHTML+="Statistics";
-    let tabName = container.getElementsByClassName("nav-tab-left")[0];
-    let tabClone = tabName.cloneNode(true);
-    document.getElementsByClassName("nav-tab-container")[0].prepend(tabClone);
-    tabClone.innerHTML="";
-    tabClone.append(innerDiv);
-    tabClone.id="monkeyStatistics";
-    tabName.style.display="none";
-    // Setup Menu
-    let playArea = container.getElementsByClassName("play-area")[0];
-    let playClone = playArea.cloneNode(true);
-    playClone.className="play-area monkey theme-default";
-    playClone.innerHTML=""
-    container.append(playClone)
-    playArea.style.display="none";
-    self.fillSettingsDom(self, playClone);
+  drawStatisticsPanel (self) {
+    let container = document.getElementsByClassName('right-panel-content')[0];
+    container.clear();
 
-    // function resetMenu(e) {
-    //   if( !e.target.classList.contains("monkey") ){
-    //     tabName.style.display="block";
-    //     playArea.style.display="block";
-    //     tabClone.remove();
-    //     playClone.remove();
-    //     document.removeEventListener("click", resetMenu);
-    //   }
-    // }
-    // let listener = document.addEventListener("click", resetMenu);
-    // // Hide hamburger
-    // try{
-    //   if( document.querySelectorAll(".nav-drawer-spacer.no-levels").length == 0 ){
-    //     document.querySelector(".nav-drawer").className="nav-drawer drawer-closed";
-    //   }
-    // } catch {}
+    let panel = document.createElement('div');
+    panel.className = 'statistics-panel';
+    container.append(panel);
+
+    panel.innerHTML = 'test123';
+
+    function resetMenu(e) {
+      if (!e.target.classList.contains('monkey')){
+        panel.remove();
+        document.removeEventListener('click', resetMenu);
+      }
+    }
+    let listener = document.addEventListener('click', resetMenu);
   }
 
   fillSettingsDom(self, dom){
