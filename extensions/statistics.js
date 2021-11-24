@@ -186,13 +186,15 @@ class Statistics {
           var kills = self.data.data.monsterKills[zoneID];
           var gridItem = document.createElement('div');
           gridItem.className = 'statistics-grid-item';
-          gridItem.innerHTML = '<strong> ' + zoneName + '</strong><div class="statistics-monsters">';
+          gridItem.innerHTML = '<strong> ' + zoneName + '</strong>';
+          let monstersHTML = '<div class="statistics-monsters">';
           for (let monsterID in kills) {
               let name = self.getMonsterName(monsterID);
               let image = self.getMonsterImage(monsterID);
-              gridItem.innerHTML += '<div class="img-wrapper"><img src="https://idlescape.com/images/combat/monsters/' + image + '" alt="' + name + '"></div>' + kills[monsterID];
+             monstersHTML += '<div>' + self.fmt.format(kills[monsterID]) + '<div class="img-wrapper"><img src="https://idlescape.com/images/combat/monsters/' + image + '" alt="' + name + '"></div></div>';
           }
-          gridItem.innerHTML += '</div>'
+          monstersHTML += '</div>';
+          gridItem.innerHTML += monstersHTML;
           inner.append(gridItem);
         }
       }
