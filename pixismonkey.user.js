@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Dev_ISMonkeyLoader
+// @name         P1X_ISMonkeyLoader
 // @version      0.5.27
-// @description  ISMonkey Extension Loader P1x Branch
+// @description  ISMonkey Extension Loader P1X Dev Branch
 // @author       PIX
 // @namespace    ISMonkey
 // @updateURL    https://raw.githubusercontent.com/platinumscott/ISMonkey/dev/devismonkey.user.js
