@@ -1,4 +1,5 @@
 class Statistics {
+  
   constructor (monkey, options) {
     this.monkey = monkey;
     this.options = options;
@@ -14,7 +15,7 @@ class Statistics {
         this.data = value;
       }
     }
-  },
+  }
 
   insertStatisticsMenu (promise) {
     let self=this;
@@ -44,16 +45,8 @@ class Statistics {
         break;
       }
     }
-    outerDiv.addEventListener('click', () => self.drawSettingsMenu(self) );
-    // Popup for reset
-    if( self.reset ){
-      let title = "Welcome to ISMonkey"
-      let body = `
-         The settings have been reset either due to a large update, or a fresh install.
-         Please find the ISMonkey settings in the side panel to select extensions.`
-      displayMessage(title, body)
-    }
-  },
+    outerDiv.addEventListener('click', () => self.drawStatisticsMenu(self) );
+  }
 
   drawStatisticsMenu(self){
     let container = document.getElementsByClassName("play-area-container")[0];
@@ -96,7 +89,7 @@ class Statistics {
         document.querySelector(".nav-drawer").className="nav-drawer drawer-closed";
       }
     } catch {}
-  },
+  }
 
   fillSettingsDom(self, dom){
     dom.innerHTML=self.data.toString();
