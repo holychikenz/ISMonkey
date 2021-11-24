@@ -18,7 +18,7 @@ class Statistics {
   }
 
   insertStatisticsMenu (promise) {
-    let self=this;
+    let self = this;
     promise = promise || new Promise( ()=>{} );
     if( document.getElementsByClassName("nav-drawer-container").length == 0 ){
       setTimeout(function(){self.insertStatisticsMenu(promise)}, 1000);
@@ -48,7 +48,7 @@ class Statistics {
     outerDiv.addEventListener('click', () => self.drawStatisticsMenu(self) );
   }
 
-  drawStatisticsMenu(self){
+  drawStatisticsMenu (self) {
     let container = document.getElementsByClassName("play-area-container")[0];
     //container.innerHTML=""
     let icon = document.createElement("IMG");
