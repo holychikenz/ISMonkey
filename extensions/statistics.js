@@ -63,15 +63,18 @@ class Statistics {
       .statistics-panel-inner {
         display: grid;
         grid-template-columns: 50% 50%;
-        padding: 15px;
+        padding: 5px;
       }
 
       .statistics-grid-item {
-        padding: 10px;
-      }
-
-      .statistics-grid-item strong {
-        font-size: 125%;
+        padding: 35px 35px 15px;
+        width: 100%;
+        border-image-source: url(/images/ui/stone-9slice.png);
+        border-image-slice: 100 fill;
+        border-image-width: 100px;
+        border-image-outset: 0;
+        border-image-repeat: repeat;
+        text-align: center;
       }
 
       .statistics-monsters {
@@ -82,11 +85,10 @@ class Statistics {
       .statistics-monsters > div {
         width: 75px;
         text-align: center;
-        padding: 5px 0;
       }
 
       .statistics-grid-item .img-wrapper {
-        padding: 10px 12px;
+        padding: 5px 8px;
         height: 75px;
       }
 
@@ -157,16 +159,20 @@ class Statistics {
       el.addEventListener('click', () => {
         self.deselectTab(self.tab);
         self.hide(self.panel);
+        self.getOtherPanels().forEach(self.show);
+        self.selectTab(el);
       })
     });
+  }
+
+  getOtherPanels() {
+      return document.querySelectorAll('.inventory-panel, .combat-gear-container, .game-right-panel-social');
   }
 
   drawStatisticsPanel (self) {
     self.otherTabs.forEach(self.deselectTab);
     self.selectTab(self.tab);
-
-    let otherPanels = document.querySelectorAll('.inventory-panel, .combat-gear-container, .game-right-panel-social');
-    otherPanels.forEach(self.hide);
+    self.getOtherPanels().forEach(self.hide);
 
     if (!self.panel) {
       self.panel = document.createElement('div');
@@ -186,7 +192,7 @@ class Statistics {
           var kills = self.data.data.monsterKills[zoneID];
           var gridItem = document.createElement('div');
           gridItem.className = 'statistics-grid-item';
-          gridItem.innerHTML = '<strong> ' + zoneName + '</strong>';
+          gridItem.innerHTML = '<h5> ' + zoneName + '</h5>';
           let monstersHTML = '<div class="statistics-monsters">';
           for (let monsterID in kills) {
               let name = self.getMonsterName(monsterID);
