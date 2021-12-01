@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         P1X_ISMonkeyLoader
-// @version      0.5.27
+// @version      0.5.28
 // @description  ISMonkey Extension Loader P1X Dev Branch
 // @author       PIX
 // @namespace    ISMonkey
