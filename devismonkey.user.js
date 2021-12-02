@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dev_ISMonkeyLoader
-// @version      0.5.13
+// @version      0.5.14
 // @description  ISMonkey Extension Loader Dev Branch
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -18,6 +18,7 @@
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/animationcancel.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/runecrafting.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/smithing.js
+// @require      https://raw.githubusercontent.com/platinumscott/ISMonkey/main/extensions/statistics.js
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
@@ -32,6 +33,7 @@
   // Socket Listeners
   ismonkey.addSocketExtension( Dungeoneering, options );
   ismonkey.addSocketExtension( LootTracking, options );
+  ismonkey.addSocketExtension( Statistics, options );
   // Mutation Observers / Async Extensions
   ismonkey.addAsyncExtension( FoodInfo, options );
   ismonkey.addAsyncExtension( InjectCSS, options );
