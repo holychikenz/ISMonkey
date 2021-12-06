@@ -138,15 +138,15 @@ class PlayerData {
     return ''
   }
   getBuffStrength(buff){
-    var totalBuff = get(this.enchantments, buff, 0) + get(this.buffs, buff, 0) + get(this.combatBuffs, buff, 0) + get(this.globals, buff, 0);
+    var totalBuff = parseInt(get(this.enchantments, buff, 0)) + parseInt(get(this.buffs, buff, 0)) + parseInt(get(this.combatBuffs, buff, 0)) + parseInt(get(this.globals, buff, 0));
     return totalBuff;
   }
   getEffectiveLevel(skill){
-    var totalLevel = get(this.skills, skill, 1) + get(this.tools, skill, 0) + get(this.mastery, skill, 0);
+    var totalLevel = parseInt(get(this.skills, skill, 1)) + parseInt(get(this.tools, skill, 0)) + parseInt(get(this.mastery, skill, 0));
     return totalLevel;
   }
   getItemStackSize(itm){
-    return get(this.stockpile, itm, 0);
+    return parseInt(get(this.stockpile, itm, 0));
   }
   getCombatInventoryCount(){
     return Object.keys(this.combatInventory).length;
