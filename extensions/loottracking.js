@@ -15,7 +15,7 @@ class LootTracking{
     this.options = options
     this.monkey = monkey
     // We can reject data based on version server-side
-    this.version = 1
+    this.version = 2
   }
   connect(){
     let self = this
@@ -156,8 +156,8 @@ class LootTracking{
     }
   }
   getTotalTH(){
-    let enchant = this.monkey.extensions.PlayerData.getBuffStrength("Treasure Hunter")
-    let zoneTH = get(this.eliteChallenges, this.currentZone, 0)
+    let enchant = parseInt( this.monkey.extensions.PlayerData.getBuffStrength("Treasure Hunter") )
+    let zoneTH = parseInt( get(this.eliteChallenges, this.currentZone, 0) )
     return enchant + zoneTH
   }
 
@@ -173,6 +173,7 @@ class LootTracking{
     // some predetermined min-max; otherwise it is using the loot multiplier. Loot will be organized
     // as "name":{ "multiplicity": {}, "total": int, "minimum": int, "maximum": int }
     let killMap = this.data.selectMap(this.currentZone).selectMap(this.getTotalTH()).selectMap(this.scrollModifier).selectMap(this.groupSize).selectMap(this.isGroupLeader).selectMap(name);
+    console.log("TH:", this.getTotalTH())
     let lootMap = killMap.selectMap("loot").selectMap(loot[0]);
     let unique = lootMap.selectMap("multiplicity");
     if( loot[1] < 10 ){ //arbitrary

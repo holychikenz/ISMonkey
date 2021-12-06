@@ -28,12 +28,9 @@ class JiggySlide {
     let main = document.querySelector(".combine-main-area")
 
     if( block && rightside && chatbuttons && playbox ) {
-      //cleanElement("glass")
-      //cleanElement("handler")
-      //cleanElement("chat-handler")
-      //cleanElement("sliderStyles")
 
       // Glass pane; DM me for a better way to do this.
+      cleanElement("glass")
       let glass = document.createElement("div")
       glass.style.position = "fixed"
       glass.id = "glass"
@@ -48,6 +45,8 @@ class JiggySlide {
       glass.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
       document.body.appendChild(glass)
 
+
+      cleanElement("handler")
       let slider = document.createElement("div")
       slider.id = "handler"
       slider.style.minWidth = "5px"
@@ -70,6 +69,7 @@ class JiggySlide {
       // Lets do the same for chat and remove those up/down buttons
       chatbuttons.style.display = "none"
 
+      cleanElement("chat-handler")
       let chatslider = document.createElement("div");
       chatslider.id = "chat-handler"
       chatslider.style.height = "5px"
@@ -89,6 +89,7 @@ class JiggySlide {
         document.onmouseup = () => {document.onmousemove = document.onmouseup = null; glass.style.display = "none";}
       }
       success = true;
+      cleanElement("sliderStyles")
       var sliderstyle = document.createElement("style")
       sliderstyle.id = "sliderStyles"
       sliderstyle.innerHTML =
