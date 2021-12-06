@@ -173,7 +173,6 @@ class LootTracking{
     // some predetermined min-max; otherwise it is using the loot multiplier. Loot will be organized
     // as "name":{ "multiplicity": {}, "total": int, "minimum": int, "maximum": int }
     let killMap = this.data.selectMap(this.currentZone).selectMap(this.getTotalTH()).selectMap(this.scrollModifier).selectMap(this.groupSize).selectMap(this.isGroupLeader).selectMap(name);
-    console.log("TH:", this.getTotalTH())
     let lootMap = killMap.selectMap("loot").selectMap(loot[0]);
     let unique = lootMap.selectMap("multiplicity");
     if( loot[1] < 10 ){ //arbitrary
