@@ -17,7 +17,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "egg": {
     "exp": 5,
@@ -37,7 +38,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "raw anchovy": {
     "exp": 5,
@@ -57,7 +59,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "raw shrimp": {
     "exp": 5,
@@ -77,7 +80,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "banana": {
     "exp": 5,
@@ -97,7 +101,8 @@
     "spice": 0,
     "sweetener": 1,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "wildberry": {
     "exp": 10,
@@ -117,7 +122,8 @@
     "spice": 0,
     "sweetener": 1,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "sageberry": {
     "exp": 25,
@@ -137,7 +143,8 @@
     "spice": 0,
     "sweetener": 1,
     "preservative": 0,
-    "difficulty": 5
+    "difficulty": 5,
+    "christmas": 0
   },
   "wheat": {
     "exp": 10,
@@ -157,7 +164,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "ichor": {
     "exp": 20,
@@ -177,7 +185,8 @@
     "spice": 1,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 4
+    "difficulty": 4,
+    "christmas": 0
   },
   "pepper": {
     "exp": 5,
@@ -197,7 +206,8 @@
     "spice": 1,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "salt": {
     "exp": 5,
@@ -217,7 +227,8 @@
     "spice": 1,
     "sweetener": 0,
     "preservative": 1,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "sugar": {
     "exp": 5,
@@ -237,7 +248,8 @@
     "spice": 1,
     "sweetener": 1,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "carrot": {
     "exp": 5,
@@ -257,7 +269,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "mushroom": {
     "exp": 15,
@@ -277,7 +290,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "raw salmon": {
     "exp": 15,
@@ -297,7 +311,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "raw trout": {
     "exp": 15,
@@ -317,7 +332,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "apple": {
     "exp": 5,
@@ -337,7 +353,8 @@
     "spice": 0,
     "sweetener": 1,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "tomato": {
     "exp": 10,
@@ -357,7 +374,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "rice": {
     "exp": 10,
@@ -377,7 +395,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "raw beef": {
     "exp": 5,
@@ -397,7 +416,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "raw chicken": {
     "exp": 5,
@@ -417,7 +437,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "goblin brain": {
     "exp": 10,
@@ -437,7 +458,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "chili pepper": {
     "exp": 10,
@@ -457,7 +479,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "potato": {
     "exp": 10,
@@ -477,7 +500,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 2
+    "difficulty": 2,
+    "christmas": 0
   },
   "butter": {
     "exp": 15,
@@ -497,7 +521,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "raw lobster": {
     "exp": 25,
@@ -517,7 +542,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "raw tuna": {
     "exp": 20,
@@ -537,7 +563,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "ashes": {
     "exp": 15,
@@ -557,7 +584,8 @@
     "spice": 1,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "honey": {
     "exp": 15,
@@ -577,7 +605,8 @@
     "spice": 1,
     "sweetener": 1,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "pumpkin": {
     "exp": 15,
@@ -597,7 +626,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "raw shark": {
     "exp": 30,
@@ -617,7 +647,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 4
+    "difficulty": 4,
+    "christmas": 0
   },
   "spider legs": {
     "exp": 20,
@@ -637,7 +668,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 4
+    "difficulty": 4,
+    "christmas": 0
   },
   "raw megalodon": {
     "exp": 50,
@@ -657,7 +689,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 7
+    "difficulty": 7,
+    "christmas": 0
   },
   "raw ancient lobster": {
     "exp": 40,
@@ -677,7 +710,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 5
+    "difficulty": 5,
+    "christmas": 0
   },
   "raw huge tuna": {
     "exp": 45,
@@ -697,7 +731,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 6
+    "difficulty": 6,
+    "christmas": 0
   },
   "raw magnetic minnow": {
     "exp": 10,
@@ -717,7 +752,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
   },
   "raw tigerfish": {
     "exp": 25,
@@ -737,7 +773,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "raw slippery eel": {
     "exp": 25,
@@ -757,7 +794,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "raw great white shark": {
     "exp": 40,
@@ -777,7 +815,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 5
+    "difficulty": 5,
+    "christmas": 0
   },
   "raw hammerhead shark": {
     "exp": 35,
@@ -797,7 +836,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 5
+    "difficulty": 5,
+    "christmas": 0
   },
   "raw crab": {
     "exp": 30,
@@ -817,7 +857,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 3
+    "difficulty": 3,
+    "christmas": 0
   },
   "raw tentacle meat": {
     "exp": 75,
@@ -837,7 +878,8 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 9
+    "difficulty": 9,
+    "christmas": 0
   },
   "seaweed": {
     "exp": 5,
@@ -857,6 +899,28 @@
     "spice": 0,
     "sweetener": 0,
     "preservative": 0,
-    "difficulty": 1
+    "difficulty": 1,
+    "christmas": 0
+  },
+  "cookie dough": {
+    "exp": 5,
+    "size": 1,
+    "heat": 5,
+    "buff": "",
+    "fruit": 0,
+    "vegetable": 0,
+    "grain": 0,
+    "dairy": 0,
+    "egg": 0,
+    "meat": 0,
+    "beast": 0,
+    "poultry": 0,
+    "fish": 0,
+    "monster": 0,
+    "spice": 0,
+    "sweetener": 1,
+    "preservative": 0,
+    "difficulty": 1,
+    "christmas": 1
   }
 }

@@ -316,5 +316,13 @@
     ],
     "HP": 4,
     "Name": "Monster Gelato"
+  },
+  "7005": {
+    "Ingredients": [
+      "sweetener",
+      "christmas"
+    ],
+    "HP": 2,
+    "Name": "Cookie"
   }
 }
