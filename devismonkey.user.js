@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dev_ISMonkeyLoader
-// @version      0.5.17
+// @version      0.5.18
 // @description  ISMonkey Extension Loader Dev Branch
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -34,8 +34,8 @@
   ismonkey.addSocketExtension( Dungeoneering, options );
   ismonkey.addSocketExtension( LootTracking, options );
   ismonkey.addSocketExtension( Statistics, options );
+  ismonkey.addSocketExtension( FoodInfo, options );
   // Mutation Observers / Async Extensions
-  ismonkey.addAsyncExtension( FoodInfo, options );
   ismonkey.addAsyncExtension( InjectCSS, options );
   ismonkey.addAsyncExtension( JiggySlide, options );
   ismonkey.addAsyncExtension( AnimationCancel, options );
