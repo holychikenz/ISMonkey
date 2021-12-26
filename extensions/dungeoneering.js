@@ -687,31 +687,32 @@ function appendCSS(css){
   }
   document.head.append(style);
 }
-function dnum(num, p) {
-    let snum = ""
-    if( num > 1000000 ){
-        snum = `${(num/1e6).toFixed(p)} M`
-    }
-    else if( num > 1000 ){
-        snum = `${(num/1e3).toFixed(p)} k`
-    }
-    else{
-        snum = `${(num).toFixed(p)}`
-    }
-    return snum
-}
-
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-function timeFormat(time){
-  time = Math.floor(time);
-  let hours = Math.floor(time/3600);
-  let minutes = Math.floor((time-(hours*3600))/60);
-  let seconds = time - (hours*3600) - (minutes*60);
-  if( hours < 10 ){hours = `0${hours}`;}
-  if( minutes < 10 ){minutes = `0${minutes}`;}
-  if( seconds < 10 ){seconds = `0${seconds}`;}
-  return `${hours}:${minutes}:${seconds}`;
-}
+//function dnum(num, p) {
+//    let snum = ""
+//    if( num > 1000000 ){
+//        snum = `${(num/1e6).toFixed(p)} M`
+//    }
+//    else if( num > 1000 ){
+//        snum = `${(num/1e3).toFixed(p)} k`
+//    }
+//    else{
+//        snum = `${(num).toFixed(p)}`
+//    }
+//    return snum
+//}
+//
+//function numberWithCommas(x) {
+//  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//}
+//
+//function timeFormat(time){
+//  time = Math.floor(time);
+//  let hours = Math.floor(time/3600);
+//  let minutes = Math.floor((time-(hours*3600))/60);
+//  let seconds = time - (hours*3600) - (minutes*60);
+//  if( hours < 10 ){hours = `0${hours}`;}
+//  if( minutes < 10 ){minutes = `0${minutes}`;}
+//  if( seconds < 10 ){seconds = `0${seconds}`;}
+//  return `${hours}:${minutes}:${seconds}`;
+//}
+//

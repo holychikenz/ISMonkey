@@ -399,6 +399,37 @@ function timeFormat(time){
   return `${hours}:${minutes}:${seconds}`;
 }
 
+function timeFormatFull(time){
+  time = Math.floor(time);
+  let days = Math.floor(time/86400);
+  let rTime = time - days*86400;
+  let hours = Math.floor(rTime/3600);
+  rTime -= hours*3600;
+  let minutes = Math.floor(rTime/60);
+  rTime -= minutes*60;
+  let seconds = Math.floor(rTime)
+  let rString = ""
+  if( days > 0 ){rString += `${days}d `;}
+  if( hours > 0 || days > 0 ){rString += `${hours}h `;}
+  if( minutes > 0 || hours > 0 || days > 0 ){rString += `${minutes}m `;}
+  rString += `${seconds}s`;
+  return rString;
+}
+
+function dnum(num, p) {
+    let snum = ""
+    if( num > 1000000 ){
+        snum = `${(num/1e6).toFixed(p)} M`
+    }
+    else if( num > 1000 ){
+        snum = `${(num/1e3).toFixed(p)} k`
+    }
+    else{
+        snum = `${(num).toFixed(p)}`
+    }
+    return snum
+}
+
 function displayMessage(title, body){
   let present = document.createElement("div")
   present.role = "presentation"

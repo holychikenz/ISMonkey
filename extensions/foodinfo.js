@@ -12,8 +12,8 @@ class FoodInfo {
       data => {this.recipes = data});
   }
   connect(){
-    this.setupHintObserver();
     this.setupPlayer();
+    this.setupHintObserver();
     this.setupCookObserver();
   }
   setupHintObserver(promise) {
@@ -75,8 +75,68 @@ class FoodInfo {
     observer.observe(targetNode, config);
 
   }
+  selfcallback(self) {
+    // Are we cooking?
+    const targetNodeHolder = document.getElementsByClassName("play-area-container");
+    if( targetNodeHolder.length < 1 ){ return; }
+    const targetNode = targetNodeHolder[0];
+    var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText
+    if( action === "Cooking" ){
+      // Add an element to write to if it does not exist
+      var recipeDom = document.getElementById(self.cookingDomName);
+      if( recipeDom == null ){
+        recipeDom = document.createElement("div");
+        recipeDom.id = self.cookingDomName;
+        recipeDom.className = "cooking-info";
+        recipeDom.style.border = "2px solid rgba(255, 255, 255, 0.2)"
+        recipeDom.style.position = "relative";
+        recipeDom.style.zIndex = 2;
+        targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
+      }
+      // Kill useless info
+      for( let cookingInfoDom of document.getElementsByClassName("cooking-info") ){
+        if( cookingInfoDom.id != self.cookingDomName ){
+          for( let paragraph of cookingInfoDom.getElementsByTagName("p") ){
+            if( paragraph.className != "cooking-stats" ){
+              paragraph.remove()
+            } else {
+              // Useful info
+              let newtext = ""
+              newtext += "poo"
+              //paragraph.remove()
+            }
+          }
+          for( let header5 of cookingInfoDom.getElementsByTagName("h5") ){
+            header5.remove()
+          }
+          for( let border of cookingInfoDom.getElementsByClassName("cooking-title-border") ){
+            border.remove()
+          }
+          targetNode.getElementsByClassName("cooking-controls")[0].prepend(cookingInfoDom)
+          cookingInfoDom.remove()
+        }
+      }
+      targetNode.getElementsByClassName("cooking-main")[0].style.gridTemplateColumns="4fr 4fr"
+      let use_ingredients = [];
+      // Gather the ingredients
+      for( let imgdom of targetNode.getElementsByClassName("cooking-item-image") ){
+        let src = (imgdom.src).split("/").pop().split(".")[0].split("_").join(" ");
+        // Hacky hack hack; Should read socket and not UI, UI is a lie
+        if( src == 'sage berry' ) src = 'sageberry'; // damnit
+        if( src == 'raw minnow' ) src = 'raw magnetic minnow';
+        if( src == 'raw eel' ) src = 'raw slippery eel';
+        if( src == 'raw greatwhite' ) src = 'raw great white shark';
+        if( src == 'raw hammerhead' ) src = 'raw hammerhead shark';
+        if( src == 'raw tentacle chunk' ) src = 'raw tentacle meat';
+        use_ingredients.push(src)
+      }
+      // Write recipe to dom
+      //self.level = effectiveLevel("cooking");
+      self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("cooking");
+      self.cook(recipeDom, use_ingredients);
+    }
+  };
   setupCookObserver(promise) {
-
     promise = promise || new Promise(() => {});
     let self = this;
     const targetNodeHolder = document.getElementsByClassName("play-area-container");
@@ -90,59 +150,9 @@ class FoodInfo {
     }
     const targetNode = targetNodeHolder[0];
     const config = {attributes: true, childList: false, subtree: true, characterData: true};
-    // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
-      // Are we cooking?
-      var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText
-      if( action === "Cooking" ){
-        // Add an element to write to if it does not exist
-        var recipeDom = document.getElementById(self.cookingDomName);
-        if( recipeDom == null ){
-          recipeDom = document.createElement("div");
-          recipeDom.id = self.cookingDomName;
-          recipeDom.className = "cooking-info";
-          recipeDom.style.border = "2px solid rgba(255, 255, 255, 0.2)"
-          recipeDom.style.position = "relative";
-          recipeDom.style.zIndex = 2;
-          targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
-        }
-        // Kill useless info
-        for( let cookingInfoDom of document.getElementsByClassName("cooking-info") ){
-          if( cookingInfoDom.id != self.cookingDomName ){
-            for( let paragraph of cookingInfoDom.getElementsByTagName("p") ){
-              if( paragraph.className != "cooking-stats" ){
-                paragraph.remove()
-              }
-            }
-            for( let header5 of cookingInfoDom.getElementsByTagName("h5") ){
-              header5.remove()
-            }
-            for( let border of cookingInfoDom.getElementsByClassName("cooking-title-border") ){
-              border.remove()
-            }
-            targetNode.getElementsByClassName("cooking-controls")[0].prepend(cookingInfoDom)
-          }
-        }
-        targetNode.getElementsByClassName("cooking-main")[0].style.gridTemplateColumns="4fr 4fr"
-        let use_ingredients = [];
-        // Gather the ingredients
-        for( let imgdom of targetNode.getElementsByClassName("cooking-item-image") ){
-          let src = (imgdom.src).split("/").pop().split(".")[0].split("_").join(" ");
-          // Hacky hack hack; Should read socket and not UI, UI is a lie
-          if( src == 'sage berry' ) src = 'sageberry'; // damnit
-          if( src == 'raw minnow' ) src = 'raw magnetic minnow';
-          if( src == 'raw eel' ) src = 'raw slippery eel';
-          if( src == 'raw greatwhite' ) src = 'raw great white shark';
-          if( src == 'raw hammerhead' ) src = 'raw hammerhead shark';
-          if( src == 'raw tentacle chunk' ) src = 'raw tentacle meat';
-          use_ingredients.push(src)
-        }
-        // Write recipe to dom
-        //self.level = effectiveLevel("cooking");
-        self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("cooking");
-        self.cook(recipeDom, use_ingredients);
-      }
-    };
+      self.selfcallback(self)
+    }
 
     // Create an observer instance linked to the callback function
     const observer = new MutationObserver(callback);
@@ -152,7 +162,24 @@ class FoodInfo {
 
   }
   setupPlayer(){
-    this.level = 90;
+    this.burnChance = 1
+    this.experiencePerAction = 1
+    this.heatPerAction = 1
+    this.numberOfAvailableActions = 1
+    this.timePerAction = 1
+    this.totalTimeToCompleteActions = 1
+  }
+  run(obj, msg){
+    if( msg[0] == "cooking information" ){
+      let info = msg[1];
+      this.burnChance = info.burnChance
+      this.experiencePerAction = info.experiencePerAction
+      this.heatPerAction = info.heatPerAction
+      this.numberOfAvailableActions = info.numberOfAvailableActions
+      this.timePerAction = info.timePerAction
+      this.totalTimeToCompleteActions = info.totalTimeToCompleteActions
+      this.selfcallback(this)
+    }
   }
   cook(targetdom, ingredients) {
     var nIngredients = ingredients.length
@@ -218,7 +245,7 @@ class FoodInfo {
     // Left column
     var idomtxt
     idomtxt =
-      `<div style="display:flex;"><div style="flex:50%">
+      `<div style="display:flex; margin:5px;"><div style="flex:50%">
        <b>${recipe}</b> <b class="augmented-text">+${bonus}</b><br />
        [Effective Level: ${this.level}]<br />
        Heals: ${hp} hp
@@ -235,10 +262,24 @@ class FoodInfo {
       }
     }
     idomtxt += `</div></div>`
+    let inferno = self.monkey.extensions.PlayerData.getBuffStrength("Inferno")
+    let intuition = self.monkey.extensions.PlayerData.getBuffStrength("Intuition")
+    let scholar = self.monkey.extensions.PlayerData.getBuffStrength("Scholar")
+    // Cook chance, time (inferno), attempts, total time
+    let infernoCookTime = this.timePerAction * (1 - inferno*0.05)
+    let totalCookTime = this.numberOfAvailableActions * infernoCookTime
+    let totalXP = this.experiencePerAction * this.numberOfAvailableActions * ( 1 + 0.05*intuition + 0.2*scholar )
+    function ttl(n){return `<span style="display:inline-block; width:150px">${n}</span>`}
+    idomtxt += `<div style="text-align: left; margin:5px;"><hr> ${ttl("Cook chance:")} ${dnum(this.burnChance*100,2)}%<br>`
+    idomtxt += `${ttl("Heat used:")} ${dnum(this.heatPerAction, 0)} (${dnum(this.heatPerAction * this.numberOfAvailableActions)})<br>`
+    idomtxt += `${ttl("Time per action:")} ${dnum(infernoCookTime,2)}s (${timeFormatFull(totalCookTime)})<br>`
+    idomtxt += `${ttl("Experience:")} ${dnum(this.experiencePerAction, 0)} (${numberWithCommas(totalXP)})<br>`
+    idomtxt += `${ttl("Experience / Hour:")} ${dnum(totalXP / totalCookTime * 3600, 3)}<br>`
+    idomtxt += `${ttl("Available attempts:")} ${numberWithCommas(this.numberOfAvailableActions)}</div>`
     targetdom.innerHTML = idomtxt;
   }
 }
 
 const allTags = ['fruit', 'vegetable', 'grain', 'dairy', 'egg', 'meat', 'beast',
-         'poultry', 'fish', 'monster', 'spice', 'sweetener', 'preservative'];
+         'poultry', 'fish', 'monster', 'spice', 'sweetener', 'preservative', 'christmas'];
 // foods, recipes

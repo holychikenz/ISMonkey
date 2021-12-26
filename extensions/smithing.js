@@ -108,7 +108,8 @@ class Smithing {
       "Mithril bar": 5,
       "Adamantite bar": 10,
       "Runite bar": 15,
-      "Stygian bar": 25
+      "Stygian bar": 25,
+      "Magic Ice Bar": 2
     }
     var timePerBar = {
       "Bronze bar": 6,
@@ -117,7 +118,8 @@ class Smithing {
       "Mithril bar": 30,
       "Adamantite bar": 44,
       "Runite bar": 90,
-      "Stygian bar": 106
+      "Stygian bar": 106,
+      "Magic Ice Bar": 106
     }
     var expPerBar = {
       "Bronze bar": 10,
@@ -126,7 +128,8 @@ class Smithing {
       "Mithril bar": 200,
       "Adamantite bar": 300,
       "Runite bar": 1000,
-      "Stygian bar": 1500
+      "Stygian bar": 1500,
+      "Magic Ice Bar": 100
     }
     var heatPerBar = {
       "Bronze bar": 1,
@@ -135,7 +138,8 @@ class Smithing {
       "Mithril bar": 50,
       "Adamantite bar": 100,
       "Runite bar": 200,
-      "Stygian bar": 500
+      "Stygian bar": 500,
+      "Magic Ice Bar": 100
     }
     var goldPerBar = {
       "Bronze bar": 25,
@@ -144,7 +148,8 @@ class Smithing {
       "Mithril bar": 500,
       "Adamantite bar": 3000,
       "Runite bar": 9000,
-      "Stygian bar": 12000
+      "Stygian bar": 12000,
+      "Magic Ice Bar": 0
     }
     const callback = function(mutationsList, observer) {
       var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText;
@@ -179,6 +184,7 @@ class Smithing {
           "Adamantite bar": self.monkey.extensions.PlayerData.getItemStackSize("Adamantite Ore"),
           "Runite bar": self.monkey.extensions.PlayerData.getItemStackSize("Runite Ore"),
           "Stygian bar": self.monkey.extensions.PlayerData.getItemStackSize("Stygian Ore"),
+          "Magic Ice Bar": self.monkey.extensions.PlayerData.getItemStackSize("Magic Ice"),
           "ichor": self.monkey.extensions.PlayerData.getItemStackSize("Ichor")
         }
         for(let k of targetNode.getElementsByClassName("resource-container")){
@@ -197,7 +203,7 @@ class Smithing {
           let ss = `<span style="display: inline-block; width: 80px;">`
           mdom.innerHTML = `
           ${ss}Actions:</span>${numberWithCommas(operations)}<br>
-          ${ss}Time:</span>${timeFormat(totaltime)}<br>
+          ${ss}Time:</span>${timeFormatFull(totaltime)}<br>
           ${ss}Heat:</span>${numberWithCommas(totalheat)}<br>
           ${ss}Experience:</span>${numberWithCommas(experience)}`
         }
