@@ -133,7 +133,7 @@ class FoodInfo {
       // Write recipe to dom
       //self.level = effectiveLevel("cooking");
       self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("cooking");
-      self.cook(recipeDom, use_ingredients);
+      self.cook(self, recipeDom, use_ingredients);
     }
   };
   setupCookObserver(promise) {
@@ -181,7 +181,7 @@ class FoodInfo {
       this.selfcallback(this)
     }
   }
-  cook(targetdom, ingredients) {
+  cook(self, targetdom, ingredients) {
     var nIngredients = ingredients.length
     if( nIngredients == 0 ){
       targetdom.innerHTML = "";
@@ -193,29 +193,29 @@ class FoodInfo {
     var buffs = []
     for( let ingred of ingredients ){
       for( let k of allTags ){
-        scale[k] += this.foods[ingred][k] * this.foods[ingred].size
+        scale[k] += self.foods[ingred][k] * self.foods[ingred].size
       }
-      if( this.foods[ingred].buff != "" ){
-        buffs.push(this.foods[ingred].buff)
+      if( self.foods[ingred].buff != "" ){
+        buffs.push(self.foods[ingred].buff)
         if( unique(buffs).length > 1 ){
           for(let k of allTags){
-            scale[k] -= this.foods[ingred][k] * this.foods[ingred].size
+            scale[k] -= self.foods[ingred][k] * self.foods[ingred].size
           }
         }
       }
-      weight += this.foods[ingred].size
+      weight += self.foods[ingred].size
     }
     var uniqueBuffs = unique(buffs);
     var totalWeight = 0;
     for( let k in scale ){ totalWeight += scale[k] }
     var recipe = 'Questionable Food'
-    var tags = [this.foods[ingredients[0]].size]
+    var tags = [self.foods[ingredients[0]].size]
     //for( let k in scale ){ if( scale[k] > 0 ){ tags.push(scale[k]); } }
     var hp = 1
     var rUID = 0
     // Search through the menu for valid recipes
-    for( let uid in this.recipes ) {
-      var rec = this.recipes[uid]
+    for( let uid in self.recipes ) {
+      var rec = self.recipes[uid]
       if( uniqueBuffs.length > 1 ) break;
       // Check enough ingredients exist
       var validRecipe = true;
@@ -235,7 +235,7 @@ class FoodInfo {
       }
     }
 
-    var lvlBonus = Math.floor(this.level/30 - 1);
+    var lvlBonus = Math.floor(self.level/30 - 1);
     var tagBonus = (recipe == 'Questionable Food') ? 1 : Math.min(...tags);
     var bonus = lvlBonus + tagBonus;
     hp = (bonus+1)*hp;
@@ -247,7 +247,7 @@ class FoodInfo {
     idomtxt =
       `<div style="display:flex; margin:5px;"><div style="flex:50%">
        <b>${recipe}</b> <b class="augmented-text">+${bonus}</b><br />
-       [Effective Level: ${this.level}]<br />
+       [Effective Level: ${self.level}]<br />
        Heals: ${hp} hp
        `
     if( buff !== "" ){
@@ -255,7 +255,7 @@ class FoodInfo {
     }
     idomtxt += `</div><div style="flex:50%">`
     if( recipe !== 'Questionable Food' ){
-      var chosen_recipe = this.recipes[rUID];
+      var chosen_recipe = self.recipes[rUID];
       idomtxt += `<b>Recipe Tags</b><br/>`
       for(let ig of chosen_recipe.Ingredients){
         idomtxt += `${ig.charAt(0).toUpperCase()+ig.slice(1)}: ${scale[ig]}<br/>`
@@ -266,16 +266,16 @@ class FoodInfo {
     let intuition = self.monkey.extensions.PlayerData.getBuffStrength("Intuition")
     let scholar = self.monkey.extensions.PlayerData.getBuffStrength("Scholar")
     // Cook chance, time (inferno), attempts, total time
-    let infernoCookTime = this.timePerAction * (1 - inferno*0.05)
-    let totalCookTime = this.numberOfAvailableActions * infernoCookTime
-    let totalXP = this.experiencePerAction * this.numberOfAvailableActions * ( 1 + 0.05*intuition + 0.2*scholar )
+    let infernoCookTime = self.timePerAction * (1 - inferno*0.05)
+    let totalCookTime = self.numberOfAvailableActions * infernoCookTime
+    let totalXP = self.experiencePerAction * self.numberOfAvailableActions * ( 1 + 0.05*intuition + 0.2*scholar )
     function ttl(n){return `<span style="display:inline-block; width:150px">${n}</span>`}
-    idomtxt += `<div style="text-align: left; margin:5px;"><hr> ${ttl("Cook chance:")} ${dnum(this.burnChance*100,2)}%<br>`
-    idomtxt += `${ttl("Heat used:")} ${dnum(this.heatPerAction, 0)} (${dnum(this.heatPerAction * this.numberOfAvailableActions)})<br>`
+    idomtxt += `<div style="text-align: left; margin:5px;"><hr> ${ttl("Cook chance:")} ${dnum(self.burnChance*100,2)}%<br>`
+    idomtxt += `${ttl("Heat used:")} ${dnum(self.heatPerAction, 0)} (${dnum(self.heatPerAction * self.numberOfAvailableActions)})<br>`
     idomtxt += `${ttl("Time per action:")} ${dnum(infernoCookTime,2)}s (${timeFormatFull(totalCookTime)})<br>`
-    idomtxt += `${ttl("Experience:")} ${dnum(this.experiencePerAction, 0)} (${numberWithCommas(totalXP)})<br>`
+    idomtxt += `${ttl("Experience:")} ${dnum(self.experiencePerAction, 0)} (${numberWithCommas(totalXP)})<br>`
     idomtxt += `${ttl("Experience / Hour:")} ${dnum(totalXP / totalCookTime * 3600, 3)}<br>`
-    idomtxt += `${ttl("Available attempts:")} ${numberWithCommas(this.numberOfAvailableActions)}</div>`
+    idomtxt += `${ttl("Available attempts:")} ${numberWithCommas(self.numberOfAvailableActions)}</div>`
     targetdom.innerHTML = idomtxt;
   }
 }
