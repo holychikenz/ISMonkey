@@ -271,10 +271,10 @@ class FoodInfo {
     let totalXP = self.experiencePerAction * self.numberOfAvailableActions * ( 1 + 0.05*intuition + 0.2*scholar )
     function ttl(n){return `<span style="display:inline-block; width:150px">${n}</span>`}
     idomtxt += `<div style="text-align: left; margin:5px;"><hr> ${ttl("Cook chance:")} ${dnum(self.burnChance*100,2)}%<br>`
-    idomtxt += `${ttl("Heat used:")} ${dnum(self.heatPerAction, 0)} (${dnum(self.heatPerAction * self.numberOfAvailableActions)})<br>`
+    idomtxt += `${ttl("Heat used:")} ${dnum(self.heatPerAction, 0)} (${numberWithCommas((self.heatPerAction * self.numberOfAvailableActions))})<br>`
     idomtxt += `${ttl("Time per action:")} ${dnum(infernoCookTime,2)}s (${timeFormatFull(totalCookTime)})<br>`
     idomtxt += `${ttl("Experience:")} ${dnum(self.experiencePerAction, 0)} (${numberWithCommas(totalXP)})<br>`
-    idomtxt += `${ttl("Experience / Hour:")} ${dnum(totalXP / totalCookTime * 3600, 3)}<br>`
+    idomtxt += `${ttl("Experience / Hour:")} ${numberWithCommas((totalXP / totalCookTime * 3600).toFixed(0))}<br>`
     idomtxt += `${ttl("Available attempts:")} ${numberWithCommas(self.numberOfAvailableActions)}</div>`
     targetdom.innerHTML = idomtxt;
   }

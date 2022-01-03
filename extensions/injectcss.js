@@ -34,6 +34,19 @@ class InjectCSS {
     .farming-seeds {
       max-width: 100%;
     }
+    .combat-zone {
+      position: relative;
+    }
+    .combat-zone-elite-challenge {
+      left: 0%;
+    }
+    .combat-zone-group-size {
+      position: absolute;
+      height: 25px;
+      top: calc(100% - 25px);
+      margin-top: 0px;
+      left: 0px;
+    }
     .combat-player-area>div {
       width: 300px;
       padding-bottom: 85px;
