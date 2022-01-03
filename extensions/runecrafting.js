@@ -49,12 +49,13 @@ class Runecrafting {
         let scholar = self.monkey.extensions.PlayerData.getBuffStrength("Scholar");
         let tick = 5*(1 - haste*0.04)
         let xp_per_hour = Math.floor(nRunes*25*(1+0.20*scholar) / tick * 3600);
+        let runes_per_hour = nRunes / tick * 3600;
         // Todo: Add intuition
-        let information = `Runes per craft: ${nRunes}<br/>`
+        let information = `Runes per craft: ${nRunes} (${numberWithCommas(runes_per_hour.toFixed(0))} per hour)<br/>`
         information += `Runecrafting: ${rcbuff}<br/>`
         information += `Haste: ${haste}<br/>`
         information += `Scholar: ${scholar}<br/>`
-        information += `XP/Hour: ${xp_per_hour}<br/>`
+        information += `XP/Hour: ${numberWithCommas(xp_per_hour)}<br/>`
         box.innerHTML = information;
         // Loop through each essence and augments remaining, xp, time
         for(let k of targetNode.getElementsByClassName("resource-as-row-container"))
