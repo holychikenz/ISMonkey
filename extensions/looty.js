@@ -217,10 +217,19 @@ class Looty{
       }
       .nav-drawer {
         overflow-y: hidden;
+        scrollbar-gutter: stable;
+      }
+      .nav-drawer:hover {
+        overflow: auto;
+      }
+      /* Noped by firefox
+      .nav-drawer {
+        overflow-y: hidden;
       }
       .nav-drawer:hover {
         overflow: overlay;
       }
+      */
     `
     appendCSS(lootMenuCss)
     let outerDiv = document.createElement("DIV");
