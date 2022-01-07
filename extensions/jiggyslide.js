@@ -81,8 +81,9 @@ class JiggySlide {
         let dragY = e.clientY;
         glass.style.display = "block"
         document.onmousemove = function onMouseMove(e) {
-          //playbox.style.height = playbox.offsetHeight + e.clientY - dragY + "px";
-          playbox.style.height = 100*(playbox.offsetHeight + e.clientY - dragY)/main.clientHeight + "%";
+          playbox.style.height = playbox.offsetHeight + e.clientY - dragY + "px";
+          //playbox.style.height = 100*(playbox.offsetHeight + e.clientY - dragY)/main.clientHeight + "%";
+          console.log(playbox.style.height);
           localStorage.jiggyslideDRAGY = playbox.style.height;
           dragY = e.clientY;
         }
