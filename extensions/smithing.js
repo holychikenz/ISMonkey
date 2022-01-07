@@ -4,6 +4,7 @@ class Smithing {
     this.monkey = monkey
     this.classname = "Smithing"
     this.smithingDomName = "SmithingInfoDom"
+    this.smithingTableName = "SmithingInfoTable"
     this.smithstyle = document.createElement("style");
   }
   connect(){
@@ -55,9 +56,26 @@ class Smithing {
         background-position: 0;
       }
       .resource-wrapper {
-        height: 100px;
+        height: auto;
         width: 100%;
-        padding: 5px;
+        padding: 2px;
+      }
+      .resource-wrapper table{
+        height: auto;
+        table-layout: fixed;
+        width: auto;
+        padding: 10px;
+      }
+      .resource-wrapper td, tr {
+        padding: 2px;
+        padding-right: 10px;
+      }
+      .resource-wrapper input[type=number] {
+        color: white;
+        font-size: 14px;
+        border-bottom: none;
+        margin: 0px;
+        height: auto;
       }
       .resource-container-button {
         width: 100px;
@@ -99,6 +117,7 @@ class Smithing {
       return false;
     }
     self.addTooltip();
+    self.override = false;
     const targetNode = targetNodeHolder[0];
     const config = {attributes:true, childList: false, subtree: true, characterData: true};
     var orePerBar = {
@@ -151,6 +170,13 @@ class Smithing {
       "Stygian bar": 12000,
       "Magic Ice Bar": 0
     }
+    let tableValues = {
+      "Haste": 0,
+      "Scholar": 0,
+      "Pyromancy": 0,
+      "Inferno": 0,
+      "Wealth": 0,
+    }
     const callback = function(mutationsList, observer) {
       var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText;
       if( action == "Smithing" ){
@@ -161,12 +187,14 @@ class Smithing {
         let pyro = self.monkey.extensions.PlayerData.getBuffStrength("Pyromancy");
         let inferno = self.monkey.extensions.PlayerData.getBuffStrength("Inferno");
         let wealth = self.monkey.extensions.PlayerData.getBuffStrength("Wealth");
+        // Allow for user override
         // Todo: Add intuition
-        let information = `Haste ${haste}<br/>`;
-        information += `Scholar: ${scholar}<br/>`;
-        information += `Pyro: ${pyro}<br/>`;
-        information += `Inferno: ${inferno}<br/>`;
-        information += `Wealth: ${wealth}<br/>`;
+
+        //let information = `Haste ${haste}<br/>`;
+        //information += `Scholar: ${scholar}<br/>`;
+        //information += `Pyro: ${pyro}<br/>`;
+        //information += `Inferno: ${inferno}<br/>`;
+        //information += `Wealth: ${wealth}<br/>`;
         var smithingDom = document.getElementById(self.smithingDomName);
         if( smithingDom == null ){
           smithingDom = document.createElement("div");
@@ -174,7 +202,43 @@ class Smithing {
           smithingDom.className = "resource-wrapper";
           targetNode.getElementsByClassName("resource-list")[0].prepend(smithingDom);
         }
-        smithingDom.innerHTML = information;
+        smithingDom.innerHTML = '';
+        // Smithing table
+        let smithingTable = document.createElement("table");
+        function smithingRow(key, value){
+          let newRow = document.createElement("tr");
+          let keyTD = document.createElement("td");
+          let valTD = document.createElement("td");
+          keyTD.innerText = key;
+          valTD.innerText = value;
+          newRow.append(keyTD);
+          newRow.append(valTD);
+          smithingTable.append(newRow);
+          // Override input
+          let inputTD = document.createElement("td");
+          let input = document.createElement("input");
+          input.type="number";
+          input.min = 0;
+          input.max = 20;
+          input.value = tableValues[key]
+          inputTD.append(input);
+          //newRow.append(inputTD);
+          input.addEventListener('change', e=>{tableValues[key]=e.target.value;});
+        }
+        smithingRow("Haste", haste);
+        smithingRow("Scholar", scholar);
+        smithingRow("Pyromancy", pyro);
+        smithingRow("Inferno", inferno);
+        smithingRow("Wealth", wealth);
+        if( self.override ){
+          haste = tableValues.Haste;
+          scholar = tableValues.Scholar;
+          pyro = tableValues.Pyromancy;
+          inferno = tableValues.Inferno;
+          wealth = tableValues.Wealth;
+        }
+        smithingDom.append(smithingTable);
+        //smithingDom.innerHTML = information;
         let ores = {
           "tin": self.monkey.extensions.PlayerData.getItemStackSize("Tin Ore"),
           "copper": self.monkey.extensions.PlayerData.getItemStackSize("Copper Ore"),

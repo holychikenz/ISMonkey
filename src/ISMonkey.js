@@ -465,6 +465,15 @@ function displayMessage(title, body){
   backdrop.addEventListener('click', clean);
 }
 
+function appendCSS(css){
+  let style = document.createElement('style');
+  if(style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  document.head.append(style);
+}
 // Retrieve json objects: https://stackoverflow.com/questions/2499567/how-to-make-a-json-call-to-an-url/2499647#2499647
 const getJSON = async url => {
   try {

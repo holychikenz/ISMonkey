@@ -13,13 +13,14 @@ const skillIcons = {
   "strength": "/images/combat/strength_icon.png",
   "defense": "/images/combat/defense_icon.png",
   "total": "/images/total_level.png",
+  "gold": "/images/money_icon.png",
 }
 
-class Lootlog{
+class Looty{
   constructor(monkey, options){
     this.monkey = monkey;
     this.options = options;
-    this.classname = "Lootlog";
+    this.classname = "Looty";
     this.xpstat = document.createElement("span")
     this.experience = {}
     this.initExperience = {}
@@ -99,7 +100,7 @@ class Lootlog{
   }
   buildUI(self, promise){
     promise = promise || new Promise(() => {});
-    const targetNodeHolder = document.getElementsByClassName("nav-drawer");
+    const targetNodeHolder = document.getElementsByClassName("item-log-timer");
     if(targetNodeHolder.length > 0) {
       promise.then();
     }
@@ -108,7 +109,6 @@ class Lootlog{
                  }, 1000 );
       return false;
     }
-    const targetNode = targetNodeHolder[0];
     const config = {attributes: true, childList: true, subtree: true };
     // Callback function to execute when mutations are observed
     self.constructMenu(self);
@@ -127,6 +127,7 @@ class Lootlog{
     self.completeButton = resetButton.cloneNode();
     self.completeButton.innerText = "Reset"
     self.completeButton.onclick = ()=>resetButton.click();
+    self.completeButton.addEventListener('click', ()=>self.resetStats(self))
     resetButton.style.display="none";
     let timedReset = document.createElement("div");
     self.completeButton.style.float="left";
@@ -154,6 +155,7 @@ class Lootlog{
     let lootMenu = self.createLootMenu(self);
     let xpMenu = self.createExperienceMenu(self);
     let essence = self.createEssenceMenu(self);
+    let market = self.createMarketMenu(self);
 
     let drawerCat = document.createElement("div");
     drawerCat.className="drawer-category";
@@ -172,6 +174,7 @@ class Lootlog{
         // Append in reverse order -.-
         container.insertBefore(timedReset, container.children[i+1]);
         container.insertBefore(essence, container.children[i+1]);
+        container.insertBefore(market, container.children[i+1]);
         container.insertBefore(xpMenu, container.children[i+1]);
         container.insertBefore(lootMenu, container.children[i+1]);
         container.insertBefore(drawerCat, container.children[i+1]);
@@ -249,6 +252,7 @@ class Lootlog{
     let subGradient = "linear-gradient(90deg,hsla(0,0%,100%,.25),hsla(0,0%,100%,0),hsla(0,0%,100%,0),hsla(0,0%,100%,0))"
     function toggleDisplay(){
       //innerDiv.style.background = (itemLogMenu.style.display=="none")?fullGradient:subGradient;
+      innerDiv.style.borderBottom=(itemLogMenu.style.display=="none")?"2px solid #dee2e6d6":"none";
       itemLogMenu.style.display=(itemLogMenu.style.display=="none")?"block":"none";
     }
     innerDiv.addEventListener("click", toggleDisplay)
@@ -282,21 +286,10 @@ class Lootlog{
     self.experienceTable.style.display = "none";
     self.rowNameDict = {}
     function updateTable(){
+      innerDiv.style.borderBottom=(self.experienceTable.style.display=="none")?"2px solid #dee2e6d6":"none";
       self.experienceTable.style.display=(self.experienceTable.style.display=="none")?"block":"none";
     }
     outerDiv.append(self.experienceTable)
-    //   let itemLogMenu = document.getElementsByClassName("item-log-window")[0];
-    //   //let itemLogMenu = document.createElement("DIV");
-    //   //itemLogMenu.className="item-log-window";
-    //   itemLogMenu.style.display="none";
-    //   outerDiv.append(itemLogMenu);
-    //   // itemLogMenu can be modified, so should be exposed to the class
-    //   self.LootItemLog = itemLogMenu;
-    //   //outerDiv.addEventListener("click", ()=>{self.LootItemLog.display= (self.LootItemLog.display == "none") ? "block" : "none";})
-    //   function toggleDisplay(){
-    //     console.log(itemLogMenu.style.display);
-    //     itemLogMenu.style.display=(itemLogMenu.style.display=="none")?"block":"none";
-    //   }
     innerDiv.addEventListener("click", updateTable)
     return outerDiv
   }
@@ -323,6 +316,70 @@ class Lootlog{
           row.append(nameElement)
           row.append(numberElement)
         }
+      } else {
+        if( key in self.rowNameDict ){
+          self.rowNameDict[key].remove();
+          delete self.rowNameDict[key];
+        }
+      }
+    }
+  }
+  createMarketMenu(self){
+    let outerDiv = document.createElement("DIV");
+    outerDiv.className="drawer-item active noselect";
+    outerDiv.style.height="auto";
+    outerDiv.style.display="block";
+    let icon = document.createElement("IMG");
+    icon.className="drawer-item-icon";
+    icon.src="/images/ui/marketplace_icon.png";
+    icon.style.filter="drop-shadow(0 0 5px #e39700)drop-shadow(0 0 5px rgba(94,191,255,.5))"
+    let innerDiv = document.createElement("DIV");
+    innerDiv.className="drawer-item-left";
+    innerDiv.append(icon);
+    innerDiv.innerHTML+="Economy";
+    outerDiv.append(innerDiv);
+
+    // Submenu: Gold, Cooking, Crafting (others?)
+    self.marketTable = document.createElement("table");
+    self.marketTable.className="McLoot";
+    self.marketTable.style.display = "none";
+    self.marketDict = {}
+    function updateTable(){
+      innerDiv.style.borderBottom=(self.marketTable.style.display=="none")?"2px solid #dee2e6d6":"none";
+      self.marketTable.style.display=(self.marketTable.style.display=="none")?"block":"none";
+    }
+    innerDiv.addEventListener("click", updateTable)
+    outerDiv.append(self.marketTable)
+    return outerDiv
+  }
+  updateMarketTable(self){
+    let d = self.getMarketDict();
+    for( const [key, value] of Object.entries(d) ){
+      if( value > 0 ){
+        if( key in self.marketDict ){
+          let row = self.marketDict[key];
+          let elements = row.getElementsByTagName("td");
+          elements[1].innerText = `${numberWithCommas((value).toFixed(0))} / hr`
+        } else {
+          let row = document.createElement("tr");
+          self.marketTable.append(row);
+          self.marketDict[key] = row;
+          let nameElement = document.createElement("td");
+          let sIcon = document.createElement("img");
+          sIcon.className = "drawer-item-icon";
+          sIcon.src = skillIcons[key] || "/images/cooking/butter.png";
+          nameElement.append(sIcon);
+
+          let numberElement = document.createElement("td");
+          numberElement.innerText = `${numberWithCommas((value).toFixed(0))} / hr`
+          row.append(nameElement);
+          row.append(numberElement);
+        }
+      } else {
+        if( key in self.marketDict ){
+          self.marketDict[key].remove();
+          delete self.marketDict[key];
+        }
       }
     }
   }
@@ -338,7 +395,6 @@ class Lootlog{
     let innerDiv = document.createElement("DIV");
     innerDiv.className="drawer-item-left";
     innerDiv.append(icon);
-    //innerDiv.className="monkey";
     innerDiv.innerHTML+="Essence";
     outerDiv.append(innerDiv);
     return outerDiv
@@ -349,27 +405,15 @@ class Lootlog{
     self.initExperienceTimer = Date.now();
     self.gold=0
     self.cook=0
-    console.log("reset")
+    self.updateXPSTAT()
   }
   updateXPSTAT(){
-    let tabset = document.getElementsByClassName("nav-tab-left")
-    if( tabset.length > 0 ){
-      let tab = tabset[0]
-      let spacer = document.getElementsByClassName("nav-tab-spacer")[0]
-      if( typeof(tab) !== undefined ){
-        let name = (tab.innerText.split(":")[0]).toLowerCase()
-        if( name === "combat" ){
-          name = "constitution"
-        }
-        let xph = this.getExperienceDiff(name)
-        let gph = numberWithCommas((this.gold / (Date.now() - this.initExperienceTimer)*3.6e6).toFixed(0))
-        let cph = numberWithCommas((this.cook / (Date.now() - this.initExperienceTimer)*3.6e6).toFixed(0))
-        spacer.append(this.xpstat)
-        //tab.append(this.xpstat)
-        this.xpstat.innerText = `${xph} xp/hr >> ${gph} gp/hr >> ${cph} cook/hr`
-      }
-    }
     this.updateExperienceTable(this)
+    this.updateMarketTable(this)
+  }
+  getMarketDict(){
+    let now = Date.now() - this.initExperienceTimer;
+    return {gold: this.gold / now * 3.6e6, cooking: this.cook/now*3.6e6, crafting: 0};
   }
   getExperienceDiff(stat){
     let now = Date.now() - this.initExperienceTimer;

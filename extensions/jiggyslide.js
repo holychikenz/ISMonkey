@@ -112,6 +112,14 @@ class JiggySlide {
           .nav-tab, .nav-tab-flex, .nav-tab-right {
             overflow-wrap: anywhere;
           }
+          .combine-main-area {
+            padding-bottom: 10px;
+            flex: auto;
+          }
+          .game-content {
+            flex-flow: column;
+            display: flex;
+          }
         `
       document.body.appendChild(sliderstyle);
     }
