@@ -124,6 +124,7 @@ class Looty{
         resetButton = bb;
       }
     }
+    // Clone timer and set real time to invis
     self.completeButton = resetButton.cloneNode();
     self.completeButton.innerText = "Reset"
     self.completeButton.onclick = ()=>resetButton.click();
@@ -178,8 +179,8 @@ class Looty{
         container.insertBefore(xpMenu, container.children[i+1]);
         container.insertBefore(lootMenu, container.children[i+1]);
         container.insertBefore(drawerCat, container.children[i+1]);
-        // remove Loot Log
-        container.children[i].remove();
+        // remove Loot Log (invisible to make react happy)
+        container.children[i].style.display = "none";
         break;
       }
     }
