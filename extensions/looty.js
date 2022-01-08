@@ -133,8 +133,8 @@ class Looty{
     let timedReset = document.createElement("div");
     self.completeButton.style.float="left";
     self.completeButton.style.marginLeft="20px";
-    self.completeButton.style.width="100px";
     timedReset.style.display="inline-grid";
+    timedReset.style.width="100%";
     // Hold timer with icon in sub div
     let timerSubDiv = document.createElement("div");
     timerSubDiv.style.paddingLeft="25px";
@@ -174,10 +174,10 @@ class Looty{
       if( container.children[i].innerText.indexOf("Loot Log")>-1 ){
         // Append in reverse order -.-
         container.insertBefore(timedReset, container.children[i+1]);
-        container.insertBefore(essence, container.children[i+1]);
-        container.insertBefore(market, container.children[i+1]);
+        //container.insertBefore(essence, container.children[i+1]);
         container.insertBefore(xpMenu, container.children[i+1]);
         container.insertBefore(lootMenu, container.children[i+1]);
+        container.insertBefore(market, container.children[i+1]);
         container.insertBefore(drawerCat, container.children[i+1]);
         // remove Loot Log (invisible to make react happy)
         container.children[i].style.display = "none";
@@ -192,7 +192,8 @@ class Looty{
         display: flex;
         flex-direction: column;
         white-space: normal;
-        padding-right: 25px;
+        min-width: unset;
+        margin-right: 0px;
       }
       .item-log-cateogry {
         padding-top: 3px;
@@ -287,7 +288,11 @@ class Looty{
         padding: 2px;
       }
       .McLoot td {
-        padding: 5px;
+        padding: 0px;
+      }
+      .McLoot img {
+        margin-left: 10px;
+        margin-right: 10px;
       }
     `
     appendCSS(css);
