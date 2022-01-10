@@ -145,7 +145,8 @@ class JiggySlide {
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
         // Change if we go into group combat, and back if not
-        let chat = document.getElementsByClassName("play-area-chat")[0]
+        let chatBox = document.getElementsByClassName("play-area-chat")
+        let chat = (chatBox.length > 0)?chatBox[0]:'undefined';
         if( typeof chat == 'undefined' ){
           return
         }

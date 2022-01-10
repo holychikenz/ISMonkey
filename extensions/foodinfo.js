@@ -41,27 +41,29 @@ class FoodInfo {
         if(mutation.type === 'attributes'){
           document.querySelectorAll(".item-tooltip").forEach(
             e=>{
-              let name = e.getElementsByTagName("span")[1].innerHTML.toLowerCase();
-              let statblock = e.getElementsByClassName("item-stat-block")[0];
-              if( statblock.innerHTML.includes("Ingredient") && !(statblock.innerHTML.includes("Size")) ){
-                let foodEntry = self.foods[name];
-                statblock.innerHTML += "<br/>Size: " + foodEntry.size + "<br/>Difficulty: " + foodEntry.difficulty + "<br/>Tags:";
-                for(let key in foodEntry){
-                  if( key != "size" && foodEntry[key]==1 && key != "difficulty" ){
-                    statblock.innerHTML += " " + key.charAt(0).toUpperCase() +key.slice(1) + ","
+              try {
+                let name = e.getElementsByTagName("span")[1].innerHTML.toLowerCase();
+                let statblock = e.getElementsByClassName("item-stat-block")[0];
+                if( statblock.innerHTML.includes("Ingredient") && !(statblock.innerHTML.includes("Size")) ){
+                  let foodEntry = self.foods[name];
+                  statblock.innerHTML += "<br/>Size: " + foodEntry.size + "<br/>Difficulty: " + foodEntry.difficulty + "<br/>Tags:";
+                  for(let key in foodEntry){
+                    if( key != "size" && foodEntry[key]==1 && key != "difficulty" ){
+                      statblock.innerHTML += " " + key.charAt(0).toUpperCase() +key.slice(1) + ","
+                    }
+                  }
+                  // Drop the last comma
+                  statblock.innerHTML = statblock.innerHTML.slice(0, -1);
+                  if( foodEntry.buff != "" ){
+                    let buffwords = foodEntry.buff.split(" ");
+                    for( let bi=0; bi<buffwords.length; bi++ )
+                    {
+                      buffwords[bi] = buffwords[bi].charAt(0).toUpperCase() + buffwords[bi].slice(1);
+                    }
+                    statblock.innerHTML += "<br/>Buff: <b class='enchanted-text'>" + buffwords.join(" ") + "</b>"
                   }
                 }
-                // Drop the last comma
-                statblock.innerHTML = statblock.innerHTML.slice(0, -1);
-                if( foodEntry.buff != "" ){
-                  let buffwords = foodEntry.buff.split(" ");
-                  for( let bi=0; bi<buffwords.length; bi++ )
-                  {
-                    buffwords[bi] = buffwords[bi].charAt(0).toUpperCase() + buffwords[bi].slice(1);
-                  }
-                  statblock.innerHTML += "<br/>Buff: <b class='enchanted-text'>" + buffwords.join(" ") + "</b>"
-                }
-              }
+              } catch {};
             });
           break;
         }
