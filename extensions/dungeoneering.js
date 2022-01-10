@@ -554,7 +554,8 @@ class Dungeoneering {
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
       // Are we fighting
-      let action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText
+      let actionNode = targetNode.getElementsByClassName("nav-tab-left");
+      let action = (actionNode>0)?actionNode[0].innerText:"Unknown";
       if( action === "Combat" ){
         // Add an element to write to if it does not exist
         let autoEatDom = document.getElementById("DungeonAutoEat");

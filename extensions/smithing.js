@@ -178,7 +178,8 @@ class Smithing {
       "Wealth": 0,
     }
     const callback = function(mutationsList, observer) {
-      var action = targetNode.getElementsByClassName("nav-tab-left")[0].innerText;
+      let actionNode = targetNode.getElementsByClassName("nav-tab-left");
+      let action = (actionNode>0)?actionNode[0].innerText:"Unknown";
       if( action == "Smithing" ){
         self.addCSS();
         self.level = self.monkey.extensions.PlayerData.getEffectiveLevel("smithing");

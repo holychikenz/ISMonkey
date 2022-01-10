@@ -14,6 +14,17 @@ const skillIcons = {
   "defense": "/images/combat/defense_icon.png",
   "total": "/images/total_level.png",
   "gold": "/images/money_icon.png",
+  "Air Essence": "/images/runecrafting/air_essence.png",
+  "Earth Essence": "/images/runecrafting/earth_essence.png",
+  "Fire Essence": "/images/runecrafting/fire_essence.png",
+  "Water Essence": "/images/runecrafting/water_essence.png",
+  "Blood Essence": "/images/runecrafting/blood_essence.png",
+  "Death Essence": "/images/runecrafting/death_essence.png",
+  "Chaos Essence": "/images/runecrafting/chaos_essence.png",
+  "Nature Essence": "/images/runecrafting/nature_essence.png",
+  "Mind Essence": "/images/runecrafting/mind_essence.png",
+  "Cosmic Essence": "/images/runecrafting/cosmic_essence.png",
+  "Winter Essence": "/images/runecrafting/snow_essence.png",
 }
 
 class Looty{
@@ -21,13 +32,13 @@ class Looty{
     this.monkey = monkey;
     this.options = options;
     this.classname = "Looty";
-    this.xpstat = document.createElement("span")
     this.experience = {}
     this.initExperience = {}
     this.masteryExperience = {}
     this.masteryInitExperience = {}
+    this.essence = {}
+    this.initEssence = {}
     this.initExperienceTimer = Date.now();
-    this.xpstat.addEventListener("dblclick", ()=>this.resetStats(this))
     this.gold = 0
     this.cook = 0
   }
@@ -51,7 +62,10 @@ class Looty{
         self.cookbook[key] = value.exp
       }
       self.buildUI(self);
+      self.resetStats(self);
     })
+  }
+  disconnect(){
   }
   run(obj, msg){
     let call = msg[0];
@@ -59,12 +73,21 @@ class Looty{
     if( call === "update player" ){
       let portion = message.portion;
       let value = message.value;
+      // Essence in stockpile
       if( portion == "all" ){
         // Set buffs
         for(let ec in value.skills){this.experience[ec] = value.skills[ec].experience;}
         for(let ec in value.skills){this.masteryExperience[ec] = value.skills[ec].masteryExperience;}
+        for(let stock of value.stockpile){
+          let iname = stock.name;
+          if( iname.includes("Essence") ){
+            let isize = stock.stackSize;
+            this.essence[iname] = isize;
+          }
+        }
         this.initExperience = {...this.experience};
         this.initMasteryExperience = {...this.masteryExperience};
+        this.initEssence = {...this.essence};
         this.initExperienceTimer = Date.now();
       } else {
         // Skills and tools
@@ -78,6 +101,15 @@ class Looty{
           //this.initMasteryExperience = {...this.masteryExperience};
           //this.initExperienceTimer = Date.now();
         }
+      }
+      this.updateXPSTAT();
+    }
+    if( call === "update inventory" ){
+      let item = message.item;
+      let iname = item.name;
+      if( iname.includes("Essence") ){
+        let isize = item.stackSize;
+        this.essence[iname] = isize;
       }
       this.updateXPSTAT();
     }
@@ -114,6 +146,14 @@ class Looty{
     self.constructMenu(self);
   }
   constructMenu(self){
+    let menuID = "LootyMcLootface"
+    if( document.getElementById(menuID) ){
+      return;
+    }
+    let drawerCat = document.createElement("div");
+    drawerCat.className="drawer-category";
+    drawerCat.innerHTML="<b>Looty McLootface</b>";
+    drawerCat.id=menuID;
     // Maybe we also rip out the reset button and timer and move those
     let container = document.getElementsByClassName("nav-drawer-container")[0];
     let itemLogTimer = document.getElementsByClassName("item-log-timer")[0];
@@ -158,27 +198,19 @@ class Looty{
     let essence = self.createEssenceMenu(self);
     let market = self.createMarketMenu(self);
 
-    let drawerCat = document.createElement("div");
-    drawerCat.className="drawer-category";
-    drawerCat.innerHTML="<b>Looty McLootface</b>";
-    // LuteNameThing
-    // + Loot
-    // .. + Nodes
-    // + Experience
-    // .. - Skill
-    // + Essence?
-    // + Cooking
-    // + Crafting?
-    // Reset
+
+    function appendToContainer(item, con, loc ){
+      con.insertBefore(item, con.children[loc]);
+    }
     for( let i=0; i < container.children.length; i++ ){
       if( container.children[i].innerText.indexOf("Loot Log")>-1 ){
         // Append in reverse order -.-
-        container.insertBefore(timedReset, container.children[i+1]);
-        //container.insertBefore(essence, container.children[i+1]);
-        container.insertBefore(xpMenu, container.children[i+1]);
-        container.insertBefore(lootMenu, container.children[i+1]);
-        container.insertBefore(market, container.children[i+1]);
-        container.insertBefore(drawerCat, container.children[i+1]);
+        appendToContainer(timedReset, container, i+1);
+        appendToContainer(essence, container, i+1);
+        appendToContainer(xpMenu, container, i+1);
+        appendToContainer(lootMenu, container, i+1);
+        appendToContainer(market, container, i+1);
+        appendToContainer(drawerCat, container, i+1);
         // remove Loot Log (invisible to make react happy)
         container.children[i].style.display = "none";
         break;
@@ -412,7 +444,49 @@ class Looty{
     innerDiv.append(icon);
     innerDiv.innerHTML+="Essence";
     outerDiv.append(innerDiv);
+    // Essence Table
+    self.essenceTable = document.createElement("table");
+    self.essenceTable.className="McLoot";
+    self.essenceTable.style.display = "none";
+    self.essenceDict = {}
+    function updateTable(){
+      innerDiv.style.borderBottom=(self.essenceTable.style.display=="none")?"2px solid #dee2e6d6":"none";
+      self.essenceTable.style.display=(self.essenceTable.style.display=="none")?"block":"none";
+    }
+    innerDiv.addEventListener("click", updateTable)
+    outerDiv.append(self.essenceTable);
     return outerDiv
+  }
+  updateEssenceTable(self){
+    let d = self.getEssenceDiffDict();
+    for( const [key, value] of Object.entries(d) ){
+      if( value > 0 ){
+        if( key in self.essenceDict ){
+          let row = self.essenceDict[key];
+          let elements = row.getElementsByTagName("td");
+          elements[1].innerText = `${numberWithCommas((value).toFixed(0))} / hr`
+        } else {
+          let row = document.createElement("tr");
+          self.essenceTable.append(row)
+          self.essenceDict[key] = row;
+          let nameElement = document.createElement("td");
+          let sIcon = document.createElement("img");
+          sIcon.className="drawer-item-icon";
+          sIcon.src = skillIcons[key] || "/images/cooking/butter.png";
+          nameElement.append(sIcon);
+
+          let numberElement = document.createElement("td");
+          numberElement.innerText = `${numberWithCommas((value).toFixed(0))} / hr`
+          row.append(nameElement)
+          row.append(numberElement)
+        }
+      } else {
+        if( key in self.essenceDict ){
+          self.essenceDict[key].remove();
+          delete self.essenceDict[key];
+        }
+      }
+    }
   }
   resetStats(self){
     self.initExperience = {...self.experience};
@@ -425,6 +499,7 @@ class Looty{
   updateXPSTAT(){
     this.updateExperienceTable(this)
     this.updateMarketTable(this)
+    this.updateEssenceTable(this)
   }
   getMarketDict(){
     let now = Date.now() - this.initExperienceTimer;
@@ -450,5 +525,15 @@ class Looty{
       xpdict[stat] = xph
     }
     return xpdict
+  }
+  getEssenceDiffDict(){
+    let now = Date.now() - this.initExperienceTimer;
+    let edict = {};
+    for( const [stat, value] of Object.entries(this.essence) ){
+      let delta = value - this.initEssence[stat]
+      let xph = delta/now * 3600 * 1000
+      edict[stat] = xph
+    }
+    return edict
   }
 }
