@@ -491,6 +491,7 @@ class Looty{
   resetStats(self){
     self.initExperience = {...self.experience};
     self.initMasteryExperience = {...self.masteryExperience};
+    self.initEssence = {...self.essence};
     self.initExperienceTimer = Date.now();
     self.gold=0
     self.cook=0
