@@ -32,7 +32,6 @@ class Looty{
     this.monkey = monkey;
     this.options = options;
     this.classname = "Looty";
-    this.xpstat = document.createElement("span")
     this.experience = {}
     this.initExperience = {}
     this.masteryExperience = {}
@@ -40,7 +39,6 @@ class Looty{
     this.essence = {}
     this.initEssence = {}
     this.initExperienceTimer = Date.now();
-    this.xpstat.addEventListener("dblclick", ()=>this.resetStats(this))
     this.gold = 0
     this.cook = 0
   }
@@ -64,7 +62,10 @@ class Looty{
         self.cookbook[key] = value.exp
       }
       self.buildUI(self);
+      self.resetStats(self);
     })
+  }
+  disconnect(){
   }
   run(obj, msg){
     let call = msg[0];
@@ -145,6 +146,14 @@ class Looty{
     self.constructMenu(self);
   }
   constructMenu(self){
+    let menuID = "LootyMcLootface"
+    if( document.getElementById(menuID) ){
+      return;
+    }
+    let drawerCat = document.createElement("div");
+    drawerCat.className="drawer-category";
+    drawerCat.innerHTML="<b>Looty McLootface</b>";
+    drawerCat.id=menuID;
     // Maybe we also rip out the reset button and timer and move those
     let container = document.getElementsByClassName("nav-drawer-container")[0];
     let itemLogTimer = document.getElementsByClassName("item-log-timer")[0];
@@ -189,27 +198,19 @@ class Looty{
     let essence = self.createEssenceMenu(self);
     let market = self.createMarketMenu(self);
 
-    let drawerCat = document.createElement("div");
-    drawerCat.className="drawer-category";
-    drawerCat.innerHTML="<b>Looty McLootface</b>";
-    // LuteNameThing
-    // + Loot
-    // .. + Nodes
-    // + Experience
-    // .. - Skill
-    // + Essence?
-    // + Cooking
-    // + Crafting?
-    // Reset
+
+    function appendToContainer(item, con, loc ){
+      con.insertBefore(item, con.children[loc]);
+    }
     for( let i=0; i < container.children.length; i++ ){
       if( container.children[i].innerText.indexOf("Loot Log")>-1 ){
         // Append in reverse order -.-
-        container.insertBefore(timedReset, container.children[i+1]);
-        container.insertBefore(essence, container.children[i+1]);
-        container.insertBefore(xpMenu, container.children[i+1]);
-        container.insertBefore(lootMenu, container.children[i+1]);
-        container.insertBefore(market, container.children[i+1]);
-        container.insertBefore(drawerCat, container.children[i+1]);
+        appendToContainer(timedReset, container, i+1);
+        appendToContainer(essence, container, i+1);
+        appendToContainer(xpMenu, container, i+1);
+        appendToContainer(lootMenu, container, i+1);
+        appendToContainer(market, container, i+1);
+        appendToContainer(drawerCat, container, i+1);
         // remove Loot Log (invisible to make react happy)
         container.children[i].style.display = "none";
         break;
