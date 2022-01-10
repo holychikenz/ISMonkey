@@ -342,6 +342,7 @@ class Looty{
   }
   updateExperienceTable(self){
     let d = self.getExperienceDiffDict();
+    if( self.rowNameDict === 'undefined' ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.rowNameDict ){
@@ -401,6 +402,7 @@ class Looty{
   }
   updateMarketTable(self){
     let d = self.getMarketDict();
+    if( self.marketDict === 'undefined' ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.marketDict ){
@@ -459,6 +461,7 @@ class Looty{
   }
   updateEssenceTable(self){
     let d = self.getEssenceDiffDict();
+    if( self.essenceDict === 'undefined' ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.essenceDict ){
