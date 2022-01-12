@@ -2,2606 +2,3127 @@
   "1": {
     "name": "Gold",
     "image": "/images/money_icon.png",
-    "value": 0
+    "value": 0,
+    "class": "gold"
   },
   "2": {
     "name": "Heat",
     "image": "/images/heat_icon.png",
-    "value": 0
+    "value": 0,
+    "class": "heat"
   },
   "3": {
     "name": "Air Essence",
     "image": "/images/runecrafting/air_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "4": {
     "name": "Earth Essence",
     "image": "/images/runecrafting/earth_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "5": {
     "name": "Fire Essence",
     "image": "/images/runecrafting/fire_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "6": {
     "name": "Water Essence",
     "image": "/images/runecrafting/water_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "7": {
     "name": "Blood Essence",
     "image": "/images/runecrafting/blood_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "8": {
     "name": "Death Essence",
     "image": "/images/runecrafting/death_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "9": {
     "name": "Chaos Essence",
     "image": "/images/runecrafting/chaos_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "10": {
     "name": "Nature Essence",
     "image": "/images/runecrafting/nature_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "11": {
     "name": "Mind Essence",
     "image": "/images/runecrafting/mind_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "12": {
     "name": "Cosmic Essence",
     "image": "/images/runecrafting/cosmic_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "50": {
     "name": "Book",
     "image": "/images/misc/book.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "51": {
     "name": "Task",
     "image": "/images/misc/task.png",
-    "value": 0
+    "value": 0,
+    "class": "gem"
   },
   "60": {
     "name": "Raw Shrimp",
     "image": "/images/fishing/raw_shrimp.png",
-    "value": "5"
+    "value": "5",
+    "class": "fish"
   },
   "61": {
     "name": "Raw Anchovy",
     "image": "/images/fishing/raw_anchovy.png",
-    "value": "15"
+    "value": "15",
+    "class": "fish"
   },
   "62": {
     "name": "Raw Trout",
     "image": "/images/fishing/raw_trout.png",
-    "value": "25"
+    "value": "25",
+    "class": "fish"
   },
   "63": {
     "name": "Raw Salmon",
     "image": "/images/fishing/raw_salmon.png",
-    "value": "50"
+    "value": "50",
+    "class": "fish"
   },
   "64": {
     "name": "Raw Lobster",
     "image": "/images/fishing/raw_lobster.png",
-    "value": "75"
+    "value": "75",
+    "class": "fish"
   },
   "65": {
     "name": "Raw Tuna",
     "image": "/images/fishing/raw_tuna.png",
-    "value": "100"
+    "value": "100",
+    "class": "fish"
   },
   "66": {
     "name": "Raw Shark",
     "image": "/images/fishing/raw_shark.png",
-    "value": "125"
+    "value": "125",
+    "class": "fish"
   },
   "67": {
     "name": "Raw Megalodon",
     "image": "/images/fishing/raw_megalodon.png",
-    "value": "350"
+    "value": "350",
+    "class": "fish"
   },
   "68": {
     "name": "Raw Ancient Lobster",
     "image": "/images/fishing/raw_ancient_lobster.png",
-    "value": "225"
+    "value": "225",
+    "class": "fish"
   },
   "69": {
     "name": "Raw Tentacle Meat",
     "image": "/images/fishing/raw_tentacle_chunk.png",
-    "value": "400"
+    "value": "400",
+    "class": "fish"
   },
   "70": {
     "name": "Raw Huge Tuna",
     "image": "/images/fishing/raw_huge_tuna.png",
-    "value": "150"
+    "value": "150",
+    "class": "fish"
   },
   "71": {
     "name": "Seaweed",
     "image": "images/fishing/seaweed.png",
-    "value": "25"
+    "value": "25",
+    "class": "fish"
   },
   "72": {
     "name": "Raw Magnetic Minnow",
     "image": "images/fishing/raw_minnow.png",
-    "value": "150"
+    "value": "150",
+    "class": "fish"
   },
   "73": {
     "name": "Raw Tigerfish",
     "image": "images/fishing/raw_tigerfish.png",
-    "value": "100"
+    "value": "100",
+    "class": "fish"
   },
   "74": {
     "name": "Raw Slippery Eel",
     "image": "images/fishing/raw_eel.png",
-    "value": "125"
+    "value": "125",
+    "class": "fish"
   },
   "75": {
     "name": "Raw Great White Shark",
     "image": "images/fishing/raw_greatwhite.png",
-    "value": "150"
+    "value": "150",
+    "class": "fish"
   },
   "76": {
     "name": "Raw Hammerhead Shark",
     "image": "/images/fishing/raw_hammerhead.png",
-    "value": "150"
+    "value": "150",
+    "class": "fish"
   },
   "77": {
     "name": "Raw Crab",
     "image": "/images/fishing/raw_crab.png",
-    "value": "85"
+    "value": "85",
+    "class": "fish"
   },
   "95": {
     "name": "Burnt Fish",
     "image": "/images/cooking/burnt_fish.png",
-    "value": "1"
+    "value": "1",
+    "class": "cookedFish"
   },
   "96": {
     "name": "Burnt Food",
     "image": "/images/cooking/burnt_food.png",
-    "value": "1"
+    "value": "1",
+    "class": "cookedFish"
   },
   "101": {
     "name": "Copper Ore",
     "image": "/images/mining/copper_ore.png",
-    "value": "5"
+    "value": "5",
+    "class": "ore"
   },
   "102": {
     "name": "Tin Ore",
     "image": "/images/mining/tin_ore.png",
-    "value": "5"
+    "value": "5",
+    "class": "ore"
   },
   "103": {
     "name": "Iron Ore",
     "image": "/images/mining/iron_ore.png",
-    "value": "20"
+    "value": "20",
+    "class": "ore"
   },
   "104": {
     "name": "Gold Ore",
     "image": "/images/mining/gold_ore.png",
-    "value": "100"
+    "value": "100",
+    "class": "ore"
   },
   "105": {
     "name": "Mithril Ore",
     "image": "/images/mining/mithril_ore.png",
-    "value": "75"
+    "value": "75",
+    "class": "ore"
   },
   "106": {
     "name": "Adamantite Ore",
     "image": "/images/mining/adamantite_ore.png",
-    "value": "100"
+    "value": "100",
+    "class": "ore"
   },
   "107": {
     "name": "Runite Ore",
     "image": "/images/mining/runite_ore.png",
-    "value": "200"
+    "value": "200",
+    "class": "ore"
   },
   "108": {
     "name": "Clay",
     "image": "/images/mining/clay.png",
-    "value": "1"
+    "value": "1",
+    "class": "ore"
   },
   "109": {
     "name": "Stone",
     "image": "/images/mining/stone.png",
-    "value": "1"
+    "value": "1",
+    "class": "ore"
   },
   "110": {
     "name": "Sand",
     "image": "/images/mining/sand.png",
-    "value": "1"
+    "value": "1",
+    "class": "ore"
   },
   "111": {
     "name": "Silver",
     "image": "/images/mining/silver.png",
-    "value": "100"
+    "value": "100",
+    "class": "ore"
   },
   "112": {
     "name": "Coal",
     "image": "/images/mining/coal.png",
-    "value": "20"
+    "value": "20",
+    "class": "ore"
   },
   "113": {
     "name": "Rune Slate",
     "image": "/images/runecrafting/rune_slate.png",
-    "value": "15"
+    "value": "15",
+    "class": "ore"
   },
   "114": {
     "name": "Stygian Ore",
     "image": "/images/mining/stygian_ore.png",
-    "value": "500"
+    "value": "500",
+    "class": "ore"
   },
   "150": {
     "name": "Fertilizer",
     "image": "/images/farming/fertilizer.png",
-    "value": "100"
+    "value": "100",
+    "class": "seed"
   },
   "151": {
     "name": "Carrot Seed",
     "image": "/images/farming/carrot_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "152": {
     "name": "Peppercorn Seed",
     "image": "/images/farming/peppercorn_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "153": {
     "name": "Sugarcane Seed",
     "image": "/images/farming/sugarcane_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "154": {
     "name": "Wheat Seed",
     "image": "/images/farming/wheat_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "155": {
     "name": "Potato Seed",
     "image": "/images/farming/potato_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "156": {
     "name": "Rice Seed",
     "image": "/images/farming/rice_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "157": {
     "name": "Tomato Seed",
     "image": "/images/farming/tomato_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "158": {
     "name": "Wildberry Bush Seed",
     "image": "/images/farming/wildberry_bush_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "159": {
     "name": "Chili Pepper Seed",
     "image": "/images/farming/chili_pepper_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "160": {
     "name": "Pumpkin Seed",
     "image": "/images/farming/pumpkin_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "161": {
     "name": "Mushroom Spore",
     "image": "/images/farming/mushroom_spore.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "170": {
     "name": "Tree Seed",
     "image": "/images/farming/tree_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "171": {
     "name": "Oak Tree Seed",
     "image": "/images/farming/oak_tree_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "172": {
     "name": "Willow Tree Seed",
     "image": "/images/farming/willow_tree_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "173": {
     "name": "Maple Tree Seed",
     "image": "/images/farming/maple_tree_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "174": {
     "name": "Yew Tree Seed",
     "image": "/images/farming/yew_tree_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "175": {
     "name": "Banana Tree Seed",
     "image": "/images/farming/banana_tree_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "176": {
     "name": "Apple Tree Seed",
     "image": "/images/farming/apple_tree_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "177": {
     "name": "Elder Tree Seed",
     "image": "/images/farming/elder_tree_seed.png",
-    "value": "100"
+    "value": "100",
+    "class": "seed"
   },
   "180": {
     "name": "Sageberry Bush Seed",
     "image": "/images/farming/sageberry_seed.png",
-    "value": "5"
+    "value": "5",
+    "class": "seed"
   },
   "185": {
     "name": "Mysterious Seed",
     "image": "/images/farming/mysterious_seed.png",
-    "value": "7"
+    "value": "7",
+    "class": "seed"
   },
   "201": {
     "name": "Bronze Bar",
     "image": "/images/smithing/bronze_bar.png",
-    "value": "25"
+    "value": "25",
+    "class": "bar"
   },
   "202": {
     "name": "Iron Bar",
     "image": "/images/smithing/iron_bar.png",
-    "value": "100"
+    "value": "100",
+    "class": "bar"
   },
   "203": {
     "name": "Gold Bar",
     "image": "/images/smithing/gold_bar.png",
-    "value": "1500"
+    "value": "1500",
+    "class": "bar"
   },
   "204": {
     "name": "Mithril Bar",
     "image": "/images/smithing/mithril_bar.png",
-    "value": "500"
+    "value": "500",
+    "class": "bar"
   },
   "205": {
     "name": "Adamantite Bar",
     "image": "/images/smithing/adamantite_bar.png",
-    "value": "3e3"
+    "value": "3e3",
+    "class": "bar"
   },
   "206": {
     "name": "Runite Bar",
     "image": "/images/smithing/runite_bar.png",
-    "value": "9e3"
+    "value": "9e3",
+    "class": "bar"
   },
   "207": {
     "name": "Stygian Bar",
     "image": "/images/smithing/stygian_bar.png",
-    "value": "12e3"
+    "value": "12e3",
+    "class": "bar"
   },
   "301": {
     "name": "Branch",
     "image": "/images/foraging/branch.png",
-    "value": "1"
+    "value": "1",
+    "class": "log"
   },
   "302": {
     "name": "Log",
     "image": "/images/foraging/log.png",
-    "value": "3"
+    "value": "3",
+    "class": "log"
   },
   "303": {
     "name": "Oak Log",
     "image": "/images/foraging/oak_log.png",
-    "value": "10"
+    "value": "10",
+    "class": "log"
   },
   "304": {
     "name": "Willow Log",
     "image": "/images/foraging/willow_log.png",
-    "value": "20"
+    "value": "20",
+    "class": "log"
   },
   "305": {
     "name": "Maple Log",
     "image": "/images/foraging/maple_log.png",
-    "value": "40"
+    "value": "40",
+    "class": "log"
   },
   "306": {
     "name": "Yew Log",
     "image": "/images/foraging/yew_log.png",
-    "value": "100"
+    "value": "100",
+    "class": "log"
   },
   "400": {
     "name": "Sapphire",
     "image": "/images/mining/sapphire.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "gem"
   },
   "401": {
     "name": "Emerald",
     "image": "/images/mining/emerald.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "gem"
   },
   "402": {
     "name": "Ruby",
     "image": "/images/mining/ruby.png",
-    "value": "5e3"
+    "value": "5e3",
+    "class": "gem"
   },
   "403": {
     "name": "Diamond",
     "image": "/images/mining/diamond.png",
-    "value": "1e4"
+    "value": "1e4",
+    "class": "gem"
   },
   "404": {
     "name": "Black Opal",
     "image": "/images/mining/black_opal.png",
-    "value": "5e4"
+    "value": "5e4",
+    "class": "gem"
   },
   "500": {
     "name": "Air Talisman",
     "image": "/images/runecrafting/air_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "501": {
     "name": "Earth Talisman",
     "image": "/images/runecrafting/earth_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "502": {
     "name": "Fire Talisman",
     "image": "/images/runecrafting/fire_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "503": {
     "name": "Water Talisman",
     "image": "/images/runecrafting/water_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "504": {
     "name": "Blood Talisman",
     "image": "/images/runecrafting/blood_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "505": {
     "name": "Death Talisman",
     "image": "/images/runecrafting/death_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "506": {
     "name": "Chaos Talisman",
     "image": "/images/runecrafting/chaos_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "507": {
     "name": "Nature Talisman",
     "image": "/images/runecrafting/nature_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "508": {
     "name": "Mind Talisman",
     "image": "/images/runecrafting/mind_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "509": {
     "name": "Cosmic Talisman",
     "image": "/images/runecrafting/cosmic_talisman.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "510": {
     "name": "Air Rune",
     "image": "/images/runecrafting/air_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "511": {
     "name": "Earth Rune",
     "image": "/images/runecrafting/earth_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "512": {
     "name": "Fire Rune",
     "image": "/images/runecrafting/fire_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "513": {
     "name": "Water Rune",
     "image": "/images/runecrafting/water_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "514": {
     "name": "Blood Rune",
     "image": "/images/runecrafting/blood_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "515": {
     "name": "Death Rune",
     "image": "/images/runecrafting/death_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "516": {
     "name": "Chaos Rune",
     "image": "/images/runecrafting/chaos_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "517": {
     "name": "Nature Rune",
     "image": "/images/runecrafting/nature_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "518": {
     "name": "Mind Rune",
     "image": "/images/runecrafting/mind_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "519": {
     "name": "Cosmic Rune",
     "image": "/images/runecrafting/cosmic_rune.png",
-    "value": "10"
+    "value": "10",
+    "class": "rune"
   },
   "600": {
     "name": "Bronze Pickaxe",
     "image": "/images/mining/bronze_pickaxe.png",
-    "value": "800"
+    "value": "800",
+    "class": "equipment"
   },
   "601": {
     "name": "Iron Pickaxe",
     "image": "/images/mining/iron_pickaxe.png",
-    "value": "6e3"
+    "value": "6e3",
+    "class": "equipment"
   },
   "602": {
     "name": "Mithril Pickaxe",
     "image": "/images/mining/mithril_pickaxe.png",
-    "value": "52e3"
+    "value": "52e3",
+    "class": "equipment"
   },
   "603": {
     "name": "Adamantite Pickaxe",
     "image": "/images/mining/adamantite_pickaxe.png",
-    "value": "48e4"
+    "value": "48e4",
+    "class": "equipment"
   },
   "604": {
     "name": "Runite Pickaxe",
     "image": "/images/mining/rune_pickaxe.png",
-    "value": "1944e3"
+    "value": "1944e3",
+    "class": "equipment"
   },
   "605": {
     "name": "Stygian Pickaxe",
     "image": "/images/mining/stygian_pickaxe.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "610": {
     "name": "Bronze Hatchet",
     "image": "/images/foraging/bronze_hatchet.png",
-    "value": "800"
+    "value": "800",
+    "class": "equipment"
   },
   "611": {
     "name": "Iron Hatchet",
     "image": "/images/foraging/iron_hatchet.png",
-    "value": "6e3"
+    "value": "6e3",
+    "class": "equipment"
   },
   "612": {
     "name": "Mithril Hatchet",
     "image": "/images/foraging/mithril_hatchet.png",
-    "value": "52e3"
+    "value": "52e3",
+    "class": "equipment"
   },
   "613": {
     "name": "Adamantite Hatchet",
     "image": "/images/foraging/adamantite_hatchet.png",
-    "value": "48e4"
+    "value": "48e4",
+    "class": "equipment"
   },
   "614": {
     "name": "Runite Hatchet",
     "image": "/images/foraging/rune_hatchet.png",
-    "value": "1944e3"
+    "value": "1944e3",
+    "class": "equipment"
   },
   "615": {
     "name": "Stygian Hatchet",
     "image": "/images/foraging/stygian_hatchet.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "620": {
     "name": "Sapphire Ring",
     "image": "/images/jewellery/sapphire_ring.png",
-    "value": "12e4"
+    "value": "12e4",
+    "class": "equipment"
   },
   "621": {
     "name": "Sapphire Necklace",
     "image": "/images/jewellery/sapphire_necklace.png",
-    "value": "12e4"
+    "value": "12e4",
+    "class": "equipment"
   },
   "622": {
     "name": "Emerald Ring",
     "image": "/images/jewellery/emerald_ring.png",
-    "value": "14e4"
+    "value": "14e4",
+    "class": "equipment"
   },
   "623": {
     "name": "Emerald Necklace",
     "image": "/images/jewellery/emerald_necklace.png",
-    "value": "14e4"
+    "value": "14e4",
+    "class": "equipment"
   },
   "624": {
     "name": "Ruby Ring",
     "image": "/images/jewellery/ruby_ring.png",
-    "value": "2e5"
+    "value": "2e5",
+    "class": "equipment"
   },
   "625": {
     "name": "Ruby Necklace",
     "image": "/images/jewellery/ruby_necklace.png",
-    "value": "2e5"
+    "value": "2e5",
+    "class": "equipment"
   },
   "626": {
     "name": "Diamond Ring",
     "image": "/images/jewellery/diamond_ring.png",
-    "value": "3e5"
+    "value": "3e5",
+    "class": "equipment"
   },
   "627": {
     "name": "Diamond Necklace",
     "image": "/images/jewellery/diamond_necklace.png",
-    "value": "3e5"
+    "value": "3e5",
+    "class": "equipment"
   },
   "628": {
     "name": "Prismatic Necklace",
     "image": "/images/jewellery/prismatic_necklace.png",
-    "value": "1e6"
+    "value": "1e6",
+    "class": "equipment"
   },
   "629": {
     "name": "Prismatic Ring",
     "image": "/images/jewellery/prismatic_ring.png",
-    "value": "1e6"
+    "value": "1e6",
+    "class": "equipment"
   },
   "630": {
     "name": "Black Opal Ring",
     "image": "/images/jewellery/black_opal_ring.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "equipment"
   },
   "631": {
     "name": "Black Opal Necklace",
     "image": "/images/jewellery/black_opal_necklace.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "equipment"
   },
   "640": {
     "name": "Gold Ring",
     "image": "/images/jewellery/gold_ring.png",
-    "value": "1e5"
+    "value": "1e5",
+    "class": "equipment"
   },
   "641": {
     "name": "Gold Necklace",
     "image": "/images/jewellery/gold_necklace.png",
-    "value": "1e5"
+    "value": "1e5",
+    "class": "equipment"
   },
   "642": {
     "name": "Corrupted Ring",
     "image": "/images/jewellery/corrupted_ring.png",
-    "value": "2e5"
+    "value": "2e5",
+    "class": "equipment"
   },
   "643": {
     "name": "Ancient Nature Amulet",
     "image": "/images/jewellery/ancient_nature_talisman.png",
-    "value": "2e5"
+    "value": "2e5",
+    "class": "equipment"
   },
   "644": {
     "name": "Ancient Fire Amulet",
     "image": "/images/jewellery/ancient_fire_talisman.png",
-    "value": "2e5"
+    "value": "2e5",
+    "class": "equipment"
   },
   "660": {
     "name": "Bronze Hoe",
     "image": "/images/farming/bronze_hoe.png",
-    "value": "800"
+    "value": "800",
+    "class": "equipment"
   },
   "661": {
     "name": "Iron Hoe",
     "image": "/images/farming/iron_hoe.png",
-    "value": "6e3"
+    "value": "6e3",
+    "class": "equipment"
   },
   "662": {
     "name": "Mithril Hoe",
     "image": "/images/farming/mithril_hoe.png",
-    "value": "52e3"
+    "value": "52e3",
+    "class": "equipment"
   },
   "663": {
     "name": "Adamantite Hoe",
     "image": "/images/farming/adamantite_hoe.png",
-    "value": "48e4"
+    "value": "48e4",
+    "class": "equipment"
   },
   "664": {
     "name": "Runite Hoe",
     "image": "/images/farming/runite_hoe.png",
-    "value": "1944e3"
+    "value": "1944e3",
+    "class": "equipment"
   },
   "665": {
     "name": "Stygian Hoe",
     "image": "/images/farming/stygian_hoe.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "690": {
     "name": "Fishing Net",
     "image": "/images/fishing/net.png",
-    "value": "100"
+    "value": "100",
+    "class": "fish"
   },
   "691": {
     "name": "Fly Fishing Rod",
     "image": "/images/fishing/fishing_rod.png",
-    "value": "200"
+    "value": "200",
+    "class": "fish"
   },
   "692": {
     "name": "Cage",
     "image": "/images/fishing/fishing_cage_2.png",
-    "value": "500"
+    "value": "500",
+    "class": "fish"
   },
   "693": {
     "name": "Harpoon",
     "image": "/images/fishing/harpoon.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "fish"
   },
   "700": {
     "name": "Feather",
     "image": "images/fishing/feather.png",
-    "value": "6"
+    "value": "6",
+    "class": "fish"
   },
   "701": {
     "name": "Fish Oil",
     "image": "/images/cooking/fish_oil.png",
-    "value": "50"
+    "value": "50",
+    "class": "cookedFish"
   },
   "702": {
     "name": "Pyre Log",
     "image": "/images/foraging/pyre.png",
-    "value": "60"
+    "value": "60",
+    "class": "log"
   },
   "703": {
     "name": "Pyre Oak Log",
     "image": "/images/foraging/oak_pyre.png",
-    "value": "200"
+    "value": "200",
+    "class": "log"
   },
   "704": {
     "name": "Pyre Willow Log",
     "image": "/images/foraging/willow_pyre.png",
-    "value": "400"
+    "value": "400",
+    "class": "log"
   },
   "705": {
     "name": "Pyre Maple Log",
     "image": "/images/foraging/maple_pyre.png",
-    "value": "800"
+    "value": "800",
+    "class": "log"
   },
   "706": {
     "name": "Pyre Yew Log",
     "image": "/images/foraging/yew_pyre.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "log"
   },
   "800": {
     "name": "Ichor",
     "image": "/images/smithing/ichor.png",
-    "value": "500"
+    "value": "500",
+    "class": "bar"
   },
   "900": {
     "name": "Geode",
     "image": "/images/misc/geode.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "gem"
   },
   "901": {
     "name": "Bird's Nest",
     "image": "/images/misc/bird_nest.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "gem"
   },
   "902": {
     "name": "Sunken Treasure",
     "image": "/images/misc/sunken_treasure.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "gem"
   },
   "903": {
     "name": "Satchel",
     "image": "/images/misc/satchel.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "gem"
   },
   "904": {
     "name": "Ancient Treasure",
     "image": "/images/misc/unsunken_treasure.png",
-    "value": "1e5"
+    "value": "1e5",
+    "class": "gem"
   },
   "1000": {
     "name": "Bronze Scimitar",
     "image": "/images/combat/equipment/bronze_scimitar_icon.png",
-    "value": "800"
+    "value": "800",
+    "class": "equipment"
   },
   "1001": {
     "name": "Bronze Battleaxe",
     "image": "/images/combat/equipment/bronze_battleaxe_icon.png",
-    "value": "1200"
+    "value": "1200",
+    "class": "equipment"
   },
   "1002": {
     "name": "Bronze Daggers",
     "image": "/images/combat/equipment/bronze_daggers_icon.png",
-    "value": "400"
+    "value": "400",
+    "class": "equipment"
   },
   "1003": {
     "name": "Bronze Greatsword",
     "image": "/images/combat/equipment/bronze_2h_sword_icon.png",
-    "value": "1600"
+    "value": "1600",
+    "class": "equipment"
   },
   "1004": {
     "name": "Iron Scimitar",
     "image": "/images/combat/equipment/iron_scimitar_icon.png",
-    "value": "6e3"
+    "value": "6e3",
+    "class": "equipment"
   },
   "1005": {
     "name": "Iron Battleaxe",
     "image": "/images/combat/equipment/iron_battleaxe_icon.png",
-    "value": "8e3"
+    "value": "8e3",
+    "class": "equipment"
   },
   "1006": {
     "name": "Iron Daggers",
     "image": "/images/combat/equipment/iron_daggers_icon.png",
-    "value": "4e3"
+    "value": "4e3",
+    "class": "equipment"
   },
   "1007": {
     "name": "Iron Greatsword",
     "image": "/images/combat/equipment/iron_2h_sword_icon.png",
-    "value": "1e4"
+    "value": "1e4",
+    "class": "equipment"
   },
   "1008": {
     "name": "Obsidian Scimitar",
     "image": "/images/combat/equipment/black_scimitar_icon.png",
-    "value": "92e3"
+    "value": "92e3",
+    "class": "equipment"
   },
   "1009": {
     "name": "Obsidian Battleaxe",
     "image": "/images/combat/equipment/black_battleaxe_icon.png",
-    "value": "116e3"
+    "value": "116e3",
+    "class": "equipment"
   },
   "1010": {
     "name": "Obsidian Daggers",
     "image": "/images/combat/equipment/black_daggers_icon.png",
-    "value": "68e3"
+    "value": "68e3",
+    "class": "equipment"
   },
   "1011": {
     "name": "Obsidian Greatsword",
     "image": "/images/combat/equipment/black_2h_sword_icon.png",
-    "value": "14e4"
+    "value": "14e4",
+    "class": "equipment"
   },
   "1012": {
     "name": "Mithril Scimitar",
     "image": "/images/combat/equipment/mithril_scimitar_icon.png",
-    "value": "52e3"
+    "value": "52e3",
+    "class": "equipment"
   },
   "1013": {
     "name": "Mithril Battleaxe",
     "image": "/images/combat/equipment/mithril_battleaxe_icon.png",
-    "value": "65e3"
+    "value": "65e3",
+    "class": "equipment"
   },
   "1014": {
     "name": "Mithril Daggers",
     "image": "/images/combat/equipment/mithril_daggers_icon.png",
-    "value": "39e3"
+    "value": "39e3",
+    "class": "equipment"
   },
   "1015": {
     "name": "Mithril Greatsword",
     "image": "/images/combat/equipment/mithril_2h_sword_icon.png",
-    "value": "78e3"
+    "value": "78e3",
+    "class": "equipment"
   },
   "1016": {
     "name": "Adamantite Scimitar",
     "image": "/images/combat/equipment/adamantite_scimitar_icon.png",
-    "value": "48e4"
+    "value": "48e4",
+    "class": "equipment"
   },
   "1017": {
     "name": "Adamantite Battleaxe",
     "image": "/images/combat/equipment/adamantite_battleaxe_icon.png",
-    "value": "576e3"
+    "value": "576e3",
+    "class": "equipment"
   },
   "1018": {
     "name": "Adamantite Daggers",
     "image": "/images/combat/equipment/adamantite_daggers_icon.png",
-    "value": "384e3"
+    "value": "384e3",
+    "class": "equipment"
   },
   "1019": {
     "name": "Adamantite Greatsword",
     "image": "/images/combat/equipment/adamantite_2h_sword_icon.png",
-    "value": "672e3"
+    "value": "672e3",
+    "class": "equipment"
   },
   "1020": {
     "name": "Runite Scimitar",
     "image": "/images/combat/equipment/rune_scimitar_icon.png",
-    "value": "1944e3"
+    "value": "1944e3",
+    "class": "equipment"
   },
   "1021": {
     "name": "Runite Battleaxe",
     "image": "/images/combat/equipment/rune_battleaxe_icon.png",
-    "value": "2268e3"
+    "value": "2268e3",
+    "class": "equipment"
   },
   "1022": {
     "name": "Runite Daggers",
     "image": "/images/combat/equipment/rune_daggers_icon.png",
-    "value": "162e4"
+    "value": "162e4",
+    "class": "equipment"
   },
   "1023": {
     "name": "Runite Greatsword",
     "image": "/images/combat/equipment/rune_2h_sword_icon.png",
-    "value": "2592e3"
+    "value": "2592e3",
+    "class": "equipment"
   },
   "1024": {
     "name": "Stygian Scimitar",
     "image": "/images/combat/equipment/stygian_scimitar_icon.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "1025": {
     "name": "Stygian Battleaxe",
     "image": "/images/combat/equipment/stygian_battleaxe_icon.png",
-    "value": "384e4"
+    "value": "384e4",
+    "class": "equipment"
   },
   "1026": {
     "name": "Stygian Daggers",
     "image": "/images/combat/equipment/stygian_daggers_icon.png",
-    "value": "288e4"
+    "value": "288e4",
+    "class": "equipment"
   },
   "1027": {
     "name": "Stygian Greatsword",
     "image": "/images/combat/equipment/stygian_2h_sword_icon.png",
-    "value": "432e4"
+    "value": "432e4",
+    "class": "equipment"
   },
   "1050": {
     "name": "Bronze Helm",
     "image": "/images/combat/equipment/bronze_med_helm_icon.png",
-    "value": "400"
+    "value": "400",
+    "class": "equipment"
   },
   "1051": {
     "name": "Iron Helm",
     "image": "/images/combat/equipment/iron_med_helm_icon.png",
-    "value": "4e3"
+    "value": "4e3",
+    "class": "equipment"
   },
   "1052": {
     "name": "Obsidian Helm",
     "image": "/images/combat/equipment/black_med_helm_icon.png",
-    "value": "68e3"
+    "value": "68e3",
+    "class": "equipment"
   },
   "1053": {
     "name": "Mithril Helm",
     "image": "/images/combat/equipment/mithril_med_helm_icon.png",
-    "value": "39e3"
+    "value": "39e3",
+    "class": "equipment"
   },
   "1054": {
     "name": "Adamantite Helm",
     "image": "/images/combat/equipment/adamantite_med_helm_icon.png",
-    "value": "384e3"
+    "value": "384e3",
+    "class": "equipment"
   },
   "1055": {
     "name": "Runite Helm",
     "image": "/images/combat/equipment/rune_med_helm_icon.png",
-    "value": "162e4"
+    "value": "162e4",
+    "class": "equipment"
   },
   "1056": {
     "name": "Stygian Helm",
     "image": "/images/combat/equipment/stygian_med_helm_icon.png",
-    "value": "288e4"
+    "value": "288e4",
+    "class": "equipment"
   },
   "1060": {
     "name": "Bronze Full Helm",
     "image": "/images/combat/equipment/bronze_full_helm.png",
-    "value": "800"
+    "value": "800",
+    "class": "equipment"
   },
   "1061": {
     "name": "Iron Full Helm",
     "image": "/images/combat/equipment/iron_full_helm.png",
-    "value": "4800"
+    "value": "4800",
+    "class": "equipment"
   },
   "1062": {
     "name": "Obsidian Full Helm",
     "image": "/images/combat/equipment/black_full_helm.png",
-    "value": "89600"
+    "value": "89600",
+    "class": "equipment"
   },
   "1063": {
     "name": "Mithril Full Helm",
     "image": "/images/combat/equipment/mithril_full_helm.png",
-    "value": "52e3"
+    "value": "52e3",
+    "class": "equipment"
   },
   "1064": {
     "name": "Adamantite Full Helm",
     "image": "/images/combat/equipment/adamantite_full_helm.png",
-    "value": "48e4"
+    "value": "48e4",
+    "class": "equipment"
   },
   "1065": {
     "name": "Runite Full Helm",
     "image": "/images/combat/equipment/rune_full_helm.png",
-    "value": "1944e3"
+    "value": "1944e3",
+    "class": "equipment"
   },
   "1066": {
     "name": "Stygian Full Helm",
     "image": "/images/combat/equipment/stygian_full_helm.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "1070": {
     "name": "Bronze Shield",
     "image": "/images/combat/equipment/bronze_shield_icon.png",
-    "value": "1200"
+    "value": "1200",
+    "class": "equipment"
   },
   "1071": {
     "name": "Iron Shield",
     "image": "/images/combat/equipment/iron_shield_icon.png",
-    "value": "8e3"
+    "value": "8e3",
+    "class": "equipment"
   },
   "1072": {
     "name": "Obsidian Shield",
     "image": "/images/combat/equipment/black_shield_icon.png",
-    "value": "116e3"
+    "value": "116e3",
+    "class": "equipment"
   },
   "1073": {
     "name": "Mithril Shield",
     "image": "/images/combat/equipment/mithril_shield_icon.png",
-    "value": "65e3"
+    "value": "65e3",
+    "class": "equipment"
   },
   "1074": {
     "name": "Adamantite Shield",
     "image": "/images/combat/equipment/adamantite_shield_icon.png",
-    "value": "576e3"
+    "value": "576e3",
+    "class": "equipment"
   },
   "1075": {
     "name": "Runite Shield",
     "image": "/images/combat/equipment/rune_shield_icon.png",
-    "value": "2268e3"
+    "value": "2268e3",
+    "class": "equipment"
   },
   "1076": {
     "name": "Stygian Shield",
     "image": "/images/combat/equipment/stygian_shield_icon.png",
-    "value": "384e4"
+    "value": "384e4",
+    "class": "equipment"
   },
   "1090": {
     "name": "Bronze Breastplate",
     "image": "/images/combat/equipment/bronze_platebody.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "equipment"
   },
   "1091": {
     "name": "Bronze Chainmail",
     "image": "/images/combat/equipment/bronze_chainbody.png",
-    "value": "1200"
+    "value": "1200",
+    "class": "equipment"
   },
   "1092": {
     "name": "Iron Breastplate",
     "image": "/images/combat/equipment/iron_platebody.png",
-    "value": "12e3"
+    "value": "12e3",
+    "class": "equipment"
   },
   "1093": {
     "name": "Iron Chainmail",
     "image": "/images/combat/equipment/iron_chainbody.png",
-    "value": "8e3"
+    "value": "8e3",
+    "class": "equipment"
   },
   "1094": {
     "name": "Obsidian Breastplate",
     "image": "/images/combat/equipment/black_platebody.png",
-    "value": "164e3"
+    "value": "164e3",
+    "class": "equipment"
   },
   "1095": {
     "name": "Obsidian Chainmail",
     "image": "/images/combat/equipment/black_chainbody.png",
-    "value": "116e3"
+    "value": "116e3",
+    "class": "equipment"
   },
   "1096": {
     "name": "Mithril Breastplate",
     "image": "/images/combat/equipment/mithril_platebody.png",
-    "value": "91e3"
+    "value": "91e3",
+    "class": "equipment"
   },
   "1097": {
     "name": "Mithril Chainmail",
     "image": "/images/combat/equipment/mithril_chainbody.png",
-    "value": "65e3"
+    "value": "65e3",
+    "class": "equipment"
   },
   "1098": {
     "name": "Adamantite Breastplate",
     "image": "/images/combat/equipment/adamantite_platebody.png",
-    "value": "768e3"
+    "value": "768e3",
+    "class": "equipment"
   },
   "1099": {
     "name": "Adamantite Chainmail",
     "image": "/images/combat/equipment/adamantite_chainbody.png",
-    "value": "576e3"
+    "value": "576e3",
+    "class": "equipment"
   },
   "1100": {
     "name": "Runite Breastplate",
     "image": "/images/combat/equipment/rune_platebody.png",
-    "value": "2916e3"
+    "value": "2916e3",
+    "class": "equipment"
   },
   "1101": {
     "name": "Runite Chainmail",
     "image": "/images/combat/equipment/rune_chainbody.png",
-    "value": "2268e3"
+    "value": "2268e3",
+    "class": "equipment"
   },
   "1102": {
     "name": "Stygian Breastplate",
     "image": "/images/combat/equipment/stygian_platebody.png",
-    "value": "48e5"
+    "value": "48e5",
+    "class": "equipment"
   },
   "1103": {
     "name": "Stygian Chainmail",
     "image": "/images/combat/equipment/stygian_chainbody.png",
-    "value": "384e4"
+    "value": "384e4",
+    "class": "equipment"
   },
   "1110": {
     "name": "Bronze Plate Leggings",
     "image": "/images/combat/equipment/bronze_platelegs.png",
-    "value": "800"
+    "value": "800",
+    "class": "equipment"
   },
   "1111": {
     "name": "Iron Plate Leggings",
     "image": "/images/combat/equipment/iron_platelegs.png",
-    "value": "6e3"
+    "value": "6e3",
+    "class": "equipment"
   },
   "1112": {
     "name": "Obsidian Plate Leggings",
     "image": "/images/combat/equipment/black_platelegs.png",
-    "value": "92e3"
+    "value": "92e3",
+    "class": "equipment"
   },
   "1113": {
     "name": "Mithril Plate Leggings",
     "image": "/images/combat/equipment/mithril_platelegs.png",
-    "value": "52e3"
+    "value": "52e3",
+    "class": "equipment"
   },
   "1114": {
     "name": "Adamantite Plate Leggings",
     "image": "/images/combat/equipment/adamantite_platelegs.png",
-    "value": "48e4"
+    "value": "48e4",
+    "class": "equipment"
   },
   "1115": {
     "name": "Runite Plate Leggings",
     "image": "/images/combat/equipment/rune_platelegs.png",
-    "value": "1944e3"
+    "value": "1944e3",
+    "class": "equipment"
   },
   "1116": {
     "name": "Stygian Plate Leggings",
     "image": "/images/combat/equipment/stygian_platelegs.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "1130": {
     "name": "Bronze Boots",
     "image": "/images/combat/equipment/bronze_boots_icon.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "equipment"
   },
   "1131": {
     "name": "Iron Boots",
     "image": "/images/combat/equipment/iron_boots_icon.png",
-    "value": "8e3"
+    "value": "8e3",
+    "class": "equipment"
   },
   "1132": {
     "name": "Obsidian Boots",
     "image": "/images/combat/equipment/black_boots_icon.png",
-    "value": "68e3"
+    "value": "68e3",
+    "class": "equipment"
   },
   "1133": {
     "name": "Mithril Boots",
     "image": "/images/combat/equipment/mithril_boots_icon.png",
-    "value": "6e4"
+    "value": "6e4",
+    "class": "equipment"
   },
   "1134": {
     "name": "Adamantite Boots",
     "image": "/images/combat/equipment/adamantite_boots_icon.png",
-    "value": "48e4"
+    "value": "48e4",
+    "class": "equipment"
   },
   "1135": {
     "name": "Runite Boots",
     "image": "/images/combat/equipment/rune_boots_icon.png",
-    "value": "18e5"
+    "value": "18e5",
+    "class": "equipment"
   },
   "1136": {
     "name": "Stygian Boots",
     "image": "/images/combat/equipment/stygian_boots_icon.png",
-    "value": "288e4"
+    "value": "288e4",
+    "class": "equipment"
   },
   "1150": {
     "name": "Bronze Gloves",
     "image": "/images/combat/equipment/bronze_gloves.png",
-    "value": "20"
+    "value": "20",
+    "class": "equipment"
   },
   "1151": {
     "name": "Iron Gloves",
     "image": "/images/combat/equipment/iron_gloves.png",
-    "value": "600"
+    "value": "600",
+    "class": "equipment"
   },
   "1152": {
     "name": "Obsidian Gloves",
     "image": "/images/combat/equipment/black_gloves.png",
-    "value": "8e3"
+    "value": "8e3",
+    "class": "equipment"
   },
   "1153": {
     "name": "Mithril Gloves",
     "image": "/images/combat/equipment/mithril_gloves.png",
-    "value": "5e4"
+    "value": "5e4",
+    "class": "equipment"
   },
   "1154": {
     "name": "Adamantite Gloves",
     "image": "/images/combat/equipment/adamantite_gloves.png",
-    "value": "3e5"
+    "value": "3e5",
+    "class": "equipment"
   },
   "1155": {
     "name": "Runite Gloves",
     "image": "/images/combat/equipment/rune_gloves.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "equipment"
   },
   "1156": {
     "name": "Stygian Gloves",
     "image": "/images/combat/equipment/stygian_gloves.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1500": {
     "name": "Santa Hat",
     "image": "/images/combat/equipment/santa_hat.png",
-    "value": "0"
+    "value": "0",
+    "class": "equipment"
   },
   "1501": {
     "name": "Snowman Head",
     "image": "/images/combat/equipment/snowman_head.png",
-    "value": "0"
+    "value": "0",
+    "class": "equipment"
   },
   "1502": {
     "name": "Tophat",
     "image": "/images/combat/equipment/tophat.png",
-    "value": "0"
+    "value": "0",
+    "class": "equipment"
   },
   "1503": {
     "name": "Lesser Ladle",
     "image": "/images/combat/equipment/lesser_ladle.png",
-    "value": "2e4"
+    "value": "2e4",
+    "class": "equipment"
   },
   "1504": {
     "name": "Ladle",
     "image": "/images/combat/equipment/ladle.png",
-    "value": "25e3"
+    "value": "25e3",
+    "class": "equipment"
   },
   "1505": {
     "name": "Greater Ladle",
     "image": "/images/combat/equipment/greater_ladle.png",
-    "value": "3e4"
+    "value": "3e4",
+    "class": "equipment"
   },
   "1506": {
     "name": "Moss Maul",
     "image": "/images/combat/equipment/moss_maul_icon.png",
-    "value": "636e4"
+    "value": "636e4",
+    "class": "equipment"
   },
   "1507": {
     "name": "Modified Diving Gloves",
     "image": "/images/combat/equipment/modified_diving_gloves_icon.png",
-    "value": "100"
+    "value": "100",
+    "class": "equipment"
   },
   "1508": {
     "name": "King's Crown",
     "image": "/images/combat/equipment/kings_crown.png",
-    "value": "636e4"
+    "value": "636e4",
+    "class": "equipment"
   },
   "1509": {
     "name": "Fire Orb",
     "image": "/images/combat/equipment/fire_orb.png",
-    "value": "636e4"
+    "value": "636e4",
+    "class": "equipment"
   },
   "1510": {
     "name": "Kalanahmatti",
     "image": "/images/combat/equipment/kalanahmatti.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "bar"
   },
   "1511": {
     "name": "Shard of Kalanahmatti",
     "image": "/images/combat/equipment/shard_of_kalanahmatti_icon.png",
-    "value": "636e4"
+    "value": "636e4",
+    "class": "equipment"
   },
   "1512": {
     "name": "Zero Edge",
     "image": "/images/combat/equipment/zero_edge_icon.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "1513": {
     "name": "Crest of Chaos",
     "image": "/images/combat/equipment/crest_of_chaos_icon.png",
-    "value": "68e3"
+    "value": "68e3",
+    "class": "equipment"
   },
   "1514": {
     "name": "Forgotten Soul",
     "image": "/images/combat/equipment/forgotten-soul-sad-icon.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "1515": {
     "name": "Forgotten Soul",
     "image": "/images/combat/equipment/forgotten-soul-crazy-icon.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "1516": {
     "name": "Forgotten Soul",
     "image": "/images/combat/equipment/forgotten-soul-mad-icon.png",
-    "value": "336e4"
+    "value": "336e4",
+    "class": "equipment"
   },
   "1517": {
     "name": "Gargoyle Chainmail",
     "image": "/images/combat/equipment/gargoyle_chain.png",
-    "value": "232e3"
+    "value": "232e3",
+    "class": "equipment"
   },
   "1518": {
     "name": "Gargoyle Legs",
     "image": "/images/combat/equipment/gargoyle_pants.png",
-    "value": "184e3"
+    "value": "184e3",
+    "class": "equipment"
   },
   "1519": {
     "name": "Gargoyle Boots",
     "image": "/images/combat/equipment/gargoyle_boots_icon.png",
-    "value": "136e3"
+    "value": "136e3",
+    "class": "equipment"
   },
   "1520": {
     "name": "Gargoyle Helm",
     "image": "/images/combat/equipment/gargoyle_helm_icon.png",
-    "value": "136e3"
+    "value": "136e3",
+    "class": "equipment"
   },
   "1521": {
     "name": "Gargoyle Shield",
     "image": "/images/combat/equipment/gargoyle_shield_1.png",
-    "value": "232e3"
+    "value": "232e3",
+    "class": "equipment"
   },
   "1522": {
     "name": "Gargoyle Falchion",
     "image": "/images/combat/equipment/gargoyle_falcion_icon.png",
-    "value": "184e3"
+    "value": "184e3",
+    "class": "equipment"
   },
   "1523": {
     "name": "Gargoyle Daggers",
     "image": "/images/combat/equipment/dagger_gargoyle_icon.png",
-    "value": "136e3"
+    "value": "136e3",
+    "class": "equipment"
   },
   "1524": {
     "name": "Gargoyle Glaive",
     "image": "/images/combat/equipment/gargoyle_glaive_icon.png",
-    "value": "28e4"
+    "value": "28e4",
+    "class": "equipment"
   },
   "1525": {
     "name": "Infernal Lance",
     "image": "/images/combat/equipment/infernal_lance_icon.png",
-    "value": "42e4"
+    "value": "42e4",
+    "class": "equipment"
   },
   "1526": {
     "name": "Black Knight Great Helm",
     "image": "/images/combat/equipment/black_black_knight_great_helm_icon.png",
-    "value": "2}"
+    "value": "2}",
+    "class": "equipment"
   },
   "1527": {
     "name": "Chorus of Souls",
     "image": "/images/combat/equipment/chorus_of_souls_icon.png",
-    "value": "2e6"
+    "value": "2e6",
+    "class": "equipment"
   },
   "1528": {
     "name": "Decayed Cloak",
     "image": "/images/combat/equipment/decayed_cloak_hood.png",
-    "value": "2}"
+    "value": "2}",
+    "class": "equipment"
   },
   "1530": {
     "name": "Mysterious Man",
     "image": "/images/combat/equipment/hatcontest_mysterious_man_icon.png",
-    "value": "0"
+    "value": "0",
+    "class": "equipment"
   },
   "1531": {
     "name": "Corny Joke",
     "image": "/images/combat/equipment/hatcontest_cornyjoke_icon.png",
-    "value": "0"
+    "value": "0",
+    "class": "equipment"
   },
   "1532": {
     "name": "Death Metal Wig",
     "image": "/images/combat/equipment/hatcontest_death_metal_wig_icon.png",
-    "value": "0"
+    "value": "0",
+    "class": "equipment"
   },
   "1540": {
     "name": "Shrimp Carapace",
     "image": "/images/combat/equipment/shrimp_armor_icon.png",
-    "value": "1e4"
+    "value": "1e4",
+    "class": "equipment"
   },
   "1541": {
     "name": "Shrimp Greaves",
     "image": "/images/combat/equipment/shrimp_pants.png",
-    "value": "1e4"
+    "value": "1e4",
+    "class": "equipment"
   },
   "1542": {
     "name": "Shrimp Helm",
     "image": "/images/combat/equipment/shrimp_helm_icon.png",
-    "value": "1e4"
+    "value": "1e4",
+    "class": "equipment"
   },
   "1543": {
     "name": "Shrimp Shell",
     "image": "/images/combat/equipment/shrimp_shield_icon.png",
-    "value": "1e4"
+    "value": "1e4",
+    "class": "equipment"
   },
   "1544": {
     "name": "Naga's Bracelet",
     "image": "/images/combat/equipment/nagas_bracelet.png",
-    "value": "75e3"
+    "value": "75e3",
+    "class": "equipment"
   },
   "1545": {
     "name": "Titanic Gauntlet",
     "image": "/images/combat/equipment/titanic_gauntlet.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1546": {
     "name": "Awakened World Shaper",
     "image": "/images/combat/equipment/awakened_world_shaper.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1547": {
     "name": "Shapeless Scythe",
     "image": "/images/combat/equipment/Shapeless_Scythe_Icon.png",
-    "value": "12e6"
+    "value": "12e6",
+    "class": "equipment"
   },
   "1548": {
     "name": "Giant King's Jewel",
     "image": "/images/magic/giants_gem.png",
-    "value": "25e5"
+    "value": "25e5",
+    "class": "gem"
   },
   "1549": {
     "name": "Giant Scraps",
     "image": "/images/misc/Giant_Scrap.png",
-    "value": "5e4"
+    "value": "5e4",
+    "class": "bar"
   },
   "1550": {
     "name": "World Walkers",
     "image": "/images/combat/equipment/World_Walkers_Silver_Version_Icon.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1551": {
     "name": "Giant King's Nails",
     "image": "/images/cooking/banana.png",
-    "value": "20"
+    "value": "20",
+    "class": "cooking-ingredient"
   },
   "1552": {
     "name": "Cooked Giant King's Nails",
     "image": "/images/cooking/banana.png",
-    "value": "20"
+    "value": "20",
+    "class": "cooking-ingredient"
   },
   "1553": {
     "name": "Crystal Mace",
     "image": "/images/combat/equipment/crystal_mace_icon.png",
-    "value": "636e4"
+    "value": "636e4",
+    "class": "equipment"
   },
   "1554": {
     "name": "Signet Ring",
     "image": "/images/jewellery/signet_ring.png",
-    "value": "45e4"
+    "value": "45e4",
+    "class": "equipment"
   },
   "1555": {
     "name": "essence to talisman resource",
     "image": "/images/cooking/banana.png",
-    "value": "9"
+    "value": "9",
+    "class": ""
   },
   "1556": {
     "name": "max account consumable dev",
     "image": "/images/cooking/banana.png",
-    "value": "9"
+    "value": "9",
+    "class": ""
   },
   "1557": {
     "name": "stone castle bricks",
     "image": "/images/cooking/banana.png",
-    "value": "9"
+    "value": "9",
+    "class": ""
   },
   "1558": {
     "name": "elite moon god potion",
     "image": "/images/cooking/banana.png",
-    "value": "9"
+    "value": "9",
+    "class": ""
   },
   "1559": {
     "name": "Black Knight Titan's Helm",
     "image": "/images/combat/equipment/black_knight_titan_helm_icon.png",
-    "value": "488e4"
+    "value": "488e4",
+    "class": "equipment"
   },
   "1560": {
     "name": "Elven Mage's Hood",
     "image": "/images/combat/equipment/stygian_med_helm_icon.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1561": {
     "name": "Elven Warrior's Mail",
     "image": "/images/combat/equipment/stygian_chainbody.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1562": {
     "name": "Elven Ranger's Leggings",
     "image": "/images/combat/equipment/stygian_platelegs.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1563": {
     "name": "Elven Cavalry Boots",
     "image": "/images/combat/equipment/stygian_boots_icon.png",
-    "value": "5e6"
+    "value": "5e6",
+    "class": "equipment"
   },
   "1564": {
     "name": "Searing Ladle",
     "image": "/images/combat/equipment/searing_ladle.png",
-    "value": "25e3"
+    "value": "25e3",
+    "class": "equipment"
   },
   "1565": {
     "name": "Black Knight's Gauntlets",
     "image": "/images/combat/equipment/black_gloves.png",
-    "value": "128e3"
+    "value": "128e3",
+    "class": "equipment"
   },
   "1600": {
     "name": "Scroll",
     "image": "/images/enchanting/scroll.png",
-    "value": "900"
+    "value": "900",
+    "class": "enchanted-scroll"
   },
   "1601": {
     "name": "Scroll of Embers",
     "image": "/images/enchanting/scroll_of_embers.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1602": {
     "name": "Scroll of the Prospector",
     "image": "/images/enchanting/scroll_of_the_prospector.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1603": {
     "name": "Scroll of the Scholar",
     "image": "/images/enchanting/scroll_of_the_scholar.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1604": {
     "name": "Scroll of Gathering",
     "image": "/images/enchanting/scroll_of_gathering.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1605": {
     "name": "Scroll of Superheating",
     "image": "/images/enchanting/scroll_of_superheating.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1606": {
     "name": "Scroll of Pyromancy",
     "image": "/images/enchanting/scroll_of_pyromancy.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1607": {
     "name": "Scroll of Wealth",
     "image": "/images/enchanting/scroll_of_wealth.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1608": {
     "name": "Scroll of Haste",
     "image": "/images/enchanting/scroll_of_haste.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1609": {
     "name": "Scroll of Naturalist",
     "image": "/images/enchanting/scroll_of_naturalist_v2.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1610": {
     "name": "Scroll of Acrobatics",
     "image": "/images/enchanting/scroll_of_naturalist_v2.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1611": {
     "name": "Scroll of Critical Strike",
     "image": "/images/enchanting/scroll_of_critical_strike.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1612": {
     "name": "Scroll of Poisoning",
     "image": "/images/enchanting/scroll_of_naturalist_v2.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1613": {
     "name": "Scroll of Accuracy",
     "image": "/images/enchanting/scroll_of_accuracy.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1614": {
     "name": "Scroll of Deflect",
     "image": "/images/enchanting/scroll_of_naturalist_v2.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1615": {
     "name": "Scroll of Force",
     "image": "/images/enchanting/scroll_of_force.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1616": {
     "name": "Scroll of Healing",
     "image": "/images/enchanting/scroll_of_healing.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1617": {
     "name": "Scroll of Weakening",
     "image": "/images/enchanting/scroll_of_weakening.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1618": {
     "name": "Scroll of Reinforcement",
     "image": "/images/enchanting/scroll_of_reinforcement.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1619": {
     "name": "Scroll of Protection",
     "image": "/images/enchanting/scroll_of_protection.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1620": {
     "name": "Scroll of Counterattack",
     "image": "/images/enchanting/scroll_of_naturalist_v2.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1621": {
     "name": "Scroll of Recklessness",
     "image": "/images/enchanting/scroll_of_recklessness.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1622": {
     "name": "Scroll of Efficiency",
     "image": "/images/enchanting/scroll_of_efficiency.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1623": {
     "name": "Scroll of Fishing",
     "image": "/images/enchanting/scroll_of_fishing.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1624": {
     "name": "Scroll of Cooking",
     "image": "/images/enchanting/scroll_of_cooking.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1625": {
     "name": "Scroll of Crafting",
     "image": "/images/enchanting/scroll_of_crafting.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1626": {
     "name": "Scroll of Refining",
     "image": "/images/enchanting/scroll_of_refining.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1627": {
     "name": "Scroll of Runecrafting",
     "image": "/images/enchanting/scroll_of_runecrafting.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1628": {
     "name": "Scroll of Chances",
     "image": "/images/enchanting/scroll_of_chances_v2.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1629": {
     "name": "Scroll of the Shrimp Lord",
     "image": "/images/enchanting/scroll_of_the_shrimp_lord.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1630": {
     "name": "Scroll of Enlightenment",
     "image": "/images/enchanting/scroll_of_enlightment.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1631": {
     "name": "Scroll of Prolonging",
     "image": "/images/enchanting/scroll_of_boosting.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1632": {
     "name": "Scroll of the Treasure Hunter",
     "image": "/images/enchanting/scroll_of_treasure_hunter.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1633": {
     "name": "Scroll of Inferno",
     "image": "/images/enchanting/scroll_of_inferno.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1634": {
     "name": "Scroll of Destructive Testing",
     "image": "/images/enchanting/scroll_of_destructive_testing.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1635": {
     "name": "Scroll of Nature",
     "image": "/images/enchanting/scroll_of_nature.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1636": {
     "name": "Scroll of Root Digging",
     "image": "/images/enchanting/scroll_of_root_digging.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1637": {
     "name": "Scroll of Patience",
     "image": "/images/enchanting/scroll_of_patience.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1638": {
     "name": "Scroll of Overhealing",
     "image": "/images/enchanting/scroll_of_overhealing.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1639": {
     "name": "Scroll of Farming",
     "image": "/images/enchanting/scroll_of_farming.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1640": {
     "name": "Scroll of the Gold Digger",
     "image": "/images/enchanting/scroll_of_the_gold_digger.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1641": {
     "name": "Scroll of Fertilizing",
     "image": "/images/enchanting/scroll_of_fertilizing.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1642": {
     "name": "Scroll of Cultivation",
     "image": "/images/enchanting/scroll_of_cultivation.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1643": {
     "name": "Scroll of Fortitude",
     "image": "/images/enchanting/scroll_of_fortitude.png",
-    "value": "25e4"
+    "value": "25e4",
+    "class": "enchanted-scroll"
   },
   "1644": {
     "name": "Scroll of Pungent Bait",
     "image": "/images/enchanting/scroll_of_pungentbait.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1645": {
     "name": "Scroll of Reinforced Line",
     "image": "/images/enchanting/scroll_of_reinforcedline.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1646": {
     "name": "Scroll of Fishing Magnetism",
     "image": "/images/enchanting/scroll_of_fishingmagnetism.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1647": {
     "name": "Scroll of Bait Preservation",
     "image": "/images/enchanting/scroll_of_baitpreservation.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1648": {
     "name": "Scroll of Oil Spill",
     "image": "/images/enchanting/scroll_of_oilspill.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1649": {
     "name": "Scroll of Deadliest Catch",
     "image": "/images/enchanting/scroll_of_deadliestcatch.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "1650": {
     "name": "Scroll of Master Chef",
     "image": "/images/enchanting/scroll_of_masterchef.png",
-    "value": "2e3"
+    "value": "2e3",
+    "class": "enchanted-scroll"
   },
   "2000": {
     "name": "Raw Chicken",
     "image": "/images/cooking/raw_chicken.png",
-    "value": "75"
+    "value": "75",
+    "class": "cooking-ingredient"
   },
   "2001": {
     "name": "Raw Beef",
     "image": "/images/cooking/raw_beef.png",
-    "value": "75"
+    "value": "75",
+    "class": "cooking-ingredient"
   },
   "2009": {
     "name": "Spider Legs",
     "image": "/images/cooking/spider_legs.png",
-    "value": "100"
+    "value": "100",
+    "class": "cooking-ingredient"
   },
   "2010": {
     "name": "Goblin Brain",
     "image": "/images/cooking/goblin_brain.png",
-    "value": "25"
+    "value": "25",
+    "class": "cooking-ingredient"
   },
   "2012": {
     "name": "Pepper",
     "image": "/images/cooking/pepper.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2013": {
     "name": "Salt",
     "image": "/images/cooking/salt.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2014": {
     "name": "Ashes",
     "image": "/images/cooking/ashes.png",
-    "value": "5"
+    "value": "5",
+    "class": "cooking-ingredient"
   },
   "2015": {
     "name": "Sugar",
     "image": "/images/cooking/sugar.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2016": {
     "name": "Honey",
     "image": "/images/cooking/honey.png",
-    "value": "20"
+    "value": "20",
+    "class": "cooking-ingredient"
   },
   "2017": {
     "name": "Milk",
     "image": "/images/cooking/milk.png",
-    "value": "15"
+    "value": "15",
+    "class": "cooking-ingredient"
   },
   "2018": {
     "name": "Butter",
     "image": "/images/cooking/butter.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2019": {
     "name": "Egg",
     "image": "/images/cooking/egg.png",
-    "value": "15"
+    "value": "15",
+    "class": "cooking-ingredient"
   },
   "2020": {
     "name": "Mushroom",
     "image": "/images/cooking/mushroom.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2021": {
     "name": "Carrot",
     "image": "/images/cooking/carrot.png",
-    "value": "15"
+    "value": "15",
+    "class": "cooking-ingredient"
   },
   "2022": {
     "name": "Chili Pepper",
     "image": "/images/cooking/chili_pepper.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2023": {
     "name": "Potato",
     "image": "/images/cooking/potato.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2024": {
     "name": "Pumpkin",
     "image": "/images/cooking/pumpkin.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2025": {
     "name": "Tomato",
     "image": "/images/cooking/tomato.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2026": {
     "name": "Apple",
     "image": "/images/cooking/apple.png",
-    "value": "20"
+    "value": "20",
+    "class": "cooking-ingredient"
   },
   "2027": {
     "name": "Wildberry",
     "image": "/images/cooking/wildberry.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2028": {
     "name": "Banana",
     "image": "/images/cooking/banana.png",
-    "value": "20"
+    "value": "20",
+    "class": "cooking-ingredient"
   },
   "2029": {
     "name": "Wheat",
     "image": "/images/cooking/wheat.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2030": {
     "name": "Rice",
     "image": "/images/cooking/rice.png",
-    "value": "10"
+    "value": "10",
+    "class": "cooking-ingredient"
   },
   "2031": {
     "name": "Sageberry",
     "image": "/images/farming/sage_berry.png",
-    "value": "150"
+    "value": "150",
+    "class": "cooking-ingredient"
   },
   "2100": {
     "name": "Questionable Food",
     "image": "/images/cooking/questionable_food.png",
-    "value": "5"
+    "value": "5",
+    "class": "cooking-ingredient"
   },
   "2101": {
     "name": "Monster Surprise",
     "image": "/images/cooking/monster_surprise.png",
-    "value": "5"
+    "value": "5",
+    "class": "cooking-ingredient"
   },
   "2102": {
     "name": "Seared Steak",
     "image": "/images/cooking/seared_steak.png",
-    "value": "50"
+    "value": "50",
+    "class": "cooking-ingredient"
   },
   "2103": {
     "name": "Seared Fish",
     "image": "/images/cooking/seared_fish.png",
-    "value": "30"
+    "value": "30",
+    "class": "cooking-ingredient"
   },
   "2104": {
     "name": "Seared Poultry",
     "image": "/images/cooking/seared_bird.png",
-    "value": "50"
+    "value": "50",
+    "class": "cooking-ingredient"
   },
   "2105": {
     "name": "Birdie Pasta",
     "image": "/images/cooking/birdie_pasta.png",
-    "value": "75"
+    "value": "75",
+    "class": "cooking-ingredient"
   },
   "2106": {
     "name": "Spaghetti & Meat",
     "image": "/images/cooking/spaghetti_meat.png",
-    "value": "75"
+    "value": "75",
+    "class": "cooking-ingredient"
   },
   "2107": {
     "name": "Sushi",
     "image": "/images/cooking/sushi.png",
-    "value": "100"
+    "value": "100",
+    "class": "cooking-ingredient"
   },
   "2108": {
     "name": "Birdie Pie",
     "image": "/images/cooking/birdie_pie.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2109": {
     "name": "Cottage Pie",
     "image": "/images/cooking/cottage_pie.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2110": {
     "name": "Fisherman's Pie",
     "image": "/images/cooking/fisherman_pie.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2111": {
     "name": "Fruit Pie",
     "image": "/images/cooking/fruit_pie.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2112": {
     "name": "Demon Cake",
     "image": "/images/cooking/demon_cake.png",
-    "value": "175"
+    "value": "175",
+    "class": "cooking-ingredient"
   },
   "2113": {
     "name": "Cake",
     "image": "/images/cooking/cake.png",
-    "value": "100"
+    "value": "100",
+    "class": "cooking-ingredient"
   },
   "2114": {
     "name": "Fruit Cake",
     "image": "/images/cooking/fruit_cake.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2115": {
     "name": "Grain Cake",
     "image": "/images/cooking/grain_cake.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2116": {
     "name": "Omelette",
     "image": "/images/cooking/omelette.png",
-    "value": "75"
+    "value": "75",
+    "class": "cooking-ingredient"
   },
   "2117": {
     "name": "Monster Omelette",
     "image": "/images/cooking/monster_omelette.png",
-    "value": "150"
+    "value": "150",
+    "class": "cooking-ingredient"
   },
   "2118": {
     "name": "Meaty Omelette",
     "image": "/images/cooking/meat_omelette.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2119": {
     "name": "Veggie Crepe",
     "image": "/images/cooking/veggie_crepe.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2120": {
     "name": "Fruity Crepe",
     "image": "/images/cooking/fruit_crepe.png",
-    "value": "150"
+    "value": "150",
+    "class": "cooking-ingredient"
   },
   "2121": {
     "name": "Eggnog",
     "image": "/images/cooking/egg_nog.png",
-    "value": "50"
+    "value": "50",
+    "class": "cooking-ingredient"
   },
   "2122": {
     "name": "Meat Roast",
     "image": "/images/cooking/meat_roast.png",
-    "value": "150"
+    "value": "150",
+    "class": "cooking-ingredient"
   },
   "2123": {
     "name": "Fried Fruit",
     "image": "/images/cooking/fried_fruit.png",
-    "value": "100"
+    "value": "100",
+    "class": "cooking-ingredient"
   },
   "2124": {
     "name": "Grilled Veggies",
     "image": "/images/cooking/grilled_veggies.png",
-    "value": "100"
+    "value": "100",
+    "class": "cooking-ingredient"
   },
   "2125": {
     "name": "Kebabs",
     "image": "/images/cooking/kababs.png",
-    "value": "150"
+    "value": "150",
+    "class": "cooking-ingredient"
   },
   "2126": {
     "name": "Candied Fruit",
     "image": "/images/cooking/candied_fruit.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2127": {
     "name": "Milkshake",
     "image": "/images/cooking/milkshake.png",
-    "value": "75"
+    "value": "75",
+    "class": "cooking-ingredient"
   },
   "2128": {
     "name": "Vegetable Stew",
     "image": "/images/cooking/veggie_stew.png",
-    "value": "150"
+    "value": "150",
+    "class": "cooking-ingredient"
   },
   "2129": {
     "name": "Meaty Stew",
     "image": "/images/cooking/meaty_stew.png",
-    "value": "125"
+    "value": "125",
+    "class": "cooking-ingredient"
   },
   "2130": {
     "name": "Monster Stew",
     "image": "/images/cooking/monster_stew.png",
-    "value": "200"
+    "value": "200",
+    "class": "cooking-ingredient"
   },
   "2131": {
     "name": "Jerky",
     "image": "/images/cooking/jerky.png",
-    "value": "75"
+    "value": "75",
+    "class": "cooking-ingredient"
   },
   "2132": {
     "name": "Pudding",
     "image": "/images/cooking/pudding.png",
-    "value": "100"
+    "value": "100",
+    "class": "cooking-ingredient"
   },
   "2133": {
     "name": "Ice Cream",
     "image": "/images/cooking/icecream.png",
-    "value": "100"
+    "value": "100",
+    "class": "cooking-ingredient"
   },
   "2134": {
     "name": "Monster Curry",
     "image": "/images/cooking/monster_curry.png",
-    "value": "150"
+    "value": "150",
+    "class": "cooking-ingredient"
   },
   "2135": {
     "name": "Birdie Curry",
     "image": "/images/cooking/birdie_curry.png",
-    "value": "175"
+    "value": "175",
+    "class": "cooking-ingredient"
   },
   "2136": {
     "name": "Beast Curry",
     "image": "/images/cooking/beast_curry.png",
-    "value": "175"
+    "value": "175",
+    "class": "cooking-ingredient"
   },
   "2137": {
     "name": "Seafood Curry",
     "image": "/images/cooking/seafood_curry.png",
-    "value": "175"
+    "value": "175",
+    "class": "cooking-ingredient"
   },
   "2138": {
     "name": "Monster Gelato",
     "image": "/images/cooking/monster_gelato.png",
-    "value": "225"
+    "value": "225",
+    "class": "cooking-ingredient"
   },
   "6000": {
     "name": "Gold Medal",
     "image": "/images/ui/highscore_gold.png",
-    "value": 0
+    "value": 0,
+    "class": "gold-medal"
   },
   "6001": {
     "name": "Silver Medal",
     "image": "/images/ui/highscore_silver.png",
-    "value": 0
+    "value": 0,
+    "class": "silver-medal"
   },
   "6002": {
     "name": "Bronze Medal",
     "image": "/images/ui/highscore_bronze.png",
-    "value": 0
+    "value": 0,
+    "class": "bronze-medal"
   },
   "6950": {
     "name": "Event Token",
     "image": "/images/misc/event_token.png",
-    "value": 0
+    "value": 0,
+    "class": "gold-medal"
   },
   "7000": {
     "name": "Snow",
     "image": "/images/christmas/snow.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7001": {
     "name": "Snowball",
     "image": "/images/christmas/snowball.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7002": {
     "name": "Wrapping Paper",
     "image": "/images/christmas/wrapping_paper.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7003": {
     "name": "Present",
     "image": "/images/christmas/present.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-present"
   },
   "7004": {
     "name": "Cookie Dough",
     "image": "/images/christmas/cookie_dough.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-food"
   },
   "7005": {
     "name": "Cookie",
     "image": "/images/christmas/cookie.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-food"
   },
   "7006": {
     "name": "Gummy Fish",
     "image": "/images/christmas/gummy_fish.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7007": {
     "name": "Gummy Shark Fin",
     "image": "/images/christmas/gummy_shark_fin.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7008": {
     "name": "Krampus' Horn",
     "image": "/images/christmas/krampus_horn.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7009": {
     "name": "Candy Buttons",
     "image": "/images/christmas/candy_buttons.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7010": {
     "name": "Scarf",
     "image": "/images/christmas/scarf.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7011": {
     "name": "Evergreen Log",
     "image": "/images/christmas/evergreen_log.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7012": {
     "name": "Corrupted Evergreen Log",
     "image": "/images/christmas/corrupted_evergreen_log.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7013": {
     "name": "Magic Ice",
     "image": "/images/christmas/magic_ice.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7014": {
     "name": "Inferior Bearded Wanderer",
     "image": "/images/christmas/christmas_helmet.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier1"
   },
   "7015": {
     "name": "Inferior Reindeer Hunters' Armor",
     "image": "/images/christmas/christmas_chestplate.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier1"
   },
   "7016": {
     "name": "Inferior Reindeer Hunters' Leggings",
     "image": "/images/christmas/christmas_leggings.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier1"
   },
   "7017": {
     "name": "Inferior Christmas Lights",
     "image": "/images/christmas/christmas_weapon.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier1"
   },
   "7018": {
     "name": "SuperSled 1337",
     "image": "/images/christmas/christmas_shield.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier1"
   },
   "7019": {
     "name": "Bearded Wanderer",
     "image": "/images/christmas/christmas_helmet.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier2"
   },
   "7020": {
     "name": "Reindeer Hunters' Armor",
     "image": "/images/christmas/christmas_chestplate.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier2"
   },
   "7021": {
     "name": "Reindeer Hunters' Leggings",
     "image": "/images/christmas/christmas_leggings.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier2"
   },
   "7022": {
     "name": "Christmas Lights",
     "image": "/images/christmas/christmas_weapon.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier2"
   },
   "7023": {
     "name": "SuperSled 9000",
     "image": "/images/christmas/christmas_shield.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier2"
   },
   "7024": {
     "name": "Superior Bearded Wanderer",
     "image": "/images/christmas/christmas_helmet.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier3"
   },
   "7025": {
     "name": "Superior Reindeer Hunters' Armor",
     "image": "/images/christmas/christmas_chestplate.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier3"
   },
   "7026": {
     "name": "Superior Reindeer Hunters' Leggings",
     "image": "/images/christmas/christmas_leggings.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier3"
   },
   "7027": {
     "name": "Superior Christmas Lights",
     "image": "/images/christmas/christmas_weapon.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier3"
   },
   "7028": {
     "name": "SuperSled 9001",
     "image": "/images/christmas/christmas_shield.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-tier3"
   },
   "7029": {
     "name": "Magical Snowball",
     "image": "/images/christmas/magical_snowball.png",
-    "value": "2.5}"
+    "value": "2.5}",
+    "class": "equipment"
   },
   "7030": {
     "name": "Candy Cane Daggers",
     "image": "/images/christmas/candy_cane_daggers_icon.png",
-    "value": "2}"
+    "value": "2}",
+    "class": "equipment"
   },
   "7031": {
     "name": "Festive Shroud",
     "image": "/images/christmas/festive_shroud_hood.png",
-    "value": "2}"
+    "value": "2}",
+    "class": "equipment"
   },
   "7032": {
     "name": "Merry Maker's Mittens",
     "image": "/images/christmas/christmas_gloves.png",
-    "value": 0
+    "value": 0,
+    "class": "equipment"
   },
   "7033": {
     "name": "Mistletoe Treads",
     "image": "/images/christmas/christmas_boots_icon.png",
-    "value": 0
+    "value": 0,
+    "class": "equipment"
   },
   "7034": {
     "name": "Magic Ice Bar",
     "image": "/images/christmas/ice_bar.png",
-    "value": 0
+    "value": 0,
+    "class": "bar"
   },
   "7035": {
     "name": "Winter Rune",
     "image": "/images/christmas/Snow_Rune.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "7036": {
     "name": "Scroll of Candy Canes",
     "image": "/images/christmas/xmas_scroll.png",
-    "value": 0
+    "value": 0,
+    "class": "enchanted-scroll"
   },
   "7037": {
     "name": "Gummy Lure",
     "image": "images/christmas/gummy_bait.png",
-    "value": 0
+    "value": 0,
+    "class": "fish"
   },
   "7038": {
     "name": "Winter Essence",
     "image": "/images/christmas/snow_essence.png",
-    "value": 0
+    "value": 0,
+    "class": "rune"
   },
   "7039": {
     "name": "Gummy Shark",
     "image": "/images/christmas/monsters/gummy_shark.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7040": {
     "name": "Angry Letter",
     "image": "/images/christmas/angry_letter.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7041": {
     "name": "Baubles",
     "image": "/images/christmas/baubles.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-drop"
   },
   "7050": {
     "name": "Snowglobe",
     "image": "/images/christmas/snowglobe.png",
-    "value": 0
+    "value": 0,
+    "class": "christmas-globe"
   },
   "7060": {
     "name": "Chicken",
     "image": "/images/combat/monsters/chicken.png",
-    "value": 0
+    "value": 0,
+    "class": "equipment"
   },
   "8000": {
     "name": "RISE OF INFO",
     "image": "/images/misc/Elite_Scroll.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8001": {
     "name": "Black Knight's Trial",
     "image": "/images/misc/elite/Elite_Scroll_BK.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8002": {
     "name": "Giant Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Giant.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8003": {
     "name": "Corroded Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Corroded.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8004": {
     "name": "Stew Stained Page",
     "image": "/images/misc/elite/Elite_Scroll_Goblin.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8005": {
     "name": "Cluster-Cluck",
     "image": "/images/misc/elite/Elite_Scroll_Chicken.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8006": {
     "name": "Demonic Trial",
     "image": "/images/misc/elite/Elite_Scroll_Demon.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8007": {
     "name": "Taproot Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Spriggan.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8008": {
     "name": "The Final Test",
     "image": "/images/misc/Elite_Scroll.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8009": {
     "name": "Shapeless Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Chaos.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "8010": {
     "name": "Stormy Sea Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Fish.png",
-    "value": "500"
+    "value": "500",
+    "class": "gem"
   },
   "9000": {
     "name": "Giant's Keep Key",
     "image": "/images/misc/keys/Complete_Disc.png",
-    "value": "1e7"
+    "value": "1e7",
+    "class": "key"
   },
   "9001": {
     "name": "Nature Fragment",
     "image": "/images/misc/keys/Nature_Piece.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "gem"
   },
   "9002": {
     "name": "Ice Fragment",
     "image": "/images/misc/keys/Water_Piece.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "gem"
   },
   "9003": {
     "name": "Fire Fragment",
     "image": "/images/misc/keys/Fire_Piece.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "gem"
   },
   "9004": {
     "name": "Corrupted Fragment",
     "image": "/images/misc/keys/Death_Piece.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "gem"
   },
   "9005": {
     "name": "Chaos Fragment",
     "image": "/images/misc/keys/Chaos_Piece.png",
-    "value": "15e5"
+    "value": "15e5",
+    "class": "gem"
   },
   "9006": {
     "name": "Torn Goblin Settlement Map",
     "image": "/images/misc/keys/goblin_map.png",
-    "value": "1e5"
+    "value": "1e5",
+    "class": "key"
   },
   "9007": {
     "name": "Scrap of Stained Parchment",
     "image": "/images/misc/keys/goblin_map_piece.png",
-    "value": "7500"
+    "value": "7500",
+    "class": "gem"
   },
   "9008": {
     "name": "Dark Fortress Key",
     "image": "/images/misc/keys/fortress_key.png",
-    "value": "75e4"
+    "value": "75e4",
+    "class": "key"
   },
   "9009": {
     "name": "Dark Key Piece",
     "image": "/images/misc/keys/fortress_key_piece.png",
-    "value": "1e5"
+    "value": "1e5",
+    "class": "gem"
   },
   "9010": {
     "name": "Cursed Spade",
     "image": "/images/magic/prismatic_gem.png",
-    "value": "1e5"
+    "value": "1e5",
+    "class": "key"
   },
   "9011": {
     "name": "Burning Feather",
     "image": "images/misc/keys/flame_feather.png",
-    "value": "2e6"
+    "value": "2e6",
+    "class": "key"
   },
   "9012": {
     "name": "Krampus' Key",
     "image": "/images/christmas/krampus_key.png",
-    "value": "69"
+    "value": "69",
+    "class": "key"
   },
   "10000": {
     "name": "The Castled King",
     "image": "/images/magic/prismatic_gem.png",
-    "value": "1"
+    "value": "1",
+    "class": "equipment"
   },
   "10001": {
     "name": "Useless Scraps",
     "image": "/images/misc/Range_Scrap.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "bar"
   },
   "10002": {
     "name": "Useless Scraps",
     "image": "/images/misc/Magic_Scrap.png",
-    "value": "1e3"
+    "value": "1e3",
+    "class": "bar"
   },
   "11000": {
     "name": "Novice Tacklebox",
     "image": "/images/fishing/Novice_Tacklebox.png",
-    "value": "850"
+    "value": "850",
+    "class": "equipment"
   },
   "11001": {
     "name": "Basic Tacklebox",
     "image": "/images/fishing/Basic_Tacklebox.png",
-    "value": "8e3"
+    "value": "8e3",
+    "class": "equipment"
   },
   "11002": {
     "name": "Advanced Tacklebox",
     "image": "/images/fishing/Advanced_Tacklebox.png",
-    "value": "54500"
+    "value": "54500",
+    "class": "equipment"
   },
   "11003": {
     "name": "Pro Tacklebox",
     "image": "/images/fishing/Pro_Tacklebox.png",
-    "value": "5e5"
+    "value": "5e5",
+    "class": "equipment"
   },
   "11004": {
     "name": "Supreme Tacklebox",
     "image": "/images/fishing/Supreme_Tacklebox.png",
-    "value": "2e6"
+    "value": "2e6",
+    "class": "equipment"
   },
   "11005": {
     "name": "Ocean's Embrace",
     "image": "/images/fishing/Master_Tacklebox.png",
-    "value": "15e6"
+    "value": "15e6",
+    "class": "equipment"
   },
   "11010": {
     "name": "Earthworm Bait",
     "image": "images/fishing/bait/earthworm_hook.png",
-    "value": "5"
+    "value": "5",
+    "class": "fish"
   },
   "11011": {
     "name": "Fat Nightcrawler Bait",
     "image": "images/fishing/bait/nightcrawler_hook.png",
-    "value": "350"
+    "value": "350",
+    "class": "fish"
   },
   "11012": {
     "name": "Glowbug Bait",
     "image": "images/fishing/bait/glowbug_hook.png",
-    "value": "350"
+    "value": "350",
+    "class": "fish"
   },
   "11013": {
     "name": "Shrimp Tail Bait",
     "image": "images/fishing/bait/shrimptail_hook.png",
-    "value": "35"
+    "value": "35",
+    "class": "fish"
   },
   "11014": {
     "name": "Fish Guts Bait",
     "image": "images/fishing/bait/fish_guts_hook.png",
-    "value": "50"
+    "value": "50",
+    "class": "fish"
   },
   "11015": {
     "name": "Smelly Meat Bait",
     "image": "images/fishing/bait/smelly_meat_hook.png",
-    "value": "350"
+    "value": "350",
+    "class": "fish"
   },
   "11016": {
     "name": "Hardened Hook Bait",
     "image": "images/fishing/bait/hardened_hook.png",
-    "value": "100"
+    "value": "100",
+    "class": "fish"
   },
   "11017": {
     "name": "Alluring Lure Bait",
     "image": "images/fishing/bait/alluring_lure.png",
-    "value": "100"
+    "value": "100",
+    "class": "fish"
   },
   "11018": {
     "name": "Writhing Tentacle Bait",
     "image": "images/fishing/bait/writhing_tentacle_hook.png",
-    "value": "666"
+    "value": "666",
+    "class": "fish"
   },
   "11019": {
     "name": "Mysterious Bait",
     "image": "images/fishing/bait/mysterious_bait_hook.png",
-    "value": "500"
+    "value": "500",
+    "class": "fish"
   },
   "11030": {
     "name": "Rotten Driftwood",
     "image": "images/fishing/material/rotten_driftwood.png",
-    "value": "15"
+    "value": "15",
+    "class": "fish"
   },
   "11031": {
     "name": "Sturdy Driftwood",
     "image": "images/fishing/material/sturdy_driftwood.png",
-    "value": "50"
+    "value": "50",
+    "class": "fish"
   },
   "11032": {
     "name": "Aquamarine",
     "image": "images/fishing/material/aquamarine.png",
-    "value": "15e3"
+    "value": "15e3",
+    "class": "fish"
   },
   "11033": {
     "name": "Ancient Fishing Rod",
     "image": "images/fishing/rod_master.png",
-    "value": "25e5"
+    "value": "25e5",
+    "class": "fish"
   },
   "11034": {
     "name": "Ancient Harpoon",
     "image": "images/fishing/harpoon_master.png",
-    "value": "25e5"
+    "value": "25e5",
+    "class": "fish"
   },
   "11035": {
     "name": "Ancient Fishing Net",
     "image": "images/fishing/net_master.png",
-    "value": "25e5"
+    "value": "25e5",
+    "class": "fish"
   },
   "11036": {
     "name": "Mystical Driftwood",
     "image": "images/fishing/material/mystical_driftwood.png",
-    "value": "150"
+    "value": "150",
+    "class": "fish"
   },
   "12000": {
     "name": "Fisherman's Smock",
     "image": "/images/fishing/equipment/smock.png",
-    "value": "25e4"
+    "value": "25e4",
+    "class": "equipment"
   },
   "12001": {
     "name": "Fisherman's Bucket Hat",
     "image": "/images/fishing/equipment/bucket_hat.png",
-    "value": "25e4"
+    "value": "25e4",
+    "class": "equipment"
   },
   "12002": {
     "name": "Fisherman's Waders",
     "image": "/images/fishing/equipment/waders.png",
-    "value": "25e4"
+    "value": "25e4",
+    "class": "equipment"
   },
   "15000": {
     "name": "Slayer's Mark",
     "image": "/images/misc/slayertoken.png",
-    "value": 0
+    "value": 0,
+    "class": "gem"
   },
   "15001": {
     "name": "Token of Ownership",
     "image": "/images/misc/itemtoken.png",
-    "value": 0
+    "value": 0,
+    "class": "gem"
   },
   "15002": {
     "name": "Token of Action",
     "image": "/images/misc/locationtoken.png",
-    "value": 0
+    "value": 0,
+    "class": "gem"
   },
   "100000": {
     "name": "ban_hamer",
     "image": "/images/combat/equipment/ban_hamer_icon.png",
-    "value": 0
+    "value": 0,
+    "class": "equipment"
   }
 }

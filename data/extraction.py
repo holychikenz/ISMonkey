@@ -91,10 +91,12 @@ def extract_item_full(data):
             if len(itemIcon) > 0 :
                 itemImg = itemIcon[0].replace('"', '')
             itemValue = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'value']
+            itemClass = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'class']
             itemDict[int(eval(itemID))] = {
                     "name": itemName,
                     "image": itemImg,
                     "value": itemValue[0] if len(itemValue)>0 else 0,
+                    "class": itemClass[0].replace('"','') if len(itemClass)>0 else '',
                     }
         except:
             pass  # Not an item
