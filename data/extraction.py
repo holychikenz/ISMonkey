@@ -63,6 +63,41 @@ def extract_items(data):
 
     return itemDict
 
+def extract_item_full(data):
+    item_look_between_re = r'([a-zA-Z0-9_$]+)(?=\=\{1:\{id:1,name:"Gold").+?([a-zA-Z0-9_$]+)(?=\=function\([a-zA-Z0-9_$]+\))'
+    item_look_between = regex.search(item_look_between_re, data)
+
+    if len(item_look_between.groups()) != 2:
+        logging.error('Did not find suitable look between search terms, skipping item extraction')
+        return False
+
+    itemExpression = fr'({item_look_between.group(1)}\=)[\s\S]*?({item_look_between.group(2)}\=)'
+    x = regex.search(itemExpression, data).group(0)
+    try:
+        fullItemDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
+    except AttributeError:
+        logging.error('Did not find the proper set of items')
+        return False
+
+    logging.info('Extracting items')
+    itemDict = {}
+    for x in regex.finditer(elementDictlike, fullItemDictlike):
+        xText = (x.group())[1:-1].split(',')
+        try:
+            itemID = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'id'][0]
+            itemName = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'name'][0].replace('"', '')
+            itemImg = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'itemImage'][0].replace('"', '')
+            itemValue = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'value']
+            itemDict[int(eval(itemID))] = {
+                    "name": itemName,
+                    "image": itemImg,
+                    "value": itemValue[0] if len(itemValue)>0 else 0,
+                    }
+        except:
+            pass  # Not an item
+
+    return itemDict
+
 
 def extract_enchantments(data):
     enchantExpression = r'(enchantments)[\s\S]*?(e.exports)'
@@ -163,6 +198,7 @@ def main():
 
     work = {'enchantments':extract_enchantments,
             'items':extract_items,
+            'itemsFull':extract_item_full,
             'places':extract_places,
             'crafting':extract_crafting}
 
