@@ -801,177 +801,177 @@
   },
   "1000": {
     "name": "Bronze Scimitar",
-    "image": "/images/combat/equipment/bronze_scimitar.png",
+    "image": "/images/combat/equipment/bronze_scimitar_icon.png",
     "value": "800"
   },
   "1001": {
     "name": "Bronze Battleaxe",
-    "image": "/images/combat/equipment/bronze_battleaxe.png",
+    "image": "/images/combat/equipment/bronze_battleaxe_icon.png",
     "value": "1200"
   },
   "1002": {
     "name": "Bronze Daggers",
-    "image": "/images/combat/equipment/bronze_dagger.png",
+    "image": "/images/combat/equipment/bronze_daggers_icon.png",
     "value": "400"
   },
   "1003": {
     "name": "Bronze Greatsword",
-    "image": "/images/combat/equipment/bronze_2h_sword.png",
+    "image": "/images/combat/equipment/bronze_2h_sword_icon.png",
     "value": "1600"
   },
   "1004": {
     "name": "Iron Scimitar",
-    "image": "/images/combat/equipment/iron_scimitar.png",
+    "image": "/images/combat/equipment/iron_scimitar_icon.png",
     "value": "6e3"
   },
   "1005": {
     "name": "Iron Battleaxe",
-    "image": "/images/combat/equipment/iron_battleaxe.png",
+    "image": "/images/combat/equipment/iron_battleaxe_icon.png",
     "value": "8e3"
   },
   "1006": {
     "name": "Iron Daggers",
-    "image": "/images/combat/equipment/iron_dagger.png",
+    "image": "/images/combat/equipment/iron_daggers_icon.png",
     "value": "4e3"
   },
   "1007": {
     "name": "Iron Greatsword",
-    "image": "/images/combat/equipment/iron_2h_sword.png",
+    "image": "/images/combat/equipment/iron_2h_sword_icon.png",
     "value": "1e4"
   },
   "1008": {
     "name": "Obsidian Scimitar",
-    "image": "/images/combat/equipment/black_scimitar.png",
+    "image": "/images/combat/equipment/black_scimitar_icon.png",
     "value": "92e3"
   },
   "1009": {
     "name": "Obsidian Battleaxe",
-    "image": "/images/combat/equipment/black_battleaxe.png",
+    "image": "/images/combat/equipment/black_battleaxe_icon.png",
     "value": "116e3"
   },
   "1010": {
     "name": "Obsidian Daggers",
-    "image": "/images/combat/equipment/black_dagger.png",
+    "image": "/images/combat/equipment/black_daggers_icon.png",
     "value": "68e3"
   },
   "1011": {
     "name": "Obsidian Greatsword",
-    "image": "/images/combat/equipment/black_2h_sword.png",
+    "image": "/images/combat/equipment/black_2h_sword_icon.png",
     "value": "14e4"
   },
   "1012": {
     "name": "Mithril Scimitar",
-    "image": "/images/combat/equipment/mithril_scimitar.png",
+    "image": "/images/combat/equipment/mithril_scimitar_icon.png",
     "value": "52e3"
   },
   "1013": {
     "name": "Mithril Battleaxe",
-    "image": "/images/combat/equipment/mithril_battleaxe.png",
+    "image": "/images/combat/equipment/mithril_battleaxe_icon.png",
     "value": "65e3"
   },
   "1014": {
     "name": "Mithril Daggers",
-    "image": "/images/combat/equipment/mithril_dagger.png",
+    "image": "/images/combat/equipment/mithril_daggers_icon.png",
     "value": "39e3"
   },
   "1015": {
     "name": "Mithril Greatsword",
-    "image": "/images/combat/equipment/mithril_2h_sword.png",
+    "image": "/images/combat/equipment/mithril_2h_sword_icon.png",
     "value": "78e3"
   },
   "1016": {
     "name": "Adamantite Scimitar",
-    "image": "/images/combat/equipment/adamantite_scimitar.png",
+    "image": "/images/combat/equipment/adamantite_scimitar_icon.png",
     "value": "48e4"
   },
   "1017": {
     "name": "Adamantite Battleaxe",
-    "image": "/images/combat/equipment/adamantite_battleaxe.png",
+    "image": "/images/combat/equipment/adamantite_battleaxe_icon.png",
     "value": "576e3"
   },
   "1018": {
     "name": "Adamantite Daggers",
-    "image": "/images/combat/equipment/adamantite_dagger.png",
+    "image": "/images/combat/equipment/adamantite_daggers_icon.png",
     "value": "384e3"
   },
   "1019": {
     "name": "Adamantite Greatsword",
-    "image": "/images/combat/equipment/adamantite_2h_sword.png",
+    "image": "/images/combat/equipment/adamantite_2h_sword_icon.png",
     "value": "672e3"
   },
   "1020": {
     "name": "Runite Scimitar",
-    "image": "/images/combat/equipment/rune_scimitar.png",
+    "image": "/images/combat/equipment/rune_scimitar_icon.png",
     "value": "1944e3"
   },
   "1021": {
     "name": "Runite Battleaxe",
-    "image": "/images/combat/equipment/rune_battleaxe.png",
+    "image": "/images/combat/equipment/rune_battleaxe_icon.png",
     "value": "2268e3"
   },
   "1022": {
     "name": "Runite Daggers",
-    "image": "/images/combat/equipment/rune_dagger.png",
+    "image": "/images/combat/equipment/rune_daggers_icon.png",
     "value": "162e4"
   },
   "1023": {
     "name": "Runite Greatsword",
-    "image": "/images/combat/equipment/rune_2h_sword.png",
+    "image": "/images/combat/equipment/rune_2h_sword_icon.png",
     "value": "2592e3"
   },
   "1024": {
     "name": "Stygian Scimitar",
-    "image": "/images/combat/equipment/stygian_scimitar.png",
+    "image": "/images/combat/equipment/stygian_scimitar_icon.png",
     "value": "336e4"
   },
   "1025": {
     "name": "Stygian Battleaxe",
-    "image": "/images/combat/equipment/stygian_battleaxe.png",
+    "image": "/images/combat/equipment/stygian_battleaxe_icon.png",
     "value": "384e4"
   },
   "1026": {
     "name": "Stygian Daggers",
-    "image": "/images/combat/equipment/stygian_dagger.png",
+    "image": "/images/combat/equipment/stygian_daggers_icon.png",
     "value": "288e4"
   },
   "1027": {
     "name": "Stygian Greatsword",
-    "image": "/images/combat/equipment/stygian_2h_sword.png",
+    "image": "/images/combat/equipment/stygian_2h_sword_icon.png",
     "value": "432e4"
   },
   "1050": {
     "name": "Bronze Helm",
-    "image": "/images/combat/equipment/bronze_med_helm.png",
+    "image": "/images/combat/equipment/bronze_med_helm_icon.png",
     "value": "400"
   },
   "1051": {
     "name": "Iron Helm",
-    "image": "/images/combat/equipment/iron_med_helm.png",
+    "image": "/images/combat/equipment/iron_med_helm_icon.png",
     "value": "4e3"
   },
   "1052": {
     "name": "Obsidian Helm",
-    "image": "/images/combat/equipment/black_med_helm.png",
+    "image": "/images/combat/equipment/black_med_helm_icon.png",
     "value": "68e3"
   },
   "1053": {
     "name": "Mithril Helm",
-    "image": "/images/combat/equipment/mithril_med_helm.png",
+    "image": "/images/combat/equipment/mithril_med_helm_icon.png",
     "value": "39e3"
   },
   "1054": {
     "name": "Adamantite Helm",
-    "image": "/images/combat/equipment/adamantite_med_helm.png",
+    "image": "/images/combat/equipment/adamantite_med_helm_icon.png",
     "value": "384e3"
   },
   "1055": {
     "name": "Runite Helm",
-    "image": "/images/combat/equipment/rune_med_helm.png",
+    "image": "/images/combat/equipment/rune_med_helm_icon.png",
     "value": "162e4"
   },
   "1056": {
     "name": "Stygian Helm",
-    "image": "/images/combat/equipment/stygian_med_helm.png",
+    "image": "/images/combat/equipment/stygian_med_helm_icon.png",
     "value": "288e4"
   },
   "1060": {
@@ -1011,37 +1011,37 @@
   },
   "1070": {
     "name": "Bronze Shield",
-    "image": "/images/combat/equipment/bronze_shield.png",
+    "image": "/images/combat/equipment/bronze_shield_icon.png",
     "value": "1200"
   },
   "1071": {
     "name": "Iron Shield",
-    "image": "/images/combat/equipment/iron_shield.png",
+    "image": "/images/combat/equipment/iron_shield_icon.png",
     "value": "8e3"
   },
   "1072": {
     "name": "Obsidian Shield",
-    "image": "/images/combat/equipment/black_shield.png",
+    "image": "/images/combat/equipment/black_shield_icon.png",
     "value": "116e3"
   },
   "1073": {
     "name": "Mithril Shield",
-    "image": "/images/combat/equipment/mithril_shield.png",
+    "image": "/images/combat/equipment/mithril_shield_icon.png",
     "value": "65e3"
   },
   "1074": {
     "name": "Adamantite Shield",
-    "image": "/images/combat/equipment/adamantite_shield.png",
+    "image": "/images/combat/equipment/adamantite_shield_icon.png",
     "value": "576e3"
   },
   "1075": {
     "name": "Runite Shield",
-    "image": "/images/combat/equipment/rune_shield.png",
+    "image": "/images/combat/equipment/rune_shield_icon.png",
     "value": "2268e3"
   },
   "1076": {
     "name": "Stygian Shield",
-    "image": "/images/combat/equipment/stygian_shield.png",
+    "image": "/images/combat/equipment/stygian_shield_icon.png",
     "value": "384e4"
   },
   "1090": {
@@ -1151,37 +1151,37 @@
   },
   "1130": {
     "name": "Bronze Boots",
-    "image": "/images/combat/equipment/bronze_boots.png",
+    "image": "/images/combat/equipment/bronze_boots_icon.png",
     "value": "1e3"
   },
   "1131": {
     "name": "Iron Boots",
-    "image": "/images/combat/equipment/iron_boots.png",
+    "image": "/images/combat/equipment/iron_boots_icon.png",
     "value": "8e3"
   },
   "1132": {
     "name": "Obsidian Boots",
-    "image": "/images/combat/equipment/black_boots.png",
+    "image": "/images/combat/equipment/black_boots_icon.png",
     "value": "68e3"
   },
   "1133": {
     "name": "Mithril Boots",
-    "image": "/images/combat/equipment/mithril_boots.png",
+    "image": "/images/combat/equipment/mithril_boots_icon.png",
     "value": "6e4"
   },
   "1134": {
     "name": "Adamantite Boots",
-    "image": "/images/combat/equipment/adamantite_boots.png",
+    "image": "/images/combat/equipment/adamantite_boots_icon.png",
     "value": "48e4"
   },
   "1135": {
     "name": "Runite Boots",
-    "image": "/images/combat/equipment/rune_boots.png",
+    "image": "/images/combat/equipment/rune_boots_icon.png",
     "value": "18e5"
   },
   "1136": {
     "name": "Stygian Boots",
-    "image": "/images/combat/equipment/stygian_boots.png",
+    "image": "/images/combat/equipment/stygian_boots_icon.png",
     "value": "288e4"
   },
   "1150": {
@@ -1251,12 +1251,12 @@
   },
   "1506": {
     "name": "Moss Maul",
-    "image": "/images/combat/equipment/moss_maul.png",
+    "image": "/images/combat/equipment/moss_maul_icon.png",
     "value": "636e4"
   },
   "1507": {
     "name": "Modified Diving Gloves",
-    "image": "/images/combat/equipment/modified_diving_gloves.png",
+    "image": "/images/combat/equipment/modified_diving_gloves_icon.png",
     "value": "100"
   },
   "1508": {
@@ -1276,32 +1276,32 @@
   },
   "1511": {
     "name": "Shard of Kalanahmatti",
-    "image": "/images/combat/equipment/shard_of_kalanahmatti.png",
+    "image": "/images/combat/equipment/shard_of_kalanahmatti_icon.png",
     "value": "636e4"
   },
   "1512": {
     "name": "Zero Edge",
-    "image": "/images/combat/equipment/zero_edge.png",
+    "image": "/images/combat/equipment/zero_edge_icon.png",
     "value": "336e4"
   },
   "1513": {
     "name": "Crest of Chaos",
-    "image": "/images/combat/equipment/crest_of_chaos.png",
+    "image": "/images/combat/equipment/crest_of_chaos_icon.png",
     "value": "68e3"
   },
   "1514": {
     "name": "Forgotten Soul",
-    "image": "/images/combat/equipment/forgotten-soul-axe.png",
+    "image": "/images/combat/equipment/forgotten-soul-sad-icon.png",
     "value": "336e4"
   },
   "1515": {
     "name": "Forgotten Soul",
-    "image": "/images/combat/equipment/forgotten-soul-scimitar.png",
+    "image": "/images/combat/equipment/forgotten-soul-crazy-icon.png",
     "value": "336e4"
   },
   "1516": {
     "name": "Forgotten Soul",
-    "image": "/images/combat/equipment/forgotten-soul-two-handed.png",
+    "image": "/images/combat/equipment/forgotten-soul-mad-icon.png",
     "value": "336e4"
   },
   "1517": {
@@ -1316,72 +1316,72 @@
   },
   "1519": {
     "name": "Gargoyle Boots",
-    "image": "/images/combat/equipment/gargoyle_boots.png",
+    "image": "/images/combat/equipment/gargoyle_boots_icon.png",
     "value": "136e3"
   },
   "1520": {
     "name": "Gargoyle Helm",
-    "image": "/images/combat/equipment/gargoyle_helm.png",
+    "image": "/images/combat/equipment/gargoyle_helm_icon.png",
     "value": "136e3"
   },
   "1521": {
     "name": "Gargoyle Shield",
-    "image": "/images/combat/equipment/gargoyle_shield.png",
+    "image": "/images/combat/equipment/gargoyle_shield_1.png",
     "value": "232e3"
   },
   "1522": {
     "name": "Gargoyle Falchion",
-    "image": "/images/combat/equipment/gargoyle_falchion.png",
+    "image": "/images/combat/equipment/gargoyle_falcion_icon.png",
     "value": "184e3"
   },
   "1523": {
     "name": "Gargoyle Daggers",
-    "image": "/images/combat/equipment/dagger_gargoyle.png",
+    "image": "/images/combat/equipment/dagger_gargoyle_icon.png",
     "value": "136e3"
   },
   "1524": {
     "name": "Gargoyle Glaive",
-    "image": "/images/combat/equipment/gargoyle_glaive.png",
+    "image": "/images/combat/equipment/gargoyle_glaive_icon.png",
     "value": "28e4"
   },
   "1525": {
     "name": "Infernal Lance",
-    "image": "/images/combat/equipment/infernal_lance.png",
+    "image": "/images/combat/equipment/infernal_lance_icon.png",
     "value": "42e4"
   },
   "1526": {
     "name": "Black Knight Great Helm",
-    "image": "/images/combat/equipment/black_black_knight_great_helm.png",
+    "image": "/images/combat/equipment/black_black_knight_great_helm_icon.png",
     "value": "2}"
   },
   "1527": {
     "name": "Chorus of Souls",
-    "image": "/images/combat/equipment/chorus_of_souls.png",
+    "image": "/images/combat/equipment/chorus_of_souls_icon.png",
     "value": "2e6"
   },
   "1528": {
     "name": "Decayed Cloak",
-    "image": "/images/combat/equipment/decayed_cloak.png",
+    "image": "/images/combat/equipment/decayed_cloak_hood.png",
     "value": "2}"
   },
   "1530": {
     "name": "Mysterious Man",
-    "image": "/images/combat/equipment/hatcontest_mysterious_man.png",
+    "image": "/images/combat/equipment/hatcontest_mysterious_man_icon.png",
     "value": "0"
   },
   "1531": {
     "name": "Corny Joke",
-    "image": "/images/combat/equipment/hatcontest_cornyjoke.png",
+    "image": "/images/combat/equipment/hatcontest_cornyjoke_icon.png",
     "value": "0"
   },
   "1532": {
     "name": "Death Metal Wig",
-    "image": "/images/combat/equipment/hatcontest_death_metal_wig.png",
+    "image": "/images/combat/equipment/hatcontest_death_metal_wig_icon.png",
     "value": "0"
   },
   "1540": {
     "name": "Shrimp Carapace",
-    "image": "/images/combat/equipment/shrimp_armor.png",
+    "image": "/images/combat/equipment/shrimp_armor_icon.png",
     "value": "1e4"
   },
   "1541": {
@@ -1391,12 +1391,12 @@
   },
   "1542": {
     "name": "Shrimp Helm",
-    "image": "/images/combat/equipment/shrimp_helm.png",
+    "image": "/images/combat/equipment/shrimp_helm_icon.png",
     "value": "1e4"
   },
   "1543": {
     "name": "Shrimp Shell",
-    "image": "/images/combat/equipment/shrimp_shield.png",
+    "image": "/images/combat/equipment/shrimp_shield_icon.png",
     "value": "1e4"
   },
   "1544": {
@@ -1416,7 +1416,7 @@
   },
   "1547": {
     "name": "Shapeless Scythe",
-    "image": "/images/combat/equipment/Shapeless_Scythe.png",
+    "image": "/images/combat/equipment/Shapeless_Scythe_Icon.png",
     "value": "12e6"
   },
   "1548": {
@@ -1431,7 +1431,7 @@
   },
   "1550": {
     "name": "World Walkers",
-    "image": "/images/combat/equipment/World_Walkers_Silver_Version.png",
+    "image": "/images/combat/equipment/World_Walkers_Silver_Version_Icon.png",
     "value": "5e6"
   },
   "1551": {
@@ -1446,7 +1446,7 @@
   },
   "1553": {
     "name": "Crystal Mace",
-    "image": "/images/combat/equipment/crystal_mace.png",
+    "image": "/images/combat/equipment/crystal_mace_icon.png",
     "value": "636e4"
   },
   "1554": {
@@ -1476,12 +1476,12 @@
   },
   "1559": {
     "name": "Black Knight Titan's Helm",
-    "image": "/images/combat/equipment/black_knight_titan_helm.png",
+    "image": "/images/combat/equipment/black_knight_titan_helm_icon.png",
     "value": "488e4"
   },
   "1560": {
     "name": "Elven Mage's Hood",
-    "image": "/images/combat/equipment/stygian_med_helm.png",
+    "image": "/images/combat/equipment/stygian_med_helm_icon.png",
     "value": "5e6"
   },
   "1561": {
@@ -1496,7 +1496,7 @@
   },
   "1563": {
     "name": "Elven Cavalry Boots",
-    "image": "/images/combat/equipment/stygian_boots.png",
+    "image": "/images/combat/equipment/stygian_boots_icon.png",
     "value": "5e6"
   },
   "1564": {
@@ -2171,77 +2171,77 @@
   },
   "7014": {
     "name": "Inferior Bearded Wanderer",
-    "image": "/images/christmas/christmas_helmet_worn.png",
+    "image": "/images/christmas/christmas_helmet.png",
     "value": 0
   },
   "7015": {
     "name": "Inferior Reindeer Hunters' Armor",
-    "image": "/images/christmas/christmas_chestplate_worn.png",
+    "image": "/images/christmas/christmas_chestplate.png",
     "value": 0
   },
   "7016": {
     "name": "Inferior Reindeer Hunters' Leggings",
-    "image": "/images/christmas/christmas_leggings_worn.png",
+    "image": "/images/christmas/christmas_leggings.png",
     "value": 0
   },
   "7017": {
     "name": "Inferior Christmas Lights",
-    "image": "/images/christmas/christmas_weapon_worn.png",
+    "image": "/images/christmas/christmas_weapon.png",
     "value": 0
   },
   "7018": {
     "name": "SuperSled 1337",
-    "image": "/images/christmas/christmas_shield_worn.png",
+    "image": "/images/christmas/christmas_shield.png",
     "value": 0
   },
   "7019": {
     "name": "Bearded Wanderer",
-    "image": "/images/christmas/christmas_helmet_worn.png",
+    "image": "/images/christmas/christmas_helmet.png",
     "value": 0
   },
   "7020": {
     "name": "Reindeer Hunters' Armor",
-    "image": "/images/christmas/christmas_chestplate_worn.png",
+    "image": "/images/christmas/christmas_chestplate.png",
     "value": 0
   },
   "7021": {
     "name": "Reindeer Hunters' Leggings",
-    "image": "/images/christmas/christmas_leggings_worn.png",
+    "image": "/images/christmas/christmas_leggings.png",
     "value": 0
   },
   "7022": {
     "name": "Christmas Lights",
-    "image": "/images/christmas/christmas_weapon_worn.png",
+    "image": "/images/christmas/christmas_weapon.png",
     "value": 0
   },
   "7023": {
     "name": "SuperSled 9000",
-    "image": "/images/christmas/christmas_shield_worn.png",
+    "image": "/images/christmas/christmas_shield.png",
     "value": 0
   },
   "7024": {
     "name": "Superior Bearded Wanderer",
-    "image": "/images/christmas/christmas_helmet_worn.png",
+    "image": "/images/christmas/christmas_helmet.png",
     "value": 0
   },
   "7025": {
     "name": "Superior Reindeer Hunters' Armor",
-    "image": "/images/christmas/christmas_chestplate_worn.png",
+    "image": "/images/christmas/christmas_chestplate.png",
     "value": 0
   },
   "7026": {
     "name": "Superior Reindeer Hunters' Leggings",
-    "image": "/images/christmas/christmas_leggings_worn.png",
+    "image": "/images/christmas/christmas_leggings.png",
     "value": 0
   },
   "7027": {
     "name": "Superior Christmas Lights",
-    "image": "/images/christmas/christmas_weapon_worn.png",
+    "image": "/images/christmas/christmas_weapon.png",
     "value": 0
   },
   "7028": {
     "name": "SuperSled 9001",
-    "image": "/images/christmas/christmas_shield_worn.png",
+    "image": "/images/christmas/christmas_shield.png",
     "value": 0
   },
   "7029": {
@@ -2251,12 +2251,12 @@
   },
   "7030": {
     "name": "Candy Cane Daggers",
-    "image": "/images/christmas/candy_cane_dagger.png",
+    "image": "/images/christmas/candy_cane_daggers_icon.png",
     "value": "2}"
   },
   "7031": {
     "name": "Festive Shroud",
-    "image": "/images/christmas/festive_shroud.png",
+    "image": "/images/christmas/festive_shroud_hood.png",
     "value": "2}"
   },
   "7032": {
@@ -2266,7 +2266,7 @@
   },
   "7033": {
     "name": "Mistletoe Treads",
-    "image": "/images/christmas/christmas_boots.png",
+    "image": "/images/christmas/christmas_boots_icon.png",
     "value": 0
   },
   "7034": {
@@ -2441,7 +2441,7 @@
   },
   "10000": {
     "name": "The Castled King",
-    "image": "/images/combat/monsters/elite/true_info.png",
+    "image": "/images/magic/prismatic_gem.png",
     "value": "1"
   },
   "10001": {
@@ -2601,7 +2601,7 @@
   },
   "100000": {
     "name": "ban_hamer",
-    "image": "/images/combat/equipment/ban_hamer.png",
+    "image": "/images/combat/equipment/ban_hamer_icon.png",
     "value": 0
   }
 }

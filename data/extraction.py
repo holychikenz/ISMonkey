@@ -87,6 +87,9 @@ def extract_item_full(data):
             itemID = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'id'][0]
             itemName = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'name'][0].replace('"', '')
             itemImg = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'itemImage'][0].replace('"', '')
+            itemIcon = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'itemIcon']
+            if len(itemIcon) > 0 :
+                itemImg = itemIcon[0].replace('"', '')
             itemValue = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'value']
             itemDict[int(eval(itemID))] = {
                     "name": itemName,
