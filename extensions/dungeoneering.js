@@ -149,7 +149,7 @@ class Dungeoneering {
       let value = msg[1].value
       if( portion.includes("actionQue") && (value.length > 0) ) {
         let info = value[0]
-        if( "action" in info ){
+        if( ("action" in info) && (value.length == 1)){
           if( info.action == "combat" ){
             this.resetRun()
           }
@@ -185,11 +185,11 @@ class Dungeoneering {
       }
       if( target in this.data ){
         this.data[target].count += 1
-        this.updateStatsWindow(target)
+        this.updateStatsWindow(target, false)
       }
     }
   }
-  updateStatsWindow(target){
+  updateStatsWindow(target, ishit=true){
     // Each monster/player is stored in a lookup TableRowMap (Dictionary)
     // The individual cells are updated from the ElementMap (Map)
     let tablerowmap = this.playerTableRowMap
@@ -202,6 +202,7 @@ class Dungeoneering {
       return;
     }
     let table = this.playerTable
+    let ismonster = false;
     if( this.bestiary.has(target) ){
       // If the bestiary has been updated after a monster was drawn in the player
       // area, go ahead and remove that row.
@@ -212,9 +213,13 @@ class Dungeoneering {
       tablerowmap = this.monsterTableRowMap
       elementmap = this.monsterElementMap
       table = this.monsterTable
+      ismonster = true;
     }
     // Check if tablerow already exists for target else create it
     if( !(target in tablerowmap) ){
+      if( !(ishit || ismonster) ){
+        return
+      }
       tablerowmap[target] = {} // new row
       let newrow = document.createElement("tr")
       newrow.className="dungeoneering-row"
