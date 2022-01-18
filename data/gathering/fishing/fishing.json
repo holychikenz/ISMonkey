@@ -1,0 +1,849 @@
+{
+  "Shallow Pond": {
+    "basetime": 8.5,
+    "nodes": {
+      "The Shallow Pond": {
+        "Base Frequency": 100,
+        "Max Frequency": 150,
+        "Min Base": 2,
+        "Max Base": 4
+      },
+      "Oops, All Shrimp!": {
+        "Base Frequency": 50,
+        "Max Frequency": 100,
+        "Min Base": 5,
+        "Max Base": 12
+      },
+      "Small Schools of Fish": {
+        "Base Frequency": 15,
+        "Max Frequency": 65,
+        "Min Base": 2,
+        "Max Base": 8
+      },
+      "Drifting Around": {
+        "Base Frequency": 15,
+        "Max Frequency": 65,
+        "Min Base": 2,
+        "Max Base": 8
+      }
+    },
+    "fish": {
+      "The Shallow Pond": {
+        "Raw Shrimp": {
+          "Base Frequency": 100,
+          "Max Frequency": 150
+        },
+        "Raw Anchovy": {
+          "Base Frequency": 50,
+          "Max Frequency": 100
+        },
+        "Raw Magnetic Minnow": {
+          "Base Frequency": -10,
+          "Max Frequency": 15
+        },
+        "Seaweed": {
+          "Base Frequency": 1,
+          "Max Frequency": 30
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": -10,
+          "Max Frequency": 9
+        }
+      },
+      "Oops, All Shrimp!": {
+        "Raw Shrimp": {
+          "Base Frequency": 100,
+          "Max Frequency": 100
+        }
+      },
+      "Small Schools of Fish": {
+        "Raw Anchovy": {
+          "Base Frequency": 25,
+          "Max Frequency": 75
+        },
+        "Raw Magnetic Minnow": {
+          "Base Frequency": -1,
+          "Max Frequency": 25
+        },
+        "Seaweed": {
+          "Base Frequency": 1,
+          "Max Frequency": 6
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": -3,
+          "Max Frequency": 9
+        }
+      },
+      "Drifting Around": {
+        "Raw Anchovy": {
+          "Base Frequency": 15,
+          "Max Frequency": 50
+        },
+        "Seaweed": {
+          "Base Frequency": 1,
+          "Max Frequency": 15
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 1,
+          "Max Frequency": 25
+        }
+      }
+    }
+  },
+  "Lazy River": {
+    "basetime": 9.5,
+    "nodes": {
+      "The Lazy River": {
+        "Base Frequency": 100,
+        "Max Frequency": 150,
+        "Min Base": 2,
+        "Max Base": 4
+      },
+      "Migrating Schools": {
+        "Base Frequency": 25,
+        "Max Frequency": 75,
+        "Min Base": 2,
+        "Max Base": 8
+      },
+      "ANGY bois": {
+        "Base Frequency": -25,
+        "Max Frequency": 25,
+        "Min Base": 1,
+        "Max Base": 4
+      }
+    },
+    "fish": {
+      "The Lazy River": {
+        "Raw Trout": {
+          "Base Frequency": 100.0,
+          "Max Frequency": 175.0
+        },
+        "Raw Salmon": {
+          "Base Frequency": 50.0,
+          "Max Frequency": 100.0
+        },
+        "Raw Tigerfish": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 15.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 15.0
+        },
+        "Raw Magnetic Minnow": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 10.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": -5.0,
+          "Max Frequency": 15.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 5.0
+        }
+      },
+      "Migrating Schools": {
+        "Raw Trout": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Salmon": {
+          "Base Frequency": 50.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Tigerfish": {
+          "Base Frequency": -15.0,
+          "Max Frequency": 25.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 3.0
+        },
+        "Raw Magnetic Minnow": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 25.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": -5.0,
+          "Max Frequency": 15.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 5.0
+        }
+      },
+      "ANGY bois": {
+        "Raw Trout": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 9.0
+        },
+        "Raw Salmon": {
+          "Base Frequency": 6.0,
+          "Max Frequency": 16.0
+        },
+        "Raw Tigerfish": {
+          "Base Frequency": 9.0,
+          "Max Frequency": 42.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": -20.0,
+          "Max Frequency": 9.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": -20.0,
+          "Max Frequency": 9.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 0.75
+        }
+      }
+    }
+  },
+  "Still Lake": {
+    "basetime": 10.5,
+    "nodes": {
+      "The Still Lake": {
+        "Base Frequency": 100,
+        "Max Frequency": 150,
+        "Min Base": 2,
+        "Max Base": 4
+      },
+      "Big Catch!": {
+        "Base Frequency": -30,
+        "Max Frequency": 75,
+        "Min Base": 2,
+        "Max Base": 6
+      },
+      "Yedyod's Cove": {
+        "Base Frequency": -75,
+        "Max Frequency": 50,
+        "Min Base": 1,
+        "Max Base": 4
+      },
+      "Cage Match!": {
+        "Base Frequency": 3,
+        "Max Frequency": 100,
+        "Min Base": 2,
+        "Max Base": 6
+      }
+    },
+    "fish": {
+      "The Still Lake": {
+        "Raw Lobster": {
+          "Base Frequency": 100.0,
+          "Max Frequency": 150.0
+        },
+        "Raw Crab": {
+          "Base Frequency": 10.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Slippery Eel": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Tigerfish": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Magnetic Minnow": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 20.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 15.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": -10.0,
+          "Max Frequency": 10.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": -10.0,
+          "Max Frequency": 10.0
+        }
+      },
+      "Big Catch!": {
+        "Raw Lobster": {
+          "Base Frequency": 45.0,
+          "Max Frequency": 90.0
+        },
+        "Raw Ancient Lobster": {
+          "Base Frequency": -35.0,
+          "Max Frequency": 15.0
+        },
+        "Raw Slippery Eel": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Tigerfish": {
+          "Base Frequency": -10.0,
+          "Max Frequency": 15.0
+        },
+        "Raw Crab": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 75.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 0.25
+        }
+      },
+      "Yedyod's Cove": {
+        "Raw Ancient Lobster": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Slippery Eel": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Crab": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 15.0
+        },
+        "Raw Tigerfish": {
+          "Base Frequency": 10.0,
+          "Max Frequency": 50.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 10.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 30.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 30.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -100.0,
+          "Max Frequency": 2.5
+        }
+      },
+      "Cage Match!": {
+        "Raw Lobster": {
+          "Base Frequency": 50.0,
+          "Max Frequency": 100.0
+        },
+        "Raw Crab": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 100.0
+        },
+        "Raw Ancient Lobster": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 25.0
+        }
+      }
+    }
+  },
+  "Open Ocean": {
+    "basetime": 11.5,
+    "nodes": {
+      "The Open Ocean": {
+        "Base Frequency": 100.0,
+        "Max Frequency": 150.0,
+        "Min Base": 2.0,
+        "Max Base": 4.0
+      },
+      "Sharks Ate All The Tuna": {
+        "Base Frequency": 15.0,
+        "Max Frequency": 75.0,
+        "Min Base": 1.0,
+        "Max Base": 2.0
+      },
+      "Almost Jurassic": {
+        "Base Frequency": -50.0,
+        "Max Frequency": 50.0,
+        "Min Base": 2.0,
+        "Max Base": 3.0
+      },
+      "Is that a tentacle?": {
+        "Base Frequency": -100.0,
+        "Max Frequency": 25.0,
+        "Min Base": 2.0,
+        "Max Base": 3.0
+      },
+      "Carefree Day": {
+        "Base Frequency": 10.0,
+        "Max Frequency": 60.0,
+        "Min Base": 4.0,
+        "Max Base": 8.0
+      },
+      "Shipwreck Bay": {
+        "Base Frequency": -25.0,
+        "Max Frequency": 100.0,
+        "Min Base": 4.0,
+        "Max Base": 8.0
+      },
+      "Playtester's Paradise": {
+        "Base Frequency": -50.0,
+        "Max Frequency": 1.0,
+        "Min Base": 1.0,
+        "Max Base": 1.0
+      },
+      "Ghost Ship": {
+        "Base Frequency": -75.0,
+        "Max Frequency": 2.5,
+        "Min Base": 1.0,
+        "Max Base": 8.0
+      }
+    },
+    "fish": {
+      "The Open Ocean": {
+        "Raw Tuna": {
+          "Base Frequency": 100.0,
+          "Max Frequency": 150.0
+        },
+        "Raw Shark": {
+          "Base Frequency": 50.0,
+          "Max Frequency": 100.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 10.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": -33.0,
+          "Max Frequency": 10.0
+        },
+        "Raw Huge Tuna": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Megalodon": {
+          "Base Frequency": -75.0,
+          "Max Frequency": 5.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 10.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 20.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 20.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 0.5
+        }
+      },
+      "Sharks Ate All The Tuna": {
+        "Raw Tuna": {
+          "Base Frequency": -35.0,
+          "Max Frequency": 5.0
+        },
+        "Raw Shark": {
+          "Base Frequency": 75.0,
+          "Max Frequency": 100.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 33.0
+        },
+        "Raw Megalodon": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 15.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": 10.0,
+          "Max Frequency": 25.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 15.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 15.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 15.0
+        }
+      },
+      "Almost Jurassic": {
+        "Raw Great White Shark": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 15.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 15.0
+        },
+        "Raw Huge Tuna": {
+          "Base Frequency": 50.0,
+          "Max Frequency": 60.0
+        },
+        "Raw Megalodon": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Tentacle Meat": {
+          "Base Frequency": -100.0,
+          "Max Frequency": 5.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -75.0,
+          "Max Frequency": 0.75
+        }
+      },
+      "Is that a tentacle?": {
+        "Raw Great White Shark": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 45.0
+        },
+        "Raw Megalodon": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Tentacle Meat": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 150.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -100.0,
+          "Max Frequency": 1.5
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -15.0,
+          "Max Frequency": 5.0
+        }
+      },
+      "Carefree Day": {
+        "Raw Tuna": {
+          "Base Frequency": 100.0,
+          "Max Frequency": 200.0
+        },
+        "Raw Huge Tuna": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 150.0
+        },
+        "Seaweed": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 25.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 25.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 30.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -30.0,
+          "Max Frequency": 0.75
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -15.0,
+          "Max Frequency": 2.5
+        }
+      },
+      "Shipwreck Bay": {
+        "Seaweed": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 30.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 25.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 40.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -30.0,
+          "Max Frequency": 1.25
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -15.0,
+          "Max Frequency": 10.0
+        },
+        "Raw Megalodon": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 100.0
+        },
+        "Raw Shark": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 125.0
+        }
+      },
+      "Playtester's Paradise": {
+        "Aquamarine": {
+          "Base Frequency": -30.0,
+          "Max Frequency": 1.5
+        },
+        "Raw Megalodon": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 10.0
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -15.0,
+          "Max Frequency": 15.0
+        }
+      },
+      "Ghost Ship": {
+        "Sturdy Driftwood": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 25.0
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -15.0,
+          "Max Frequency": 35.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -30.0,
+          "Max Frequency": 2.5
+        },
+        "Raw Megalodon": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Shark": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 50.0
+        }
+      }
+    }
+  },
+  "Stormy Seas": {
+    "basetime": 12.5,
+    "nodes": {
+      "The Stormy Seas": {
+        "Base Frequency": 100,
+        "Max Frequency": 150,
+        "Min Base": 2,
+        "Max Base": 4
+      },
+      "Eye of the Storm": {
+        "Base Frequency": 25,
+        "Max Frequency": 100,
+        "Min Base": 4,
+        "Max Base": 8
+      },
+      "Endless Vortex": {
+        "Base Frequency": -75,
+        "Max Frequency": 15,
+        "Min Base": 2,
+        "Max Base": 8
+      },
+      "INFO's Stand": {
+        "Base Frequency": -100,
+        "Max Frequency": 5,
+        "Min Base": 3,
+        "Max Base": 9
+      },
+      "World's End": {
+        "Base Frequency": -50,
+        "Max Frequency": 5,
+        "Min Base": 3,
+        "Max Base": 7
+      }
+    },
+    "fish": {
+      "The Stormy Seas": {
+        "Raw Tuna": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Shark": {
+          "Base Frequency": 50.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": -10.0,
+          "Max Frequency": 10.0
+        },
+        "Raw Huge Tuna": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Megalodon": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 5.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 10.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 20.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 20.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -45.0,
+          "Max Frequency": 1.5
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -35.0,
+          "Max Frequency": 3.0
+        }
+      },
+      "Eye of the Storm": {
+        "Seaweed": {
+          "Base Frequency": 3.0,
+          "Max Frequency": 30.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 25.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 40.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -30.0,
+          "Max Frequency": 1.5
+        },
+        "Raw Megalodon": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 10.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": -20.0,
+          "Max Frequency": 10.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": -15.0,
+          "Max Frequency": 10.0
+        },
+        "Raw Shark": {
+          "Base Frequency": 10.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Tuna": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Huge Tuna": {
+          "Base Frequency": 5.0,
+          "Max Frequency": 15.0
+        }
+      },
+      "Endless Vortex": {
+        "Raw Megalodon": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 100.0
+        },
+        "Raw Tentacle Meat": {
+          "Base Frequency": 50.0,
+          "Max Frequency": 250.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -100.0,
+          "Max Frequency": 2.0
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -75.0,
+          "Max Frequency": 15.0
+        }
+      },
+      "INFO's Stand": {
+        "Raw Tentacle Meat": {
+          "Base Frequency": 25.0,
+          "Max Frequency": 150.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -105.0,
+          "Max Frequency": 5.0
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -95.0,
+          "Max Frequency": 10.0
+        }
+      },
+      "World's End": {
+        "Raw Tuna": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 33.0
+        },
+        "Raw Shark": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 50.0
+        },
+        "Raw Hammerhead Shark": {
+          "Base Frequency": 15.0,
+          "Max Frequency": 75.0
+        },
+        "Raw Great White Shark": {
+          "Base Frequency": -25.0,
+          "Max Frequency": 25.0
+        },
+        "Raw Huge Tuna": {
+          "Base Frequency": -33.0,
+          "Max Frequency": 35.0
+        },
+        "Raw Megalodon": {
+          "Base Frequency": -50.0,
+          "Max Frequency": 15.0
+        },
+        "Seaweed": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 3.0
+        },
+        "Rotten Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 3.0
+        },
+        "Sturdy Driftwood": {
+          "Base Frequency": 1.0,
+          "Max Frequency": 3.0
+        },
+        "Aquamarine": {
+          "Base Frequency": -45.0,
+          "Max Frequency": 1.25
+        },
+        "Mystical Driftwood": {
+          "Base Frequency": -40.0,
+          "Max Frequency": 5.0
+        }
+      }
+    }
+  }
+}

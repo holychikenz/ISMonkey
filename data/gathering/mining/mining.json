@@ -1,0 +1,155 @@
+{
+  "items": {
+    "Copper Ore": {
+      "experience": 5,
+      "superheat": "Bronze Bar"
+    },
+    "Tin Ore": {
+      "experience": 5,
+      "superheat": "Bronze Bar"
+    },
+    "Iron Ore": {
+      "experience": 25,
+      "superheat": "Iron Bar"
+    },
+    "Gold Ore": {
+      "experience": 50,
+      "superheat": "Gold Bar"
+    },
+    "Mithril Ore": {
+      "experience": 75,
+      "superheat": "Mithril Bar"
+    },
+    "Adamantite Ore": {
+      "experience": 100,
+      "superheat": "Adamantite Bar"
+    },
+    "Runite Ore": {
+      "experience": 150,
+      "superheat": "Runite Bar"
+    },
+    "Stygian Ore": {
+      "experience": 250,
+      "superheat": "Stygian Bar"
+    },
+    "Clay": {
+      "experience": 1
+    },
+    "Stone": {
+      "experience": 1
+    },
+    "Sand": {
+      "experience": 1
+    },
+    "Silver": {
+      "experience": 50
+    },
+    "Coal": {
+      "experience": 20
+    },
+    "Salt": {
+      "experience": 20
+    },
+    "Rune Slate": {
+      "experience": 20
+    }
+  },
+  "zones": {
+    "Clay Pit": {
+      "basetime": 5.0,
+      "drops": {
+        "Copper Ore": 0.20,
+        "Tin Ore": 0.20,
+        "Clay": 0.40,
+        "Stone": 0.10,
+        "Sand": 0.10
+      }
+    },
+    "City Outskirts": {
+      "basetime": 8.0,
+      "drops": {
+        "Copper Ore": 0.30,
+        "Tin Ore": 0.30,
+        "Iron Ore": 0.05,
+        "Clay": 0.10,
+        "Stone": 0.10,
+        "Sand": 0.10,
+        "Coal": 0.05
+      }
+    },
+    "Village": {
+      "basetime": 8.0,
+      "drops": {
+        "Iron Ore": 0.50,
+        "Stone": 0.25,
+        "Coal": 0.25
+      }
+    },
+    "Desert": {
+      "basetime": 12.0,
+      "drops": {
+        "Iron Ore": 0.0826,
+        "Gold Ore": 0.0459,
+        "Mithril Ore": 0.1835,
+        "Salt": 0.0917,
+        "Clay": 0.0275,
+        "Stone": 0.0275,
+        "Sand": 0.1835,
+        "Silver": 0.1835,
+        "Coal": 0.0917,
+        "Rune Slate": 0.0826
+      }
+    },
+    "Underground": {
+      "basetime": 12.0,
+      "drops": {
+        "Iron Ore": 0.05,
+        "Gold Ore": 0.25,
+        "Mithril Ore": 0.20,
+        "Salt": 0.10,
+        "Stone": 0.05,
+        "Silver": 0.15,
+        "Coal": 0.05,
+        "Rune Slate": 0.15
+      }
+    },
+    "Hidden Mine": {
+      "basetime": 15.0,
+      "drops": {
+        "Gold Ore": 0.10,
+        "Mithril Ore": 0.10,
+        "Adamantite Ore": 0.35,
+        "Runite Ore": 0.05,
+        "Stone": 0.10,
+        "Silver": 0.20,
+        "Rune Slate": 0.10
+      }
+    },
+    "Volcano": {
+      "basetime": 15.0,
+      "drops": {
+        "Gold Ore": 0.10,
+        "Mithril Ore": 0.20,
+        "Adamantite Ore": 0.20,
+        "Runite Ore": 0.20,
+        "Silver": 0.20,
+        "Rune Slate": 0.10
+      }
+    },
+    "Deep Pit": {
+      "basetime": 20.0,
+      "drops": {
+        "Gold Ore": 0.2273,
+        "Runite Ore": 0.4545,
+        "Rune Slate": 0.2273,
+        "Stygian Ore": 0.0909
+      },
+      "encounters": {
+        "rate": 0.01,
+        "monsters": {
+          "Greater Demon": 1.0
+        }
+      }
+    }
+  }
+}
