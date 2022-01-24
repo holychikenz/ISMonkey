@@ -455,7 +455,7 @@ function displayMessage(title, body){
   dialogBox.append(dialogContent)
   paper.append(dialogBox)
   present.append(backdrop)
-  present.append(paper)
+  backdrop.append(paper)
   // Attach to page
   document.body.append(present)
   // Cleanup
