@@ -1,0 +1,362 @@
+{
+  "1": {
+    "abilityName": "Auto Attack",
+    "description": "",
+    "cooldown": 0,
+    "damageType": "melee",
+    "baseSpeedCoeff": "1",
+    "baseDamageCoeff": "1",
+    "baseAccuracyCoeff": "1"
+  },
+  "2": {
+    "abilityName": "Weakening Blow",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": ".1",
+    "baseAccuracyCoeff": "2"
+  },
+  "3": {
+    "abilityName": "Poisoned Strike",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": ".1",
+    "baseAccuracyCoeff": "2"
+  },
+  "4": {
+    "abilityName": "Self Care",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": "0",
+    "baseAccuracyCoeff": "2"
+  },
+  "5": {
+    "abilityName": "Sweep",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": ".75",
+    "baseAccuracyCoeff": ".75"
+  },
+  "6": {
+    "abilityName": "Eldritch Ritual",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "magic",
+    "baseSpeedCoeff": "1.75",
+    "baseDamageCoeff": "1.5",
+    "baseAccuracyCoeff": "1.25"
+  },
+  "7": {
+    "abilityName": "Multishot",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "range",
+    "baseSpeedCoeff": "1.15",
+    "baseDamageCoeff": ".9",
+    "baseAccuracyCoeff": ".9"
+  },
+  "8": {
+    "abilityName": "Rapidfire",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "range",
+    "baseSpeedCoeff": ".65",
+    "baseDamageCoeff": ".6",
+    "baseAccuracyCoeff": ".8"
+  },
+  "9": {
+    "abilityName": "Negative Energy Blast",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "magic",
+    "baseSpeedCoeff": ".9",
+    "baseDamageCoeff": "1.1",
+    "baseAccuracyCoeff": ".75"
+  },
+  "10": {
+    "abilityName": "Plague Cloud",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "magic",
+    "baseSpeedCoeff": ".8",
+    "baseDamageCoeff": ".25",
+    "baseAccuracyCoeff": "1.25"
+  },
+  "11": {
+    "abilityName": "Savage Strike",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".9",
+    "baseDamageCoeff": "1.25",
+    "baseAccuracyCoeff": ".65"
+  },
+  "12": {
+    "abilityName": "Chaos Rend",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": "1.25",
+    "baseAccuracyCoeff": ".9"
+  },
+  "13": {
+    "abilityName": "Chaos Blast",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "magic",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": "1.25",
+    "baseAccuracyCoeff": ".9"
+  },
+  "14": {
+    "abilityName": "Chaos Bolt",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "range",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": "1.25",
+    "baseAccuracyCoeff": ".9"
+  },
+  "15": {
+    "abilityName": "Lash Out",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".5",
+    "baseDamageCoeff": ".5",
+    "baseAccuracyCoeff": ".75"
+  },
+  "16": {
+    "abilityName": "Lightning Strikes Thrice",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "2",
+    "baseDamageCoeff": ".9",
+    "baseAccuracyCoeff": ".9"
+  },
+  "17": {
+    "abilityName": "Multi Auto Attack",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1",
+    "baseDamageCoeff": ".8",
+    "baseAccuracyCoeff": ".8"
+  },
+  "18": {
+    "abilityName": "BONK",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.05",
+    "baseDamageCoeff": "1.1",
+    "baseAccuracyCoeff": "1"
+  },
+  "19": {
+    "abilityName": "J\\xe4\\xe4nuoli",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".9",
+    "baseDamageCoeff": "1.05",
+    "baseAccuracyCoeff": ".95"
+  },
+  "20": {
+    "abilityName": "Infernal Judgement",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".8",
+    "baseDamageCoeff": "1.35",
+    "baseAccuracyCoeff": "1.5"
+  },
+  "21": {
+    "abilityName": "Shatter Strike",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.05",
+    "baseDamageCoeff": "1.3",
+    "baseAccuracyCoeff": "1.1"
+  },
+  "22": {
+    "abilityName": "Lightning Strikes Twice",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".6",
+    "baseDamageCoeff": ".67",
+    "baseAccuracyCoeff": ".85"
+  },
+  "23": {
+    "abilityName": "Soul Steal",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1",
+    "baseDamageCoeff": ".75",
+    "baseAccuracyCoeff": "1.5"
+  },
+  "24": {
+    "abilityName": "Splash",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".75",
+    "baseDamageCoeff": "1.25",
+    "baseAccuracyCoeff": "1"
+  },
+  "25": {
+    "abilityName": "The Ol' One-Two",
+    "description": "",
+    "cooldown": ".1",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".33",
+    "baseDamageCoeff": ".75",
+    "baseAccuracyCoeff": ".9"
+  },
+  "26": {
+    "abilityName": "Entropic Burst",
+    "description": "",
+    "cooldown": "45",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".5",
+    "baseDamageCoeff": ".5",
+    "baseAccuracyCoeff": "1.75"
+  },
+  "27": {
+    "abilityName": "Nature's Sanctuary",
+    "description": "",
+    "cooldown": "60",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".5",
+    "baseDamageCoeff": ".1",
+    "baseAccuracyCoeff": "3"
+  },
+  "28": {
+    "abilityName": "Krakatoa",
+    "description": "",
+    "cooldown": "45",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": "2",
+    "baseAccuracyCoeff": "1.25"
+  },
+  "29": {
+    "abilityName": "Regal Might",
+    "description": "",
+    "cooldown": "60",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1",
+    "baseDamageCoeff": ".1",
+    "baseAccuracyCoeff": "3"
+  },
+  "30": {
+    "abilityName": "*Snap*",
+    "description": "",
+    "cooldown": "24",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".95",
+    "baseDamageCoeff": "1.05",
+    "baseAccuracyCoeff": "1.05"
+  },
+  "31": {
+    "abilityName": "Fire Ball",
+    "description": "",
+    "cooldown": "45",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.1",
+    "baseDamageCoeff": "1.5",
+    "baseAccuracyCoeff": "1.1"
+  },
+  "32": {
+    "abilityName": "Gordon's Fury",
+    "description": "",
+    "cooldown": "10",
+    "damageType": "melee",
+    "baseSpeedCoeff": ".5",
+    "baseDamageCoeff": "2",
+    "baseAccuracyCoeff": ".5"
+  },
+  "33": {
+    "abilityName": "Chaos Rend",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.05",
+    "baseDamageCoeff": "1.15",
+    "baseAccuracyCoeff": ".95"
+  },
+  "100": {
+    "abilityName": "Pontificate",
+    "description": "",
+    "cooldown": 0,
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": ".1",
+    "baseAccuracyCoeff": "2"
+  },
+  "101": {
+    "abilityName": "Rebuke",
+    "description": "",
+    "cooldown": 0,
+    "damageType": "melee",
+    "baseSpeedCoeff": "1.25",
+    "baseDamageCoeff": "2",
+    "baseAccuracyCoeff": ".75"
+  },
+  "102": {
+    "abilityName": "Sentience",
+    "description": "",
+    "cooldown": 0,
+    "damageType": "melee",
+    "baseSpeedCoeff": ".75",
+    "baseDamageCoeff": ".1",
+    "baseAccuracyCoeff": "2"
+  },
+  "103": {
+    "abilityName": "Inform",
+    "description": "",
+    "cooldown": 0,
+    "damageType": "melee",
+    "baseSpeedCoeff": ".75",
+    "baseDamageCoeff": ".75",
+    "baseAccuracyCoeff": "1"
+  },
+  "1000": {
+    "abilityName": "Jolly Strike",
+    "description": "",
+    "cooldown": 0,
+    "damageType": "jolly",
+    "baseSpeedCoeff": "1",
+    "baseDamageCoeff": "1",
+    "baseAccuracyCoeff": "1"
+  },
+  "1001": {
+    "abilityName": "Krampus Crush",
+    "description": "",
+    "cooldown": 0,
+    "damageType": "jolly",
+    "baseSpeedCoeff": "1",
+    "baseDamageCoeff": "1",
+    "baseAccuracyCoeff": "1"
+  },
+  "10000": {
+    "abilityName": "75% Dmg Auto Attack",
+    "description": "",
+    "cooldown": "1",
+    "damageType": "melee",
+    "baseSpeedCoeff": "1",
+    "baseDamageCoeff": ".75",
+    "baseAccuracyCoeff": "1"
+  }
+}

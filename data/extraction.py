@@ -103,6 +103,48 @@ def extract_item_full(data):
 
     return itemDict
 
+def extract_abilities_full(data):
+    item_look_between_re = r'([a-zA-Z0-9_$]+)(?=\=\{1:\{id:1,abilityName:"Auto Attack").+?([a-zA-Z0-9_$]+)(?=\=function\([a-zA-Z0-9_$]+\))'
+    item_look_between = regex.search(item_look_between_re, data)
+
+    if len(item_look_between.groups()) != 2:
+        logging.error('Did not find suitable look between search terms, skipping item extraction')
+        return False
+
+    itemExpression = fr'({item_look_between.group(1)}\=)[\s\S]*?({item_look_between.group(2)}\=)'
+    x = regex.search(itemExpression, data).group(0)
+    try:
+        fullAbilityDictlike = regex.search(fullDictlike, x).group(0)[1:-1]
+    except AttributeError:
+        logging.error('Did not find the proper set of items')
+        return False
+
+    logging.info('Extracting abilities')
+    itemDict = {}
+    for x in regex.finditer(elementDictlike, fullAbilityDictlike):
+        xText = (x.group())[1:-1].split(',')
+        try:
+            abilityID = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'id'][0]
+            abilityName = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'abilityName'][0].replace('"', '')
+            description = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'description']
+            cooldown = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'cooldown']
+            damageType = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'damageType'][0].replace('"', '')
+            baseSpeedCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseSpeedCoeff'][0]
+            baseDamageCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseDamageCoeff'][0]
+            baseAccuracyCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseAccuracyCoeff'][0]
+            itemDict[int(eval(abilityID))] = {
+                    "abilityName": abilityName,
+                    "description": description[0] if len(description)>0 else "",
+                    "cooldown": cooldown[0] if len(cooldown)>0 else 0,
+                    "damageType": damageType,
+                    "baseSpeedCoeff": baseSpeedCoeff,
+                    "baseDamageCoeff": baseDamageCoeff,
+                    "baseAccuracyCoeff": baseAccuracyCoeff,
+                    }
+        except:
+            pass  # Not an item
+
+    return itemDict
 
 def extract_enchantments(data):
     enchantExpression = r'(enchantments)[\s\S]*?(e.exports)'
@@ -205,7 +247,9 @@ def main():
             'items':extract_items,
             'itemsFull':extract_item_full,
             'places':extract_places,
+            'abilities':extract_abilities_full,
             'crafting':extract_crafting}
+    work = {'abilities':extract_abilities_full}
 
     for k,v in work.items():
         validData = v(dataFile)
