@@ -123,26 +123,32 @@ def extract_abilities_full(data):
     itemDict = {}
     for x in regex.finditer(elementDictlike, fullAbilityDictlike):
         xText = (x.group())[1:-1].split(',')
-        try:
-            abilityID = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'id'][0]
-            abilityName = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'abilityName'][0].replace('"', '')
-            description = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'description']
-            cooldown = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'cooldown']
-            damageType = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'damageType'][0].replace('"', '')
-            baseSpeedCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseSpeedCoeff'][0]
-            baseDamageCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseDamageCoeff'][0]
-            baseAccuracyCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseAccuracyCoeff'][0]
-            itemDict[int(eval(abilityID))] = {
-                    "abilityName": abilityName,
-                    "description": description[0] if len(description)>0 else "",
-                    "cooldown": cooldown[0] if len(cooldown)>0 else 0,
-                    "damageType": damageType,
-                    "baseSpeedCoeff": baseSpeedCoeff,
-                    "baseDamageCoeff": baseDamageCoeff,
-                    "baseAccuracyCoeff": baseAccuracyCoeff,
-                    }
-        except:
-            pass  # Not an item
+        #try:
+        abilityID = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'id'][0]
+        abilityName = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'abilityName'][0].replace('"', '')
+        description = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'description']
+        oldDescription = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'oldDescription']
+        cooldown = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'cooldown']
+        damageType = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'damageType'][0].replace('"', '')
+        damageElement = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'damageElement']
+        baseSpeedCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseSpeedCoeff'][0]
+        baseDamageCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseDamageCoeff'][0]
+        baseAccuracyCoeff = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'baseAccuracyCoeff'][0]
+        maxTargets = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'maxTargets'][0]
+        itemDict[int(eval(abilityID))] = {
+                "abilityName": abilityName,
+                "description": description[0] if len(description)>0 else "",
+                "oldDescription": oldDescription[0] if len(oldDescription)>0 else "",
+                "cooldown": (eval(cooldown[0])) if len(cooldown)>0 else 0,
+                "damageType": damageType,
+                "damageElement": damageElement[0].replace('"', '') if len(damageElement)>0 else "",
+                "maxTargets": int(eval(maxTargets)),
+                "baseSpeedCoeff": (eval(baseSpeedCoeff)),
+                "baseDamageCoeff": (eval(baseDamageCoeff)),
+                "baseAccuracyCoeff": (eval(baseAccuracyCoeff)),
+                }
+        #except:
+        #    pass  # Not an item
 
     return itemDict
 
@@ -249,7 +255,6 @@ def main():
             'places':extract_places,
             'abilities':extract_abilities_full,
             'crafting':extract_crafting}
-    work = {'abilities':extract_abilities_full}
 
     for k,v in work.items():
         validData = v(dataFile)
