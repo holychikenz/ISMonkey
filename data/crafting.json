@@ -1166,39 +1166,20 @@
       }
     ]
   },
+  "3000": {
+    "craftingExperience": 60,
+    "requiredResources": [
+      {
+        "513": "128",
+        "2014": "12"
+      }
+    ]
+  },
   "7001": {
     "craftingExperience": 1,
     "requiredResources": [
       {
         "7e3": "100"
-      }
-    ]
-  },
-  "7002": {
-    "craftingExperience": 30,
-    "requiredResources": [
-      {
-        "7011": "10",
-        "7038": "200"
-      }
-    ]
-  },
-  "7004": {
-    "craftingExperience": 1,
-    "requiredResources": [
-      {
-        "2015": "1",
-        "2017": "1",
-        "2018": "1",
-        "2019": "1"
-      }
-    ]
-  },
-  "7037": {
-    "craftingExperience": 15,
-    "requiredResources": [
-      {
-        "7006": "1"
       }
     ]
   },
@@ -1271,14 +1252,15 @@
     ]
   },
   "9011": {
-    "craftingExperience": 45000.0,
+    "craftingExperience": 50000.0,
     "requiredResources": [
       {
-        "9003": "1",
-        "8006": "3",
-        "5": "25e3",
+        "9013": "3",
+        "9014": "3",
+        "5": "2e4",
         "512": "2500",
-        "502": "3"
+        "113": "750",
+        "700": "1"
       }
     ]
   },
@@ -1287,6 +1269,15 @@
     "requiredResources": [
       {
         "7038": "15e4"
+      }
+    ]
+  },
+  "9014": {
+    "craftingExperience": 100,
+    "requiredResources": [
+      {
+        "9013": "2",
+        "2": "25e3"
       }
     ]
   },
