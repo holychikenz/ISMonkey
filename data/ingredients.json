@@ -928,6 +928,7 @@
     "size": 1,
     "heat": 5,
     "buff": "Flame Resistance",
+    "buffBonus": 4,
     "fruit": 0,
     "vegetable": 0,
     "grain": 1,
