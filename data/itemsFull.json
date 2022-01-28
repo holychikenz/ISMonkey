@@ -530,61 +530,61 @@
   "500": {
     "name": "Air Talisman",
     "image": "/images/runecrafting/air_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "501": {
     "name": "Earth Talisman",
     "image": "/images/runecrafting/earth_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "502": {
     "name": "Fire Talisman",
     "image": "/images/runecrafting/fire_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "503": {
     "name": "Water Talisman",
     "image": "/images/runecrafting/water_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "504": {
     "name": "Blood Talisman",
     "image": "/images/runecrafting/blood_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "505": {
     "name": "Death Talisman",
     "image": "/images/runecrafting/death_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "506": {
     "name": "Chaos Talisman",
     "image": "/images/runecrafting/chaos_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "507": {
     "name": "Nature Talisman",
     "image": "/images/runecrafting/nature_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "508": {
     "name": "Mind Talisman",
     "image": "/images/runecrafting/mind_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "509": {
     "name": "Cosmic Talisman",
     "image": "/images/runecrafting/cosmic_talisman.png",
-    "value": 0,
+    "value": "2e4",
     "class": "rune"
   },
   "510": {
@@ -1466,19 +1466,19 @@
   "1500": {
     "name": "Santa Hat",
     "image": "/images/combat/equipment/santa_hat.png",
-    "value": "0",
+    "value": "42069",
     "class": "equipment"
   },
   "1501": {
     "name": "Snowman Head",
     "image": "/images/combat/equipment/snowman_head.png",
-    "value": "0",
+    "value": "42069",
     "class": "equipment"
   },
   "1502": {
     "name": "Tophat",
     "image": "/images/combat/equipment/tophat.png",
-    "value": "0",
+    "value": "42069",
     "class": "equipment"
   },
   "1503": {
@@ -1508,7 +1508,7 @@
   "1507": {
     "name": "Modified Diving Gloves",
     "image": "/images/combat/equipment/modified_diving_gloves_icon.png",
-    "value": "100",
+    "value": "212e4",
     "class": "equipment"
   },
   "1508": {
@@ -1622,7 +1622,7 @@
   "1526": {
     "name": "Black Knight Great Helm",
     "image": "/images/combat/equipment/black_black_knight_great_helm_icon.png",
-    "value": "2}",
+    "value": "192e3",
     "class": "equipment"
   },
   "1527": {
@@ -1634,7 +1634,7 @@
   "1528": {
     "name": "Decayed Cloak",
     "image": "/images/combat/equipment/decayed_cloak_hood.png",
-    "value": "2}",
+    "value": "256e4",
     "class": "equipment"
   },
   "1530": {
@@ -1746,10 +1746,10 @@
     "class": "equipment"
   },
   "1555": {
-    "name": "essence to talisman resource",
-    "image": "/images/cooking/banana.png",
-    "value": "9",
-    "class": ""
+    "name": "Mantle of Flame",
+    "image": "/images/combat/equipment/mantle_of_flame.png",
+    "value": "312e4",
+    "class": "equipment"
   },
   "1556": {
     "name": "max account consumable dev",
@@ -2495,6 +2495,12 @@
     "value": "225",
     "class": "cooking-ingredient"
   },
+  "3000": {
+    "name": "Water Imbued Dust",
+    "image": "/images/cooking/water_dust.png",
+    "value": "1",
+    "class": "cooking-ingredient"
+  },
   "6000": {
     "name": "Gold Medal",
     "image": "/images/ui/highscore_gold.png",
@@ -2696,19 +2702,19 @@
   "7029": {
     "name": "Magical Snowball",
     "image": "/images/christmas/magical_snowball.png",
-    "value": "2.5}",
+    "value": "284e4",
     "class": "equipment"
   },
   "7030": {
     "name": "Candy Cane Daggers",
     "image": "/images/christmas/candy_cane_daggers_icon.png",
-    "value": "2}",
+    "value": "284e4",
     "class": "equipment"
   },
   "7031": {
     "name": "Festive Shroud",
     "image": "/images/christmas/festive_shroud_hood.png",
-    "value": "2}",
+    "value": "512e4",
     "class": "equipment"
   },
   "7032": {
@@ -2787,67 +2793,67 @@
     "name": "RISE OF INFO",
     "image": "/images/misc/Elite_Scroll.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8001": {
     "name": "Black Knight's Trial",
     "image": "/images/misc/elite/Elite_Scroll_BK.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8002": {
     "name": "Giant Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Giant.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8003": {
     "name": "Corroded Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Corroded.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8004": {
     "name": "Stew Stained Page",
     "image": "/images/misc/elite/Elite_Scroll_Goblin.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8005": {
     "name": "Cluster-Cluck",
     "image": "/images/misc/elite/Elite_Scroll_Chicken.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8006": {
     "name": "Demonic Trial",
     "image": "/images/misc/elite/Elite_Scroll_Demon.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8007": {
     "name": "Taproot Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Spriggan.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8008": {
     "name": "The Final Test",
     "image": "/images/misc/Elite_Scroll.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8009": {
     "name": "Shapeless Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Chaos.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "8010": {
     "name": "Stormy Sea Scroll",
     "image": "/images/misc/elite/Elite_Scroll_Fish.png",
     "value": "500",
-    "class": "gem"
+    "class": "elite-scroll"
   },
   "9000": {
     "name": "Giant's Keep Key",
@@ -2859,31 +2865,31 @@
     "name": "Nature Fragment",
     "image": "/images/misc/keys/Nature_Piece.png",
     "value": "15e5",
-    "class": "gem"
+    "class": "key"
   },
   "9002": {
     "name": "Ice Fragment",
     "image": "/images/misc/keys/Water_Piece.png",
     "value": "15e5",
-    "class": "gem"
+    "class": "key"
   },
   "9003": {
     "name": "Fire Fragment",
     "image": "/images/misc/keys/Fire_Piece.png",
     "value": "15e5",
-    "class": "gem"
+    "class": "key"
   },
   "9004": {
     "name": "Corrupted Fragment",
     "image": "/images/misc/keys/Death_Piece.png",
     "value": "15e5",
-    "class": "gem"
+    "class": "key"
   },
   "9005": {
     "name": "Chaos Fragment",
     "image": "/images/misc/keys/Chaos_Piece.png",
     "value": "15e5",
-    "class": "gem"
+    "class": "key"
   },
   "9006": {
     "name": "Torn Goblin Settlement Map",
@@ -2895,7 +2901,7 @@
     "name": "Scrap of Stained Parchment",
     "image": "/images/misc/keys/goblin_map_piece.png",
     "value": "7500",
-    "class": "gem"
+    "class": "key"
   },
   "9008": {
     "name": "Dark Fortress Key",
@@ -2907,7 +2913,7 @@
     "name": "Dark Key Piece",
     "image": "/images/misc/keys/fortress_key_piece.png",
     "value": "1e5",
-    "class": "gem"
+    "class": "key"
   },
   "9010": {
     "name": "Cursed Spade",
@@ -2925,6 +2931,18 @@
     "name": "Krampus' Key",
     "image": "/images/christmas/krampus_key.png",
     "value": "69",
+    "class": "key"
+  },
+  "9013": {
+    "name": "Molten Ashes",
+    "image": "/images/misc/keys/infernal_ashes.png",
+    "value": "15e4",
+    "class": "key"
+  },
+  "9014": {
+    "name": "Infernal Flame",
+    "image": "/images/misc/keys/infernal_flame.png",
+    "value": "25e4",
     "class": "key"
   },
   "10000": {

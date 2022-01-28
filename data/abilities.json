@@ -1,7 +1,7 @@
 {
   "1": {
     "abilityName": "Auto Attack",
-    "description": "",
+    "description": "\"A basic auto attack\"",
     "oldDescription": "",
     "cooldown": 0,
     "damageType": "melee",
@@ -13,7 +13,7 @@
   },
   "2": {
     "abilityName": "Weakening Blow",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -25,7 +25,7 @@
   },
   "3": {
     "abilityName": "Poisoned Strike",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -37,7 +37,7 @@
   },
   "4": {
     "abilityName": "Self Care",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -49,7 +49,7 @@
   },
   "5": {
     "abilityName": "Sweep",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -61,7 +61,7 @@
   },
   "6": {
     "abilityName": "Eldritch Ritual",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "magic",
@@ -73,7 +73,7 @@
   },
   "7": {
     "abilityName": "Multishot",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "range",
@@ -85,7 +85,7 @@
   },
   "8": {
     "abilityName": "Rapidfire",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "range",
@@ -97,7 +97,7 @@
   },
   "9": {
     "abilityName": "Negative Energy Blast",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "magic",
@@ -109,7 +109,7 @@
   },
   "10": {
     "abilityName": "Plague Cloud",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "magic",
@@ -121,7 +121,7 @@
   },
   "11": {
     "abilityName": "Savage Strike",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -133,7 +133,7 @@
   },
   "12": {
     "abilityName": "Chaos Rend",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -145,7 +145,7 @@
   },
   "13": {
     "abilityName": "Chaos Blast",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "magic",
@@ -157,7 +157,7 @@
   },
   "14": {
     "abilityName": "Chaos Bolt",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "range",
@@ -169,7 +169,7 @@
   },
   "15": {
     "abilityName": "Lash Out",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -181,7 +181,7 @@
   },
   "16": {
     "abilityName": "Lightning Strikes Thrice",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -193,7 +193,7 @@
   },
   "17": {
     "abilityName": "Multi Auto Attack",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -205,8 +205,8 @@
   },
   "18": {
     "abilityName": "BONK",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"BONK your enemies with a big rock!\"",
+    "oldDescription": "\"BONK - An attack that is 5% slower and does 10% more damage.\"",
     "cooldown": 1,
     "damageType": "melee",
     "damageElement": "",
@@ -217,8 +217,8 @@
   },
   "19": {
     "abilityName": "J\\xe4\\xe4nuoli",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Strike your enemy with a shard of ice.\"",
+    "oldDescription": "\"J\\xe4\\xe4nuoli - An ice attack that is 10% faster and 5% less accurate. Requires Attack level of 85 to wield.\"",
     "cooldown": 1,
     "damageType": "melee",
     "damageElement": "ice",
@@ -229,8 +229,8 @@
   },
   "20": {
     "abilityName": "Infernal Judgement",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Judge them and find them wanting.\"",
+    "oldDescription": "\"Infernal Judgement - A fire attack that is 20% faster",
     "cooldown": 1,
     "damageType": "melee",
     "damageElement": "fire",
@@ -241,8 +241,8 @@
   },
   "21": {
     "abilityName": "Shatter Strike",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Fracture them into shards.\"",
+    "oldDescription": "\"Shatter Strike - An attack that is 5% slower",
     "cooldown": 1,
     "damageType": "melee",
     "damageElement": "",
@@ -253,8 +253,8 @@
   },
   "22": {
     "abilityName": "Lightning Strikes Twice",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Surely this is an anomaly?\"",
+    "oldDescription": "\"Lightning Strikes Twice - Two lightning attacks that are 40% faster",
     "cooldown": 1,
     "damageType": "melee",
     "damageElement": "lightning",
@@ -265,8 +265,8 @@
   },
   "23": {
     "abilityName": "Soul Steal",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Claim what is their's and make it yours. Has a 15% chance to heal you for 1/6 of damage dealt.\"",
+    "oldDescription": "\"Soul Steal - A poison attack that is 50% more accurate and does 25% less damage with a 15% chance to heal the player for 1/6 of the damage dealt.\"",
     "cooldown": 1,
     "damageType": "melee",
     "damageElement": "poison",
@@ -277,7 +277,7 @@
   },
   "24": {
     "abilityName": "Splash",
-    "description": "",
+    "description": "\"Splash!\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",
@@ -289,8 +289,8 @@
   },
   "25": {
     "abilityName": "The Ol' One-Two",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"bop bop\"",
+    "oldDescription": "\"The Ol' One-Two - Two attacks that are 66% faster",
     "cooldown": 0.1,
     "damageType": "melee",
     "damageElement": "",
@@ -301,8 +301,8 @@
   },
   "26": {
     "abilityName": "Entropic Burst",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"All things eventually come to an end. Accelerate that process.\"",
+    "oldDescription": "\"Entropic Burst - A chaos attack that is 50% faster",
     "cooldown": 45,
     "damageType": "melee",
     "damageElement": "chaos",
@@ -313,8 +313,8 @@
   },
   "27": {
     "abilityName": "Nature's Sanctuary",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Draw from the energy of nature and protect yourself.\"",
+    "oldDescription": "\"Nature's Sanctuary - Applies 6 stacks of Reinforcement 1 with a cooldown of at least 60 seconds if the original enchantment is in use.\"",
     "cooldown": 60,
     "damageType": "melee",
     "damageElement": "",
@@ -325,8 +325,8 @@
   },
   "28": {
     "abilityName": "Krakatoa",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Kra-ka-to-ahhhh\"",
+    "oldDescription": "\"Krakatoa - A fire attack that is 25% slower",
     "cooldown": 45,
     "damageType": "melee",
     "damageElement": "fire",
@@ -337,8 +337,8 @@
   },
   "29": {
     "abilityName": "Regal Might",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"These fools are beneath you",
+    "oldDescription": "\"Regal Might - Applies 1 stack of Protection 5 with a cooldown of at least 60 seconds.\"",
     "cooldown": 60,
     "damageType": "melee",
     "damageElement": "",
@@ -349,8 +349,8 @@
   },
   "30": {
     "abilityName": "*Snap*",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Balanced",
+    "oldDescription": "\"*Snap* - An attack that is 5% faster",
     "cooldown": 24,
     "damageType": "melee",
     "damageElement": "",
@@ -361,8 +361,8 @@
   },
   "31": {
     "abilityName": "Fire Ball",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"The weak shall be purged by your flames.\"",
+    "oldDescription": "\"Fire Ball - A fire attack that is 10% slower",
     "cooldown": 45,
     "damageType": "melee",
     "damageElement": "fire",
@@ -373,8 +373,8 @@
   },
   "32": {
     "abilityName": "Gordon's Fury",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"WHERE'S THE LIMPE SAUCE???\"",
+    "oldDescription": "\"Gordon's Fury - A fire attack that is 50% faster",
     "cooldown": 10,
     "damageType": "melee",
     "damageElement": "fire",
@@ -385,8 +385,8 @@
   },
   "33": {
     "abilityName": "Chaos Rend",
-    "description": "",
-    "oldDescription": "",
+    "description": "\"Rend them asunder!\"",
+    "oldDescription": "\"Chaos Rend - A chaos attack that is 5% slower",
     "cooldown": 1,
     "damageType": "melee",
     "damageElement": "chaos",
@@ -469,7 +469,7 @@
   },
   "10000": {
     "abilityName": "75% Dmg Auto Attack",
-    "description": "",
+    "description": "\"\"",
     "oldDescription": "",
     "cooldown": 1,
     "damageType": "melee",

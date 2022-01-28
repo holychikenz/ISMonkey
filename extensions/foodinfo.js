@@ -130,6 +130,7 @@ class FoodInfo {
         if( src == 'raw greatwhite' ) src = 'raw great white shark';
         if( src == 'raw hammerhead' ) src = 'raw hammerhead shark';
         if( src == 'raw tentacle chunk' ) src = 'raw tentacle meat';
+        if( src == 'water dust' ) src = 'water imbued dust';
         use_ingredients.push(src)
       }
       // Write recipe to dom
