@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dev_ISMonkeyLoader
-// @version      0.6.8
+// @version      0.6.9
 // @description  ISMonkey Extension Loader Dev Branch
 // @author       Holychikenz
 // @namespace    ISMonkey
