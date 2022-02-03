@@ -192,7 +192,8 @@ class FoodInfo {
     }
     let scale = {}
     allTags.forEach(e=>(scale[e]=0));
-    let weight = 0
+    let weight = 0;
+    let difficulty = 0;
     let buffs = []
     let buffBonus = []
     for( let ingred of ingredients ){
@@ -210,6 +211,7 @@ class FoodInfo {
         }
       }
       weight += self.foods[ingred].size
+      difficulty += self.foods[ingred].difficulty
     }
     let uniqueBuffs = unique(buffs);
     let totalWeight = 0;
@@ -244,22 +246,25 @@ class FoodInfo {
     let lvlBonus = Math.floor(self.level/30 - 1);
     let tagBonus = (recipe == 'Questionable Food') ? 1 : Math.min(...tags);
     let bonus = lvlBonus + tagBonus;
+    let bonusHP = (bonus+2)*hp;
     hp = (bonus+1)*hp;
     let buff = buffs.length > 0 ? buffs[0] : "";
     let buffModifier = buffBonus.length > 0 ? buffBonus[0] : 2;
     let stacks = (bonus*buffModifier + 1);
+    let bonusStacks = ((bonus+1)*buffModifier+1);
     let cooktime = 4^(0.95 + 0.05*weight)
     console.log(cooktime, weight, self.numberOfAvailableActions)
+    function btext(n){return `<b style="color:#42bd54 !important;">${n}</b>`}
     // Left column
     let idomtxt
     idomtxt =
       `<div style="display:flex; margin:5px;"><div style="flex:50%">
-       <b>${recipe}</b> <b class="augmented-text">+${bonus}</b><br />
+       <b>${recipe}</b> <b class="augmented-text">+${bonus}</b> (${btext("+"+(bonus+1))})<br />
        [Effective Level: ${self.level}]<br />
-       Heals: ${hp} hp
+       Heals: ${hp} (${btext(bonusHP)}) hp
        `
     if( buff !== "" ){
-      idomtxt += `<br/>Grants ${stacks} stacks of <b class="enchanted-text">${buff} 2</b>`
+      idomtxt += `<br/>Grants ${stacks} (${btext(bonusStacks)}) stacks of <b class="enchanted-text">${buff} 2</b>`
     }
     idomtxt += `</div><div style="flex:50%">`
     if( recipe !== 'Questionable Food' ){
@@ -277,13 +282,34 @@ class FoodInfo {
     let infernoCookTime = self.timePerAction * (1 - inferno*0.05)
     let totalCookTime = self.numberOfAvailableActions * infernoCookTime
     let totalXP = self.experiencePerAction * self.numberOfAvailableActions * ( 1 + 0.05*intuition + 0.2*scholar )
-    function ttl(n){return `<span style="display:inline-block; width:150px">${n}</span>`}
-    idomtxt += `<div style="text-align: left; margin:5px;"><hr> ${ttl("Cook chance:")} ${dnum(self.burnChance*100,2)}%<br>`
-    idomtxt += `${ttl("Heat used:")} ${dnum(self.heatPerAction, 0)} (${numberWithCommas((self.heatPerAction * self.numberOfAvailableActions))})<br>`
-    idomtxt += `${ttl("Time per action:")} ${dnum(infernoCookTime,2)}s (${timeFormatFull(totalCookTime)})<br>`
-    idomtxt += `${ttl("Experience:")} ${dnum(self.experiencePerAction, 0)} (${numberWithCommas(totalXP)})<br>`
-    idomtxt += `${ttl("Experience / Hour:")} ${numberWithCommas((totalXP / totalCookTime * 3600).toFixed(0))}<br>`
-    idomtxt += `${ttl("Available attempts:")} ${numberWithCommas(self.numberOfAvailableActions)}</div>`
+    let totalHeat = self.heatPerAction*self.numberOfAvailableActions
+    function ttl(n){return `<span style="display:inline-block; width:110px">${n}</span>`}
+    function tta(n){return `<span style="display:inline-block; width:80px">${n}</span>`}
+    function trow(name, each, total, hourly){
+      return `${ttl(name)}${tta(each)}${tta(hourly)}${tta(total)}<br>`
+    }
+    idomtxt += `<div style="text-align: left; margin:5px;"><hr>`
+    idomtxt += `${ttl("Cook chance")}${dnum(self.burnChance*100,2)}%<br>`
+    idomtxt += `${ttl("Difficulty | Size")}${dnum(difficulty, 0)} | ${dnum(weight, 0)}<br>`
+    idomtxt += `${ttl("Chance for "+btext("+1"))}${dnum(100*(self.level % 30)/30, 2)}%<br></div>`
+    idomtxt += `</div>`
+
+    idomtxt += `<div style="text-align: left; margin:5px;">`
+    idomtxt += trow("","<b>Each</b>","<b>Total</b>","<b>Hourly</b>");
+    idomtxt += trow("Time",`${dnum(infernoCookTime,2)}s`,timeFormatFull(totalCookTime),"&mdash;")
+    idomtxt += trow("Actions",1,numberWithCommas(self.numberOfAvailableActions),numberWithCommas(self.numberOfAvailableActions/totalCookTime*3600));
+    idomtxt += trow("Heat",dnum(self.heatPerAction,0),numberWithCommas(totalHeat),numberWithCommas(totalHeat/totalCookTime*3600))
+    idomtxt += trow("Experience",dnum(self.experiencePerAction,0),numberWithCommas(totalXP),numberWithCommas((totalXP/totalCookTime*3600)))
+    idomtxt += `</div>`
+    //idomtxt += `${ttl("Experience / Hour:")} ${numberWithCommas((totalXP / totalCookTime * 3600).toFixed(0))}<br>`
+    //idomtxt += `<div style="text-align: left; margin:5px;"><hr> ${ttl("Cook chance:")} ${dnum(self.burnChance*100,2)}%<br>`
+    //idomtxt += `${ttl("Difficulty | Size:")} ${dnum(difficulty, 0)} | ${dnum(weight, 0)}<br>`
+    //idomtxt += `${ttl("Chance for +1:")} ${dnum(100*(self.level % 30)/30, 2)}%<br>`
+    //idomtxt += `${ttl("Heat used:")} ${dnum(self.heatPerAction, 0)} (${numberWithCommas((self.heatPerAction * self.numberOfAvailableActions))})<br>`
+    //idomtxt += `${ttl("Time per action:")} ${dnum(infernoCookTime,2)}s (${timeFormatFull(totalCookTime)})<br>`
+    //idomtxt += `${ttl("Experience:")} ${dnum(self.experiencePerAction, 0)} (${numberWithCommas(totalXP)})<br>`
+    //idomtxt += `${ttl("Experience / Hour:")} ${numberWithCommas((totalXP / totalCookTime * 3600).toFixed(0))}<br>`
+    //idomtxt += `${ttl("Available attempts:")} ${numberWithCommas(self.numberOfAvailableActions)}</div>`
     targetdom.innerHTML = idomtxt;
   }
 }
