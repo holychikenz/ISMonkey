@@ -1688,13 +1688,13 @@
   "1545": {
     "name": "Titanic Gauntlet",
     "image": "/images/combat/equipment/titanic_gauntlet.png",
-    "value": "5e6",
+    "value": "75e5",
     "class": "equipment"
   },
   "1546": {
     "name": "Awakened World Shaper",
     "image": "/images/combat/equipment/awakened_world_shaper.png",
-    "value": "5e6",
+    "value": "1e7",
     "class": "equipment"
   },
   "1547": {
