@@ -225,7 +225,7 @@
     "maxTargets": 1,
     "baseSpeedCoeff": 0.9,
     "baseDamageCoeff": 1.05,
-    "baseAccuracyCoeff": 0.95
+    "baseAccuracyCoeff": 1
   },
   "20": {
     "abilityName": "Infernal Judgement",
@@ -245,11 +245,11 @@
     "oldDescription": "\"Shatter Strike - An attack that is 5% slower",
     "cooldown": 1,
     "damageType": "melee",
-    "damageElement": "",
+    "damageElement": "chaos",
     "maxTargets": 1,
     "baseSpeedCoeff": 1.05,
-    "baseDamageCoeff": 1.3,
-    "baseAccuracyCoeff": 1.1
+    "baseDamageCoeff": 1.15,
+    "baseAccuracyCoeff": 1.05
   },
   "22": {
     "abilityName": "Lightning Strikes Twice",
@@ -260,8 +260,8 @@
     "damageElement": "lightning",
     "maxTargets": 1,
     "baseSpeedCoeff": 0.6,
-    "baseDamageCoeff": 0.67,
-    "baseAccuracyCoeff": 0.85
+    "baseDamageCoeff": 0.6,
+    "baseAccuracyCoeff": 1
   },
   "23": {
     "abilityName": "Soul Steal",
@@ -296,8 +296,8 @@
     "damageElement": "",
     "maxTargets": 1,
     "baseSpeedCoeff": 0.33,
-    "baseDamageCoeff": 0.75,
-    "baseAccuracyCoeff": 0.9
+    "baseDamageCoeff": 0.7,
+    "baseAccuracyCoeff": 1
   },
   "26": {
     "abilityName": "Entropic Burst",
@@ -381,7 +381,7 @@
     "maxTargets": 1,
     "baseSpeedCoeff": 0.5,
     "baseDamageCoeff": 2,
-    "baseAccuracyCoeff": 0.5
+    "baseAccuracyCoeff": 2
   },
   "33": {
     "abilityName": "Chaos Rend",
@@ -391,9 +391,9 @@
     "damageType": "melee",
     "damageElement": "chaos",
     "maxTargets": 3,
-    "baseSpeedCoeff": 1.05,
+    "baseSpeedCoeff": 1,
     "baseDamageCoeff": 1.15,
-    "baseAccuracyCoeff": 0.95
+    "baseAccuracyCoeff": 1
   },
   "100": {
     "abilityName": "Pontificate",
