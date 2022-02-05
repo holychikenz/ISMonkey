@@ -140,7 +140,6 @@ class LootTracking{
     if( index == "chest open notification" ){
       let chestID = value.message.chestID
       let contents = value.message.contents
-      console.log( contents )
       let gold = 0
       for( let item of contents ){
         if( item.id in this.marketByID ){
@@ -150,8 +149,6 @@ class LootTracking{
         }
       }
       let chestCount = value.message.amount
-      console.log("Total value:", gold);
-      console.log("Value per chest:", gold/chestCount);
       this.deliverChestPayload(this, value.message);
     }
   }
@@ -185,7 +182,6 @@ class LootTracking{
     if( lootMap.get("maximum") >= 10 ){
       unique.clear()
     }
-    //console.log(JSON.stringify(toJSobject(this.data)))
     // Value of loot
     if( loot[0] in this.market ){
       this.lootValue += this.market[loot[0]]*loot[1]

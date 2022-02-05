@@ -35,6 +35,18 @@ class FoodInfo {
     }
     const targetNode = document.body;
     const config = {attributes: true, childList: true, subtree: true };
+    let css = `
+      .cooking-empty-button, .cooking-start-button {
+        margin-top: 10px;
+      }
+      /*
+      .cooking-controls {
+        top: -80px;
+        position: relative;
+      }
+      */
+    `
+    appendCSS(css);
     // Callback function to execute when mutations are observed
     const callback = function(mutationsList, observer) {
       for(let mutation of mutationsList) {
@@ -93,6 +105,9 @@ class FoodInfo {
         recipeDom.style.border = "2px solid rgba(255, 255, 255, 0.2)"
         recipeDom.style.position = "relative";
         recipeDom.style.zIndex = 2;
+        //recipeDom.style.display = "inline-block";
+        recipeDom.style.width = "fit-content";
+        recipeDom.style.margin = "0 auto";
         targetNode.getElementsByClassName("cooking-controls")[0].prepend(recipeDom);
       }
       // Kill useless info
@@ -203,7 +218,6 @@ class FoodInfo {
       if( self.foods[ingred].buff != "" ){
         buffs.push(self.foods[ingred].buff)
         buffBonus.push( get(self.foods[ingred], "buffBonus", 2) );
-        console.log(get(self.foods[ingred], "buffBonus", 2));
         if( unique(buffs).length > 1 ){
           for(let k of allTags){
             scale[k] -= self.foods[ingred][k] * self.foods[ingred].size
@@ -253,7 +267,6 @@ class FoodInfo {
     let stacks = (bonus*buffModifier + 1);
     let bonusStacks = ((bonus+1)*buffModifier+1);
     let cooktime = 4^(0.95 + 0.05*weight)
-    console.log(cooktime, weight, self.numberOfAvailableActions)
     function btext(n){return `<b style="color:#42bd54 !important;">${n}</b>`}
     // Left column
     let idomtxt
