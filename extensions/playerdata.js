@@ -101,7 +101,6 @@ class PlayerData {
           this.initExperience = {...this.experience};
           this.initMasteryExperience = {...this.masteryExperience};
           this.initExperienceTimer = Date.now();
-          //console.log("Reset Init")
         }
       }
     }

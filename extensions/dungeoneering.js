@@ -90,8 +90,6 @@ class Dungeoneering {
     this.data = {}
     this.groupInfo = {}
     this.hitArray = []
-    // DEBUG
-    // setInterval( ()=>console.log("Length Hit Array", JSON.stringify(this.hitArray).replace(/[\[\]\,\"]/g,'').length, this.hitArray.length), 5000 )
     this.playerTableRowMap = {}
     this.monsterTableRowMap = {}
     delete this.bestiary
@@ -157,11 +155,6 @@ class Dungeoneering {
       }
       this.updateEQInfoBoxCallback(this)
       // Initial loading for combat stats and inventory
-      // Still cannot access group food though
-      // if( portion.includes("all") ){
-      //   let remainingFood = value.combatInventory.length;
-      //   console.log("remaining food", remainingFood);
-      // }
       if( portion.includes("group") ){
         this.groupInfo = value;
       }
