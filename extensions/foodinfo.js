@@ -51,6 +51,36 @@ class FoodInfo {
     const callback = function(mutationsList, observer) {
       for(let mutation of mutationsList) {
         if(mutation.type === 'attributes'){
+          //document.querySelectorAll(".item-tooltip").forEach(
+          document.querySelectorAll(".daelis-wow-tooltip").forEach(
+            e=>{
+              try {
+                let nameElement = e.getElementsByClassName("dwt-name")[0] || "None";
+                let name = nameElement.innerText.toLowerCase();
+                let dwtitemtype = e.getElementsByClassName("dwt-item-type")[0] || undefined;
+                if( dwtitemtype && dwtitemtype.innerHTML.includes("Ingredient") && !(e.innerHTML.includes("Size")) ){
+                  let foodInfoDiv = document.createElement("div");
+                  let foodEntry = self.foods[name];
+                  foodInfoDiv.innerHTML += "Size: " + foodEntry.size + "<br>Difficulty: " + foodEntry.difficulty + "<br>Tags:";
+                  for(let key in foodEntry){
+                    if( key != "size" && foodEntry[key]==1 && key != "difficulty" ){
+                      foodInfoDiv.innerHTML += " " + key.charAt(0).toUpperCase() +key.slice(1) + ","
+                    }
+                  }
+                  // Drop the last comma
+                  foodInfoDiv.innerHTML = foodInfoDiv.innerHTML.slice(0, -1);
+                  if( foodEntry.buff != "" ){
+                    let buffwords = foodEntry.buff.split(" ");
+                    for( let bi=0; bi<buffwords.length; bi++ )
+                    {
+                      buffwords[bi] = buffwords[bi].charAt(0).toUpperCase() + buffwords[bi].slice(1);
+                    }
+                    foodInfoDiv.innerHTML += "<br/>Buff: <b class='enchanted-text'>" + buffwords.join(" ") + "</b><br>"
+                  }
+                  dwtitemtype.after(foodInfoDiv);
+                }
+              } catch {};
+            });
           document.querySelectorAll(".item-tooltip").forEach(
             e=>{
               try {
