@@ -92,6 +92,7 @@ def extract_item_full(data):
             itemID = int(eval(convertedDict['id']))
             itemDict[itemID] = convertedDict
         except:
+            print(x.group())
             pass  # Not an item
 
     return itemDict
