@@ -2,6 +2,7 @@ import argparse
 import json
 import logging
 import regex
+import re
 import requests
 
 logging.basicConfig(level=logging.INFO, format='[%(levelname)8s][%(filename)s:%(lineno)s - %(funcName)s()] %(message)s')
@@ -9,6 +10,7 @@ idlescape_site = 'https://www.idlescape.com'
 default_main_chunk = f'{idlescape_site}/static/js/main.27754d83.chunk.js'
 fullDictlike = r'(\{)[\s\S]*(\})'
 elementDictlike = r'(?<rec>\{(?:[^{}]++|(?&rec))*\})'
+splitPattern = r'''[^:]*:[^:]*,'''
 
 
 def pirates():
@@ -82,22 +84,13 @@ def extract_item_full(data):
     logging.info('Extracting items')
     itemDict = {}
     for x in regex.finditer(elementDictlike, fullItemDictlike):
-        xText = (x.group())[1:-1].split(',')
+        xText = [p.group() for p in regex.finditer(splitPattern, x.group())]
         try:
-            itemID = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'id'][0]
-            itemName = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'name'][0].replace('"', '')
-            itemImg = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'itemImage'][0].replace('"', '')
-            itemIcon = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'itemIcon']
-            if len(itemIcon) > 0 :
-                itemImg = itemIcon[0].replace('"', '')
-            itemValue = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'value']
-            itemClass = [xt.split(':')[1] for xt in xText if xt.split(':')[0] == 'class']
-            itemDict[int(eval(itemID))] = {
-                    "name": itemName,
-                    "image": itemImg,
-                    "value": itemValue[0] if len(itemValue)>0 else 0,
-                    "class": itemClass[0].replace('"','') if len(itemClass)>0 else '',
-                    }
+            convertedDict = {i.split(':')[0]:i.split(':')[1] for i in xText}
+            convertedDict = { k.replace("{",""):v.replace("}","")[0:-1] for k,v in convertedDict.items() }
+            convertedDict = { k.replace("\"",""):v.replace("\"","").replace("[","").replace("]","") for k,v in convertedDict.items() }
+            itemID = int(eval(convertedDict['id']))
+            itemDict[itemID] = convertedDict
         except:
             pass  # Not an item
 
@@ -251,7 +244,7 @@ def main():
 
     work = {'enchantments':extract_enchantments,
             'items':extract_items,
-            'itemsFull':extract_item_full,
+            'itemsComplete':extract_item_full,
             'places':extract_places,
             'abilities':extract_abilities_full,
             'crafting':extract_crafting}
@@ -262,6 +255,8 @@ def main():
             with open(f'{k}.json', 'w') as j:
                 json.dump(validData, j, indent=2)
             logging.info(f'Wrote {k}.json')
+        else:
+            print( validData )
 
 if __name__ == '__main__':
     main()
