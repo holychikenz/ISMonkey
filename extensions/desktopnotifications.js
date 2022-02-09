@@ -7,7 +7,7 @@ class DesktopNotifications {
   connect(){
     this.begin();
   }
-  begn(promise){
+  begin(promise){
     let self = this;
     promise = promise || new Promise( ()=>{} );
     if( document.readyState == 'complete' ){
@@ -21,18 +21,27 @@ class DesktopNotifications {
   run(obj, msg){
     if( msg[0] == "play sound" ){
       let value = msg[1];
-      let nx = new Notification(JSON.stringify(value));
-      nx.onclick = function(){window.focus(); this.close()}
+      this.displayMessage(value);
     }
     if( msg[0] == "update player" ){
       if( "portion" in msg[1] ){
         if( msg[1].portion.includes("actionQue") ){
           if( msg[1].value.length == 0 ){
-            let nx = new Notification("IDLE");
-            nx.onclick = function(){window.focus(); this.close()}
+            this.displayMessage({type: "Idle"});
           }
         }
       }
     }
+  }
+  displayMessage(message) {
+    let msgType = message.type
+    let fullMessage = JSON.stringify(message)
+    console.log(message)
+    let note = new Notification( fullMessage, {
+      icon: "favicon.ico",
+      tag: msgType,
+    });
+    note.onclick = function(){window.focus(); this.close()};
+    setTimeout(()=>{ note.close() }, 10*1000);
   }
 }
