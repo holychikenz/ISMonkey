@@ -615,7 +615,7 @@ class Dungeoneering {
       let reqBonus = ((1+currentMax) - (1.3 + strLevel/10))/(1/80+strLevel/640)
       // What do we want to know?
       self.EQinfo_minhit = Math.floor(1.0 + recklessness + patience*0.3*(atkSpeed-1)**2)
-      self.EQinfo_maxhit = Math.floor(1.3 + strLevel/10 + strBonus/80 + strLevel*strBonus/640) + self.EQinfo_minhit
+      self.EQinfo_maxhit = Math.floor(1.3 + strLevel/10 + strBonus/80 + strLevel*strBonus/640) + self.EQinfo_minhit - 1
       self.EQinfo_averagehit = ( self.EQinfo_maxhit * (1 + 0.05*critical*0.3) + self.EQinfo_minhit )/2.0
       self.EQinfo_critmax = critical > 0 ? Math.floor( (self.EQinfo_maxhit - self.EQinfo_minhit + 1) * 1.3 + self.EQinfo_minhit - 1 ) : 0
       self.EQinfo_dps = self.EQinfo_averagehit / atkSpeed
