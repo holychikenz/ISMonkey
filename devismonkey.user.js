@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Dev_ISMonkeyLoader
-// @version      0.6.14
+// @version      0.7.0
 // @description  ISMonkey Extension Loader Dev Branch
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -12,6 +12,7 @@
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/playerdata.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/dungeoneering.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/desktopnotifications.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/loottracking.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/looty.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/injectcss.js
@@ -33,6 +34,7 @@
   ismonkey.addSocketExtension( PlayerData, options );
   // Socket Listeners
   ismonkey.addSocketExtension( Dungeoneering, options );
+  ismonkey.addSocketExtension( DesktopNotifications, options );
   ismonkey.addSocketExtension( LootTracking, options );
   ismonkey.addSocketExtension( Statistics, options );
   ismonkey.addSocketExtension( FoodInfo, options );
