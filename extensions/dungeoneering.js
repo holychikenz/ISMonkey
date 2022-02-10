@@ -510,10 +510,18 @@ class Dungeoneering {
       let chatTabs = chatSection.getElementsByClassName("chat-tabs")[0]
       dungeonBox.style.visibility="visible"
       for(let dom of chatTabs.getElementsByClassName("selected-channel")){
-        dom.className="chat-tab-channel"
+        dom.classList.remove("selected-channel")
+      };
+      for(let dom of chatTabs.getElementsByClassName("selected-whisper")){
+        dom.classList.remove("selected-whisper")
       };
       dungeonChannel.className="chat-tab-channel selected-channel";
       for( let tab of chatTabs.getElementsByClassName("chat-tab-channel") ){
+        if( tab.id !== dungeonChannel.id ){
+          tab.addEventListener("click", closeChatBox);
+        }
+      }
+      for( let tab of chatTabs.getElementsByClassName("chat-tab-whisper") ){
         if( tab.id !== dungeonChannel.id ){
           tab.addEventListener("click", closeChatBox);
         }
@@ -529,7 +537,12 @@ class Dungeoneering {
     function closeChatBox(e){
       dungeonBox.style.visibility="hidden"
       dungeonChannel.className="chat-tab-channel";
-      e.target.classList.add("selected-channel");
+      if( e.target.classList.contains("chat-tab-whisper") ){
+        e.target.classList.add("selected-whisper");
+      }
+      if( e.target.classList.contains("chat-tab-channel") ){
+        e.target.classList.add("selected-channel");
+      }
     }
     for( let tab of chatTabs.getElementsByClassName("chat-tab-channel") ){
       if( tab.id !== dungeonChannel.id ){
