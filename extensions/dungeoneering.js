@@ -529,7 +529,7 @@ class Dungeoneering {
     function closeChatBox(e){
       dungeonBox.style.visibility="hidden"
       dungeonChannel.className="chat-tab-channel";
-      e.target.className="chat-tab-channel selected-channel";
+      e.target.classList.add("selected-channel");
     }
     for( let tab of chatTabs.getElementsByClassName("chat-tab-channel") ){
       if( tab.id !== dungeonChannel.id ){
