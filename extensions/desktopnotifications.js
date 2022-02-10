@@ -36,7 +36,6 @@ class DesktopNotifications {
   displayMessage(message) {
     let msgType = message.type
     let fullMessage = JSON.stringify(message)
-    console.log(message)
     let note = new Notification( fullMessage, {
       icon: "favicon.ico",
       tag: msgType,
