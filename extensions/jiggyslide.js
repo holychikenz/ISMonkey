@@ -25,7 +25,8 @@ class JiggySlide {
     let chatbuttons = document.querySelector(".chat-buttons");
     let playbox = document.querySelector(".play-area-container");
     let chatbox = document.querySelector(".play-area-chat-container");
-    let main = document.querySelector(".combine-main-area")
+
+    let usePercent = true;
 
     if( block && rightside && chatbuttons && playbox ) {
 
@@ -56,10 +57,14 @@ class JiggySlide {
       slider.onmousedown = function dragMouseDown(e) {
         let dragX = e.clientX;
         glass.style.display = "block"
+        let main = document.querySelector(".combine-main-area")
         document.onmousemove = function onMouseMove(e) {
-          //block.style.width = block.offsetWidth + e.clientX - dragX + "px";
+          if( usePercent ){
+            block.style.width = 100*(block.offsetWidth + e.clientX - dragX)/main.clientWidth + "%";
+          } else {
+            block.style.width = block.offsetWidth + e.clientX - dragX + "px";
+          }
           // In percent
-          block.style.width = 100*(block.offsetWidth + e.clientX - dragX)/main.clientWidth + "%";
           localStorage.jiggyslideDRAGX = block.style.width;
           dragX = e.clientX;
         }
@@ -80,11 +85,18 @@ class JiggySlide {
       chatslider.onmousedown = function dragMouseDown(e) {
         let dragY = e.clientY;
         glass.style.display = "block"
+        let chatblock = document.querySelector(".play-area-chat")
+        let fullHeight = chatblock.offsetHeight
+        let docHeight = document.body.clientHeight
+        console.log("Offsethight", fullHeight)
         document.onmousemove = function onMouseMove(e) {
-          playbox.style.height = playbox.offsetHeight + e.clientY - dragY + "px";
-          //playbox.style.height = 100*(playbox.offsetHeight + e.clientY - dragY)/main.clientHeight + "%";
+          if( usePercent ){
+            playbox.style.height = 100*(e.clientY - docHeight + fullHeight)/fullHeight + "%";
+          } else {
+            playbox.style.height = playbox.offsetHeight + e.clientY - dragY + "px";
+          }
           localStorage.jiggyslideDRAGY = playbox.style.height;
-          dragY = e.clientY;
+          //dragY = e.clientY;
         }
         document.onmouseup = () => {document.onmousemove = document.onmouseup = null; glass.style.display = "none";}
       }
@@ -151,14 +163,13 @@ class JiggySlide {
         }
         if( document.getElementsByClassName("game-right-panel").length > 0 ){
             if( inGroupCombat ){
-                chat.style.width="50%"
+                chat.style.width = localStorage.jiggyslideDRAGX;
                 inGroupCombat=false;
             }
             chat.style.maxWidth="78%"
             chat.style.flex="none";
         } else {
             chat.style.maxWidth="100%"
-            //chat.style.width="100%"
             chat.style.flex="auto";
             inGroupCombat = true;
         }
