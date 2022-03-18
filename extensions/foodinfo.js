@@ -326,8 +326,8 @@ class FoodInfo {
     let totalCookTime = self.numberOfAvailableActions * infernoCookTime
     let totalXP = self.experiencePerAction * self.numberOfAvailableActions * ( 1 + 0.05*intuition + 0.2*scholar )
     let totalHeat = self.heatPerAction*self.numberOfAvailableActions
-    function ttl(n){return `<span style="display:inline-block; width:110px">${n}</span>`}
-    function tta(n){return `<span style="display:inline-block; width:80px">${n}</span>`}
+    function ttl(n){return `<span style="display:inline-block; width:115px">${n}</span>`}
+    function tta(n){return `<span style="display:inline-block; width:95px">${n}</span>`}
     function trow(name, each, total, hourly){
       return `${ttl(name)}${tta(each)}${tta(hourly)}${tta(total)}<br>`
     }

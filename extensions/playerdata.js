@@ -108,7 +108,11 @@ class PlayerData {
       let globalBuffs = msg[1].buffs;
       this.globals = {};
       for(let ec in globalBuffs){
-        this.globals[this.enchants[globalBuffs[ec].enchantmentID]] = globalBuffs[ec].enchantmentStrength;
+        if( this.enchants[globalBuffs[ec].enchantmentID] in this.globals ){
+          this.globals[this.enchants[globalBuffs[ec].enchantmentID]] += globalBuffs[ec].enchantmentStrength;
+        } else {
+          this.globals[this.enchants[globalBuffs[ec].enchantmentID]] = globalBuffs[ec].enchantmentStrength;
+        }
       }
     }
     if( msg[0] === "update inventory" ){
