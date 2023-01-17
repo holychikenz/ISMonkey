@@ -258,7 +258,7 @@ class ISMonkey {
     let playClone = playArea.cloneNode(true);
     playClone.className="play-area monkey theme-default";
     playClone.innerHTML=""
-    container.append(playClone)
+    document.querySelector('.play-area-background').append(playClone)
     playArea.style.display="none";
     self.fillSettingsDom(self, playClone);
 

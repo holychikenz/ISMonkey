@@ -70,7 +70,7 @@ class Looty{
   run(obj, msg){
     let call = msg[0];
     let message = msg[1];
-    if( call === "update player" ){
+    if( call === "update:player" ){
       let portion = message.portion;
       let value = message.value;
       // Essence in stockpile
@@ -92,9 +92,10 @@ class Looty{
       } else {
         // Skills and tools
         if( portion.includes("skills") ){
-          let aSkill = portion[1];
-          this.experience[aSkill] = value.experience;
-          this.masteryExperience[aSkill] = value.masteryExperience;
+          for( const [key, val] of Object.entries(value) ){
+            this.experience[key] = val.experience;
+            this.masteryExperience[key] = val.masteryExperience;
+          }
         }
         if( portion.includes("actionQue") ) {
           //this.initExperience = {...this.experience};
@@ -113,9 +114,10 @@ class Looty{
       }
       this.updateXPSTAT();
     }
-    if( call === "lootlog loot" ){
-      let loot = message.loot
-      let name = loot[0]
+    if( call === "lootlog:loot" ){
+      /*
+      let loot = message
+      let name = loot.itemID
       let count = loot[1]
       let newgold = count
       let newcook = 0
@@ -128,6 +130,7 @@ class Looty{
         newcook = this.cookbook[name] * count
       }
       this.cook += newcook
+      */
     }
   }
   buildUI(self, promise){
@@ -342,7 +345,7 @@ class Looty{
   }
   updateExperienceTable(self){
     let d = self.getExperienceDiffDict();
-    if( self.rowNameDict === 'undefined' ) return;
+    if( !self.rowNameDict ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.rowNameDict ){
@@ -402,7 +405,7 @@ class Looty{
   }
   updateMarketTable(self){
     let d = self.getMarketDict();
-    if( self.marketDict === 'undefined' ) return;
+    if( !self.marketDict ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.marketDict ){
@@ -461,7 +464,7 @@ class Looty{
   }
   updateEssenceTable(self){
     let d = self.getEssenceDiffDict();
-    if( self.essenceDict === 'undefined' ) return;
+    if( !self.essenceDict ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.essenceDict ){

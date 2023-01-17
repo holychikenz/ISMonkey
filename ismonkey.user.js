@@ -26,25 +26,37 @@
 // @grant        none
 // ==/UserScript==
 
+/*
+Todo List:
+- That thing I did in mooscape to grab and store some of the initial messages.
+
+*/
+
 (function(){
   IdlescapeSocketListener.attach();
   // ISMonkeyLoader Extensions
   var ismonkey = new ISMonkey();
   var options = {};
+  // WIP As we add / remove features. Some will be obsolete, others need modification.
   // Preload
   ismonkey.addSocketExtension( PlayerData, options );
   // Socket Listeners
   ismonkey.addSocketExtension( Dungeoneering, options );
   ismonkey.addSocketExtension( DesktopNotifications, options );
-  ismonkey.addSocketExtension( LootTracking, options );
-  ismonkey.addSocketExtension( Statistics, options );
-  ismonkey.addSocketExtension( FoodInfo, options );
+  // ismonkey.addSocketExtension( LootTracking, options );
+  // ismonkey.addSocketExtension( FoodInfo, options );
   ismonkey.addSocketExtension( Looty, options );
-  // Mutation Observers / Async Extensions
-  ismonkey.addAsyncExtension( InjectCSS, options );
+  // // Mutation Observers / Async Extensions
+  // ismonkey.addAsyncExtension( InjectCSS, options );
+  // ismonkey.addAsyncExtension( Runecrafting, options );
+  // ismonkey.addAsyncExtension( Smithing, options );
+
+  // OBSOLETE
+  /* Boohi added slider, and performance mode.
   ismonkey.addAsyncExtension( JiggySlide, options );
   ismonkey.addAsyncExtension( AnimationCancel, options );
-  ismonkey.addAsyncExtension( Runecrafting, options );
-  ismonkey.addAsyncExtension( Smithing, options );
+  ismonkey.addSocketExtension( Statistics, options );
+  */
   // Callback Queue
+  window.ismonkey = ismonkey;
 })();

@@ -80,15 +80,18 @@ class Dungeoneering {
     this.foodThreshold = 15
     this.currentAutoeat = 0
     // This may be different for player / monster, so lets make that Map (we want this ordered)
-    this.playerElementMap = new Map([ ["Food",this.getFood], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
-    this.monsterElementMap = new Map([ ["Kills (kph)",this.getCount], ["Damage (dph)", this.getDPH], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
+    this.playerElementMap = new Map([ ["Food",this.getFood], ["Damage (dps)", this.getDPS], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
+    this.monsterElementMap = new Map([ ["Kills (kph)",this.getCount], ["Damage (dps)", this.getDPS], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
     this.playerTable = document.createElement("table")
     this.monsterTable = document.createElement("table")
   }
   resetRun(){
     this.startTime = Date.now()
     this.data = {}
+    this.idTargetMap = {}
+    this.idImageMap = {}
     this.groupInfo = {}
+    this.combatDifficulty = 0
     this.hitArray = []
     this.playerTableRowMap = {}
     this.monsterTableRowMap = {}
@@ -108,28 +111,47 @@ class Dungeoneering {
   }
   run(obj, msg) {
     // Store and use all of the hit information
-    if( msg[0] == "combat hit" ){
+    if( msg[0] == "combat:spawnMonster" ){
+      let listOfMonsters = msg[1];
+      for(let monster of listOfMonsters){
+        this.idTargetMap[monster.id] = monster.monsterName;
+        this.idImageMap[monster.id] = monster.image;
+        this.bestiary.add(monster.monsterName)
+        this.bestiaryAlbum[monster.monsterName]=monster.image;
+      }
+    }
+    if( msg[0] == "update:group-member" ){
+      let member = msg[1];
+      if( member.key == "combatStats" ){
+        this.idTargetMap[member.value.player] = member.value.name;
+      }
+    }
+    if( msg[0] == "combat:splotch" ){
       let info = msg[1];
       this.hitArray.push(info);
       // Hit array size safety, tests show ~70 KB / element, so this will float up to 35MB or so
       if( this.hitArray.length > 550000 ){
         this.hitArray = this.hitArray.slice(50000)
       }
-      let source = info.source
-      let target = info.target
+      let source = get( this.idTargetMap, info.attackerID, "Lost" )
+      let target = get( this.idTargetMap, info.id, "Lost" )
+      if( source == "Lost" || target == "Lost" ){
+        return;
+      }
+      // Skip this entry if either is lost
       if( !(source in this.data) ){
         this.data[source] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0}
       }
       if( !(target in this.data) ){
         this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0}
       }
-      if( this.data[source].maxhit < info.hit && info.damageType != "heal"){
+      if( this.data[source].maxhit < info.hit && info.damageType != "Heal"){
         this.data[source].maxhit = info.hit
       }
-      if( info.damageType == "miss" ){
+      if( info.damageType == "Miss" ){
         this.data[source].misses += 1
         this.data[target].dodged += 1
-      } else if( info.damageType == "heal" ) {
+      } else if( info.damageType == "Heal" ) {
         // Placeholder since we cannot tell the source of healing
         if( info.hit > this.foodThreshold ){
           this.data[source].food -= 1
@@ -141,19 +163,13 @@ class Dungeoneering {
       }
       this.updateStatsWindow(source);
     }
-    // Store player state
-    if( msg[0] == "update player" ){
+    //if( msg[0] == "combat:flee" ){
+    //  this.resetRun();
+    //}
+    if( msg[0] == "update:player" ){
       let portion = msg[1].portion
       let value = msg[1].value
-      if( portion.includes("actionQue") && (value.length > 0) ) {
-        let info = value[0]
-        if( ("action" in info) && (value.length == 1)){
-          if( info.action == "combat" ){
-            this.resetRun()
-          }
-        }
-      }
-      this.updateEQInfoBoxCallback(this)
+      //this.updateEQInfoBoxCallback(this)
       // Initial loading for combat stats and inventory
       if( portion.includes("group") ){
         this.groupInfo = value;
@@ -164,15 +180,21 @@ class Dungeoneering {
       if( portion.includes("settings") ){
         this.currentAutoeat = value.combat.autoEatThreshold;
       }
+      if( portion.includes("actionQueue") ){
+        if( value.actionType == "Action-Combat" ){
+          if( "options" in value ){
+            this.combatDifficulty = get(value.options, "combatDifficulty", this.combatDifficulty);
+          }
+        }
+      }
     }
-    // Increment monster
-    if( msg[0] == "new monster" ){
-      this.bestiary.add(msg[1].name)
-      this.bestiaryAlbum[msg[1].name]=msg[1].image
+    // Store player state
+    if( msg[0] == "update player" ){
     }
     // Get kills
-    if( msg[0] == "lootlog kill" ){
-      let target = msg[1]
+    if( msg[0] == "combat:removeMonster" ){
+      let target_id = msg[1].id
+      let target = get( this.idTargetMap, target_id, "Lost" )
       if( !(target in this.data) ){
         this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0}
       }
@@ -417,6 +439,11 @@ class Dungeoneering {
     let dpm = totalDamage/(Date.now() - self.startTime)*3600*1e3
     return `${dnum(totalDamage,1)} (${dnum(dpm,1)})`
   }
+  getDPS(self, target){
+    let totalDamage = self.data[target].dps
+    let dpm = totalDamage/(Date.now() - self.startTime)*1e3
+    return `${dnum(totalDamage,1)} (${dnum(dpm,1)})`
+  }
   getAccuracy(self, target){
     let acc = (self.data[target].hits)/(self.data[target].hits+self.data[target].misses)*100
     return `${dnum(acc,2)}%`;
@@ -466,9 +493,9 @@ class Dungeoneering {
                  }, 1000 );
       return false;
     }
-    let chatSection = document.getElementsByClassName("chat-interface-container")[0]
-    let chatTabs = chatSection.getElementsByClassName("chat-tabs")[0]
-    let chatBoxes = chatSection.getElementsByClassName("chat-message-container-box")[0]
+    let chatSection = document.getElementsByClassName("chat-container")[0]
+    let chatTabs = chatSection.getElementsByClassName("chat-tabs-list")[0]
+    let chatBoxes = chatSection.getElementsByClassName("chat-message-list")[0]
     // Delete old lingering tab
     try {
       document.getElementById("ismonkey-dungeontab").remove();
@@ -478,7 +505,7 @@ class Dungeoneering {
     let dimg = document.createElement("img")
     dimg.className="chat-tab-icon"
     dimg.src="/images/combat/attack_icon.png"
-    dungeonChannel.className="chat-tab-channel"
+    dungeonChannel.className="chat-tab"
     dungeonChannel.append(dimg)
     dungeonChannel.innerHTML+="Fite"
     dungeonChannel.id="ismonkey-dungeontab"
@@ -486,12 +513,15 @@ class Dungeoneering {
     self.addCSS();
     // Here we will have a hidden chat-overlay box to write in the stats
     let dungeonBox = document.createElement("div")
-    dungeonBox.className="chat-message-container"
-    dungeonBox.style.visibility="hidden"
+    dungeonBox.className="chat-message-list"
+    //dungeonBox.style.visibility="hidden"
+    dungeonBox.style.display="none";
+    dungeonBox.style.height="100%";
     dungeonBox.style.zIndex=100
     dungeonBox.id = "ismonkey-dungeonbox"
     let dbList = document.createElement("div")
     dbList.className="chat-message-list css-13azwyo"
+    dbList.style.overflow="hidden"
     dungeonBox.append(dbList)
     let dbHolder = document.createElement("div")
     dbHolder.className="css-y1c0xs"
@@ -504,19 +534,20 @@ class Dungeoneering {
     testMessage.id="dungeoneering-statsmessage"
     testMessage.append(this.mainFlexBox)
     dbHolder.append(testMessage)
-    chatBoxes.append(dungeonBox)
+    chatBoxes.prepend(dungeonBox)
     // Lets make the tab do a thing
     function openChatBox(e){
-      let chatTabs = chatSection.getElementsByClassName("chat-tabs")[0]
-      dungeonBox.style.visibility="visible"
-      for(let dom of chatTabs.getElementsByClassName("selected-channel")){
-        dom.classList.remove("selected-channel")
-      };
-      for(let dom of chatTabs.getElementsByClassName("selected-whisper")){
-        dom.classList.remove("selected-whisper")
-      };
-      dungeonChannel.className="chat-tab-channel selected-channel";
-      for( let tab of chatTabs.getElementsByClassName("chat-tab-channel") ){
+      let chatTabs = document.querySelector(".chat-tabs-list");
+      dungeonBox.style.display="block";
+      chatBoxes.style.overflow="hidden";
+      //for(let dom of chatTabs.getElementsByClassName("selected-channel")){
+      //  dom.classList.remove("selected-channel")
+      //};
+      //for(let dom of chatTabs.getElementsByClassName("selected-whisper")){
+      //  dom.classList.remove("selected-whisper")
+      //};
+      dungeonChannel.className="chat-tab selected-channel";
+      for( let tab of chatTabs.getElementsByClassName("chat-tab") ){
         if( tab.id !== dungeonChannel.id ){
           tab.addEventListener("click", closeChatBox);
         }
@@ -535,16 +566,17 @@ class Dungeoneering {
     dungeonChannel.addEventListener("click", openChatBox);
     // We can make it so that any other tab hides it again
     function closeChatBox(e){
-      dungeonBox.style.visibility="hidden"
-      dungeonChannel.className="chat-tab-channel";
-      if( e.target.classList.contains("chat-tab-whisper") ){
-        e.target.classList.add("selected-whisper");
-      }
-      if( e.target.classList.contains("chat-tab-channel") ){
-        e.target.classList.add("selected-channel");
-      }
+      dungeonBox.style.display="none"
+      chatBoxes.style.overflow="auto";
+      //dungeonChannel.className="chat-tab";
+      //if( e.target.classList.contains("chat-tab-whisper") ){
+      //  e.target.classList.add("selected-whisper");
+      //}
+      //if( e.target.classList.contains("chat-tab") ){
+      //  e.target.classList.add("selected-channel");
+      //}
     }
-    for( let tab of chatTabs.getElementsByClassName("chat-tab-channel") ){
+    for( let tab of chatTabs.getElementsByClassName("chat-tab") ){
       if( tab.id !== dungeonChannel.id ){
         tab.addEventListener("click", closeChatBox);
       }
@@ -587,7 +619,7 @@ class Dungeoneering {
             fightContainer[0].append(container);
           }
         }
-        autoEatDom.innerText = `Auto-eat: ${self.currentAutoeat}%`;
+        autoEatDom.innerText = `Auto-eat: ${self.currentAutoeat}%\nDifficulty: ${self.combatDifficulty}`;
       }
     };
 
@@ -597,6 +629,7 @@ class Dungeoneering {
     observer.observe(targetNode, config);
 
     /// Very simple observer for equipment area
+    /*
     self.createEQInfoBox(self);
     const eqcallback = function(mutationsList, observer) {
       self.updateEQInfoBoxCallback(self)
@@ -605,6 +638,7 @@ class Dungeoneering {
     const eqobserver = new MutationObserver(eqcallback);
     eqobserver.observe(eqtab, config);
     eqobserver.observe(targetNode, config);
+    */
   }
   updateEQInfoBoxCallback(self){
     let combat = document.querySelector(".combat-gear-container")
