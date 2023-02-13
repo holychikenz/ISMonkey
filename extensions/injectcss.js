@@ -34,6 +34,7 @@ class InjectCSS {
     .farming-seeds {
       max-width: 100%;
     }
+    /*
     .combat-zone {
       position: relative;
     }
@@ -59,14 +60,17 @@ class InjectCSS {
       margin-left: 5px;
       margin-right: 5px;
     }
+    */
     /*
     .combine-main-area {
       height: calc(100% - 115px);
     }
     */
+    /*
     .base-monster-style {
       padding-bottom: 85px;
     }
+    */
     .item-animating-gain {
       animation: none;
     }
@@ -108,6 +112,7 @@ class InjectCSS {
       max-width: 80%;
     }
     */
+    /*
     .combat-stats p {
       font-size: 12px;
     }
@@ -121,6 +126,7 @@ class InjectCSS {
     .combat-gear-container {
       z-index: 8;
     }
+    */
     div.item-enchant>img {
       background-color: rgba(0,0,0,0.8);
       border-radius: 15px;
@@ -202,8 +208,13 @@ class InjectCSS {
     .lightgreen-text {
       color: #ffc107!important;
     }
+    /*
     .combat-run-away {
       z-index: 100;
+    }
+    */
+    .navbar-enabled .play-area-container {
+      max-width: calc(80vw);
     }
     `
     document.body.appendChild(mystyle);

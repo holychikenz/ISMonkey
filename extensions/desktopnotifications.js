@@ -18,7 +18,9 @@ class DesktopNotifications {
     }
     Notification.requestPermission();
   }
-  run(obj, msg){
+  send(obj, msg){
+  }
+  message(obj, msg){
     if( msg[0] == "play sound" ){
       let value = msg[1];
       this.displayMessage(value);

@@ -12,6 +12,8 @@ const skillIcons = {
   "attack": "/images/combat/attack_icon.png",
   "strength": "/images/combat/strength_icon.png",
   "defense": "/images/combat/defense_icon.png",
+  "magic": "/images/magic/magic_logo.png",
+  "range": "/images/combat/range_icon.png",
   "total": "/images/total_level.png",
   "gold": "/images/money_icon.png",
   "Air Essence": "/images/runecrafting/air_essence.png",
@@ -41,6 +43,7 @@ class Looty{
     this.initExperienceTimer = Date.now();
     this.gold = 0
     this.cook = 0
+    this.logging = true;
   }
   connect(){
     let self = this
@@ -67,7 +70,9 @@ class Looty{
   }
   disconnect(){
   }
-  run(obj, msg){
+  send(obj, msg){
+  }
+  message(obj, msg){
     let call = msg[0];
     let message = msg[1];
     if( call === "update:player" ){
@@ -93,6 +98,13 @@ class Looty{
         // Skills and tools
         if( portion.includes("skills") ){
           for( const [key, val] of Object.entries(value) ){
+            if( this.logging == true && key != "total" ){
+              let previous_tick = this.experience[key];
+              let delta = val.experience - previous_tick;
+              if( delta > 0 ){
+                console.log("XP Gain:",key,delta);
+              }
+            }
             this.experience[key] = val.experience;
             this.masteryExperience[key] = val.masteryExperience;
           }

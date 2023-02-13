@@ -28,7 +28,9 @@ class PlayerData {
   }
   initPlayer(){
   }
-  run(obj, msg){
+  send(obj, msg){
+  }
+  message(obj, msg){
     // TODO: Find combatStats and toolBoosts
     if( msg[0] === "update player" ){
       let portion = msg[1].portion;

@@ -80,6 +80,7 @@ class ISMonkey {
       if( typeof window.IdlescapeListener !== "undefined" ){
         clearInterval(setupThisSocket);
         window.IdlescapeListener.messages.addEventListener('message', (e)=>self.messageHandlerSL(self, e));
+        window.IdlescapeListener.messages.addEventListener('send', (e)=>self.sendHandlerSL(self, e));
         window.IdlescapeListener.messages.addEventListener('connected', (e)=>self.connect(self, e));
         window.IdlescapeListener.messages.addEventListener('disconnected', (e)=>self.disconnect(self, e));
         console.log("ISMonkey attached to IdlescapeSocketListener");
@@ -105,7 +106,10 @@ class ISMonkey {
   }
   // Message handler for socketLisener
   messageHandlerSL(self, e) {
-    self.socketEventList.forEach(x=>x.run(self, [e.event, e.data]));
+    self.socketEventList.forEach(x=>x.message(self, [e.event, e.data]));
+  }
+  sendHandlerSL(self, e) {
+    self.socketEventList.forEach(x=>x.send(self, [e.event, e.data]));
   }
   connect(self, e) {
     for( const [key, value] of Object.entries(self.extensions) ){
@@ -246,7 +250,7 @@ class ISMonkey {
     let innerDiv = document.createElement("DIV");
     innerDiv.append(icon);
     innerDiv.innerHTML+="ISMonkey";
-    let tabName = container.getElementsByClassName("nav-tab-left")[0];
+    let tabName = container.getElementsByClassName("nav-tab")[0];
     let tabClone = tabName.cloneNode(true);
     document.getElementsByClassName("nav-tab-container")[0].prepend(tabClone);
     tabClone.innerHTML="";
@@ -294,6 +298,7 @@ function getReact(dom) {
 }
 
 function get(obj, key, default_value){
+  if( !obj ) return default_value;
   var result = obj[key];
   return (typeof result !== "undefined") ? result : default_value;
 }

@@ -80,7 +80,7 @@ class Dungeoneering {
     this.foodThreshold = 15
     this.currentAutoeat = 0
     // This may be different for player / monster, so lets make that Map (we want this ordered)
-    this.playerElementMap = new Map([ ["Food",this.getFood], ["Damage (dps)", this.getDPS], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
+    this.playerElementMap = new Map([ ["Damage Taken",this.getTank], ["Damage (dps)", this.getDPS], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
     this.monsterElementMap = new Map([ ["Kills (kph)",this.getCount], ["Damage (dps)", this.getDPS], ["Accuracy", this.getAccuracy], ["Dodge", this.getDodge], ["Max Hit", this.getMaxHit] ])
     this.playerTable = document.createElement("table")
     this.monsterTable = document.createElement("table")
@@ -109,7 +109,17 @@ class Dungeoneering {
       tracker.lootValue = 0
     }
   }
-  run(obj, msg) {
+  send(obj, msg) {
+    let message = msg[0]
+    let value = msg[1]
+    if( message == "action:start" ){
+      let action_type = get(value, "action", "");
+      if( action_type == "combat" ){
+        this.resetRun();
+      }
+    }
+  }
+  message(obj, msg) {
     // Store and use all of the hit information
     if( msg[0] == "combat:spawnMonster" ){
       let listOfMonsters = msg[1];
@@ -140,10 +150,10 @@ class Dungeoneering {
       }
       // Skip this entry if either is lost
       if( !(source in this.data) ){
-        this.data[source] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0}
+        this.data[source] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0, "tank":0}
       }
       if( !(target in this.data) ){
-        this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0}
+        this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "dodged":0, "notdodged":0, "tank":0}
       }
       if( this.data[source].maxhit < info.hit && info.damageType != "Heal"){
         this.data[source].maxhit = info.hit
@@ -160,6 +170,7 @@ class Dungeoneering {
         this.data[source].dps += info.hit
         this.data[source].hits += 1
         this.data[target].notdodged += 1
+        this.data[target].tank += info.hit
       }
       this.updateStatsWindow(source);
     }
@@ -181,10 +192,13 @@ class Dungeoneering {
         this.currentAutoeat = value.combat.autoEatThreshold;
       }
       if( portion.includes("actionQueue") ){
-        if( value.actionType == "Action-Combat" ){
+        let actionType = get(value, "actionType", "");
+        if( actionType == "Action-Combat" ){
           if( "options" in value ){
             this.combatDifficulty = get(value.options, "combatDifficulty", this.combatDifficulty);
           }
+        } else if (actionType = ""){
+          console.log("Error: AT>", value);
         }
       }
     }
@@ -196,7 +210,7 @@ class Dungeoneering {
       let target_id = msg[1].id
       let target = get( this.idTargetMap, target_id, "Lost" )
       if( !(target in this.data) ){
-        this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0}
+        this.data[target] = {"type":"placeholder", "dps":0, "hits":0, "misses": 0, "food":28, "count":0, "maxhit":0, "tank":0}
       }
       if( target in this.data ){
         this.data[target].count += 1
@@ -360,11 +374,11 @@ class Dungeoneering {
     this.summaryDict[name] = etime
     this.summaryDiv.append(etime)
     // Project time
-    name = "Estimated Max AFK"
-    this.summaryMap.set(name, this.getProjectedAFK)
-    etime = document.createElement("p")
-    this.summaryDict[name] = etime
-    this.summaryDiv.append(etime)
+    //name = "Estimated Max AFK"
+    //this.summaryMap.set(name, this.getProjectedAFK)
+    //etime = document.createElement("p")
+    //this.summaryDict[name] = etime
+    //this.summaryDiv.append(etime)
     // Kills (rate)
     name = "Kills (per hour)"
     this.summaryMap.set(name, this.getTotalKPH)
@@ -372,8 +386,14 @@ class Dungeoneering {
     this.summaryDict[name] = etime
     this.summaryDiv.append(etime)
     // Gold
-    name = "Gold (per hour)"
-    this.summaryMap.set(name, this.getTotalGPH)
+    // name = "Gold (per hour)"
+    // this.summaryMap.set(name, this.getTotalGPH)
+    // etime = document.createElement("p")
+    // this.summaryDict[name] = etime
+    // this.summaryDiv.append(etime)
+    // Difficulty (max reached)
+    name = "Difficulty"
+    this.summaryMap.set(name, this.getDifficulty)
     etime = document.createElement("p")
     this.summaryDict[name] = etime
     this.summaryDiv.append(etime)
@@ -402,6 +422,12 @@ class Dungeoneering {
       self.lastTimeCounter = (Date.now() - self.startTime)/1000/3600
     }
     return `${self.lastKillCount} (${dnum(self.lastKillCount/self.lastTimeCounter,1)})`
+  }
+  getDifficulty(self){
+    if( (typeof self.combatDifficulty == 'undefined') ){
+      self.combatDifficulty = 0
+    }
+    return `${self.combatDifficulty}`
   }
   getTotalGPH(self){
     if( (typeof self.lastKillCount == 'undefined') || (typeof self.lastTimeCounter == 'undefined') ){
@@ -444,6 +470,11 @@ class Dungeoneering {
     let dpm = totalDamage/(Date.now() - self.startTime)*1e3
     return `${dnum(totalDamage,1)} (${dnum(dpm,1)})`
   }
+  getTank(self, target){
+    let totalDamage = self.data[target].tank
+    let dpm = totalDamage/(Date.now() - self.startTime)*1e3
+    return `${dnum(totalDamage,1)} (${dnum(dpm,1)})`
+  }
   getAccuracy(self, target){
     let acc = (self.data[target].hits)/(self.data[target].hits+self.data[target].misses)*100
     return `${dnum(acc,2)}%`;
@@ -461,7 +492,7 @@ class Dungeoneering {
     return `${dnum(totalKills, 0)} (${dnum(kph,1)})`
   }
   getMaxHit(self, target){
-    return `${dnum(self.data[target].maxhit,0)}`
+    return `${numberWithCommas(self.data[target].maxhit)}`
   }
   download(self){
     if( typeof(self.groupInfo) === 'undefined') {
