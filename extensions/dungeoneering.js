@@ -133,7 +133,7 @@ class Dungeoneering {
     if( msg[0] == "update:group-member" ){
       let member = msg[1];
       if( member.key == "combatStats" ){
-        this.idTargetMap[member.value.player] = member.value.name;
+        this.idTargetMap[member.userId] = member.value.combatStats.name;
       }
     }
     if( msg[0] == "combat:splotch" ){
