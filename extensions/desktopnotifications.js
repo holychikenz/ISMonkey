@@ -18,15 +18,17 @@ class DesktopNotifications {
     }
     Notification.requestPermission();
   }
-  run(obj, msg){
+  send(obj, msg){
+  }
+  message(obj, msg){
     if( msg[0] == "play sound" ){
       let value = msg[1];
       this.displayMessage(value);
     }
-    if( msg[0] == "update player" ){
+    if( msg[0] == "update:player" ){
       if( "portion" in msg[1] ){
-        if( msg[1].portion.includes("actionQue") ){
-          if( msg[1].value.length == 0 ){
+        if( msg[1].portion.includes("actionQueue") ){
+          if( msg[1].value == null ){
             this.displayMessage({type: "Idle"});
           }
         }

@@ -12,6 +12,8 @@ const skillIcons = {
   "attack": "/images/combat/attack_icon.png",
   "strength": "/images/combat/strength_icon.png",
   "defense": "/images/combat/defense_icon.png",
+  "magic": "/images/magic/magic_logo.png",
+  "range": "/images/combat/range_icon.png",
   "total": "/images/total_level.png",
   "gold": "/images/money_icon.png",
   "Air Essence": "/images/runecrafting/air_essence.png",
@@ -41,6 +43,7 @@ class Looty{
     this.initExperienceTimer = Date.now();
     this.gold = 0
     this.cook = 0
+    this.logging = true;
   }
   connect(){
     let self = this
@@ -67,10 +70,12 @@ class Looty{
   }
   disconnect(){
   }
-  run(obj, msg){
+  send(obj, msg){
+  }
+  message(obj, msg){
     let call = msg[0];
     let message = msg[1];
-    if( call === "update player" ){
+    if( call === "update:player" ){
       let portion = message.portion;
       let value = message.value;
       // Essence in stockpile
@@ -92,9 +97,17 @@ class Looty{
       } else {
         // Skills and tools
         if( portion.includes("skills") ){
-          let aSkill = portion[1];
-          this.experience[aSkill] = value.experience;
-          this.masteryExperience[aSkill] = value.masteryExperience;
+          for( const [key, val] of Object.entries(value) ){
+            if( this.logging == true && key != "total" ){
+              let previous_tick = this.experience[key];
+              let delta = val.experience - previous_tick;
+              if( delta > 0 ){
+                console.log("XP Gain:",key,delta);
+              }
+            }
+            this.experience[key] = val.experience;
+            this.masteryExperience[key] = val.masteryExperience;
+          }
         }
         if( portion.includes("actionQue") ) {
           //this.initExperience = {...this.experience};
@@ -113,9 +126,10 @@ class Looty{
       }
       this.updateXPSTAT();
     }
-    if( call === "lootlog loot" ){
-      let loot = message.loot
-      let name = loot[0]
+    if( call === "lootlog:loot" ){
+      /*
+      let loot = message
+      let name = loot.itemID
       let count = loot[1]
       let newgold = count
       let newcook = 0
@@ -128,6 +142,7 @@ class Looty{
         newcook = this.cookbook[name] * count
       }
       this.cook += newcook
+      */
     }
   }
   buildUI(self, promise){
@@ -342,7 +357,7 @@ class Looty{
   }
   updateExperienceTable(self){
     let d = self.getExperienceDiffDict();
-    if( self.rowNameDict === 'undefined' ) return;
+    if( !self.rowNameDict ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.rowNameDict ){
@@ -402,7 +417,7 @@ class Looty{
   }
   updateMarketTable(self){
     let d = self.getMarketDict();
-    if( self.marketDict === 'undefined' ) return;
+    if( !self.marketDict ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.marketDict ){
@@ -461,7 +476,7 @@ class Looty{
   }
   updateEssenceTable(self){
     let d = self.getEssenceDiffDict();
-    if( self.essenceDict === 'undefined' ) return;
+    if( !self.essenceDict ) return;
     for( const [key, value] of Object.entries(d) ){
       if( value > 0 ){
         if( key in self.essenceDict ){
