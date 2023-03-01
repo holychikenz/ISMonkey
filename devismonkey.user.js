@@ -1,27 +1,27 @@
 // ==UserScript==
-// @name         Dev_ISMonkeyLoader
-// @version      1.0.2
-// @description  ISMonkey Extension Loader Dev Branch
+// @name         Dev_ISMonkeyLoaderRefactor
+// @version      1.0.3
+// @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
-// @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/devismonkey.user.js
-// @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/devismonkey.user.js
-// @match        https://www.idlescape.com/game
-// @match        https://idlescape.com/game
+// @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/ismonkey.user.js
+// @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/ismonkey.user.js
+// @match        https://www..idlescape.com/game
+// @match        *://*idlescape.com/*
 // @require      https://raw.githubusercontent.com/HighOnMikey/idlescape-socketio-listener/main/src/idlescape-listener.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/playerdata.js
-// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/dungeoneering.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/desktopnotifications.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/loottracking.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/looty.js
+// @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/foodinfo.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/injectcss.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/jiggyslide.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/animationcancel.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/runecrafting.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/dev/extensions/smithing.js
-// @require      https://raw.githubusercontent.com/platinumscott/ISMonkey/main/extensions/statistics.js
+// @require      https://raw.githubusercontent.com/platinumscott/ISMonkey/dev/extensions/statistics.js
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
