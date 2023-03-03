@@ -11,6 +11,7 @@ class Dungeoneering {
   constructor(monkey, options){
     this.options = options
     this.monkey = monkey
+    this.importantIDMap = {}
   }
   connect(){
     this.config();
@@ -88,9 +89,9 @@ class Dungeoneering {
   resetRun(){
     this.startTime = Date.now()
     this.data = {}
+    this.groupInfo = {}
     this.idTargetMap = {}
     this.idImageMap = {}
-    this.groupInfo = {}
     this.combatDifficulty = 0
     this.hitArray = []
     this.playerTableRowMap = {}
@@ -134,6 +135,18 @@ class Dungeoneering {
       let member = msg[1];
       if( member.key == "combatStats" ){
         this.idTargetMap[member.userId] = member.value.combatStats.name;
+        this.importantIDMap[member.userId] = member.value.combatStats.name;
+      }
+    }
+    if( msg[0] == "update:group" ){
+      let message = msg[1];
+      if( message.value ){
+        if( message.value.groupMemberData ){
+          for( let groupMember of message.value.groupMemberData ){
+            this.idTargetMap[groupMember.id] = groupMember.username;
+            this.importantIDMap[groupMember.id] = groupMember.username;
+          }
+        }
       }
     }
     if( msg[0] == "combat:splotch" ){
@@ -142,6 +155,12 @@ class Dungeoneering {
       // Hit array size safety, tests show ~70 KB / element, so this will float up to 35MB or so
       if( this.hitArray.length > 550000 ){
         this.hitArray = this.hitArray.slice(50000)
+      }
+      if( info.attackerID in this.importantIDMap ){
+        this.idTargetMap[info.attackerID] = this.importantIDMap[info.attackerID];
+      }
+      if( info.id in this.importantIDMap ){
+        this.idTargetMap[info.id] = this.importantIDMap[info.id];
       }
       let source = get( this.idTargetMap, info.attackerID, "Lost" )
       let target = get( this.idTargetMap, info.id, "Lost" )
@@ -565,12 +584,14 @@ class Dungeoneering {
     testMessage.id="dungeoneering-statsmessage"
     testMessage.append(this.mainFlexBox)
     dbHolder.append(testMessage)
-    chatBoxes.prepend(dungeonBox)
+    //chatBoxes.prepend(dungeonBox)
+    chatTabs.after(dungeonBox)
     // Lets make the tab do a thing
     function openChatBox(e){
       let chatTabs = document.querySelector(".chat-tabs-list");
       dungeonBox.style.display="block";
-      chatBoxes.style.overflow="hidden";
+      //chatBoxes.style.overflow="hidden";
+      chatBoxes.style.display="none";
       //for(let dom of chatTabs.getElementsByClassName("selected-channel")){
       //  dom.classList.remove("selected-channel")
       //};
@@ -598,7 +619,8 @@ class Dungeoneering {
     // We can make it so that any other tab hides it again
     function closeChatBox(e){
       dungeonBox.style.display="none"
-      chatBoxes.style.overflow="auto";
+      //chatBoxes.style.overflow="auto";
+      chatBoxes.style.display="block";
       //dungeonChannel.className="chat-tab";
       //if( e.target.classList.contains("chat-tab-whisper") ){
       //  e.target.classList.add("selected-whisper");

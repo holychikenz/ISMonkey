@@ -1,13 +1,14 @@
 // ==UserScript==
-// @name         ISMonkeyLoaderRefactor
-// @version      1.0.3
+// @name         ISMonkeyLoader
+// @version      1.0.4
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
 // @updateURL    https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @downloadURL  https://raw.githubusercontent.com/holychikenz/ISMonkey/main/ismonkey.user.js
 // @match        https://www.idlescape.com/game
-// @match        *://*idlescape.com/*
+// @match        https://idlescape.com/game
+// @match        *://*dev.idlescape.com/*
 // @require      https://raw.githubusercontent.com/HighOnMikey/idlescape-socketio-listener/main/src/idlescape-listener.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/playerdata.js
@@ -25,12 +26,6 @@
 // @run-at       document-start
 // @grant        none
 // ==/UserScript==
-
-/*
-Todo List:
-- That thing I did in mooscape to grab and store some of the initial messages.
-
-*/
 
 (function(){
   IdlescapeSocketListener.attach();

@@ -43,7 +43,7 @@ class Looty{
     this.initExperienceTimer = Date.now();
     this.gold = 0
     this.cook = 0
-    this.logging = true;
+    this.logging = false;
   }
   connect(){
     let self = this
