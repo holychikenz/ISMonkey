@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ISMonkeyLoader
-// @version      1.0.5
+// @version      1.0.6
 // @description  ISMonkey Extension Loader
 // @author       Holychikenz
 // @namespace    ISMonkey
@@ -9,7 +9,7 @@
 // @match        https://www.idlescape.com/game
 // @match        https://idlescape.com/game
 // @match        *://*dev.idlescape.com/*
-// @match        *play.idlescape.com/*
+// @match        *://*www.play.idlescape.com/*
 // @require      https://raw.githubusercontent.com/HighOnMikey/idlescape-socketio-listener/main/src/idlescape-listener.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/src/ISMonkey.js
 // @require      https://raw.githubusercontent.com/holychikenz/ISMonkey/main/extensions/playerdata.js
