@@ -131,6 +131,13 @@ class Dungeoneering {
         this.bestiaryAlbum[monster.monsterName]=monster.image;
       }
     }
+    if( msg[0] == "combat:updateMonster" ){
+      let monster = msg[1];
+      this.idTargetMap[monster.id] = monster.monsterName;
+      this.idImageMap[monster.id] = monster.image;
+      this.bestiary.add(monster.monsterName)
+      this.bestiaryAlbum[monster.monsterName]=monster.image;
+    }
     if( msg[0] == "update:group-member" ){
       let member = msg[1];
       if( member.key == "combatStats" ){
