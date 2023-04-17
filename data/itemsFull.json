@@ -2501,6 +2501,24 @@
     "value": "1",
     "class": "cooking-ingredient"
   },
+  "5000": {
+    "name": "Shrimp Bauble",
+    "image": "/images/misc/shrimp_bauble.png",
+    "value": "1",
+    "class": 0
+  },
+  "5001": {
+    "name": "Shrimp",
+    "image": "/images/misc/schfftph_fzzglgl.png",
+    "value": "1",
+    "class": 0
+  },
+  "5002": {
+    "name": "Shrimp Ascendant",
+    "image": "/images/misc/schfftph_fzzglgl_kakfzz.png",
+    "value": "1",
+    "class": 0
+  },
   "6000": {
     "name": "Gold Medal",
     "image": "/images/ui/highscore_gold.png",
